@@ -14,8 +14,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         widget.cpp \
-    objects.cpp
+    objects.cpp \
+    world.cpp
 
-HEADERS  += widget.h
+HEADERS  += widget.h \
+    objects.h \
+    world.h
 
 FORMS    += widget.ui
+
+RESOURCES += \
+    images/resources.qrc

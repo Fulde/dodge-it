@@ -12,9 +12,15 @@ class Widget : public QWidget
     Q_OBJECT
     
 public:
+    QTimer *timer;
+
     explicit Widget(QWidget *parent = 0);
     ~Widget();
     
+private slots:
+    void on_btnStart_clicked();
+    void timerHit();
+
 private:
     Ui::Widget *ui;
 };
