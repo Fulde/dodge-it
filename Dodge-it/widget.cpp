@@ -15,7 +15,6 @@ Widget::Widget(QWidget *parent) :
     timer = new QTimer(this);
     timer->setInterval(200);
     QObject::connect(timer, &QTimer::timeout, this, &Widget::timerHit);
-
 }
 
 Widget::~Widget()
@@ -25,11 +24,7 @@ Widget::~Widget()
 
 void Widget::on_btnStart_clicked()
 {
-    if (!ui->rbEasy->isChecked() && !ui->rbMedium->isChecked() && !ui->rbHard->isChecked()) {
-        QMessageBox::information(this, "Whoops", "Please choose your difficulty level.");
-    } else {
 
-    }
 }
 
 void Widget::timerHit() {

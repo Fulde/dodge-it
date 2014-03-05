@@ -25,3 +25,5 @@ FORMS    += widget.ui
 
 RESOURCES += \
     images/resources.qrc
+
+QMAKE_CXXFLAGS +=-std=c++0x

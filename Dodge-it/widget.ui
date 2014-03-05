@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Widget</class>
- <widget class="QWidget" name="Widget">
+ <class>widgetStart</class>
+ <widget class="QWidget" name="widgetStart">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -46,6 +46,9 @@
    </property>
    <property name="text">
     <string>Easy</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QRadioButton" name="rbMedium">

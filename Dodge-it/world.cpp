@@ -6,3 +6,9 @@
 #include "world.h"
 
 
+Game Game::instance;
+
+void Game::updatePosition()
+{
+
+}
