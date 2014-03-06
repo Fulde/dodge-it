@@ -16,4 +16,4 @@ int main(int argc, char *argv[])
     return a.exec();
 }
 
-// another error
+// Lindsay's awesome code
