@@ -15,3 +15,5 @@ int main(int argc, char *argv[])
     
     return a.exec();
 }
+
+// This is a comment for lab 6
