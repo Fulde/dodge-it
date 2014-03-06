@@ -8,7 +8,7 @@
 
 Game Game::instance;
 
-void Game::updatePosition()
+void Game::checkObjects()
 {
 
 }

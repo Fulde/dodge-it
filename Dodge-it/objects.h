@@ -5,6 +5,35 @@ class Objects {
 
 public:
     virtual void incrementScore();
+    void move();
+};
+
+
+//=========================================== Damaging Objects
+
+class DamagingObjects : public Objects {
+
+protected:
+    int points;
+    int damage;
+    int id;
+
+public:
+    void destroyLabel();
+    int getPts() { return points; }
+    int getId();
+
+};
+
+class BasicObjects : public Objects {
+
+};
+
+class Explosives : public Objects {
+
+};
+
+class SmallObjets : public Objects {
 
 };
 
@@ -13,35 +42,22 @@ public:
 class Powerups : public Objects {
 protected:
     bool active;
+    int duration;
+
 public:
-    getActive() { return active; }
+    bool getActive() { return active; }
+
 };
 
 class Invul : public Powerups {
-public:
-    makeInvul();
 
 };
 
 class ExLife : public Powerups {
-public:
-    addLife();
 
 };
 
-class Slow : public Powerups { };
-
-//=========================================== Explosives
-
-class Explosives : public Objects {
-
-
-};
-
-//=========================================== SmallObjects
-
-class SmallObjets : public Objects {
-
+class Slow : public Powerups {
 
 };
 
