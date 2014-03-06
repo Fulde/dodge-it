@@ -16,4 +16,4 @@ int main(int argc, char *argv[])
     return a.exec();
 }
 
-// This is a comment for lab 6
+// This is a new comment for lab 6
