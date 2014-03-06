@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2014-03-03T10:30:57
+# Project created by QtCreator 2014-03-05T20:03:28
 #
 #-------------------------------------------------
 
@@ -15,15 +15,10 @@ TEMPLATE = app
 SOURCES += main.cpp\
         widget.cpp \
     objects.cpp \
-    world.cpp
+    game.cpp
 
 HEADERS  += widget.h \
     objects.h \
-    world.h
+    game.h
 
 FORMS    += widget.ui
-
-RESOURCES += \
-    images/resources.qrc
-
-QMAKE_CXXFLAGS +=-std=c++0x

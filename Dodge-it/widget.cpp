@@ -1,6 +1,3 @@
-// widget.cpp
-// defines widget capabilities
-
 #include "widget.h"
 #include "ui_widget.h"
 #include <QMessageBox>
