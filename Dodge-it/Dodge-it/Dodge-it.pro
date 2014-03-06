@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2014-03-05T20:03:28
+# Project created by QtCreator 2014-03-06T10:34:06
 #
 #-------------------------------------------------
 
@@ -22,3 +22,6 @@ HEADERS  += widget.h \
     game.h
 
 FORMS    += widget.ui
+
+RESOURCES += \
+    images/resources.qrc

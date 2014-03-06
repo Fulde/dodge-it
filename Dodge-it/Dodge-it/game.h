@@ -9,11 +9,8 @@ class Difficulty {
 
 protected:
     double objectSpeed;
-    int spawnCount;
 
-public:
-    getObjSpeed() { return objectSpeed; }
-    getSpawnCount() { return spawnCount; }
+
 
 
 };
@@ -46,13 +43,9 @@ public:
 
 class Character {
 
-private:
+public:
     QPoint currPos;
     int lives;
-
-public:
-    makeInvul();
-    addLife();
 
 };
 
@@ -61,17 +54,14 @@ public:
 class Game {
 
 public:
-    void checkObjects();
-    void slowObjects();
-
-    ~Game();
+    void updatePosition();
+    ~Game() { }
 
 //**** singleton implementation ****//
 private:
     static Game instance;
+    Game() { }
 public:
     static Game& getInstance() { return instance; }
 };
-
-
 #endif // WORLD_H
