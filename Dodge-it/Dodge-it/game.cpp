@@ -9,3 +9,11 @@ void Game::updatePosition()
 {
 
 }
+
+void Game::load() {
+
+}
+
+void Game::save() {
+
+}

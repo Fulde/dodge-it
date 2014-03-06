@@ -6,6 +6,7 @@ class Objects {
 public:
     virtual void incrementScore();
     void move();
+    void stateToFile();
 };
 
 

@@ -10,23 +10,15 @@ class Difficulty {
 protected:
     double objectSpeed;
 
-
-
-
 };
 
 class Medium : public Difficulty {
-
 
 };
 
 class Hard : public Difficulty{
 
-
-
 };
-
-
 
 //=========================================== HighScore
 
@@ -61,6 +53,8 @@ public:
 private:
     static Game instance;
     Game() { }
+    void save();
+    void load();
 public:
     static Game& getInstance() { return instance; }
 };
