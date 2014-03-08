@@ -47,6 +47,9 @@
    <property name="text">
     <string>Easy</string>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QRadioButton" name="rbMedium">
    <property name="geometry">
@@ -109,13 +112,11 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="images/resources.qrc">:/logo.png</pixmap>
+    <pixmap>:/logo.png</pixmap>
    </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="images/resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
