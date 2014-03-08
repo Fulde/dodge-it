@@ -24,7 +24,7 @@ public:
     //This method increments the score if the user successfully avoids the object
     virtual void incrementScore();
     //This method moves the falling object to its new location based off the speed of the object
-    void move(initSpeed);
+    void move(int);
     //This method saves the current state of the object (location, etc.) to a file when the user saves the game
     virtual void stateToFile() = 0;
 };
