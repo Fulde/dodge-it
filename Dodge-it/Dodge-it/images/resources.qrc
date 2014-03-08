@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>logo.png</file>
+        <file>basic.png</file>
+        <file>easyBackground.png</file>
+        <file>small.png</file>
+        <file>mvSatyr.prev.png</file>
     </qresource>
 </RCC>
