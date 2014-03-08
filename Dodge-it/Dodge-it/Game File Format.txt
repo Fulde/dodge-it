@@ -1,12 +1,13 @@
 Team 3  Dodge-it
 Caleb Mauk, Daniel Folde, Lindsay Bullock, Stephen Laird
 
-Each object's class and coordinate are saved along with the character's coordinate. Both the current score and current lives are saved. Whether 
-powerups are active or not will also be recorded. Each entry of data will be one line in the file.
+Each object's class and coordinate are saved along with the character's coordinate. Both the current score and current lives are saved.
+Whether powerups are active or not will also be recorded. Each entry of data will be one line in the file.
 
-The first and second lines will contain the score and number of lives respectively. (one number on each line)
-The third line will record the character's position. (x y)
-The fourth and fifth lines will tell whether the powerups are active by recording the name of the powerup and a number for time remaining.
+The first line contains which difficulty the player set.
+The second and third lines will contain the score and number of lives respectively. (one number on each line)
+The fourth line will record the character's position. (x y)
+The fifth and sixth lines will tell whether the powerups are active by recording the name of the powerup and a number for time remaining.
 The remaining lines will record the positions of all of the objects on the screen (x y)
 
 2673

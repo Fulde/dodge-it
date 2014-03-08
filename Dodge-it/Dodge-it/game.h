@@ -19,7 +19,7 @@ class Difficulty {
 
 protected:
     //The object speed will be an integer representing the number of pixels on the y-axis that the object will travel each time the game is updated
-    double objectSpeed;
+    double speedMultiplyer;
 
 };
 

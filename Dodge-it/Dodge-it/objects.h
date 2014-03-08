@@ -17,7 +17,7 @@ public:
     //This method moves the falling object to its new location based off the speed of the object
     void move();
     //This method saves the current state of the object (location, etc.) to a file when the user saves the game
-    void stateToFile();
+    virtual void stateToFile() = 0;
 };
 
 
@@ -28,6 +28,7 @@ public:
 class DamagingObjects : public Objects {
 
 protected:
+    virtual void stateToFile() { }
     //the number of points the user scores for successfully avoiding this object
     int points;
     //the number of lives the user loses for running into this object
@@ -61,8 +62,8 @@ public:
 //Basic is the basic type of falling object.
 //Basic objects inherit from DamagingObjects
 
-class BasicObjects : public DamagingObejcts {
-
+class BasicObjects : public DamagingObjects {
+    void stateToFile();
 };
 
 
@@ -71,7 +72,7 @@ class BasicObjects : public DamagingObejcts {
 //Explosive objects inherit from DamagingObjects
 
 class Explosives : public DamagingObjects {
-
+    void stateToFile();
 };
 
 
@@ -80,6 +81,7 @@ class Explosives : public DamagingObjects {
 //Small objects inherit from DamagingObjects
 
 class SmallObjets : public DamagingObjects {
+    void stateToFile();
 
 };
 
@@ -91,6 +93,7 @@ class SmallObjets : public DamagingObjects {
 
 class Powerups : public Objects {
 protected:
+    virtual void stateToFile() { }
     //boolean to test if the powerup is currently active
     bool active;
     //integer representing how long the powerup will remain active
@@ -111,6 +114,7 @@ public:
 //Invul inherits from Powerups
 
 class Invul : public Powerups {
+    void stateToFile();
 
 };
 
@@ -120,6 +124,7 @@ class Invul : public Powerups {
 //Extra life inherits from Powerups
 
 class ExLife : public Powerups {
+    void stateToFile();
 
 };
 
@@ -129,6 +134,7 @@ class ExLife : public Powerups {
 //Slow inherits from Powerups
 
 class Slow : public Powerups {
+    void stateToFile();
 
 };
 
