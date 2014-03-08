@@ -22,6 +22,7 @@ protected:
 
     Object(string difficultyLevel);
 // ??? LINDSAY:: shouldn't these be protected? The one time we would call these is in the children classes
+
     //This method increments the score if the user successfully avoids the object
     virtual void incrementScore();
     //This method moves the falling object to its new location based off the speed of the object
