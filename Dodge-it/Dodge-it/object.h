@@ -20,13 +20,14 @@ protected:
     string pixmap;
 
 public:
-    int getSpeed() { return initSpeed; }
     //This method increments the score if the user successfully avoids the object
     virtual void incrementScore();
     //This method moves the falling object to its new location based off the speed of the object
-    void move(int);
+    void move();
     //This method saves the current state of the object (location, etc.) to a file when the user saves the game
     virtual void stateToFile() = 0;
+
+    Object();
 };
 
 
