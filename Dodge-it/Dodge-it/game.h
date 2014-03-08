@@ -8,6 +8,8 @@
 #define WORLD_H
 
 #include <QPoint>
+#include <string>
+using namespace std;
 
 
 //========================= DIFFICULTY ============================
@@ -20,24 +22,16 @@ class Difficulty {
 protected:
     //The object speed will be an integer representing the number of pixels on the y-axis that the object will travel each time the game is updated
     double speedMultiplyer;
-
+    int timerInterval;
+    void setInterval();
 };
-
-//========== MEDIUM difficulty level ==========
-class Medium : public Difficulty {
-
-};
-
-//========== HARD difficulty level ==========
-class Hard : public Difficulty{
-
-};
-
 
 //======================== HIGHSCORE =========================
 //This class contains code to compile a high score list.
 
 class HighScore {
+    string difficulty; // written to when the game ends
+    int score;         // written to when the game ends
 
 public:
     //Compares scores to compile a high score list
@@ -47,6 +41,7 @@ public:
     //Displays the list of high scores for the user
     void displayScores();
 
+    void unitTest();
 };
 
 
@@ -62,6 +57,8 @@ public:
     //keeps record of the number of lives the character has left
     int lives;
 
+    void handleCollision();
+    void move();
 };
 
 
@@ -72,21 +69,24 @@ public:
 class Game {
 
 public:
+    int multiplyer;
+    string difficulty;
     //This method will updates the location of all objects in the game based on a timer.  It will iterate over each object and call its move() method
     void updatePosition();
     //Destructor
     ~Game() { }
+private:
+    //Method to save the current state of the game
+    void save();
+    //Method to load a saved game
+    void load();
 
 //**** singleton implementation ****//
 private:
     //Private instance of Game
     static Game instance;
     //Private constructor
-    Game() { }
-    //Method to save the current state of the game
-    void save();
-    //Method to load a saved game
-    void load();
+    Game();
 public:
     //Getter method (singleton pattern)
     //Returns:  the private instance of the game class

@@ -12,6 +12,10 @@
 //creates the private instance of the game
 Game Game::instance;
 
+Game::Game(): multiplyer(1) {
+
+}
+
 //Name: UpdatePosition
 //Parameters: none
 //Returns:  void

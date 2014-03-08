@@ -1,15 +1,23 @@
 //====================
 //  CpS111 - Team 3 - Dodge-It
 //
-//      OBJECTS.H
+//      Object.H
 //====================
 
-#ifndef OBJECTS_H
-#define OBJECTS_H
+#ifndef Object_H
+#define Object_H
 
+#include <string>
+using namespace std;
 
-// Base falling objects class.  All falling objects inherit from this class.
-class Objects {
+// Base falling Object class.  All falling Object inherit from this class.
+class Object {
+
+protected:
+    int initSpeed;
+    int pixmapX;
+    int pixmapY;
+    string pixmap;
 
 public:
     //This method increments the score if the user successfully avoids the object
@@ -21,14 +29,14 @@ public:
 };
 
 
-//========================= DAMAGING OBJECTS =========================
-//All damaging objects (objects that harm the character) inherit from Objects.
-//The user must dodge these objects to avoid losing lives and score points for dodging them.
+//========================= DAMAGING Object =========================
+//All damaging Object (Object that harm the character) inherit from Object.
+//The user must dodge these Object to avoid losing lives and score points for dodging them.
 
-class DamagingObjects : public Objects {
+class DamagingObject : public Object {
 
 protected:
-    virtual void stateToFile() { }
+    void stateToFile() { }
     //the number of points the user scores for successfully avoiding this object
     int points;
     //the number of lives the user loses for running into this object
@@ -58,40 +66,12 @@ public:
 };
 
 
-//========== BASIC OBJECT ==========
-//Basic is the basic type of falling object.
-//Basic objects inherit from DamagingObjects
-
-class BasicObjects : public DamagingObjects {
-    void stateToFile();
-};
-
-
-//========== EXPLOSIVE OBJECT ==========
-//Explosive objects cause greater damage than basic objects.
-//Explosive objects inherit from DamagingObjects
-
-class Explosives : public DamagingObjects {
-    void stateToFile();
-};
-
-
-//========== SMALL OBJECT ==========
-//Small objects are smaller and faster than basic objects.
-//Small objects inherit from DamagingObjects
-
-class SmallObjets : public DamagingObjects {
-    void stateToFile();
-
-};
-
-
 
 //========================= POWERUPS =========================
-//Powerups are perks that the user can get.
-//Powerups are a type of falling object, but do no damage. They inherit from Objects.
+//powerups are perks that the user can get.
+//powerups are a type of falling object, but do no damage. They inherit from Object.
 
-class Powerups : public Objects {
+class powerup : public Object {
 protected:
     virtual void stateToFile() { }
     //boolean to test if the powerup is currently active
@@ -106,36 +86,41 @@ public:
     //This method returns the current state of the powerup (true = active / false = not active)
     bool getActive() { return active; }
 
+    virtual void activatePow() = 0;
 };
 
 
-//========== INVULNERABLE ==========
+// INVULNERABLE
 //This powerup makes the user invulnerable from damage for a limited amount of time
-//Invul inherits from Powerups
-
-class Invul : public Powerups {
+//Invul inherits from powerup
+class Invul : public powerup {
     void stateToFile();
-
+    void activatePow();
 };
 
 
-//========= EXTRA LIFE ==========
+// EXTRA LIFE
 //This powerup gives the user an extra life
-//Extra life inherits from Powerups
-
-class ExLife : public Powerups {
+//Extra life inherits from powerup
+class ExLife : public powerup {
     void stateToFile();
-
+    void activatePow();
 };
 
 
-//========= SLOW ==========
-//This powerup slows down all falling objects for the user
-//Slow inherits from Powerups
-
-class Slow : public Powerups {
+// SLOW
+//This powerup slows down all falling Object for the user
+//Slow inherits from powerup
+class Slow : public powerup {
     void stateToFile();
-
+    void activatePow();
 };
 
-#endif // OBJECTS_H
+// MULTIPLYER
+// This powerup changes the game's multiplyer to 2
+// Makes each object worth twice as much
+class Multiplyer : public powerup {
+    void setMultiplyer();
+};
+
+#endif // Object_H
