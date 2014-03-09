@@ -25,6 +25,9 @@ public:
     //Widget destructor
     ~Widget();
     
+private slots:
+    void on_btnStart_clicked();
+
 private:
     //Private instance for the Widget ui
     Ui::Widget *ui;

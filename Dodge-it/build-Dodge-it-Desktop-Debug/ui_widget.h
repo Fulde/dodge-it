@@ -71,7 +71,7 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QApplication::translate("Widget", "Widget", 0));
-        btnStart->setText(QApplication::translate("Widget", "Start Game", 0));
+        btnStart->setText(QApplication::translate("Widget", "Start New Game", 0));
         rbEasy->setText(QApplication::translate("Widget", "Easy", 0));
         rbMedium->setText(QApplication::translate("Widget", "Medium", 0));
         rbHard->setText(QApplication::translate("Widget", "Hard", 0));

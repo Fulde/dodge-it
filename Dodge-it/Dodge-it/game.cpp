@@ -8,45 +8,31 @@
 #include "ui_widget.h"
 #include "game.h"
 
-// ================================ DIFFICULTY ======================================
-
-Difficulty::setInterval() {
-
-}
-
-Difficulty::speedMultiplyer() {
-
-}
-
-Difficulty::timerInterval() {
-
-}
-
 // ================================ HIGHSCORE ======================================
 
-HighScore::addToFile() {
+void HighScore::addToFile() {
 
 }
 
-HighScore::displayScores() {
+void HighScore::displayScores() {
 
 }
 
-HighScore::scoreCompare() {
-
+bool HighScore::scoreCompare() {
+ return true;
 }
 
-HighScore::unitTest() {
+void HighScore::unitTest() {
 
 }
 
 // ================================ CHARACTER ======================================
 
-Character::handleCollision() {
+void Character::handleCollision() {
 
 }
 
-Character::move() {
+void Character::move() {
 
 }
 
