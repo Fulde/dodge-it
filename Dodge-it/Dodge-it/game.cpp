@@ -6,6 +6,12 @@
 
 #include "widget.h"
 #include "ui_widget.h"
+#include "widgetgame.h"
+#include "ui_widgetgame.h"
+#include "widgetpause.h"
+#include "ui_widgetpause.h"
+#include "widgetscore.h"
+#include "ui_widgetscore.h"
 #include "game.h"
 #include "object.h"
 
@@ -30,14 +36,14 @@ void HighScore::unitTest() {
 // ================================ CHARACTER ======================================
 
 void Character::handleCollision() {
-    if (Powerup.getActive()) {
-        ++lives;
-        //  lblLives = "--";
-    }
+  //  if (Invul::getActive()) {
+  //      ++lives;
+  //      lblLives = "--";
+  //  }
     --lives;
-    //  lblLives = lives;
-    if (lives = 0) {
-        Game::quit();
+  //    WidgetGame::ui->lblLives = lives;                  // need to re-show widget
+    if (lives == 0) {
+        Game::getInstance().quit();
     }
 }
 

@@ -15,13 +15,22 @@ TEMPLATE = app
 SOURCES += main.cpp\
         widget.cpp \
     game.cpp \
-    object.cpp
+    object.cpp \
+    widgetgame.cpp \
+    widgetpause.cpp \
+    widgetscore.cpp
 
 HEADERS  += widget.h \
     game.h \
-    object.h
+    object.h \
+    widgetscore.h \
+    widgetpause.h \
+    widgetgame.h
 
-FORMS    += widget.ui
+FORMS    += widget.ui \
+    widgetscore.ui \
+    widgetgame.ui \
+    widgetpause.ui
 
 RESOURCES += \
     images/resources.qrc

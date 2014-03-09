@@ -7,12 +7,18 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
-#include <QWidget>
-
 //Creates the user interface for the game
 namespace Ui {
 class Widget;
+class WidgetScore;
+class WidgetGame;
+class WidgetPause;
 }
+
+#include <QWidget>
+#include "widgetscore.h"
+#include "widgetgame.h"
+#include "widgetpause.h"
 
 //Defines the widget where the game will be displayed
 class Widget : public QWidget

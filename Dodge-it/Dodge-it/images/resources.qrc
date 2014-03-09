@@ -5,5 +5,9 @@
         <file>easyBackground.png</file>
         <file>small.png</file>
         <file>satyr.png</file>
+        <file>pause.png</file>
+        <file>hardBackground.jpg</file>
+        <file>pauseBackground.png</file>
+        <file>mediumBackground.png</file>
     </qresource>
 </RCC>

@@ -81,7 +81,7 @@ class Powerup : public Object {
 protected:
     virtual void stateToFile() { }
     //boolean to test if the powerup is currently active
-    bool active;
+    static bool active;
     //integer representing how long the powerup will remain active
     int duration;
 
@@ -90,11 +90,11 @@ public:
     //Parameters: none
     //Returns: bool active
     //This method returns the current state of the powerup (true = active / false = not active)
-    bool getActive() { return active; }
+  //  static bool getActive() { return active; }
+    static void setActive(bool newValue) { active = newValue; }
 
     virtual void activatePow() = 0;
 };
-
 
 // INVULNERABLE
 //This powerup makes the user invulnerable from damage for a limited amount of time

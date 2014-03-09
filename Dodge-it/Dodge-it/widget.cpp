@@ -23,7 +23,6 @@ Widget::~Widget()
     delete ui;
 }
 
-
 void Widget::on_btnStart_clicked()
 {
     if (ui->rbEasy->isChecked()) {
@@ -37,10 +36,7 @@ void Widget::on_btnStart_clicked()
         Game::getInstance().timeInterval = 300;
     }
 
-
-
-
-
-
+    WidgetGame game;
+    game.show();             // DOESN'T WQRK
 
 }
