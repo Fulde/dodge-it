@@ -74,7 +74,7 @@ public:
     //This method will updates the location of all objects in the game based on a timer.  It will iterate over each object and call its move() method
     void updatePosition();
     //Destructor
-    ~Game() { }
+    ~Game();
 private:
     //Method to save the current state of the game
     void save();

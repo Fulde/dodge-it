@@ -8,13 +8,56 @@
 #include "ui_widget.h"
 #include "game.h"
 
+// ================================ DIFFICULTY ======================================
+
+Difficulty::setInterval() {
+
+}
+
+Difficulty::speedMultiplyer() {
+
+}
+
+Difficulty::timerInterval() {
+
+}
+
+// ================================ HIGHSCORE ======================================
+
+HighScore::addToFile() {
+
+}
+
+HighScore::displayScores() {
+
+}
+
+HighScore::scoreCompare() {
+
+}
+
+HighScore::unitTest() {
+
+}
+
+// ================================ CHARACTER ======================================
+
+Character::handleCollision() {
+
+}
+
+Character::move() {
+
+}
+
+// ================================ GAME ======================================
 
 //creates the private instance of the game
 Game Game::instance;
 
-Game::Game(): multiplyer(1) {
+Game::Game(): multiplyer(1) { }
 
-}
+Game::~Game() { }
 
 //Name: UpdatePosition
 //Parameters: none
