@@ -60,6 +60,8 @@ public:
     string difficulty;
     //This method will updates the location of all objects in the game based on a timer.  It will iterate over each object and call its move() method
     void updatePosition();
+    //Quits the game if the player runs out of lives
+    void quit();
     //Destructor
     ~Game();
 private:

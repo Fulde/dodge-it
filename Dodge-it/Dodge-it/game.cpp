@@ -7,6 +7,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "game.h"
+#include "object.h"
 
 // ================================ HIGHSCORE ======================================
 
@@ -29,7 +30,15 @@ void HighScore::unitTest() {
 // ================================ CHARACTER ======================================
 
 void Character::handleCollision() {
-
+    if (Powerup.getActive()) {
+        ++lives;
+        //  lblLives = "--";
+    }
+    --lives;
+    //  lblLives = lives;
+    if (lives = 0) {
+        Game::quit();
+    }
 }
 
 void Character::move() {
@@ -72,4 +81,10 @@ void Game::load() {
 //  and the locations of all falling objects and the character itself.
 void Game::save() {
 
+}
+
+void Game::quit() {
+    // close game window
+    // call high score window
+    // revent back to main screen
 }

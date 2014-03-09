@@ -77,7 +77,7 @@ public:
 //powerups are perks that the user can get.
 //powerups are a type of falling object, but do no damage. They inherit from Object.
 
-class powerup : public Object {
+class Powerup : public Object {
 protected:
     virtual void stateToFile() { }
     //boolean to test if the powerup is currently active
@@ -99,7 +99,7 @@ public:
 // INVULNERABLE
 //This powerup makes the user invulnerable from damage for a limited amount of time
 //Invul inherits from powerup
-class Invul : public powerup {
+class Invul : public Powerup {
     void stateToFile();
     void activatePow();
 };
@@ -108,7 +108,7 @@ class Invul : public powerup {
 // EXTRA LIFE
 //This powerup gives the user an extra life
 //Extra life inherits from powerup
-class ExLife : public powerup {
+class ExLife : public Powerup {
     void stateToFile();
     void activatePow();
 };
@@ -117,7 +117,7 @@ class ExLife : public powerup {
 // SLOW
 //This powerup slows down all falling Object for the user
 //Slow inherits from powerup
-class Slow : public powerup {
+class Slow : public Powerup {
     void stateToFile();
     void activatePow();
 };
@@ -125,7 +125,7 @@ class Slow : public powerup {
 // MULTIPLYER
 // This powerup changes the game's multiplyer to 2
 // Makes each object worth twice as much
-class Multiplyer : public powerup {
+class Multiplyer : public Powerup {
     void setMultiplyer();
 };
 
