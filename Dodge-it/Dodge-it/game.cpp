@@ -93,7 +93,7 @@ void Character::move() {
 //creates the private instance of the game
 Game Game::instance;
 
-Game::Game(): multiplyer(1) { }
+Game::Game(): multiplier(1) { }
 
 Game::~Game() { }
 
@@ -122,8 +122,8 @@ void Game::load() {
 //This method is called when the user requests to save their current game.
 //  It will save the current state of the game including the score, number of lives,
 //  and the locations of all falling objects and the character itself.
-void Game::save() {
-
+bool Game::save() {
+    return true;
 }
 
 void Game::quit() {

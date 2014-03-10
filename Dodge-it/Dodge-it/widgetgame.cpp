@@ -22,3 +22,11 @@ WidgetGame::~WidgetGame()
 {
     delete ui;
 }
+
+void WidgetGame::on_btnPause_clicked()
+{
+    // timer needs to stop
+
+    WidgetPause* pause = new WidgetPause();
+    pause->show();
+}

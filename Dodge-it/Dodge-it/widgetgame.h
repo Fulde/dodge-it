@@ -26,6 +26,8 @@ public:
 
 private slots:
 
+    void on_btnPause_clicked();
+
 private:
     //Private instance for the Widget ui
     Ui::WidgetGame *ui;

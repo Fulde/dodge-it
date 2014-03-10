@@ -56,19 +56,25 @@ public:
 
 class Game {
 
-public:
-    int multiplyer;
+private:
+    int multiplier;
     int timeInterval;
     string difficulty;
+public:
+    int getMultiplier() { return multiplier; }
+    int getTimeInterval() { return timeInterval; }
+    string getDifficulty() { return difficulty; }
+    void setMultiplier(int newMult) { multiplier = newMult; }
+    void setTimeInt(int newTime) { timeInterval = newTime; }
+    void setDifficulty(string diff) {difficulty = diff; }
     //This method will updates the location of all objects in the game based on a timer.  It will iterate over each object and call its move() method
     void updatePosition();
     //Quits the game if the player runs out of lives
     void quit();
     //Destructor
     ~Game();
-private:
     //Method to save the current state of the game
-    void save();
+    bool save();
     //Method to load a saved game
     void load();
 
