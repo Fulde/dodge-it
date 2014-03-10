@@ -36,7 +36,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
     }
 
     timer = new QTimer();
-    timer->setInterval(30);  // argument was Game::getInstance().getInterval() ... changed for faster testing
+    timer->setInterval(100);  // argument was Game::getInstance().getInterval() ... changed for faster testing
     connect(timer, &QTimer::timeout, this, &WidgetGame::timerHit);
     timer->start();
 }
@@ -88,7 +88,6 @@ void WidgetGame::resumeTimer()
 // between 0 to the far right corner so (x, 0)
 void WidgetGame::timerHit() {
     int randX = rand() % 1024;
-
 
     if ((randX % 5) == 0)
     {
