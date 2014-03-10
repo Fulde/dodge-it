@@ -1,8 +1,8 @@
-//====================
+//==============================
 //  CpS111 - Team 3 - Dodge-It
 //
 //      WIDGETPAUSE.CPP
-//====================
+//==============================
 
 #include "widgetpause.h"
 #include "ui_widgetpause.h"

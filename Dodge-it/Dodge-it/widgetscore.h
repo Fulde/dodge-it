@@ -1,8 +1,8 @@
-//====================
+//==============================
 //  CpS111 - Team 3 - Dodge-It
 //
 //      WIDGETSCORE.H
-//====================
+//==============================
 
 #ifndef WIDGETSCORE_H
 #define WIDGETSCORE_H

@@ -1,8 +1,8 @@
-//====================
+//==============================
 //  CpS111 - Team 3 - Dodge-It
 //
 //      GAME.H
-//====================
+//==============================
 
 #ifndef WORLD_H
 #define WORLD_H
@@ -30,6 +30,18 @@ public:
     void displayScores();
 
     void unitTest();
+};
+
+//========================= KEY EVENT =========================
+//This class contains code for key events that control the on
+//screen character
+
+class KeyEvent {
+
+protected:
+    void keyPressEvent(QKeyEvent *);
+    void keyReleaseEvent(QKeyEvent *);
+
 };
 
 //========================= CHARACTER =========================
