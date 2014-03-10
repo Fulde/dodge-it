@@ -15,10 +15,28 @@
 #include "game.h"
 #include "object.h"
 
+#include <string>
+#include <QFile>
+#include <QTextStream>
+using namespace std;
+
 // ================================ HIGHSCORE ======================================
+
+int HighScore::score = 0;
 
 void HighScore::addToFile() {
 
+    QFile file("highscores.txt");
+    QTextStream in(&file);
+    while(!in.atEnd()) {
+
+    }
+
+    QTextStream out(&file);
+//    out << newDiff;
+//    out << newScore;
+
+    file.close();
 }
 
 void HighScore::displayScores() {
@@ -26,7 +44,26 @@ void HighScore::displayScores() {
 }
 
 bool HighScore::scoreCompare() {
- return true;
+    string newDiff = difficulty;
+    int
+            newScore = HighScore::getScore();
+    int i = 0;
+
+    QFile file("highscores.txt");
+    QTextStream in(&file);
+    QString diff = in.readLine();
+    int sc = in.readLine().toInt();
+
+    while(i <= 10 && (!in.atEnd() || newScore < sc)) {
+        ++i;
+        diff = in.readLine();
+        sc = in.readLine().toInt();
+    }
+    if (newScore < sc) {  // if the score is not in the top ten
+        return false;
+    }
+
+    return true;
 }
 
 void HighScore::unitTest() {
@@ -90,6 +127,8 @@ void Game::save() {
 }
 
 void Game::quit() {
+
+
     // close game window
     // call high score window
     // revent back to main screen

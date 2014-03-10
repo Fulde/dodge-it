@@ -10,6 +10,10 @@
 #include "widget.h"
 #include <QWidget>
 
+namespace Ui {
+class WidgetPause;
+}
+
 class WidgetPause : public QWidget
 {
     Q_OBJECT

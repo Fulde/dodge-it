@@ -10,9 +10,6 @@
 //Creates the user interface for the game
 namespace Ui {
 class Widget;
-class WidgetScore;
-class WidgetGame;
-class WidgetPause;
 }
 
 #include <QWidget>

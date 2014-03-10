@@ -22,8 +22,8 @@ QT_BEGIN_NAMESPACE
 class Ui_WidgetScore
 {
 public:
-    QLabel *lblHighScores;
     QLabel *lblTitle;
+    QLabel *lblHighScores;
 
     void setupUi(QWidget *WidgetScore)
     {
@@ -31,17 +31,15 @@ public:
             WidgetScore->setObjectName(QStringLiteral("WidgetScore"));
         WidgetScore->resize(512, 384);
         WidgetScore->setStyleSheet(QStringLiteral(""));
-        lblHighScores = new QLabel(WidgetScore);
-        lblHighScores->setObjectName(QStringLiteral("lblHighScores"));
-        lblHighScores->setGeometry(QRect(130, 80, 261, 271));
-        lblHighScores->setStyleSheet(QStringLiteral("font: 75 12pt \"Ubuntu\";"));
-        lblHighScores->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
-        lblHighScores->setWordWrap(false);
         lblTitle = new QLabel(WidgetScore);
         lblTitle->setObjectName(QStringLiteral("lblTitle"));
         lblTitle->setGeometry(QRect(10, 20, 491, 41));
         lblTitle->setStyleSheet(QStringLiteral("font: 75 22pt \"Ubuntu\";"));
         lblTitle->setAlignment(Qt::AlignCenter);
+        lblHighScores = new QLabel(WidgetScore);
+        lblHighScores->setObjectName(QStringLiteral("lblHighScores"));
+        lblHighScores->setGeometry(QRect(120, 80, 271, 271));
+        lblHighScores->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
         retranslateUi(WidgetScore);
 
@@ -51,8 +49,8 @@ public:
     void retranslateUi(QWidget *WidgetScore)
     {
         WidgetScore->setWindowTitle(QApplication::translate("WidgetScore", "Widget", 0));
-        lblHighScores->setText(QApplication::translate("WidgetScore", "TextLabel", 0));
         lblTitle->setText(QApplication::translate("WidgetScore", "HIGHSCORES", 0));
+        lblHighScores->setText(QApplication::translate("WidgetScore", "High Scores go Here", 0));
     } // retranslateUi
 
 };

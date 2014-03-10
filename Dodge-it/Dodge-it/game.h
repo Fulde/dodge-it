@@ -17,9 +17,11 @@ using namespace std;
 
 class HighScore {
     string difficulty; // written to when the game ends
-    int score;         // written to when the game ends
+    static int score;         // written to when the game ends
 
 public:
+    static int getScore() { return score; }
+    static void setScore(int num) { score = num; }
     //Compares scores to compile a high score list
     bool scoreCompare();
     //Adds high scores to a saved file

@@ -10,6 +10,10 @@
 #include "widget.h"
 #include <QWidget>
 
+namespace Ui {
+class WidgetGame;
+}
+
 class WidgetGame : public QWidget
 {
     Q_OBJECT
