@@ -19,12 +19,16 @@ class WidgetPause : public QWidget
     Q_OBJECT
 
 public:
+    static bool cheatMode;
     //explicit Widget constructor
     explicit WidgetPause(QWidget *parent = 0);
     //Widget destructor
     ~WidgetPause();
 
 private slots:
+    void on_btnResume_clicked();\
+    void on_btnCheat_clicked();
+    void on_btnSave_clicked();
 
 private:
     //Private instance for the Widget ui

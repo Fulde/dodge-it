@@ -26,17 +26,17 @@ Widget::~Widget()
 void Widget::on_btnStart_clicked()
 {
     if (ui->rbEasy->isChecked()) {
-        Game::getInstance().difficulty = "Easy";
-        Game::getInstance().timeInterval = 700;
+        Game::getInstance().setDifficulty("Easy");
+        Game::getInstance().setTimeInt(700);
     } else if (ui->rbMedium->isChecked()) {
-        Game::getInstance().difficulty = "Medium";
-        Game::getInstance().timeInterval = 500;
+        Game::getInstance().setDifficulty("Medium");
+        Game::getInstance().setTimeInt(500);
     } else if (ui->rbHard->isChecked()) {
-        Game::getInstance().difficulty = "Hard";
-        Game::getInstance().timeInterval = 300;
+        Game::getInstance().setDifficulty("Hard");
+        Game::getInstance().setTimeInt(300);
     }
 
-    WidgetGame game;
-    game.show();             // DOESN'T WQRK
-
+    WidgetGame* game = new WidgetGame();
+    game->show();
+    this->hide();
 }
