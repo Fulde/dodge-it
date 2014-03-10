@@ -25,6 +25,7 @@ public:
     ~WidgetGame();
 
 private slots:
+    void timerHit();
 
 private:
     //Private instance for the Widget ui

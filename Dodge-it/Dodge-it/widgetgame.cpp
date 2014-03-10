@@ -3,6 +3,8 @@
 //
 //      WIDGETGAME.CPP
 //====================
+#include <QTimer>
+#include <QLabel>
 
 #include "widgetgame.h"
 #include "ui_widgetgame.h"
@@ -15,10 +17,21 @@ WidgetGame::WidgetGame(QWidget *parent) :
 {
     //Set up the ui for the widget
     ui->setupUi(this);
+
+    QTimer *timer = new QTimer(this);
+    timer->setInterval(Game::getInstance().getInterval());
+    connect(timer, &QTimer::timeout, this, &WidgetGame::timerHit);
+    timer->start();
 }
 
 //Destructor for Widget
 WidgetGame::~WidgetGame()
 {
     delete ui;
+}
+
+// Call this method for every tick of the timer
+void WidgetGame::timerHit()
+{
+
 }
