@@ -122,11 +122,11 @@ class Slow : public Powerup {
     void activatePow();
 };
 
-// MULTIPLYER
-// This powerup changes the game's multiplyer to 2
+// MULTIPLIER
+// This powerup changes the game's multiplier to 2
 // Makes each object worth twice as much
-class Multiplyer : public Powerup {
-    void setMultiplyer();
+class Multiplier : public Powerup {
+    void setMultiplier();
 };
 
 #endif // Object_H

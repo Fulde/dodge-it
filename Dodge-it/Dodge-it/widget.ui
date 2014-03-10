@@ -115,6 +115,22 @@
     <pixmap resource="images/resources.qrc">:/logo.png</pixmap>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnHelp">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>580</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 20pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
