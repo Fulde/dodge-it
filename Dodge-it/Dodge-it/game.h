@@ -86,5 +86,7 @@ public:
     //Getter method (singleton pattern)
     //Returns:  the private instance of the game class
     static Game& getInstance() { return instance; }
+    //Getter methods
+    int getInterval() { return timeInterval; }
 };
 #endif // WORLD_H
