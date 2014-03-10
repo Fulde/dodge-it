@@ -25,6 +25,7 @@ public:
     ~WidgetGame();
 
 private slots:
+    void timerHit();
 
     void on_btnPause_clicked();
 
