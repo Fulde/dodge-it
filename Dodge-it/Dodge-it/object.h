@@ -33,10 +33,7 @@ public:
     int getY() { return y; }
 };
 
-//========================= DAMAGING Object =========================
-//All damaging Object (Object that harm the character) inherit from Object.
-//The user must dodge these Object to avoid losing lives and score points for dodging them.
-
+//========================= DAMAGING Objects =========================
 class DamagingObject : public Object {
 protected:
     void stateToFile() { }

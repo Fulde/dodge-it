@@ -92,24 +92,39 @@ void Character::handleCollision() {
   //      lblLives = "--";
   //  }
     --lives;
-  //    WidgetGame::ui->lblLives = lives;                  // need to re-show widget
+  //    WidgetGame::decrementLives;
     if (lives == 0) {
         Game::getInstance().quit();
     }
 }
 
-void Character::move() {
-
+void Character::move(int newX, int newY)
+{
+     x = newX;
+     y = newY;
 }
+
+Character::Character() { } // may want to supply initX and initY as parameters in future
 
 // ================================ GAME ======================================
 
 //creates the private instance of the game
 Game Game::instance;
 
-Game::Game(): multiplier(1) { }
+Game::Game() : multiplier(1)
+{
+    player = new Character();
+}
 
-Game::~Game() { }
+Game::~Game()
+{
+    for (int i = 0; i < objects.size(); i++)
+    {
+        delete objects.at(i);
+    }
+
+    objects.clear();
+}
 
 
 
@@ -126,13 +141,13 @@ bool Game::save() {
     return true;
 }
 
-Object *Game::getMostRecent()
-{
-    Object* obj = objects.at(objects.size() - 1);
-    return obj;
-}
 
 void Game::quit() {
     // call high score window
     // revent back to main screen
+}
+
+void Game::movePlayer(int newX, int newY)
+{
+    player->move(newX, newY);
 }

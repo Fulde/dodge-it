@@ -7,8 +7,8 @@
 #ifndef WIDGETPAUSE_H
 #define WIDGETPAUSE_H
 
-#include "widgetstart.h"
 #include "widgetgame.h"
+
 #include <QWidget>
 
 namespace Ui {
@@ -25,6 +25,7 @@ public:
     explicit WidgetPause(QWidget *parent = 0);
     //Widget destructor
     ~WidgetPause();
+    WidgetGame *par;
 
 private slots:
     void on_btnResume_clicked();
@@ -35,7 +36,6 @@ private slots:
 private:
     //Private instance for the Widget ui
     Ui::WidgetPause *ui;
-    QWidget *parentW;
 };
 
 #endif // WIDGETPAUSE_H

@@ -9,5 +9,6 @@
         <file>hardBackground.jpg</file>
         <file>pauseBackground.png</file>
         <file>mediumBackground.png</file>
+        <file>help.png</file>
     </qresource>
 </RCC>

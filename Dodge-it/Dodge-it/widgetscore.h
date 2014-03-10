@@ -7,7 +7,6 @@
 #ifndef WIDGETSCORE_H
 #define WIDGETSCORE_H
 
-#include "widgetstart.h"
 #include <QWidget>
 
 namespace Ui {

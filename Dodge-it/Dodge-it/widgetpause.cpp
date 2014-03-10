@@ -4,13 +4,14 @@
 //      WIDGETPAUSE.CPP
 //==============================
 
+#include <QMessageBox>
+#include <QTimer>
+
+#include "widget.h"
 #include "widgetpause.h"
 #include "ui_widgetpause.h"
 #include "widgetgame.h"
 #include "game.h"
-
-#include <QMessageBox>
-#include <QTimer>
 
 //Instantiates the Widget
 WidgetPause::WidgetPause(QWidget *parent) :
@@ -18,6 +19,8 @@ WidgetPause::WidgetPause(QWidget *parent) :
     ui(new Ui::WidgetPause)
 {
     ui->setupUi(this);
+    par = dynamic_cast<WidgetGame*>(parent);
+
     if (cheatMode) {
         ui->btnCheat->setChecked(true);
     } else {
@@ -52,7 +55,8 @@ void WidgetPause::on_btnSave_clicked() {
 void WidgetPause::on_btnStart_clicked() {
     dynamic_cast<WidgetGame*>(parentWidget())->pauseTimer();
     this->hide();
-
+    par->hide();
+    dynamic_cast<WidgetStart*>(par->main->startMenu)->show();
 }
 
 //Destructor for Widget

@@ -7,9 +7,10 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+#include "object.h"
+
 #include <QPoint>
 #include <string>
-#include "object.h"
 using namespace std;
 
 
@@ -38,14 +39,18 @@ public:
 
 class Character {
 
-public:
+private:
     //Tracks the current location of the character on the game screen
-    QPoint currPos;
+    int x, y;
     //keeps record of the number of lives the character has left
     int lives;
 
+public:
+    Character();
     void handleCollision();
-    void move();
+    int getX() { return x; }
+    int getY() { return y; }
+    void move(int newX, int newY);
 };
 
 //========================= GAME SINGLETON =========================
@@ -57,22 +62,27 @@ public:
     enum diffSetting {easy, medium, hard};
 
 private:
+    Character *player;
     int multiplier;
     int timeInterval;
     diffSetting difficulty;
     vector<Object*> objects;
 
 public:
-    vector<Object*> getObjects() { return objects; }
+    vector<Object*>& getObjects() { return objects; }
     int getMultiplier() { return multiplier; }
     int getTimeInterval() { return timeInterval; }
+    int getPlayerX() { return player->getX(); }
+    int getPlayerY() { return player->getY(); }
     diffSetting getDifficulty() { return difficulty; }
+
     void setMultiplier(int newMult) { multiplier = newMult; }
     void setTimeInt(int newTime) { timeInterval = newTime; }
     void setDifficulty(diffSetting diff) {difficulty = diff; }
+
     void addObject(DamagingObject *obj) { objects.push_back(obj); }
 
-    Object* getMostRecent();
+    void movePlayer(int newX, int newY);
 
     //Quits the game if the player runs out of lives
     void quit();

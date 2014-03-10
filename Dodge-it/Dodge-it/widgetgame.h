@@ -7,12 +7,13 @@
 #ifndef WIDGETGAME_H
 #define WIDGETGAME_H
 
-#include "widgetstart.h"
+#include "widget.h"
 #include "object.h"
+
 #include <QWidget>
 #include <QEvent>
 #include <QKeyEvent>
-
+#include <QLabel>
 
 namespace Ui {
 class WidgetGame;
@@ -27,25 +28,26 @@ public:
     ~WidgetGame();
     void pauseTimer();
     void resumeTimer();
+    void incrementScore();
+    void decrementLives();
+
+    Widget *main;
 
 private slots:
-    void timerHit();
+    void gameTimerHit();
+    void hitTimerHit();
     void on_btnPause_clicked();
     void keyPressEvent(QKeyEvent *k);
 
 private:
     //Private instance for the Widget ui
     Ui::WidgetGame *ui;
-    QTimer *timer;
+    QTimer *gameTimer;
+    QTimer *hitTimer;
 };
 
-
-
-class ObjLabel : public QLabel
-{
-
+class ObjLabel : public QLabel {
     QWidget *wid;
-    Ui::Widget *UI;
     Object *object;
 
 public:
