@@ -32,8 +32,6 @@ public:
     void unitTest();
 };
 
-
-
 //========================= CHARACTER =========================
 //This class contains code for the user's character.
 
