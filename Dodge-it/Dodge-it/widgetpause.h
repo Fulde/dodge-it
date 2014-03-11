@@ -8,6 +8,7 @@
 #define WIDGETPAUSE_H
 
 #include "widget.h"
+#include "widgetgame.h"
 #include <QWidget>
 
 namespace Ui {
@@ -34,6 +35,7 @@ private slots:
 private:
     //Private instance for the Widget ui
     Ui::WidgetPause *ui;
+    QWidget *parentW;
 };
 
 #endif // WIDGETPAUSE_H
