@@ -32,18 +32,6 @@ public:
     void unitTest();
 };
 
-//========================= KEY EVENT =========================
-//This class contains code for key events that control the on
-//screen character
-
-class KeyEvent {
-
-protected:
-    void keyPressEvent(QKeyEvent *);
-    void keyReleaseEvent(QKeyEvent *);
-
-};
-
 //========================= CHARACTER =========================
 //This class contains code for the user's character.
 
