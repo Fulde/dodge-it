@@ -51,6 +51,7 @@ public:
         icon.addFile(QStringLiteral(":/pause.png"), QSize(), QIcon::Normal, QIcon::Off);
         btnPause->setIcon(icon);
         btnPause->setIconSize(QSize(45, 45));
+        btnPause->setAutoDefault(false);
 
         retranslateUi(WidgetGame);
 

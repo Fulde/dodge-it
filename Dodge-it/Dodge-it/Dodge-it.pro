@@ -18,19 +18,22 @@ SOURCES += main.cpp\
     object.cpp \
     widgetgame.cpp \
     widgetpause.cpp \
-    widgetscore.cpp
+    widgetscore.cpp \
+    widgethelp.cpp
 
 HEADERS  += widget.h \
     game.h \
     object.h \
     widgetscore.h \
     widgetpause.h \
-    widgetgame.h
+    widgetgame.h \
+    widgethelp.h
 
 FORMS    += widget.ui \
     widgetscore.ui \
     widgetgame.ui \
-    widgetpause.ui
+    widgetpause.ui \
+    widgethelp.ui
 
 RESOURCES += \
     images/resources.qrc

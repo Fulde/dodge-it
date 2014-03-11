@@ -3,8 +3,10 @@
 //
 //      WIDGETGAME.CPP
 //==============================
+
 #include <QTimer>
 #include <QLabel>
+#include <QRect>
 
 #include "widgetgame.h"
 #include "ui_widgetgame.h"
@@ -19,6 +21,8 @@ WidgetGame::WidgetGame(QWidget *parent) :
     //Set up the ui for the widget
     ui->setupUi(this);
 
+  //  setWindowFlags(Qt::FramelessWindowHint);
+    setWindowFlags( ((windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowCloseButtonHint));
     timer = new QTimer();
     timer->setInterval(Game::getInstance().getInterval());
     connect(timer, &QTimer::timeout, this, &WidgetGame::timerHit);
@@ -59,5 +63,6 @@ void WidgetGame::on_btnPause_clicked() {
     timer->stop();
 
     WidgetPause* pause = new WidgetPause(this);
+    pause->setGeometry(QRect(QPoint(256,192),QPoint(768,576)));
     pause->show();
 }
