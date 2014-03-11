@@ -21,17 +21,13 @@ Object::Object(string difficultyLevel) {
     }
 }
 
-//Name: incrementScore
-//Parameters: none
-//Returns: void
 //This method increments the score when the user successfully dodges a falling object. 
 //  The score is incremented based on the point value of the object that was dodged.
-void Object::incrementScore()
-{
+void Object::incrementScore() {
 
 }
 
 //This method moves the falling object to its new location based off the speed of the object
-void Object::move(){
+void Object::move() {
     pixmapY += pixmapY + initSpeed;
 }
