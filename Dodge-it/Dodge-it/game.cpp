@@ -126,6 +126,12 @@ bool Game::save() {
     return true;
 }
 
+Object *Game::getMostRecent()
+{
+    Object* obj = objects.at(objects.size() - 1);
+    return obj;
+}
+
 void Game::quit() {
     // close game window
     // call high score window
