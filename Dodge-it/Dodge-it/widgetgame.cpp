@@ -10,6 +10,7 @@
 #include "ui_widgetgame.h"
 #include "game.h"
 
+QTimer *WidgetGame::timer = new QTimer();
 
 //Instantiates the Widget
 WidgetGame::WidgetGame(QWidget *parent) :
@@ -19,7 +20,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
     //Set up the ui for the widget
     ui->setupUi(this);
 
-    timer = new QTimer(this);
+
     timer->setInterval(Game::getInstance().getInterval());
     connect(timer, &QTimer::timeout, this, &WidgetGame::timerHit);
     timer->start();
@@ -31,12 +32,12 @@ WidgetGame::~WidgetGame() {
 }
 
 
-void WidgetGame::pauseTimer()
+ void WidgetGame::pauseTimer()
 {
     timer->stop();
 }
 
-void WidgetGame::resumeTimer()
+ void WidgetGame::resumeTimer()
 {
     timer->start();
 }

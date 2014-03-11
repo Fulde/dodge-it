@@ -24,11 +24,10 @@ public:
     static int getScore() { return score; }
     static void setScore(int num) { score = num; }
     bool scoreCompare();
-    //Displays the list of high scores for the user
     void displayScores();
-    void sortScores();
-    void loadScores(string file);
-
+    void sortScores() {}
+    void loadScores(string file) { }
+    void addToFile(int newScore);
     void unitTest();
 };
 
