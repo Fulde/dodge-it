@@ -19,6 +19,7 @@ class HighScore {
     string difficulty; // written to when the game ends
     static int score;         // written to when the game ends
     vector<int> highScores;   // stores highscores from file at runtime
+    string name;
 
 public:
     static int getScore() { return score; }
