@@ -111,12 +111,7 @@ Game::Game(): multiplier(1) { }
 
 Game::~Game() { }
 
-// updates the position of all objects in the game by looping over them.
-// It uses the speed variable in each object to update.
-void Game::updatePosition()
-{
 
-}
 
 // called when the user requests to load a saved game.  It will
 // resume the saved game at the point that it was saved.

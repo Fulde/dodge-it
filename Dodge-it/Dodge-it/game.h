@@ -73,8 +73,7 @@ public:
     void setTimeInt(int newTime) { timeInterval = newTime; }
     void setDifficulty(diffSetting diff) {difficulty = diff; }
     void addObject(DamagingObject *obj) { objects.push_back(obj); }
-    //This method will updates the location of all objects in the game based on a timer.  It will iterate over each object and call its move() method
-    void updatePosition();
+
     //Quits the game if the player runs out of lives
     void quit();
     //Destructor
