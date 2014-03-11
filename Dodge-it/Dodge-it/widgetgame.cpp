@@ -15,7 +15,6 @@
 #include "object.h"
 #include "game.h"
 
-
 //Instantiates the Widget
 WidgetGame::WidgetGame(QWidget *parent) :
     QWidget(parent),
