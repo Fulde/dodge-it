@@ -26,7 +26,6 @@ public:
 
 private slots:
     void timerHit();
-
     void on_btnPause_clicked();
 
 private:
