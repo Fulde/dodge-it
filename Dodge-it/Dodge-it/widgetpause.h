@@ -7,7 +7,7 @@
 #ifndef WIDGETPAUSE_H
 #define WIDGETPAUSE_H
 
-#include "widget.h"
+#include "widgetstart.h"
 #include "widgetgame.h"
 #include <QWidget>
 

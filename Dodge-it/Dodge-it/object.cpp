@@ -4,20 +4,21 @@
 //      Object.CPP
 //==============================
 
-#include "widget.h"
-#include "ui_widget.h"
+#include "widgetstart.h"
+#include "ui_widgetstart.h"
 #include "object.h"
+#include "game.h"
 
 Object::Object(string difficultyLevel) {
     if (difficultyLevel == "easy"){
         difficulty = 1;
-        initSpeed = 1; // LINDSAY:: not sure what the value of this should be yet
+        initSpeed = 5; // LINDSAY:: not sure what the value of this should be yet
     } else if (difficultyLevel == "medium") {
         difficulty = 2;
-        initSpeed = 1.25; // value unknown at this point
+        initSpeed = 10; // value unknown at this point
     } else if (difficultyLevel == "hard") {
         difficulty = 3;
-        initSpeed = 1.5; // again unknown
+        initSpeed = 15; // again unknown
     }
 }
 

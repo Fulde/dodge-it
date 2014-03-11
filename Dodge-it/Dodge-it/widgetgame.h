@@ -7,7 +7,7 @@
 #ifndef WIDGETGAME_H
 #define WIDGETGAME_H
 
-#include "widget.h"
+#include "widgetstart.h"
 #include <QWidget>
 #include <QEvent>
 

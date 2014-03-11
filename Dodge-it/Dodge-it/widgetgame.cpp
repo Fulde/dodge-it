@@ -12,6 +12,7 @@
 
 #include "widgetgame.h"
 #include "ui_widgetgame.h"
+#include "object.h"
 #include "game.h"
 
 
@@ -23,9 +24,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
     //Set up the ui for the widget
     ui->setupUi(this);
 
-  //  setWindowFlags(Qt::FramelessWindowHint);
     setWindowFlags( ((windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowCloseButtonHint));
-    setFocusPolicy(Qt::StrongFocus);
 
     timer = new QTimer();
     timer->setInterval(Game::getInstance().getInterval());
@@ -37,7 +36,6 @@ WidgetGame::WidgetGame(QWidget *parent) :
 WidgetGame::~WidgetGame() {
     delete ui;
 }
-
 
 void WidgetGame::keyPressEvent(QKeyEvent *k)
 {
@@ -58,7 +56,6 @@ void WidgetGame::keyPressEvent(QKeyEvent *k)
         ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
     }
 }
-
 
 void WidgetGame::pauseTimer()
 {

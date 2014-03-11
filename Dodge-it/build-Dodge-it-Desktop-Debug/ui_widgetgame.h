@@ -33,7 +33,8 @@ public:
         if (WidgetGame->objectName().isEmpty())
             WidgetGame->setObjectName(QStringLiteral("WidgetGame"));
         WidgetGame->resize(1024, 768);
-        WidgetGame->setStyleSheet(QStringLiteral("font: 75 12pt \"Ubuntu\";"));
+        WidgetGame->setStyleSheet(QLatin1String("font: 75 12pt \"Ubuntu\";\n"
+"background:000000;"));
         lblScore = new QLabel(WidgetGame);
         lblScore->setObjectName(QStringLiteral("lblScore"));
         lblScore->setGeometry(QRect(20, 10, 171, 31));

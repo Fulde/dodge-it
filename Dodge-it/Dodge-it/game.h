@@ -9,6 +9,7 @@
 
 #include <QPoint>
 #include <string>
+#include "object.h"
 using namespace std;
 
 
@@ -41,7 +42,6 @@ class KeyEvent {
 protected:
     void keyPressEvent(QKeyEvent *);
     void keyReleaseEvent(QKeyEvent *);
-
 };
 
 //========================= CHARACTER =========================
@@ -73,8 +73,10 @@ private:
     int multiplier;
     int timeInterval;
     diffSetting difficulty;
+    vector<Object*> objects;
 
 public:
+    vector<Object*> getObjects() { return objects; }
     int getMultiplier() { return multiplier; }
     int getTimeInterval() { return timeInterval; }
     diffSetting getDifficulty() { return difficulty; }

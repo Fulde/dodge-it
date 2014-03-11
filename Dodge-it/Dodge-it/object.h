@@ -51,32 +51,18 @@ protected:
     int id;
 
 public:
-    //Name: destroyLabel
-    //Parameters: none
-    //Returns: void
-    //This method destroys the Object's label once it passes off the screen
+    DamagingObject();
+    //destroys the Object's label once it passes off the screen
     void destroyLabel();
-    
-    //Name: getPts
-    //Parameters: none
-    //Returns: int points
-    //This method returns the number of points the user scores for successfully dodging this object
+    //returns the number of points the user scores for successfully dodging this object
     int getPts() { return points; }
     
-    //Name: getId
-    //Parameters: none
-    //Returns: int id
-    //This method returns the id number of this object
+    //returns the id number of this object
     int getId() { return id; }
-
 };
 
 
-
 //========================= POWERUPS =========================
-//powerups are perks that the user can get.
-//powerups are a type of falling object, but do no damage. They inherit from Object.
-
 class Powerup : public Object {
 protected:
     virtual void stateToFile() { }
@@ -86,11 +72,8 @@ protected:
     int duration;
 
 public:
-    //Name: getActive
-    //Parameters: none
-    //Returns: bool active
-    //This method returns the current state of the powerup (true = active / false = not active)
-  //  static bool getActive() { return active; }
+    //returns the current state of the powerup (true = active / false = not active)
+    //static bool getActive() { return active; }
     static void setActive(bool newValue) { active = newValue; }
 
     virtual void activatePow() = 0;
@@ -98,25 +81,20 @@ public:
 
 // INVULNERABLE
 //This powerup makes the user invulnerable from damage for a limited amount of time
-//Invul inherits from powerup
 class Invul : public Powerup {
     void stateToFile();
     void activatePow();
 };
 
-
 // EXTRA LIFE
 //This powerup gives the user an extra life
-//Extra life inherits from powerup
 class ExLife : public Powerup {
     void stateToFile();
     void activatePow();
 };
 
-
 // SLOW
 //This powerup slows down all falling Object for the user
-//Slow inherits from powerup
 class Slow : public Powerup {
     void stateToFile();
     void activatePow();
@@ -124,7 +102,6 @@ class Slow : public Powerup {
 
 // MULTIPLIER
 // This powerup changes the game's multiplier to 2
-// Makes each object worth twice as much
 class Multiplier : public Powerup {
     void setMultiplier();
 };

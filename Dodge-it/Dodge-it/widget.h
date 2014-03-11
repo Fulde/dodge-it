@@ -7,32 +7,20 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
-//Creates the user interface for the game
+#include <QWidget>
+
 namespace Ui {
 class Widget;
 }
 
-#include <QWidget>
-#include "widgetscore.h"
-#include "widgetgame.h"
-#include "widgetpause.h"
-
-//Defines the widget where the game will be displayed
 class Widget : public QWidget
 {
     Q_OBJECT
-    
-public:
-    //explicit Widget constructor
-    explicit Widget(QWidget *parent = 0);
-    //Widget destructor
-    ~Widget();
-    
-private slots:
-    void on_btnStart_clicked();
 
+public:
+    explicit Widget(QWidget *parent = 0);
+    ~Widget();
 private:
-    //Private instance for the Widget ui
     Ui::Widget *ui;
 };
 

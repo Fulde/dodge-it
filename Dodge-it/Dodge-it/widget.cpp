@@ -6,7 +6,7 @@
 
 #include "widget.h"
 #include "ui_widget.h"
-#include "game.h"
+#include "widgetstart.h"
 
 //Instantiates the Widget
 Widget::Widget(QWidget *parent) :
@@ -15,28 +15,11 @@ Widget::Widget(QWidget *parent) :
 {
     //Set up the ui for the widget
     ui->setupUi(this);
+
+    WidgetStart* start = new WidgetStart(this);
+            start->show();
 }
 
-//Destructor for Widget
-Widget::~Widget()
-{
+Widget::~Widget() {
     delete ui;
-}
-
-void Widget::on_btnStart_clicked()
-{
-    if (ui->rbEasy->isChecked()) {
-        Game::getInstance().setDifficulty(Game::easy);
-        Game::getInstance().setTimeInt(700);
-    } else if (ui->rbMedium->isChecked()) {
-        Game::getInstance().setDifficulty(Game::medium);
-        Game::getInstance().setTimeInt(500);
-    } else if (ui->rbHard->isChecked()) {
-        Game::getInstance().setDifficulty(Game::hard);
-        Game::getInstance().setTimeInt(300);
-    }
-
-    WidgetGame* game = new WidgetGame();
-    game->show();
-    this->hide();
 }

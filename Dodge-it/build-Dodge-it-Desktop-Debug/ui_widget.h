@@ -14,9 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,49 +21,12 @@ QT_BEGIN_NAMESPACE
 class Ui_Widget
 {
 public:
-    QPushButton *btnStart;
-    QRadioButton *rbEasy;
-    QRadioButton *rbMedium;
-    QRadioButton *rbHard;
-    QPushButton *btnLoad;
-    QLabel *label;
-    QPushButton *btnHelp;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QStringLiteral("Widget"));
         Widget->resize(1024, 768);
-        Widget->setStyleSheet(QStringLiteral(""));
-        btnStart = new QPushButton(Widget);
-        btnStart->setObjectName(QStringLiteral("btnStart"));
-        btnStart->setGeometry(QRect(30, 660, 961, 71));
-        btnStart->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
-        rbEasy = new QRadioButton(Widget);
-        rbEasy->setObjectName(QStringLiteral("rbEasy"));
-        rbEasy->setGeometry(QRect(400, 270, 171, 61));
-        rbEasy->setStyleSheet(QStringLiteral("font: 40pt"));
-        rbEasy->setChecked(true);
-        rbMedium = new QRadioButton(Widget);
-        rbMedium->setObjectName(QStringLiteral("rbMedium"));
-        rbMedium->setGeometry(QRect(400, 360, 271, 61));
-        rbMedium->setStyleSheet(QStringLiteral("font: 40pt;"));
-        rbHard = new QRadioButton(Widget);
-        rbHard->setObjectName(QStringLiteral("rbHard"));
-        rbHard->setGeometry(QRect(400, 450, 181, 61));
-        rbHard->setStyleSheet(QStringLiteral("font: 40pt;"));
-        btnLoad = new QPushButton(Widget);
-        btnLoad->setObjectName(QStringLiteral("btnLoad"));
-        btnLoad->setGeometry(QRect(730, 580, 261, 61));
-        btnLoad->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
-        label = new QLabel(Widget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(140, 20, 721, 161));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/logo.png")));
-        btnHelp = new QPushButton(Widget);
-        btnHelp->setObjectName(QStringLiteral("btnHelp"));
-        btnHelp->setGeometry(QRect(30, 580, 261, 61));
-        btnHelp->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
 
         retranslateUi(Widget);
 
@@ -75,14 +35,7 @@ public:
 
     void retranslateUi(QWidget *Widget)
     {
-        Widget->setWindowTitle(QApplication::translate("Widget", "Widget", 0));
-        btnStart->setText(QApplication::translate("Widget", "Start New Game", 0));
-        rbEasy->setText(QApplication::translate("Widget", "Easy", 0));
-        rbMedium->setText(QApplication::translate("Widget", "Medium", 0));
-        rbHard->setText(QApplication::translate("Widget", "Hard", 0));
-        btnLoad->setText(QApplication::translate("Widget", "Load Game", 0));
-        label->setText(QString());
-        btnHelp->setText(QApplication::translate("Widget", "Help", 0));
+        Widget->setWindowTitle(QApplication::translate("Widget", "Form", 0));
     } // retranslateUi
 
 };
