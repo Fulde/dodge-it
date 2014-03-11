@@ -14,9 +14,9 @@ using namespace std;
 class Object {
 
 protected:
-    int initSpeed;
-    int pixmapX;
-    int pixmapY;
+    int speed;
+    int x;
+    int y;
     string pixmap;
     int difficulty; // LINDSAY:: created this so that I could just multiply the difficulty to determine how fast it should move
 
@@ -31,7 +31,7 @@ protected:
     virtual void stateToFile() = 0;
 
 public:
-    int getSpeed() { return initSpeed; }
+    int getSpeed() { return speed; }
 };
 
 

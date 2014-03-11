@@ -12,13 +12,13 @@
 Object::Object(string difficultyLevel) {
     if (difficultyLevel == "easy"){
         difficulty = 1;
-        initSpeed = 5; // LINDSAY:: not sure what the value of this should be yet
+        speed = 5; // LINDSAY:: not sure what the value of this should be yet
     } else if (difficultyLevel == "medium") {
         difficulty = 2;
-        initSpeed = 10; // value unknown at this point
+        speed = 10; // value unknown at this point
     } else if (difficultyLevel == "hard") {
         difficulty = 3;
-        initSpeed = 15; // again unknown
+        speed = 15; // again unknown
     }
 }
 
@@ -30,5 +30,5 @@ void Object::incrementScore() {
 
 //This method moves the falling object to its new location based off the speed of the object
 void Object::move() {
-    pixmapY += pixmapY + initSpeed;
+    y += speed;
 }

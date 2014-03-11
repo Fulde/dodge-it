@@ -7,6 +7,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "widgetstart.h"
+#include "game.h"
 
 //Instantiates the Widget
 Widget::Widget(QWidget *parent) :
@@ -22,4 +23,10 @@ Widget::Widget(QWidget *parent) :
 
 Widget::~Widget() {
     delete ui;
+}
+
+
+ObjLabel::ObjLabel(QWidget *parent, Ui::Widget *Ui) : QLabel(parent), wid(parent), UI(Ui)
+{
+    object;
 }
