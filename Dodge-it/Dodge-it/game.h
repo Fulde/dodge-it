@@ -69,7 +69,8 @@ class Game {
 private:
     int multiplier;
     int timeInterval;
-    string difficulty;
+    enum diffSettings {easy, medium, hard} difficulty;
+
 public:
     int getMultiplier() { return multiplier; }
     int getTimeInterval() { return timeInterval; }
