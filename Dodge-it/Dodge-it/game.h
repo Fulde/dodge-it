@@ -66,18 +66,21 @@ public:
 
 class Game {
 
+public:
+    enum diffSetting {easy, medium, hard};
+
 private:
     int multiplier;
     int timeInterval;
-    enum diffSettings {easy, medium, hard} difficulty;
+    diffSetting difficulty;
 
 public:
     int getMultiplier() { return multiplier; }
     int getTimeInterval() { return timeInterval; }
-    string getDifficulty() { return difficulty; }
+    diffSetting getDifficulty() { return difficulty; }
     void setMultiplier(int newMult) { multiplier = newMult; }
     void setTimeInt(int newTime) { timeInterval = newTime; }
-    void setDifficulty(string diff) {difficulty = diff; }
+    void setDifficulty(diffSetting diff) {difficulty = diff; }
     //This method will updates the location of all objects in the game based on a timer.  It will iterate over each object and call its move() method
     void updatePosition();
     //Quits the game if the player runs out of lives
