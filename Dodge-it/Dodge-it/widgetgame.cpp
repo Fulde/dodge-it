@@ -25,6 +25,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
     ui->setupUi(this);
 
     setWindowFlags( ((windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowCloseButtonHint));
+    setFocusPolicy(Qt::StrongFocus);
 
     timer = new QTimer();
     timer->setInterval(Game::getInstance().getInterval());
