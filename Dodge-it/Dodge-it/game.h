@@ -23,8 +23,7 @@ class HighScore {
 public:
     static int getScore() { return score; }
     static void setScore(int num) { score = num; }
-    //Adds new high score to a saved file
-    void addToFile();
+    bool scoreCompare();
     //Displays the list of high scores for the user
     void displayScores();
     void sortScores();

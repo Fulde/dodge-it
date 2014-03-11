@@ -7,7 +7,6 @@
 #ifndef WIDGETPAUSE_H
 #define WIDGETPAUSE_H
 
-#include "widgetgame.h"
 #include "widget.h"
 #include <QWidget>
 
@@ -27,7 +26,7 @@ public:
     ~WidgetPause();
 
 private slots:
-    void on_btnResume_clicked();
+    void on_btnResume_clicked();\
     void on_btnCheat_clicked();
     void on_btnSave_clicked();
     void on_btnStart_clicked();
@@ -35,7 +34,6 @@ private slots:
 private:
     //Private instance for the Widget ui
     Ui::WidgetPause *ui;
-    Ui::WidgetGame *game;
 };
 
 #endif // WIDGETPAUSE_H

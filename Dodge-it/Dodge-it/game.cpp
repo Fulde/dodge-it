@@ -46,8 +46,7 @@ void HighScore::displayScores() {
 
 bool HighScore::scoreCompare() {
     string newDiff = difficulty;
-    int
-            newScore = HighScore::getScore();
+    int newScore = HighScore::getScore();
     int i = 0;
 
     QFile file("highscores.txt");
@@ -76,15 +75,13 @@ void HighScore::unitTest() {
     sortScores();
     assert(highScores.at(0) == 300);
 
-    loadScores("scores.txt");
+    loadScores("test.txt");
     assert(highScores.at(0) == 1000);
 
     score = 1500;
-    addToFile(score);
-    loadScores("scores.txt");
+    loadScores("test.txt");
+    scoreCompare();
     assert(highScores.at(0) == 1500);
-
-
 }
 
 // ================================ CHARACTER ======================================
