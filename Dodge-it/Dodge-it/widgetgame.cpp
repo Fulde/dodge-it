@@ -14,6 +14,7 @@
 #include "ui_widgetgame.h"
 #include "object.h"
 #include "game.h"
+#include "widgetstart.h"
 
 
 //Instantiates the Widget
