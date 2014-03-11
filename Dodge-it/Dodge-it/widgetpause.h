@@ -27,7 +27,7 @@ public:
     ~WidgetPause();
 
 private slots:
-    void on_btnResume_clicked();\
+    void on_btnResume_clicked();
     void on_btnCheat_clicked();
     void on_btnSave_clicked();
     void on_btnStart_clicked();

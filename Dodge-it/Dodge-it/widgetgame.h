@@ -9,6 +9,7 @@
 
 #include "widget.h"
 #include <QWidget>
+#include <QEvent>
 
 namespace Ui {
 class WidgetGame;
@@ -27,6 +28,7 @@ public:
 private slots:
     void timerHit();
     void on_btnPause_clicked();
+    void keyPressEvent(QKeyEvent *k);
 
 private:
     //Private instance for the Widget ui

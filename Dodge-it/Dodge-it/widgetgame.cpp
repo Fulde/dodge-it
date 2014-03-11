@@ -7,6 +7,8 @@
 #include <QTimer>
 #include <QLabel>
 #include <QRect>
+#include <QKeyEvent>
+#include <QEvent>
 
 #include "widgetgame.h"
 #include "ui_widgetgame.h"
@@ -23,6 +25,8 @@ WidgetGame::WidgetGame(QWidget *parent) :
 
   //  setWindowFlags(Qt::FramelessWindowHint);
     setWindowFlags( ((windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowCloseButtonHint));
+    setFocusPolicy(Qt::StrongFocus);
+
     timer = new QTimer();
     timer->setInterval(Game::getInstance().getInterval());
     connect(timer, &QTimer::timeout, this, &WidgetGame::timerHit);
@@ -32,6 +36,27 @@ WidgetGame::WidgetGame(QWidget *parent) :
 //Destructor for Widget
 WidgetGame::~WidgetGame() {
     delete ui;
+}
+
+
+void WidgetGame::keyPressEvent(QKeyEvent *k)
+{
+    if (k->key() == Qt::Key_Up)
+    {
+        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
+    }
+    else if (k->key() == Qt::Key_Down)
+    {
+        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
+    }
+    else if (k->key() == Qt::Key_Left)
+    {
+        ui->lblSatyr->move(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
+    }
+    else if (k->key() == Qt::Key_Right)
+    {
+        ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
+    }
 }
 
 
