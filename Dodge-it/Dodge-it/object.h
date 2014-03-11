@@ -14,14 +14,10 @@ using namespace std;
 class Object {
 
 protected:
-    int initSpeed;
-    int pixmapX;
-    int pixmapY;
+    int speed;
+    int x;
+    int y;
     string pixmap;
-    int difficulty; // LINDSAY:: created this so that I could just multiply the difficulty to determine how fast it should move
-
-    Object(string difficultyLevel);
-// ??? LINDSAY:: shouldn't these be protected? The one time we would call these is in the children classes
 
     //This method increments the score if the user successfully avoids the object
     virtual void incrementScore();
@@ -31,16 +27,15 @@ protected:
     virtual void stateToFile() = 0;
 
 public:
-    int getSpeed() { return initSpeed; }
+    Object();
+    int getSpeed() { return speed; }
 };
-
 
 //========================= DAMAGING Object =========================
 //All damaging Object (Object that harm the character) inherit from Object.
 //The user must dodge these Object to avoid losing lives and score points for dodging them.
 
 class DamagingObject : public Object {
-
 protected:
     void stateToFile() { }
     //the number of points the user scores for successfully avoiding this object
@@ -51,7 +46,7 @@ protected:
     int id;
 
 public:
-    DamagingObject();
+    DamagingObject(int initX, int labelHeight);
     //destroys the Object's label once it passes off the screen
     void destroyLabel();
     //returns the number of points the user scores for successfully dodging this object
