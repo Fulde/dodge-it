@@ -6,16 +6,17 @@
 
 #include "widgetpause.h"
 #include "ui_widgetpause.h"
+#include "widgetgame.h"
 #include "game.h"
 
 #include <QMessageBox>
+#include <QTimer>
 
 //Instantiates the Widget
 WidgetPause::WidgetPause(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WidgetPause)
 {
-    //Set up the ui for the widget
     ui->setupUi(this);
     if (cheatMode) {
         ui->btnCheat->setChecked(true);
@@ -27,7 +28,7 @@ WidgetPause::WidgetPause(QWidget *parent) :
 bool WidgetPause::cheatMode = false;
 
 void WidgetPause::on_btnResume_clicked() {
-    // resume timer
+    WidgetGame::timer->start();
     this->hide();
 }
 
@@ -37,7 +38,7 @@ void WidgetPause::on_btnCheat_clicked() {
     } else {
         cheatMode = false;
     }
-    // resume timer
+    WidgetGame::timer->start();
     this->hide();
 }
 
@@ -48,6 +49,12 @@ void WidgetPause::on_btnSave_clicked() {
     } else {
         QMessageBox::warning(this, "Save Unsuccessful", "Your game was not saved.");
     }
+}
+
+void WidgetPause::on_btnStart_clicked() {
+    WidgetGame::timer->stop();
+    this->hide();
+
 }
 
 //Destructor for Widget

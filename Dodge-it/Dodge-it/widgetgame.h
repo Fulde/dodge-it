@@ -19,9 +19,9 @@ class WidgetGame : public QWidget
     Q_OBJECT
 
 public:
-    //explicit Widget constructor
+    static QTimer *timer;
+
     explicit WidgetGame(QWidget *parent = 0);
-    //Widget destructor
     ~WidgetGame();
 
 private slots:
