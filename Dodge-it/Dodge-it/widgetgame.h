@@ -10,6 +10,8 @@
 #include "widgetstart.h"
 #include <QWidget>
 #include <QEvent>
+#include <QKeyEvent>
+
 
 namespace Ui {
 class WidgetGame;
