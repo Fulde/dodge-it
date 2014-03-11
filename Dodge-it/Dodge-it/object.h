@@ -19,8 +19,6 @@ protected:
     int y;
     string pixmap;
 
-    Object(string difficultyLevel);
-
     //This method increments the score if the user successfully avoids the object
     virtual void incrementScore();
     //This method moves the falling object to its new location based off the speed of the object
