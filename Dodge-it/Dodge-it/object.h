@@ -29,6 +29,7 @@ protected:
     virtual void stateToFile() = 0;
 
 public:
+    Object();
     int getSpeed() { return speed; }
 };
 

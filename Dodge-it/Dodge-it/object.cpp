@@ -9,6 +9,8 @@
 #include "object.h"
 #include "game.h"
 
+Object::Object() {}
+
 DamagingObject::DamagingObject(int initX, int labelHeight) {
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
     if (difficulty == Game::easy){
@@ -31,5 +33,5 @@ void Object::incrementScore() {
 
 //This method moves the falling object to its new location based off the speed of the object
 void Object::move() {
-    y += y + speed;
+    y += speed;
 }

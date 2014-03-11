@@ -93,7 +93,10 @@ void WidgetGame::timerHit() {
     //show label
     label->show();
 
-    Game::getInstance().updatePosition();
+    vector<Object*> objects = Game::getInstance().getObjects();
+    for (int i = 0; i < objects.size(); ++i) {
+
+    }
 }
 
 void WidgetGame::on_btnPause_clicked() {
