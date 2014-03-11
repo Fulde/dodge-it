@@ -30,6 +30,17 @@ WidgetGame::~WidgetGame() {
     delete ui;
 }
 
+
+void WidgetGame::pauseTimer()
+{
+    timer->stop();
+}
+
+void WidgetGame::resumeTimer()
+{
+    timer->start();
+}
+
 // Call this method for every tick of the timer
 // should create an object each time using the random 1-30 number scale
 // 1-15 is the basic object

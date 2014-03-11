@@ -19,10 +19,10 @@ class WidgetGame : public QWidget
     Q_OBJECT
 
 public:
-    static QTimer *timer;
-
     explicit WidgetGame(QWidget *parent = 0);
     ~WidgetGame();
+    void pauseTimer();
+    void resumeTimer();
 
 private slots:
     void timerHit();
@@ -32,6 +32,7 @@ private slots:
 private:
     //Private instance for the Widget ui
     Ui::WidgetGame *ui;
+    QTimer *timer;
 };
 
 #endif // WIDGETGAME_H

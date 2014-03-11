@@ -18,13 +18,14 @@
 #include <string>
 #include <QFile>
 #include <QTextStream>
+#include <cassert>
 using namespace std;
 
 // ================================ HIGHSCORE ======================================
 
 int HighScore::score = 0;
 
-void HighScore::addToFile() {
+void HighScore::addToFile(int newScore) {
 
     QFile file("highscores.txt");
     QTextStream in(&file);
@@ -67,6 +68,22 @@ bool HighScore::scoreCompare() {
 }
 
 void HighScore::unitTest() {
+
+    highScores.push_back(200);
+    highScores.push_back(100);
+    highScores.push_back(300);
+
+    sortScores();
+    assert(highScores.at(0) == 300);
+
+    loadScores("scores.txt");
+    assert(highScores.at(0) == 1000);
+
+    score = 1500;
+    addToFile(score);
+    loadScores("scores.txt");
+    assert(highScores.at(0) == 1500);
+
 
 }
 

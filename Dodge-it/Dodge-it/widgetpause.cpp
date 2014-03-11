@@ -28,7 +28,7 @@ WidgetPause::WidgetPause(QWidget *parent) :
 bool WidgetPause::cheatMode = false;
 
 void WidgetPause::on_btnResume_clicked() {
-    WidgetGame::timer->start();
+    WidgetGame::resumeTimer();
     this->hide();
 }
 
@@ -38,7 +38,7 @@ void WidgetPause::on_btnCheat_clicked() {
     } else {
         cheatMode = false;
     }
-    WidgetGame::timer->start();
+    WidgetGame::resumeTimer();
     this->hide();
 }
 
@@ -52,7 +52,7 @@ void WidgetPause::on_btnSave_clicked() {
 }
 
 void WidgetPause::on_btnStart_clicked() {
-    WidgetGame::timer->stop();
+    WidgetGame::pauseTimer();
     this->hide();
 
 }

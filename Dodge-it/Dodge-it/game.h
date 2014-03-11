@@ -18,16 +18,17 @@ using namespace std;
 class HighScore {
     string difficulty; // written to when the game ends
     static int score;         // written to when the game ends
+    vector<int> highScores;   // stores highscores from file at runtime
 
 public:
     static int getScore() { return score; }
     static void setScore(int num) { score = num; }
-    //Compares scores to compile a high score list
-    bool scoreCompare();
-    //Adds high scores to a saved file
+    //Adds new high score to a saved file
     void addToFile();
     //Displays the list of high scores for the user
     void displayScores();
+    void sortScores();
+    void loadScores(string file);
 
     void unitTest();
 };
