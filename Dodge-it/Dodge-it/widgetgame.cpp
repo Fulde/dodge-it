@@ -78,7 +78,22 @@ void WidgetGame::resumeTimer()
 // the object should have a set x coordinate to start with (basically the object should have a place at the top of the screen
 // between 0 to the far right corner so (x, 0)
 void WidgetGame::timerHit() {
+    int randX = rand() % 1024 + 0;
+    QLabel* label = new QLabel(this);
+    QPixmap basic(":/basic.png");
+    label->setPixmap(basic);
+    label->setGeometry(randX, 0, basic.width(), basic.height());
 
+    //create new damaging object
+    DamagingObject *obj = new DamagingObject(randX, label->height());
+
+    //add to vector
+    Game::getInstance().addObject(obj);
+
+    //show label
+    label->show();
+
+    Game::getInstance().updatePosition();
 }
 
 void WidgetGame::on_btnPause_clicked() {

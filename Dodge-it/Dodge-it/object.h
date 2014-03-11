@@ -29,7 +29,7 @@ protected:
     virtual void stateToFile() = 0;
 
 public:
-    int getSpeed() { return initSpeed; }
+    int getSpeed() { return speed; }
 };
 
 //========================= DAMAGING Object =========================
@@ -47,7 +47,7 @@ protected:
     int id;
 
 public:
-    DamagingObject();
+    DamagingObject(int initX, int labelHeight);
     //destroys the Object's label once it passes off the screen
     void destroyLabel();
     //returns the number of points the user scores for successfully dodging this object
