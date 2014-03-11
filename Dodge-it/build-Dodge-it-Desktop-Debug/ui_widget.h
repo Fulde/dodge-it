@@ -30,6 +30,7 @@ public:
     QRadioButton *rbHard;
     QPushButton *btnLoad;
     QLabel *label;
+    QPushButton *btnHelp;
 
     void setupUi(QWidget *Widget)
     {
@@ -62,6 +63,10 @@ public:
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(140, 20, 721, 161));
         label->setPixmap(QPixmap(QString::fromUtf8(":/logo.png")));
+        btnHelp = new QPushButton(Widget);
+        btnHelp->setObjectName(QStringLiteral("btnHelp"));
+        btnHelp->setGeometry(QRect(30, 580, 261, 61));
+        btnHelp->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
 
         retranslateUi(Widget);
 
@@ -77,6 +82,7 @@ public:
         rbHard->setText(QApplication::translate("Widget", "Hard", 0));
         btnLoad->setText(QApplication::translate("Widget", "Load Game", 0));
         label->setText(QString());
+        btnHelp->setText(QApplication::translate("Widget", "Help", 0));
     } // retranslateUi
 
 };

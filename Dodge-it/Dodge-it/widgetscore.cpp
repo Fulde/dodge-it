@@ -1,8 +1,8 @@
-//====================
+//==============================
 //  CpS111 - Team 3 - Dodge-It
 //
 //      WIDGETSCORE.CPP
-//====================
+//==============================
 
 #include "widgetscore.h"
 #include "ui_widgetscore.h"

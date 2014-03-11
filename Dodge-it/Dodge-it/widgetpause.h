@@ -1,8 +1,8 @@
-//====================
+//==============================
 //  CpS111 - Team 3 - Dodge-It
 //
 //      WIDGETPAUSE.H
-//====================
+//==============================
 \
 #ifndef WIDGETPAUSE_H
 #define WIDGETPAUSE_H
