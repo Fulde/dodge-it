@@ -6,6 +6,7 @@
 
 #include "widgetstart.h"
 #include "ui_widgetstart.h"
+#include "widgethelp.h"
 #include "widget.h"
 #include "game.h"
 
@@ -41,4 +42,10 @@ void WidgetStart::on_btnStart_clicked()
     WidgetGame* game = new WidgetGame(main);
     game->show();
     this->hide();
+}
+
+void WidgetStart::on_btnHelp_clicked()
+{
+    WidgetHelp* help = new WidgetHelp(this);
+    help->show();
 }

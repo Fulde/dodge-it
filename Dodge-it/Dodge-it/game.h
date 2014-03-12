@@ -48,8 +48,6 @@ public:
     void move();
 };
 
-
-
 //========================= GAME SINGLETON =========================
 //This class contains the code to implement the Game class using the Singleton design pattern
 
