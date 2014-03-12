@@ -8,6 +8,7 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QLabel>
 
 namespace Ui {
 class Widget;
@@ -23,5 +24,6 @@ public:
 private:
     Ui::Widget *ui;
 };
+
 
 #endif // WIDGET_H
