@@ -24,8 +24,16 @@ WidgetGame::WidgetGame(QWidget *parent) :
     //Set up the ui for the widget
     ui->setupUi(this);
 
-    setWindowFlags( ((windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowCloseButtonHint));
     setFocusPolicy(Qt::StrongFocus);
+
+    Game::diffSetting difficulty = Game::getInstance().getDifficulty();
+    if (difficulty == Game::easy){
+       // this->setStyleSheet("background-image: url(:/easyBackground.png);");
+    } else if (difficulty == Game::medium) {
+       // this->setStyleSheet("background-image: url(:/mediumBackground.png);");
+    } else if (difficulty == Game::hard) {
+       // this->setStyleSheet("background-image: url(:/hardBackground.jpg);");
+    }
 
     timer = new QTimer();
     timer->setInterval(30);  // argument was Game::getInstance().getInterval() ... changed for faster testing
@@ -115,7 +123,6 @@ void WidgetGame::on_btnPause_clicked() {
     timer->stop();
 
     WidgetPause* pause = new WidgetPause(this);
-    pause->setGeometry(QRect(QPoint(256,192),QPoint(768,576)));
     pause->show();
 }
 
