@@ -24,9 +24,3 @@ Widget::Widget(QWidget *parent) :
 Widget::~Widget() {
     delete ui;
 }
-
-
-ObjLabel::ObjLabel(QWidget *parent, Ui::Widget *Ui) : QLabel(parent), wid(parent), UI(Ui)
-{
-    object;
-}

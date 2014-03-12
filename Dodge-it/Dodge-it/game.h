@@ -33,17 +33,6 @@ public:
     void unitTest();
 };
 
-//========================= KEY EVENT =========================
-//This class contains code for key events that control the on
-//screen character
-
-class KeyEvent {
-
-protected:
-    void keyPressEvent(QKeyEvent *);
-    void keyReleaseEvent(QKeyEvent *);
-};
-
 //========================= CHARACTER =========================
 //This class contains code for the user's character.
 
@@ -83,8 +72,10 @@ public:
     void setMultiplier(int newMult) { multiplier = newMult; }
     void setTimeInt(int newTime) { timeInterval = newTime; }
     void setDifficulty(diffSetting diff) {difficulty = diff; }
-    //This method will updates the location of all objects in the game based on a timer.  It will iterate over each object and call its move() method
-    void updatePosition();
+    void addObject(DamagingObject *obj) { objects.push_back(obj); }
+
+    Object* getMostRecent();
+
     //Quits the game if the player runs out of lives
     void quit();
     //Destructor

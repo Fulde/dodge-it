@@ -111,12 +111,7 @@ Game::Game(): multiplier(1) { }
 
 Game::~Game() { }
 
-// updates the position of all objects in the game by looping over them.
-// It uses the speed variable in each object to update.
-void Game::updatePosition()
-{
 
-}
 
 // called when the user requests to load a saved game.  It will
 // resume the saved game at the point that it was saved.
@@ -129,6 +124,12 @@ void Game::load() {
 // and the locations of all falling objects and the character itself.
 bool Game::save() {
     return true;
+}
+
+Object *Game::getMostRecent()
+{
+    Object* obj = objects.at(objects.size() - 1);
+    return obj;
 }
 
 void Game::quit() {
