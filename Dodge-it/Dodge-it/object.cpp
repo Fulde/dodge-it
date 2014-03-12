@@ -22,7 +22,7 @@ DamagingObject::DamagingObject(int initX, int labelHeight) {
     }
 
     x = initX;
-    y = labelHeight;
+    y = 0;
 }
 
 //This method increments the score when the user successfully dodges a falling object. 
@@ -33,5 +33,5 @@ void Object::incrementScore() {
 
 //This method moves the falling object to its new location based off the speed of the object
 void Object::move() {
-    y += speed;
+    y += speed;  // += speed
 }
