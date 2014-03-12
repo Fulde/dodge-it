@@ -8,6 +8,7 @@
 #define WIDGETGAME_H
 
 #include "widgetstart.h"
+#include "object.h"
 #include <QWidget>
 #include <QEvent>
 #include <QKeyEvent>
@@ -36,6 +37,23 @@ private:
     //Private instance for the Widget ui
     Ui::WidgetGame *ui;
     QTimer *timer;
+};
+
+
+
+class ObjLabel : public QLabel
+{
+
+    QWidget *wid;
+    Ui::Widget *UI;
+    Object *object;
+
+public:
+    explicit ObjLabel(QWidget *parent);
+
+    Object *getObject() { return object; }
+    void setObject(Object *obj) { object = obj; }
+
 };
 
 #endif // WIDGETGAME_H

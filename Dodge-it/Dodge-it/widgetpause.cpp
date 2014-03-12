@@ -38,8 +38,6 @@ void WidgetPause::on_btnCheat_clicked() {
     } else {
         cheatMode = false;
     }
-    dynamic_cast<WidgetGame*>(parentWidget())->resumeTimer();
-    this->hide();
 }
 
 void WidgetPause::on_btnSave_clicked() {

@@ -14,6 +14,7 @@
 #include "ui_widgetgame.h"
 #include "object.h"
 #include "game.h"
+#include "widgetstart.h"
 
 //Instantiates the Widget
 WidgetGame::WidgetGame(QWidget *parent) :
@@ -23,11 +24,19 @@ WidgetGame::WidgetGame(QWidget *parent) :
     //Set up the ui for the widget
     ui->setupUi(this);
 
-    setWindowFlags( ((windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowCloseButtonHint));
     setFocusPolicy(Qt::StrongFocus);
 
+    Game::diffSetting difficulty = Game::getInstance().getDifficulty();
+    if (difficulty == Game::easy){
+       // this->setStyleSheet("background-image: url(:/easyBackground.png);");
+    } else if (difficulty == Game::medium) {
+       // this->setStyleSheet("background-image: url(:/mediumBackground.png);");
+    } else if (difficulty == Game::hard) {
+       // this->setStyleSheet("background-image: url(:/hardBackground.jpg);");
+    }
+
     timer = new QTimer();
-    timer->setInterval(Game::getInstance().getInterval());
+    timer->setInterval(30);  // argument was Game::getInstance().getInterval() ... changed for faster testing
     connect(timer, &QTimer::timeout, this, &WidgetGame::timerHit);
     timer->start();
 }
@@ -78,24 +87,35 @@ void WidgetGame::resumeTimer()
 // the object should have a set x coordinate to start with (basically the object should have a place at the top of the screen
 // between 0 to the far right corner so (x, 0)
 void WidgetGame::timerHit() {
-    int randX = rand() % 1024 + 0;
-    QLabel* label = new QLabel(this);
-    QPixmap basic(":/basic.png");
-    label->setPixmap(basic);
-    label->setGeometry(randX, 0, basic.width(), basic.height());
+    int randX = rand() % 1024;
 
-    //create new damaging object
-    DamagingObject *obj = new DamagingObject(randX, label->height());
 
-    //add to vector
-    Game::getInstance().addObject(obj);
+    if ((randX % 5) == 0)
+    {
+        ObjLabel* label = new ObjLabel(this);
+        QPixmap basic(":/basic.png");
+        label->setPixmap(basic);
+        label->setGeometry(randX, 0, basic.width(), basic.height());
 
-    //show label
-    label->show();
+        //create new damaging object
+        DamagingObject *obj = new DamagingObject(randX, label->height());
+        Game::getInstance().addObject(obj);  // add to Game's vector of Object*
 
-    vector<Object*> objects = Game::getInstance().getObjects();
-    for (int i = 0; i < objects.size(); ++i) {
+        label->setObject(obj);
+        label->show();
+    }
 
+    QObjectList labels = this->children();
+    for (int i = 4; i < labels.length(); i++)
+    {
+        ObjLabel *curLabel = dynamic_cast<ObjLabel*>(labels.at(i));
+        if (curLabel == NULL)
+            continue;
+
+        Object *curObj = curLabel->getObject();
+        curObj->move();
+        curLabel->move(curObj->getX(), curObj->getY());
+        curLabel->show();
     }
 }
 
@@ -103,6 +123,11 @@ void WidgetGame::on_btnPause_clicked() {
     timer->stop();
 
     WidgetPause* pause = new WidgetPause(this);
-    pause->setGeometry(QRect(QPoint(256,192),QPoint(768,576)));
     pause->show();
+}
+
+
+ObjLabel::ObjLabel(QWidget *parent) : QLabel(parent), wid(parent)
+{
+
 }

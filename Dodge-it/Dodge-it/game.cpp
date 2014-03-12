@@ -133,7 +133,6 @@ Object *Game::getMostRecent()
 }
 
 void Game::quit() {
-    // close game window
     // call high score window
     // revent back to main screen
 }

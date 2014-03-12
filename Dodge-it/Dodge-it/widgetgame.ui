@@ -14,8 +14,7 @@
    <string>Widget</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 75 12pt &quot;Ubuntu&quot;;
-background:000000;</string>
+   <string notr="true">font: 75 12pt &quot;Ubuntu&quot;;</string>
   </property>
   <widget class="QLabel" name="lblScore">
    <property name="geometry">
