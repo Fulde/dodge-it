@@ -51,7 +51,7 @@ WidgetGame::~WidgetGame() {
 }
 
 void WidgetGame::incrementScore() {
-    Game::setScores();
+//    Game::setScores();
 }
 
 void WidgetGame::decrementLives() {
