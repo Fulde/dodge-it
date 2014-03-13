@@ -23,10 +23,12 @@ QT_BEGIN_NAMESPACE
 class Ui_WidgetGame
 {
 public:
-    QLabel *lblScore;
-    QLabel *lblLives;
+    QLabel *lblScoreT;
+    QLabel *lblLivesT;
     QLabel *lblSatyr;
     QPushButton *btnPause;
+    QLabel *lblLives;
+    QLabel *lblScore;
 
     void setupUi(QWidget *WidgetGame)
     {
@@ -34,12 +36,12 @@ public:
             WidgetGame->setObjectName(QStringLiteral("WidgetGame"));
         WidgetGame->resize(1024, 768);
         WidgetGame->setStyleSheet(QStringLiteral("font: 75 12pt \"Ubuntu\";"));
-        lblScore = new QLabel(WidgetGame);
-        lblScore->setObjectName(QStringLiteral("lblScore"));
-        lblScore->setGeometry(QRect(20, 10, 171, 31));
-        lblLives = new QLabel(WidgetGame);
-        lblLives->setObjectName(QStringLiteral("lblLives"));
-        lblLives->setGeometry(QRect(20, 50, 171, 31));
+        lblScoreT = new QLabel(WidgetGame);
+        lblScoreT->setObjectName(QStringLiteral("lblScoreT"));
+        lblScoreT->setGeometry(QRect(20, 10, 51, 31));
+        lblLivesT = new QLabel(WidgetGame);
+        lblLivesT->setObjectName(QStringLiteral("lblLivesT"));
+        lblLivesT->setGeometry(QRect(20, 50, 41, 31));
         lblSatyr = new QLabel(WidgetGame);
         lblSatyr->setObjectName(QStringLiteral("lblSatyr"));
         lblSatyr->setGeometry(QRect(450, 670, 101, 101));
@@ -52,6 +54,12 @@ public:
         btnPause->setIcon(icon);
         btnPause->setIconSize(QSize(45, 45));
         btnPause->setAutoDefault(false);
+        lblLives = new QLabel(WidgetGame);
+        lblLives->setObjectName(QStringLiteral("lblLives"));
+        lblLives->setGeometry(QRect(80, 50, 16, 31));
+        lblScore = new QLabel(WidgetGame);
+        lblScore->setObjectName(QStringLiteral("lblScore"));
+        lblScore->setGeometry(QRect(80, 10, 141, 31));
 
         retranslateUi(WidgetGame);
 
@@ -61,10 +69,12 @@ public:
     void retranslateUi(QWidget *WidgetGame)
     {
         WidgetGame->setWindowTitle(QApplication::translate("WidgetGame", "Widget", 0));
-        lblScore->setText(QApplication::translate("WidgetGame", "Score :", 0));
-        lblLives->setText(QApplication::translate("WidgetGame", "Lives :", 0));
+        lblScoreT->setText(QApplication::translate("WidgetGame", "Score :", 0));
+        lblLivesT->setText(QApplication::translate("WidgetGame", "Lives :", 0));
         lblSatyr->setText(QString());
         btnPause->setText(QString());
+        lblLives->setText(QApplication::translate("WidgetGame", "3", 0));
+        lblScore->setText(QApplication::translate("WidgetGame", "0", 0));
     } // retranslateUi
 
 };

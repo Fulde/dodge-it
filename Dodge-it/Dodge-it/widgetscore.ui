@@ -38,14 +38,16 @@
   <widget class="QLabel" name="lblHighScores">
    <property name="geometry">
     <rect>
-     <x>120</x>
+     <x>70</x>
      <y>80</y>
-     <width>271</width>
+     <width>371</width>
      <height>271</height>
     </rect>
    </property>
    <property name="text">
-    <string>High Scores go Here</string>
+    <string>High Scores go Here
+
+You can use the normal new line</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>

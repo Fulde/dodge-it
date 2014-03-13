@@ -6,10 +6,12 @@
 
 #include "widgetstart.h"
 #include "ui_widgetstart.h"
+#include "widgetgame.h"
+#include "ui_widgetgame.h"
 #include "object.h"
 #include "game.h"
 
-Object::Object() {}
+Object::Object() { }
 
 DamagingObject::DamagingObject(int initX, int labelHeight) {
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
@@ -22,7 +24,7 @@ DamagingObject::DamagingObject(int initX, int labelHeight) {
     }
 
     x = initX;
-    y = 0;
+    y = -labelHeight;
 }
 
 //This method increments the score when the user successfully dodges a falling object. 

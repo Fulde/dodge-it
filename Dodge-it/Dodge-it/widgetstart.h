@@ -9,11 +9,6 @@
 
 #include <QWidget>
 
-#include "widget.h"
-#include "widgetscore.h"
-#include "widgetgame.h"
-#include "widgetpause.h"
-
 //Creates the user interface for the game
 namespace Ui {
 class WidgetStart;
@@ -38,7 +33,7 @@ private slots:
 private:
     //Private instance for the Widget ui
     Ui::WidgetStart *ui;
-    Widget *main;
+    QWidget *main;
 };
 
 #endif // WIDGETSTART_H
