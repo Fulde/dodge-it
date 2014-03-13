@@ -6,6 +6,7 @@
 
 #include "widgetstart.h"
 #include "ui_widgetstart.h"
+#include "widgetgame.h"
 #include "widgethelp.h"
 #include "widget.h"
 #include "game.h"

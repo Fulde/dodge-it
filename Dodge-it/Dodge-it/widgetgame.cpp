@@ -4,17 +4,18 @@
 //      WIDGETGAME.CPP
 //==============================
 
+#include "widgetgame.h"
+#include "widgetstart.h"
+#include "widgetpause.h"
+#include "ui_widgetgame.h"
+#include "object.h"
+#include "game.h"
+
 #include <QTimer>
 #include <QLabel>
 #include <QRect>
 #include <QKeyEvent>
 #include <QEvent>
-
-#include "widgetgame.h"
-#include "ui_widgetgame.h"
-#include "object.h"
-#include "game.h"
-#include "widgetstart.h"
 
 //Instantiates the Widget
 WidgetGame::WidgetGame(QWidget *parent) :
@@ -23,6 +24,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
 {
     //Set up the ui for the widget
     ui->setupUi(this);
+    main = dynamic_cast<Widget*>(parent);
 
     setFocusPolicy(Qt::StrongFocus);
 

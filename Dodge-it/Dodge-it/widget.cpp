@@ -6,7 +6,6 @@
 
 #include "widget.h"
 #include "ui_widget.h"
-#include "widgetstart.h"
 #include "game.h"
 
 //Instantiates the Widget
@@ -18,7 +17,8 @@ Widget::Widget(QWidget *parent) :
     ui->setupUi(this);
 
     WidgetStart* start = new WidgetStart(this);
-            start->show();
+    startMenu = start;
+    start->show();
 }
 
 Widget::~Widget() {
