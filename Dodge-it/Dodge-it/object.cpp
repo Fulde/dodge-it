@@ -22,7 +22,7 @@ DamagingObject::DamagingObject(int initX, int labelHeight) {
     }
 
     x = initX;
-    y = 0;
+    y = -labelHeight;
 }
 
 //This method increments the score when the user successfully dodges a falling object. 

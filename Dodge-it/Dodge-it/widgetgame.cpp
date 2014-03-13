@@ -9,6 +9,8 @@
 #include <QRect>
 #include <QKeyEvent>
 #include <QEvent>
+#include <QDebug>
+#include <QRect>
 
 #include "widgetgame.h"
 #include "ui_widgetgame.h"
@@ -50,18 +52,22 @@ void WidgetGame::keyPressEvent(QKeyEvent *k)
 {
     if (k->key() == Qt::Key_Up)
     {
+        Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
         ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
     }
     else if (k->key() == Qt::Key_Down)
     {
+        Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
         ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
     }
     else if (k->key() == Qt::Key_Left)
     {
+        Game::getInstance().movePlayer(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
         ui->lblSatyr->move(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
     }
     else if (k->key() == Qt::Key_Right)
     {
+        Game::getInstance().movePlayer(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
         ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
     }
 }
@@ -113,6 +119,28 @@ void WidgetGame::timerHit() {
             continue;
 
         Object *curObj = curLabel->getObject();
+
+        // collision
+        /*if ((Game::getInstance().getPlayerX() >= curObj->getX() && Game::getInstance().getPlayerX() <= (curObj->getX() + curLabel->width())) &&
+                (Game::getInstance().getPlayerY() >= curObj->getY() && Game::getInstance().getPlayerY() <= (curObj->getY() + curLabel->height())))
+        */
+
+        QRect player = ui->lblSatyr->geometry();
+        if (player.intersects(curLabel->geometry()))
+        {
+            qDebug() << "You've been hit";
+        }
+
+
+        // need to figure out how to destry items; label->deleteLater() will take care of the label, but if I just
+        // write "delete curObj;" that will remove it from  memory, but the vector will still hold a pointer to that
+        // memory. Bad idea. Should probably give each object an id, which might need to be cycled to prevent int
+        // overflow and segfaulting
+        if (curObj->getY() > 768)
+        {
+
+        }
+
         curObj->move();
         curLabel->move(curObj->getX(), curObj->getY());
         curLabel->show();
