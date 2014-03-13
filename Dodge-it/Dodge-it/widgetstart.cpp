@@ -47,6 +47,6 @@ void WidgetStart::on_btnStart_clicked()
 
 void WidgetStart::on_btnHelp_clicked()
 {
-    WidgetHelp* help = new WidgetHelp(this);
+    WidgetHelp* help = new WidgetHelp;
     help->show();
 }
