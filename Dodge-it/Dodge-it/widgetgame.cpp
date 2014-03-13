@@ -16,6 +16,8 @@
 #include <QRect>
 #include <QKeyEvent>
 #include <QEvent>
+#include <QDebug>
+#include <QRect>
 
 //Instantiates the Widget
 WidgetGame::WidgetGame(QWidget *parent) :
@@ -60,19 +62,35 @@ void WidgetGame::keyPressEvent(QKeyEvent *k)
 {
     if (k->key() == Qt::Key_Up)
     {
-        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
+        if (ui->lblSatyr->y() > 0)
+        {
+            Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
+            ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
+        }
     }
     else if (k->key() == Qt::Key_Down)
     {
-        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
+        if ((ui->lblSatyr->y() + ui->lblSatyr->height()) < 768)
+        {
+            Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
+            ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
+        }
     }
     else if (k->key() == Qt::Key_Left)
     {
-        ui->lblSatyr->move(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
+        if (ui->lblSatyr->x() > 0)
+        {
+            Game::getInstance().movePlayer(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
+            ui->lblSatyr->move(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
+        }
     }
     else if (k->key() == Qt::Key_Right)
     {
-        ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
+        if ((ui->lblSatyr->x() + ui->lblSatyr->height() < 1024))
+        {
+            Game::getInstance().movePlayer(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
+            ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
+        }
     }
 }
 
@@ -123,6 +141,27 @@ void WidgetGame::timerHit() {
             continue;
 
         Object *curObj = curLabel->getObject();
+
+        // collision
+        /*if ((Game::getInstance().getPlayerX() >= curObj->getX() && Game::getInstance().getPlayerX() <= (curObj->getX() + curLabel->width())) &&
+                (Game::getInstance().getPlayerY() >= curObj->getY() && Game::getInstance().getPlayerY() <= (curObj->getY() + curLabel->height())))
+        */
+
+        if (ui->lblSatyr->geometry().intersects(curLabel->geometry()))
+        {
+            qDebug() << "You've been hit";
+        }
+
+
+        // need to figure out how to destry items; label->deleteLater() will take care of the label, but if I just
+        // write "delete curObj;" that will remove it from  memory, but the vector will still hold a pointer to that
+        // memory. Bad idea. Should probably give each object an id, which might need to be cycled to prevent int
+        // overflow and segfaulting
+        if (curObj->getY() > 768)
+        {
+
+        }
+
         curObj->move();
         curLabel->move(curObj->getX(), curObj->getY());
         curLabel->show();
