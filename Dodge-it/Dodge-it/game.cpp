@@ -92,7 +92,7 @@ void Character::handleCollision() {
   //      lblLives = "--";
   //  }
     --lives;
-  //    WidgetGame::ui->lblLives = lives;                  // need to re-show widget
+  //    WidgetGame::decrementLives;
     if (lives == 0) {
         Game::getInstance().quit();
     }

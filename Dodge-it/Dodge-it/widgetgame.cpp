@@ -150,6 +150,7 @@ void WidgetGame::timerHit() {
         if (ui->lblSatyr->geometry().intersects(curLabel->geometry()))
         {
             qDebug() << "You've been hit";
+            decrementLives();
         }
 
 
