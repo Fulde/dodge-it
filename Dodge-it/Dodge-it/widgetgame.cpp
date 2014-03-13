@@ -4,6 +4,13 @@
 //      WIDGETGAME.CPP
 //==============================
 
+#include "widgetgame.h"
+#include "widgetstart.h"
+#include "widgetpause.h"
+#include "ui_widgetgame.h"
+#include "object.h"
+#include "game.h"
+
 #include <QTimer>
 #include <QLabel>
 #include <QRect>
@@ -12,12 +19,6 @@
 #include <QDebug>
 #include <QRect>
 
-#include "widgetgame.h"
-#include "ui_widgetgame.h"
-#include "object.h"
-#include "game.h"
-#include "widgetstart.h"
-
 //Instantiates the Widget
 WidgetGame::WidgetGame(QWidget *parent) :
     QWidget(parent),
@@ -25,6 +26,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
 {
     //Set up the ui for the widget
     ui->setupUi(this);
+    main = dynamic_cast<Widget*>(parent);
 
     setFocusPolicy(Qt::StrongFocus);
 
@@ -52,23 +54,35 @@ void WidgetGame::keyPressEvent(QKeyEvent *k)
 {
     if (k->key() == Qt::Key_Up)
     {
-        Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
-        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
+        if (ui->lblSatyr->y() > 0)
+        {
+            Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
+            ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
+        }
     }
     else if (k->key() == Qt::Key_Down)
     {
-        Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
-        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
+        if ((ui->lblSatyr->y() + ui->lblSatyr->height()) < 768)
+        {
+            Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
+            ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
+        }
     }
     else if (k->key() == Qt::Key_Left)
     {
-        Game::getInstance().movePlayer(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
-        ui->lblSatyr->move(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
+        if (ui->lblSatyr->x() > 0)
+        {
+            Game::getInstance().movePlayer(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
+            ui->lblSatyr->move(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
+        }
     }
     else if (k->key() == Qt::Key_Right)
     {
-        Game::getInstance().movePlayer(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
-        ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
+        if ((ui->lblSatyr->x() + ui->lblSatyr->height() < 1024))
+        {
+            Game::getInstance().movePlayer(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
+            ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
+        }
     }
 }
 
@@ -125,8 +139,7 @@ void WidgetGame::timerHit() {
                 (Game::getInstance().getPlayerY() >= curObj->getY() && Game::getInstance().getPlayerY() <= (curObj->getY() + curLabel->height())))
         */
 
-        QRect player = ui->lblSatyr->geometry();
-        if (player.intersects(curLabel->geometry()))
+        if (ui->lblSatyr->geometry().intersects(curLabel->geometry()))
         {
             qDebug() << "You've been hit";
         }

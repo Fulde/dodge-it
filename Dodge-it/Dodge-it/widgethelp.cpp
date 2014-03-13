@@ -3,11 +3,12 @@
 //
 //      WIDGETHELP.CPP
 //==============================
-#include <QTimer>
-#include <QLabel>
 
 #include "widgethelp.h"
 #include "ui_widgethelp.h"
+
+#include <QTimer>
+#include <QLabel>
 
 //Instantiates the Widget
 WidgetHelp::WidgetHelp(QWidget *parent) :

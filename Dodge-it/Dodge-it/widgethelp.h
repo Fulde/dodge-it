@@ -7,7 +7,6 @@
 #ifndef WIDGETHELP_H
 #define WIDGETHELP_H
 
-#include "widgetstart.h"
 #include <QWidget>
 
 namespace Ui {

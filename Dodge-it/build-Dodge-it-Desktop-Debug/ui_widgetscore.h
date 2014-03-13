@@ -38,7 +38,7 @@ public:
         lblTitle->setAlignment(Qt::AlignCenter);
         lblHighScores = new QLabel(WidgetScore);
         lblHighScores->setObjectName(QStringLiteral("lblHighScores"));
-        lblHighScores->setGeometry(QRect(120, 80, 271, 271));
+        lblHighScores->setGeometry(QRect(70, 80, 371, 271));
         lblHighScores->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
         retranslateUi(WidgetScore);
@@ -50,7 +50,9 @@ public:
     {
         WidgetScore->setWindowTitle(QApplication::translate("WidgetScore", "Widget", 0));
         lblTitle->setText(QApplication::translate("WidgetScore", "HIGHSCORES", 0));
-        lblHighScores->setText(QApplication::translate("WidgetScore", "High Scores go Here", 0));
+        lblHighScores->setText(QApplication::translate("WidgetScore", "High Scores go Here\n"
+"\n"
+"You can use the normal new line", 0));
     } // retranslateUi
 
 };

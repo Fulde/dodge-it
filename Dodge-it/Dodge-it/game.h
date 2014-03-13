@@ -7,9 +7,10 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+#include "object.h"
+
 #include <QPoint>
 #include <string>
-#include "object.h"
 using namespace std;
 
 
