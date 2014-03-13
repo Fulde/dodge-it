@@ -56,6 +56,7 @@ void WidgetGame::incrementScore() {
 
 void WidgetGame::decrementLives() {
     ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() - 1));
+    // STILL NEED TO DECREMENT THE CHARACTER'S LIVES -- THIS IS ONLY THE LABEL
 }
 
 void WidgetGame::keyPressEvent(QKeyEvent *k)
