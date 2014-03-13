@@ -6,10 +6,12 @@
 
 #include "widgetstart.h"
 #include "ui_widgetstart.h"
+#include "widgetgame.h"
+#include "ui_widgetgame.h"
 #include "object.h"
 #include "game.h"
 
-Object::Object() {}
+Object::Object() { }
 
 DamagingObject::DamagingObject(int initX, int labelHeight) {
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
@@ -34,4 +36,7 @@ void Object::incrementScore() {
 //This method moves the falling object to its new location based off the speed of the object
 void Object::move() {
     y += speed;  // += speed
+    if (y < 0/*minY*/) {
+        WidgetGame::incrementScore();
+    }
 }

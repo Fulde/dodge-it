@@ -48,6 +48,14 @@ WidgetGame::~WidgetGame() {
     delete ui;
 }
 
+void WidgetGame::incrementScore() {
+    Game::setScores();
+}
+
+void WidgetGame::decrementLives() {
+
+}
+
 void WidgetGame::keyPressEvent(QKeyEvent *k)
 {
     if (k->key() == Qt::Key_Up)

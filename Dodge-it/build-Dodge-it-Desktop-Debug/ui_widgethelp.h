@@ -22,18 +22,22 @@ QT_BEGIN_NAMESPACE
 class Ui_WidgetHelp
 {
 public:
-    QLabel *label;
+    QLabel *lblHelp;
+    QLabel *lblPic;
 
     void setupUi(QWidget *WidgetHelp)
     {
         if (WidgetHelp->objectName().isEmpty())
             WidgetHelp->setObjectName(QStringLiteral("WidgetHelp"));
-        WidgetHelp->resize(1024, 768);
+        WidgetHelp->resize(512, 384);
         WidgetHelp->setStyleSheet(QStringLiteral("font: 75 12pt \"Ubuntu\";"));
-        label = new QLabel(WidgetHelp);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(20, 180, 981, 561));
-        label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        lblHelp = new QLabel(WidgetHelp);
+        lblHelp->setObjectName(QStringLiteral("lblHelp"));
+        lblHelp->setGeometry(QRect(10, 10, 491, 361));
+        lblHelp->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        lblPic = new QLabel(WidgetHelp);
+        lblPic->setObjectName(QStringLiteral("lblPic"));
+        lblPic->setGeometry(QRect(450, 10, 50, 50));
 
         retranslateUi(WidgetHelp);
 
@@ -43,9 +47,10 @@ public:
     void retranslateUi(QWidget *WidgetHelp)
     {
         WidgetHelp->setWindowTitle(QApplication::translate("WidgetHelp", "Widget", 0));
-        label->setText(QApplication::translate("WidgetHelp", "Help text goes here\n"
+        lblHelp->setText(QApplication::translate("WidgetHelp", "Help text goes here\n"
 " \n"
 " (You can use \"\\n\" for a newline)", 0));
+        lblPic->setText(QString());
     } // retranslateUi
 
 };
