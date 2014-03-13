@@ -51,11 +51,11 @@ WidgetGame::~WidgetGame() {
 }
 
 void WidgetGame::incrementScore() {
-//    Game::setScores();
+    ui->lblScore->setText(QString::number(ui->lblScore->text().toInt() + 1));
 }
 
 void WidgetGame::decrementLives() {
-
+    ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() - 1));
 }
 
 void WidgetGame::keyPressEvent(QKeyEvent *k)
@@ -159,7 +159,8 @@ void WidgetGame::timerHit() {
         // overflow and segfaulting
         if (curObj->getY() > 768)
         {
-
+            incrementScore();
+            //destroy object here
         }
 
         curObj->move();

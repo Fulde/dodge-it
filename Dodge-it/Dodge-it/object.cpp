@@ -36,7 +36,4 @@ void Object::incrementScore() {
 //This method moves the falling object to its new location based off the speed of the object
 void Object::move() {
     y += speed;  // += speed
-    if (y < 768) {
-     //   WidgetGame::incrementScore();
-    }
 }
