@@ -55,7 +55,14 @@ void WidgetGame::incrementScore() {
 }
 
 void WidgetGame::decrementLives() {
-    ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() - 1));
+    if (WidgetPause::cheatMode == true) {
+        //displays cheat mode on indication to screen
+        ui->lblLives->setText("Cheat Mode On" + QString::number((ui->lblLives->text().toInt() - 1)));
+    }
+    else {
+        //normal execution
+        ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() - 1));
+    }
     // STILL NEED TO DECREMENT THE CHARACTER'S LIVES -- THIS IS ONLY THE LABEL
 }
 
