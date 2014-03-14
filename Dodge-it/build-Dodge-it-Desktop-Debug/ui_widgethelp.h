@@ -58,7 +58,7 @@ public:
 
     void retranslateUi(QWidget *WidgetHelp)
     {
-        WidgetHelp->setWindowTitle(QApplication::translate("WidgetHelp", "Widget", 0));
+        WidgetHelp->setWindowTitle(QApplication::translate("WidgetHelp", "Help!", 0));
         lblHelp->setText(QApplication::translate("WidgetHelp", "Game Instructions: \n"
 " -- pick a difficulty level to begin with. The \n"
 " harder the difficulty level, the faster the objects will fall and \n"

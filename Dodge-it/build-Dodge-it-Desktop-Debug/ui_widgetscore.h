@@ -48,7 +48,7 @@ public:
 
     void retranslateUi(QWidget *WidgetScore)
     {
-        WidgetScore->setWindowTitle(QApplication::translate("WidgetScore", "Widget", 0));
+        WidgetScore->setWindowTitle(QApplication::translate("WidgetScore", "High Scores", 0));
         lblTitle->setText(QApplication::translate("WidgetScore", "HIGHSCORES", 0));
         lblHighScores->setText(QApplication::translate("WidgetScore", "High Scores go Here\n"
 "\n"
