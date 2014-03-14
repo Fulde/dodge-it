@@ -36,11 +36,15 @@ public:
         if (WidgetGame->objectName().isEmpty())
             WidgetGame->setObjectName(QStringLiteral("WidgetGame"));
         WidgetGame->resize(1024, 768);
-        WidgetGame->setStyleSheet(QStringLiteral("font: 75 12pt \"Ubuntu\";"));
+        WidgetGame->setStyleSheet(QLatin1String("font: 75 12pt \"Ubuntu\";\n"
+"color: rgb(255, 255, 255);"));
         lblSatyr = new QLabel(WidgetGame);
         lblSatyr->setObjectName(QStringLiteral("lblSatyr"));
-        lblSatyr->setGeometry(QRect(450, 670, 101, 101));
+        lblSatyr->setGeometry(QRect(553, 674, 28, 94));
+        lblSatyr->setBaseSize(QSize(28, 94));
         lblSatyr->setPixmap(QPixmap(QString::fromUtf8(":/satyr.png")));
+        lblSatyr->setScaledContents(false);
+        lblSatyr->setAlignment(Qt::AlignCenter);
         widget = new QWidget(WidgetGame);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(0, 0, 161, 781));
@@ -50,7 +54,7 @@ public:
         lblScoreT->setGeometry(QRect(10, 20, 51, 31));
         lblScore = new QLabel(widget);
         lblScore->setObjectName(QStringLiteral("lblScore"));
-        lblScore->setGeometry(QRect(70, 20, 141, 31));
+        lblScore->setGeometry(QRect(70, 20, 81, 31));
         lblLivesT = new QLabel(widget);
         lblLivesT->setObjectName(QStringLiteral("lblLivesT"));
         lblLivesT->setGeometry(QRect(10, 50, 41, 31));
