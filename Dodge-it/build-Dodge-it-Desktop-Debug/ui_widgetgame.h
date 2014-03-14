@@ -77,7 +77,7 @@ public:
 
     void retranslateUi(QWidget *WidgetGame)
     {
-        WidgetGame->setWindowTitle(QApplication::translate("WidgetGame", "Widget", 0));
+        WidgetGame->setWindowTitle(QApplication::translate("WidgetGame", "Dodge-It!", 0));
         lblSatyr->setText(QString());
         lblScoreT->setText(QApplication::translate("WidgetGame", "Score :", 0));
         lblScore->setText(QApplication::translate("WidgetGame", "0", 0));

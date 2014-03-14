@@ -69,7 +69,7 @@ public:
 
     void retranslateUi(QWidget *WidgetPause)
     {
-        WidgetPause->setWindowTitle(QApplication::translate("WidgetPause", "Widget", 0));
+        WidgetPause->setWindowTitle(QApplication::translate("WidgetPause", "Paused", 0));
         btnResume->setText(QApplication::translate("WidgetPause", "Resume", 0));
         btnSave->setText(QApplication::translate("WidgetPause", "Save", 0));
         btnCheat->setText(QApplication::translate("WidgetPause", "Cheat Mode", 0));

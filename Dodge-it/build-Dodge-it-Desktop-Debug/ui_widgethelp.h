@@ -68,27 +68,27 @@ public:
         label_4->setGeometry(QRect(70, 260, 341, 17));
         label_5 = new QLabel(WidgetHelp);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(20, 350, 51, 51));
+        label_5->setGeometry(QRect(20, 340, 51, 51));
         label_5->setPixmap(QPixmap(QString::fromUtf8(":/hourglass.png")));
         label_5->setScaledContents(true);
         label_6 = new QLabel(WidgetHelp);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(70, 370, 371, 17));
+        label_6->setGeometry(QRect(70, 360, 411, 17));
         label_7 = new QLabel(WidgetHelp);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(10, 300, 41, 41));
+        label_7->setGeometry(QRect(20, 300, 41, 41));
         label_7->setPixmap(QPixmap(QString::fromUtf8(":/shield.png")));
         label_7->setScaledContents(true);
         label_8 = new QLabel(WidgetHelp);
         label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(60, 310, 371, 17));
+        label_8->setGeometry(QRect(70, 310, 371, 17));
         label_10 = new QLabel(WidgetHelp);
         label_10->setObjectName(QStringLiteral("label_10"));
-        label_10->setGeometry(QRect(70, 420, 371, 17));
+        label_10->setGeometry(QRect(70, 410, 371, 17));
         label_9 = new QLabel(WidgetHelp);
         label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(10, 400, 51, 51));
-        label_9->setPixmap(QPixmap(QString::fromUtf8(":/hourglass.png")));
+        label_9->setGeometry(QRect(20, 400, 41, 41));
+        label_9->setPixmap(QPixmap(QString::fromUtf8(":/multiplier.png")));
         label_9->setScaledContents(true);
 
         retranslateUi(WidgetHelp);
@@ -98,7 +98,7 @@ public:
 
     void retranslateUi(QWidget *WidgetHelp)
     {
-        WidgetHelp->setWindowTitle(QApplication::translate("WidgetHelp", "Widget", 0));
+        WidgetHelp->setWindowTitle(QApplication::translate("WidgetHelp", "Help!", 0));
         lblHelp->setText(QApplication::translate("WidgetHelp", "Game Instructions: \n"
 " -- pick a difficulty level to begin with. The \n"
 " harder the difficulty level, the faster the objects will fall and \n"
@@ -115,7 +115,7 @@ public:
         label_3->setText(QString());
         label_4->setText(QApplication::translate("WidgetHelp", "Increases life by 1", 0));
         label_5->setText(QString());
-        label_6->setText(QApplication::translate("WidgetHelp", "Multiplies the score by 2 over a short period of time", 0));
+        label_6->setText(QApplication::translate("WidgetHelp", "Makes the falling objects slower over a short period of time", 0));
         label_7->setText(QString());
         label_8->setText(QApplication::translate("WidgetHelp", "Player is invincible over a short period of time", 0));
         label_10->setText(QApplication::translate("WidgetHelp", "Multiplies the score by 2 over a short period of time", 0));
