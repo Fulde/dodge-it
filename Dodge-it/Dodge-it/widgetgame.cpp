@@ -39,10 +39,17 @@ WidgetGame::WidgetGame(QWidget *parent) :
        // this->setStyleSheet("background-image: url(:/hardBackground.jpg);");
     }
 
-    timer = new QTimer();
-    timer->setInterval(30);  // argument was Game::getInstance().getInterval() ... changed for faster testing
-    connect(timer, &QTimer::timeout, this, &WidgetGame::timerHit);
-    timer->start();
+    // used for the general game ticks; its hit method moves items and calculates collisions
+    gameTimer = new QTimer();
+    gameTimer->setInterval(30);  // argument was Game::getInstance().getInterval() ... changed for faster testing
+    connect(gameTimer, &QTimer::timeout, this, &WidgetGame::gameTimerHit);
+    gameTimer->start();
+
+    // starts when the character is hit; the character cannot be hit again until timeout
+    hitTimer = new QTimer();
+    hitTimer->setInterval(3000); // 3 seconds
+    connect(hitTimer, &QTimer::timeout, this, &WidgetGame::hitTimerHit);
+    hitTimer->setSingleShot(true);
 }
 
 //Destructor for Widget
@@ -52,48 +59,36 @@ WidgetGame::~WidgetGame() {
 
 void WidgetGame::keyPressEvent(QKeyEvent *k)
 {
-    if (k->key() == Qt::Key_Up)
+    if (k->key() == Qt::Key_Up && (ui->lblSatyr->y() > 0))
     {
-        if (ui->lblSatyr->y() > 0)
-        {
-            Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
-            ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
-        }
+        Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
+        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
     }
-    else if (k->key() == Qt::Key_Down)
+    else if (k->key() == Qt::Key_Down && ((ui->lblSatyr->y() + ui->lblSatyr->height()) < 768))
     {
-        if ((ui->lblSatyr->y() + ui->lblSatyr->height()) < 768)
-        {
-            Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
-            ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
-        }
+        Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
+        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
     }
-    else if (k->key() == Qt::Key_Left)
+    else if (k->key() == Qt::Key_Left && (ui->lblSatyr->x() > 0))
     {
-        if (ui->lblSatyr->x() > 0)
-        {
-            Game::getInstance().movePlayer(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
-            ui->lblSatyr->move(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
-        }
+        Game::getInstance().movePlayer(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
+        ui->lblSatyr->move(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
     }
-    else if (k->key() == Qt::Key_Right)
+    else if (k->key() == Qt::Key_Right && ((ui->lblSatyr->x() + ui->lblSatyr->height() < 1024)))
     {
-        if ((ui->lblSatyr->x() + ui->lblSatyr->height() < 1024))
-        {
-            Game::getInstance().movePlayer(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
-            ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
-        }
+        Game::getInstance().movePlayer(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
+        ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
     }
 }
 
 void WidgetGame::pauseTimer()
 {
-    timer->stop();
+    gameTimer->stop();
 }
 
 void WidgetGame::resumeTimer()
 {
-    timer->start();
+    gameTimer->start();
 }
 
 // Call this method for every tick of the timer
@@ -106,7 +101,7 @@ void WidgetGame::resumeTimer()
 // 28-30 is the muliplier powerup
 // the object should have a set x coordinate to start with (basically the object should have a place at the top of the screen
 // between 0 to the far right corner so (x, 0)
-void WidgetGame::timerHit() {
+void WidgetGame::gameTimerHit() {
     int randX = rand() % 1024;
 
 
@@ -135,13 +130,14 @@ void WidgetGame::timerHit() {
         Object *curObj = curLabel->getObject();
 
         // collision
-        /*if ((Game::getInstance().getPlayerX() >= curObj->getX() && Game::getInstance().getPlayerX() <= (curObj->getX() + curLabel->width())) &&
+        /*if ((Game::getInstance().getPlayerX() >= curObj->getX() && Game::getInstance().getPlayerX() <= (curObj->getX() + curLabel->width())) &&     we might need this later; not sure, but I don't feel like rewriting it
                 (Game::getInstance().getPlayerY() >= curObj->getY() && Game::getInstance().getPlayerY() <= (curObj->getY() + curLabel->height())))
         */
 
-        if (ui->lblSatyr->geometry().intersects(curLabel->geometry()))
+        if (!hitTimer->isActive() && ui->lblSatyr->geometry().intersects(curLabel->geometry()))
         {
             qDebug() << "You've been hit";
+            hitTimer->start();
         }
 
 
@@ -160,8 +156,15 @@ void WidgetGame::timerHit() {
     }
 }
 
+
+void WidgetGame::hitTimerHit()
+{
+    // not sure if anything needs to be done in here
+    qDebug() << "Able to be hit again";
+}
+
 void WidgetGame::on_btnPause_clicked() {
-    timer->stop();
+    gameTimer->stop();
 
     WidgetPause* pause = new WidgetPause(this);
     pause->show();

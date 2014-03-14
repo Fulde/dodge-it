@@ -31,14 +31,16 @@ public:
     Widget *main;
 
 private slots:
-    void timerHit();
+    void gameTimerHit();
+    void hitTimerHit();
     void on_btnPause_clicked();
     void keyPressEvent(QKeyEvent *k);
 
 private:
     //Private instance for the Widget ui
     Ui::WidgetGame *ui;
-    QTimer *timer;
+    QTimer *gameTimer;
+    QTimer *hitTimer;
 };
 
 class ObjLabel : public QLabel {
