@@ -118,7 +118,7 @@ void WidgetGame::resumeTimer()
 // the object should have a set x coordinate to start with (basically the object should have a place at the top of the screen
 // between 0 to the far right corner so (x, 0)
 void WidgetGame::gameTimerHit() {
-    int randX = rand() % 1024;
+    int randX = rand() % 855 + 165;
 
 
     if ((randX % 5) == 0)
@@ -137,7 +137,7 @@ void WidgetGame::gameTimerHit() {
     }
 
     QObjectList labels = this->children();
-    for (int i = 4; i < labels.length(); i++)
+    for (int i = 0; i < labels.length(); i++)
     {
         ObjLabel *curLabel = dynamic_cast<ObjLabel*>(labels.at(i));
         if (curLabel == NULL)
