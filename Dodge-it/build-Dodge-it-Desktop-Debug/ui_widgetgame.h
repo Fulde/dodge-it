@@ -40,8 +40,11 @@ public:
 "color: rgb(255, 255, 255);"));
         lblSatyr = new QLabel(WidgetGame);
         lblSatyr->setObjectName(QStringLiteral("lblSatyr"));
-        lblSatyr->setGeometry(QRect(450, 670, 101, 101));
+        lblSatyr->setGeometry(QRect(553, 674, 28, 94));
+        lblSatyr->setBaseSize(QSize(28, 94));
         lblSatyr->setPixmap(QPixmap(QString::fromUtf8(":/satyr.png")));
+        lblSatyr->setScaledContents(false);
+        lblSatyr->setAlignment(Qt::AlignCenter);
         widget = new QWidget(WidgetGame);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(0, 0, 161, 781));

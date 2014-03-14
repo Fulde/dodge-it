@@ -42,6 +42,8 @@ public:
         btnStart->setObjectName(QStringLiteral("btnStart"));
         btnStart->setGeometry(QRect(30, 660, 961, 71));
         btnStart->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
+        btnStart->setAutoDefault(false);
+        btnStart->setDefault(false);
         rbEasy = new QRadioButton(WidgetStart);
         rbEasy->setObjectName(QStringLiteral("rbEasy"));
         rbEasy->setGeometry(QRect(400, 270, 171, 61));
