@@ -85,12 +85,12 @@ void WidgetGame::keyPressEvent(QKeyEvent *k)
         Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
         ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
     }
-    else if (k->key() == Qt::Key_Left && (ui->lblSatyr->x() > 0))
+    else if (k->key() == Qt::Key_Left && (ui->lblSatyr->x() > 160))
     {
         Game::getInstance().movePlayer(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
         ui->lblSatyr->move(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
     }
-    else if (k->key() == Qt::Key_Right && ((ui->lblSatyr->x() + ui->lblSatyr->height() < 1024)))
+    else if (k->key() == Qt::Key_Right && ((ui->lblSatyr->x() + ui->lblSatyr->width() < 1044)))
     {
         Game::getInstance().movePlayer(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
         ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
@@ -127,6 +127,7 @@ void WidgetGame::gameTimerHit() {
         QPixmap basic(":/basic.png");
         label->setPixmap(basic);
         label->setGeometry(randX, 0, basic.width(), basic.height());
+        label->setAlignment(Qt::AlignHCenter);
 
         //create new damaging object
         DamagingObject *obj = new DamagingObject(randX, label->height());
