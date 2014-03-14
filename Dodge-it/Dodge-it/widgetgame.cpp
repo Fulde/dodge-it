@@ -120,7 +120,6 @@ void WidgetGame::resumeTimer()
 void WidgetGame::gameTimerHit() {
     int randX = rand() % 855 + 165;
 
-
     if ((randX % 5) == 0)
     {
         ObjLabel* label = new ObjLabel(this);
