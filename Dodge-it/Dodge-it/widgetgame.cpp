@@ -57,6 +57,22 @@ WidgetGame::~WidgetGame() {
     delete ui;
 }
 
+void WidgetGame::incrementScore() {
+    ui->lblScore->setText(QString::number(ui->lblScore->text().toInt() + 1));
+}
+
+void WidgetGame::decrementLives() {
+    if (WidgetPause::cheatMode == true) {
+        //displays cheat mode on indication to screen
+        ui->lblLives->setText("Cheat Mode On" + QString::number((ui->lblLives->text().toInt() - 1)));
+    }
+    else {
+        //normal execution
+        ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() - 1));
+    }
+    // STILL NEED TO DECREMENT THE CHARACTER'S LIVES -- THIS IS ONLY THE LABEL
+}
+
 void WidgetGame::keyPressEvent(QKeyEvent *k)
 {
     if (k->key() == Qt::Key_Up && (ui->lblSatyr->y() > 0))
@@ -138,16 +154,18 @@ void WidgetGame::gameTimerHit() {
         {
             qDebug() << "You've been hit";
             hitTimer->start();
+            WidgetGame::decrementLives();
         }
 
 
-        // need to figure out how to destry items; label->deleteLater() will take care of the label, but if I just
-        // write "delete curObj;" that will remove it from  memory, but the vector will still hold a pointer to that
+        // need to figure out how to destry objects; label->deleteLater() will take care of the label, but if I just
+        // write "delete curObj;" that will remove it from  memory, and the vector will still hold a pointer to that
         // memory. Bad idea. Should probably give each object an id, which might need to be cycled to prevent int
         // overflow and segfaulting
         if (curObj->getY() > 768)
         {
-
+            incrementScore();
+            //destroy object here
         }
 
         curObj->move();
@@ -159,7 +177,7 @@ void WidgetGame::gameTimerHit() {
 
 void WidgetGame::hitTimerHit()
 {
-    // not sure if anything needs to be done in here
+    // not sure if anything really needs to be done in here; good for debugging
     qDebug() << "Able to be hit again";
 }
 

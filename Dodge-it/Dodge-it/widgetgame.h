@@ -28,6 +28,9 @@ public:
     ~WidgetGame();
     void pauseTimer();
     void resumeTimer();
+    void incrementScore();
+    void decrementLives();
+
     Widget *main;
 
 private slots:

@@ -72,13 +72,16 @@ public:
     vector<Object*>& getObjects() { return objects; }
     int getMultiplier() { return multiplier; }
     int getTimeInterval() { return timeInterval; }
+    int getPlayerX() { return player->getX(); }
+    int getPlayerY() { return player->getY(); }
     diffSetting getDifficulty() { return difficulty; }
+
     void setMultiplier(int newMult) { multiplier = newMult; }
     void setTimeInt(int newTime) { timeInterval = newTime; }
     void setDifficulty(diffSetting diff) {difficulty = diff; }
+
     void addObject(DamagingObject *obj) { objects.push_back(obj); }
-    int getPlayerX() { return player->getX(); }
-    int getPlayerY() { return player->getY(); }
+
     void movePlayer(int newX, int newY);
 
     //Quits the game if the player runs out of lives

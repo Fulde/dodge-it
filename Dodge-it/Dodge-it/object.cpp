@@ -6,10 +6,12 @@
 
 #include "widgetstart.h"
 #include "ui_widgetstart.h"
+#include "widgetgame.h"
+#include "ui_widgetgame.h"
 #include "object.h"
 #include "game.h"
 
-Object::Object() {}
+Object::Object() { }
 
 DamagingObject::DamagingObject(int initX, int labelHeight) {
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
