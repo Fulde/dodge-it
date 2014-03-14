@@ -10,5 +10,10 @@
         <file>pauseBackground.png</file>
         <file>mediumBackground.png</file>
         <file>help.png</file>
+        <file>heart.png</file>
+        <file>shield.png</file>
+        <file>hourglass.png</file>
+        <file>multiplier1.png</file>
+        <file>multiplier.png</file>
     </qresource>
 </RCC>

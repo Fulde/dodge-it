@@ -7,22 +7,22 @@
     <x>0</x>
     <y>0</y>
     <width>512</width>
-    <height>384</height>
+    <height>487</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Widget</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 75 12pt &quot;Ubuntu&quot;;</string>
+   <string notr="true">background-color: rgb(240, 240, 240)</string>
   </property>
   <widget class="QLabel" name="lblHelp">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>10</x>
      <y>70</y>
      <width>491</width>
-     <height>291</height>
+     <height>181</height>
     </rect>
    </property>
    <property name="text">
@@ -35,12 +35,7 @@
  -- cheat mode: allows the user to play without losing lives 
 (aka dying). 
  
- Powerups available: 
-     - Slow mode -&gt; slows the speed of the falling objects 
-     - Invincibility -&gt; falling objects do not harm the player in 
-a short period of time 
-     - Heart -&gt; gives you an extra life 
-     - Multiplier -&gt; doubles your score for a short period of time</string>
+ Powerups available:</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -62,7 +57,7 @@ a short period of time
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>340</x>
      <y>10</y>
      <width>91</width>
      <height>91</height>
@@ -83,16 +78,144 @@ a short period of time
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>311</width>
+     <width>331</width>
      <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 75 28pt &quot;Nimbus Sans L&quot;;
+    <string notr="true">font: 75 36pt &quot;KacstOne&quot;;
 color: rgb(0, 85, 255);</string>
    </property>
    <property name="text">
     <string>HELP SCREEN</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>250</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images/resources.qrc">:/heart.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>260</y>
+     <width>341</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Increases life by 1</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>340</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images/resources.qrc">:/hourglass.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>360</y>
+     <width>411</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Makes the falling objects slower over a short period of time</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>300</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images/resources.qrc">:/shield.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>310</y>
+     <width>371</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Player is invincible over a short period of time</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>410</y>
+     <width>371</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Multiplies the score by 2 over a short period of time</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>400</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images/resources.qrc">:/multiplier.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
