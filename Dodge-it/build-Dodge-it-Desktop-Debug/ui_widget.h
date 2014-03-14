@@ -35,7 +35,7 @@ public:
 
     void retranslateUi(QWidget *Widget)
     {
-        Widget->setWindowTitle(QApplication::translate("Widget", "Form", 0));
+        Widget->setWindowTitle(QApplication::translate("Widget", "Dodge-It!", 0));
     } // retranslateUi
 
 };

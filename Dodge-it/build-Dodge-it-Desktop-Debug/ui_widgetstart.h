@@ -77,7 +77,7 @@ public:
 
     void retranslateUi(QWidget *WidgetStart)
     {
-        WidgetStart->setWindowTitle(QApplication::translate("WidgetStart", "Widget", 0));
+        WidgetStart->setWindowTitle(QApplication::translate("WidgetStart", "Dodge-It!", 0));
         btnStart->setText(QApplication::translate("WidgetStart", "Start New Game", 0));
         rbEasy->setText(QApplication::translate("WidgetStart", "Easy", 0));
         rbMedium->setText(QApplication::translate("WidgetStart", "Medium", 0));

@@ -51,6 +51,8 @@ public:
     int getX() { return x; }
     int getY() { return y; }
     void move(int newX, int newY);
+    int getLives() { return lives; }
+    int setLives(int newLives) { lives = newLives; }
 };
 
 //========================= GAME SINGLETON =========================
