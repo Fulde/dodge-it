@@ -16,7 +16,7 @@ Object::Object() { }
 DamagingObject::DamagingObject(int initX, int labelHeight) {
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
     if (difficulty == Game::easy){
-        speed = 5;
+        speed = 1;
     } else if (difficulty == Game::medium) {
         speed = 10;
     } else if (difficulty == Game::hard) {

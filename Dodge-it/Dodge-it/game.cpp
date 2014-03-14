@@ -5,13 +5,9 @@
 //==============================
 
 #include "widgetstart.h"
-#include "ui_widgetstart.h"
 #include "widgetgame.h"
-#include "ui_widgetgame.h"
 #include "widgetpause.h"
-#include "ui_widgetpause.h"
 #include "widgetscore.h"
-#include "ui_widgetscore.h"
 #include "game.h"
 #include "object.h"
 

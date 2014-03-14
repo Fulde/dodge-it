@@ -41,7 +41,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
 
     // used for the general game ticks; its hit method moves items and calculates collisions
     gameTimer = new QTimer();
-    gameTimer->setInterval(30);  // argument was Game::getInstance().getInterval() ... changed for faster testing
+    gameTimer->setInterval(Game::getInstance().getInterval()); //  argument was  ... changed for faster testing
     connect(gameTimer, &QTimer::timeout, this, &WidgetGame::gameTimerHit);
     gameTimer->start();
 
