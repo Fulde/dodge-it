@@ -81,7 +81,7 @@ public:
         label->setScaledContents(true);
         background = new QLabel(WidgetGame);
         background->setObjectName(QStringLiteral("background"));
-        background->setGeometry(QRect(160, 0, 871, 771));
+        background->setGeometry(QRect(0, 0, 1031, 771));
         lblSatyr = new QLabel(WidgetGame);
         lblSatyr->setObjectName(QStringLiteral("lblSatyr"));
         lblSatyr->setGeometry(QRect(600, 670, 28, 94));
@@ -89,6 +89,16 @@ public:
         lblSatyr->setPixmap(QPixmap(QString::fromUtf8(":/satyr.png")));
         lblSatyr->setScaledContents(false);
         lblSatyr->setAlignment(Qt::AlignCenter);
+        background->raise();
+        widget->raise();
+        lblSatyr->raise();
+        label->raise();
+        lblCheatMode->raise();
+        lblLivesT->raise();
+        lblLives->raise();
+        lblScore->raise();
+        lblScoreT->raise();
+        btnPause->raise();
 
         retranslateUi(WidgetGame);
 

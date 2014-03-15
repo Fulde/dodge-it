@@ -157,9 +157,9 @@ color: rgb(255, 47, 11)</string>
   <widget class="QLabel" name="background">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>0</x>
      <y>0</y>
-     <width>871</width>
+     <width>1031</width>
      <height>771</height>
     </rect>
    </property>
@@ -195,6 +195,16 @@ color: rgb(255, 47, 11)</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <zorder>background</zorder>
+  <zorder>widget</zorder>
+  <zorder>lblSatyr</zorder>
+  <zorder>label</zorder>
+  <zorder>lblCheatMode</zorder>
+  <zorder>lblLivesT</zorder>
+  <zorder>lblLives</zorder>
+  <zorder>lblScore</zorder>
+  <zorder>lblScoreT</zorder>
+  <zorder>btnPause</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
