@@ -31,14 +31,15 @@ void WidgetStart::on_btnStart_clicked()
 {
     if (ui->rbEasy->isChecked()) {
         Game::getInstance().setDifficulty(Game::easy);
-        //Game::getInstance().setTimeInt(700);
+        Game::getInstance().setObjectInt(30);
     } else if (ui->rbMedium->isChecked()) {
         Game::getInstance().setDifficulty(Game::medium);
-        //Game::getInstance().setTimeInt(500);
+        Game::getInstance().setObjectInt(20);
     } else if (ui->rbHard->isChecked()) {
         Game::getInstance().setDifficulty(Game::hard);
-        //Game::getInstance().setTimeInt(300);
+        Game::getInstance().setObjectInt(10);
     }
+    Game::getInstance().setTimeInt(9);
 
     WidgetGame* game = new WidgetGame(main);
     game->show();

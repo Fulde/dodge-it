@@ -67,6 +67,7 @@ private:
     Character *player;
     int multiplier;
     int timeInterval;
+    int objectInterval;
     diffSetting difficulty;
     vector<Object*> basics;
     vector<Object*> smalls;
@@ -80,7 +81,8 @@ public:
     vector<Object*>& getPowerups() { return powerups; }
 
     int getMultiplier() { return multiplier; }
-    int getTimeInterval() { return timeInterval; }
+    int getTimeInt() { return timeInterval; }
+    int getObjectInt() { return objectInterval; }
     int getPlayerX() { return player->getX(); }
     int getPlayerY() { return player->getY(); }
     int getPlayerLives() { return player->getLives(); }
@@ -89,6 +91,7 @@ public:
 
     void setMultiplier(int newMult) { multiplier = newMult; }
     void setTimeInt(int newTime) { timeInterval = newTime; }
+    void setObjectInt(int newInt) { objectInterval = newInt; }
     void setDifficulty(diffSetting diff) {difficulty = diff; }
 
     void addBasic(DamagingObject *obj)     { basics.push_back(obj); }

@@ -29,9 +29,9 @@ DamagingObject::DamagingObject(int initX, int labelHeight) {
     if (difficulty == Game::easy){
         speed = 1;
     } else if (difficulty == Game::medium) {
-        speed = 10;
+        speed = 3;
     } else if (difficulty == Game::hard) {
-        speed = 15;
+        speed = 5;
     }
 
     x = initX;
@@ -44,9 +44,9 @@ Powerup::Powerup(int initX, int labelHeight) {
     if (difficulty == Game::easy){
         speed = 1;
     } else if (difficulty == Game::medium) {
-        speed = 10;
+        speed = 3;
     } else if (difficulty == Game::hard) {
-        speed = 15;
+        speed = 5;
     }
 
     x = initX;

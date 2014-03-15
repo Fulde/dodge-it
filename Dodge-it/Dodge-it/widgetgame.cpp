@@ -115,7 +115,7 @@ void WidgetGame::resumeTimer()
 void WidgetGame::gameTimerHit() {
     int randX = rand() % 855 + 165;
 
-    if ((randX % 5) == 0)
+    if ((randX % Game::getInstance().getObjectInt()) == 0)
     {
         ObjLabel* label = new ObjLabel(this);
         label->setAlignment(Qt::AlignHCenter);
@@ -127,7 +127,7 @@ void WidgetGame::gameTimerHit() {
                 DamagingObject *obj = new DamagingObject(randX, label->height());
                 Game::getInstance().addBasic(obj);
                 label->setObject(obj);
-            } else if (random >= 51 && random <= 80) {         // (51-80) small object
+            } else if (random >= 51 && random <= 100) {         // (51-80) small object
                 label->setPixmap(QPixmap(":/small.png"));
                 DamagingObject *obj = new DamagingObject(randX, label->height());
                 Game::getInstance().addSmall(obj);
@@ -138,24 +138,23 @@ void WidgetGame::gameTimerHit() {
                 Game::getInstance().addExplosive(obj);
                 label->setObject(obj);
             }
-        } else if (random >= 91) {                             // (90-100) powerup
-            int randomPow = rand() % 10 + 1;
-            if (randomPow <= 4) {                                  // (1-4) exlife
+        } else if (random >= 91) {                             // (91-100) powerup
+            if (random >= 91 && random <= 94) {                   // (91-94) exlife
                 label->setPixmap(QPixmap(":/heart.png"));
                 ExLife *obj = new ExLife(randX, label->height());
                 label->setObject(obj);
                 Game::getInstance().addPowerup(obj);
-            } else if (randomPow >= 5 && randomPow <= 7) {        // (5-7) multiplier
+            } else if (random >= 95 && random <= 97) {             // (95-97) multiplier
                 label->setPixmap(QPixmap(":/multiplier.png"));
                 Multiplier *obj = new Multiplier(randX, label->height());
                 label->setObject(obj);
                 Game::getInstance().addPowerup(obj);
-            } else if (randomPow >= 8  && randomPow <= 9 ) {      // (8-9) slow
+            } else if (random >= 98  && random <= 99 ) {           // (98-99) slow
                 label->setPixmap(QPixmap(":/hourglass.png"));
                 Slow *obj = new Slow(randX, label->height());
                 label->setObject(obj);
                 Game::getInstance().addPowerup(obj);
-            } else if (randomPow == 10) {                         // (10) invul
+            } else if (random == 100) {                            // (100) invul
                 label->setPixmap(QPixmap(":/shield.png"));
                 Invul *obj = new Invul(randX, label->height());
                 label->setObject(obj);
