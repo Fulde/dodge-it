@@ -31,6 +31,8 @@ public:
     QLabel *lblLives;
     QPushButton *btnPause;
     QLabel *lblCheatMode;
+    QLabel *label;
+    QLabel *background;
 
     void setupUi(QWidget *WidgetGame)
     {
@@ -49,22 +51,28 @@ public:
         widget = new QWidget(WidgetGame);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(0, 0, 161, 781));
-        widget->setStyleSheet(QStringLiteral("background:#686868"));
+        widget->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
         lblScoreT = new QLabel(widget);
         lblScoreT->setObjectName(QStringLiteral("lblScoreT"));
-        lblScoreT->setGeometry(QRect(10, 20, 51, 31));
+        lblScoreT->setGeometry(QRect(10, 50, 61, 31));
+        lblScoreT->setStyleSheet(QLatin1String("color: rgb(255, 47, 11);\n"
+"font: 14pt;"));
         lblScore = new QLabel(widget);
         lblScore->setObjectName(QStringLiteral("lblScore"));
-        lblScore->setGeometry(QRect(70, 20, 81, 31));
+        lblScore->setGeometry(QRect(80, 50, 81, 31));
+        lblScore->setStyleSheet(QStringLiteral("font: 14pt;"));
         lblLivesT = new QLabel(widget);
         lblLivesT->setObjectName(QStringLiteral("lblLivesT"));
-        lblLivesT->setGeometry(QRect(10, 50, 41, 31));
+        lblLivesT->setGeometry(QRect(10, 90, 51, 31));
+        lblLivesT->setStyleSheet(QLatin1String("font: 14pt;\n"
+"color: rgb(255, 47, 11)"));
         lblLives = new QLabel(widget);
         lblLives->setObjectName(QStringLiteral("lblLives"));
-        lblLives->setGeometry(QRect(70, 50, 16, 31));
+        lblLives->setGeometry(QRect(80, 90, 16, 31));
+        lblLives->setStyleSheet(QStringLiteral("font: 14pt;"));
         btnPause = new QPushButton(widget);
         btnPause->setObjectName(QStringLiteral("btnPause"));
-        btnPause->setGeometry(QRect(50, 120, 51, 51));
+        btnPause->setGeometry(QRect(50, 200, 51, 51));
         QIcon icon;
         icon.addFile(QStringLiteral(":/pause.png"), QSize(), QIcon::Normal, QIcon::Off);
         btnPause->setIcon(icon);
@@ -72,7 +80,15 @@ public:
         btnPause->setAutoDefault(false);
         lblCheatMode = new QLabel(widget);
         lblCheatMode->setObjectName(QStringLiteral("lblCheatMode"));
-        lblCheatMode->setGeometry(QRect(10, 86, 131, 21));
+        lblCheatMode->setGeometry(QRect(10, 140, 131, 21));
+        label = new QLabel(widget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(0, 0, 161, 41));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/logooption1.png")));
+        label->setScaledContents(true);
+        background = new QLabel(WidgetGame);
+        background->setObjectName(QStringLiteral("background"));
+        background->setGeometry(QRect(160, 0, 871, 771));
 
         retranslateUi(WidgetGame);
 
@@ -89,6 +105,8 @@ public:
         lblLives->setText(QApplication::translate("WidgetGame", "3", 0));
         btnPause->setText(QString());
         lblCheatMode->setText(QString());
+        label->setText(QString());
+        background->setText(QString());
     } // retranslateUi
 
 };

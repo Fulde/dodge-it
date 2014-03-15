@@ -32,11 +32,17 @@ WidgetGame::WidgetGame(QWidget *parent) :
 
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
     if (difficulty == Game::easy){
-       // this->setStyleSheet("background-image: url(:/easyBackground.png);");
+        QPixmap background_image(":/easyBackground.png");
+        ui->background->setPixmap(background_image);
+        ui->background->setScaledContents(true);
     } else if (difficulty == Game::medium) {
-       // this->setStyleSheet("background-image: url(:/mediumBackground.png);");
+        QPixmap background_image(":/mediumBackground.png");
+        ui->background->setPixmap(background_image);
+        ui->background->setScaledContents(true);
     } else if (difficulty == Game::hard) {
-       // this->setStyleSheet("background-image: url(:/hardBackground.jpg);");
+        QPixmap background_image(":/hardBackground.jpg");
+        ui->background->setPixmap(background_image);
+        ui->background->setScaledContents(true);
     }
 
     // used for the general game ticks; its hit method moves items and calculates collisions
