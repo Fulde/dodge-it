@@ -100,7 +100,7 @@ void Character::move(int newX, int newY)
      y = newY;
 }
 
-Character::Character() { } // may want to supply initX and initY as parameters in future
+Character::Character() { lives = 3; } // may want to supply initX and initY as parameters in future
 
 // ================================ GAME ======================================
 
@@ -141,6 +141,7 @@ bool Game::save() {
 void Game::quit() {
     // call high score window
     // revent back to main screen
+
 }
 
 void Game::movePlayer(int newX, int newY)

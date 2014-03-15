@@ -30,6 +30,7 @@ public:
     QLabel *lblLivesT;
     QLabel *lblLives;
     QPushButton *btnPause;
+    QLabel *lblCheatMode;
 
     void setupUi(QWidget *WidgetGame)
     {
@@ -69,6 +70,9 @@ public:
         btnPause->setIcon(icon);
         btnPause->setIconSize(QSize(45, 45));
         btnPause->setAutoDefault(false);
+        lblCheatMode = new QLabel(widget);
+        lblCheatMode->setObjectName(QStringLiteral("lblCheatMode"));
+        lblCheatMode->setGeometry(QRect(10, 86, 131, 21));
 
         retranslateUi(WidgetGame);
 
@@ -84,6 +88,7 @@ public:
         lblLivesT->setText(QApplication::translate("WidgetGame", "Lives :", 0));
         lblLives->setText(QApplication::translate("WidgetGame", "3", 0));
         btnPause->setText(QString());
+        lblCheatMode->setText(QString());
     } // retranslateUi
 
 };
