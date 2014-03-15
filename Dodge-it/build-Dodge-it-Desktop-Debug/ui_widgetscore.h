@@ -33,7 +33,7 @@ public:
         WidgetScore->setStyleSheet(QStringLiteral(""));
         lblTitle = new QLabel(WidgetScore);
         lblTitle->setObjectName(QStringLiteral("lblTitle"));
-        lblTitle->setGeometry(QRect(10, 20, 491, 41));
+        lblTitle->setGeometry(QRect(10, 10, 491, 41));
         lblTitle->setStyleSheet(QStringLiteral("font: 75 22pt \"Ubuntu\";"));
         lblTitle->setAlignment(Qt::AlignCenter);
         lblHighScores = new QLabel(WidgetScore);
