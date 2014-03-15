@@ -40,13 +40,13 @@ WidgetGame::WidgetGame(QWidget *parent) :
     }
 
     // used for the general game ticks; its hit method moves items and calculates collisions
-    gameTimer = new QTimer();
+    gameTimer = new QTimer(this); // this originally did not have a parent
     gameTimer->setInterval(Game::getInstance().getInterval()); //  argument was  ... changed for faster testing
     connect(gameTimer, &QTimer::timeout, this, &WidgetGame::gameTimerHit);
     gameTimer->start();
 
     // starts when the character is hit; the character cannot be hit again until timeout
-    hitTimer = new QTimer();
+    hitTimer = new QTimer(this); // this originally did not have a parent
     hitTimer->setInterval(3000); // 3 seconds
     connect(hitTimer, &QTimer::timeout, this, &WidgetGame::hitTimerHit);
     hitTimer->setSingleShot(true);
@@ -109,32 +109,61 @@ void WidgetGame::resumeTimer()
     gameTimer->start();
 }
 
-// Call this method for every tick of the timer
-// should create an object each time using the random 1-30 number scale
-// 1-15 is the basic object
-// 11-18 is the explosive object
-// 19-21 is the invul powerup
-// 22-24 is the exlife powerup
-// 25-27 is the slow powerup
-// 28-30 is the muliplier powerup
-// the object should have a set x coordinate to start with (basically the object should have a place at the top of the screen
+// the object should have a set x coordinate to start with
+//    (basically the object should have a place at the top of the screen)
 // between 0 to the far right corner so (x, 0)
 void WidgetGame::gameTimerHit() {
     int randX = rand() % 855 + 165;
 
-    if ((randX % 5) == 0)
+    if ((randX % Game::getInstance().getObjectInt()) == 0)
     {
         ObjLabel* label = new ObjLabel(this);
-        QPixmap basic(":/basic.png");
-        label->setPixmap(basic);
-        label->setGeometry(randX, 0, basic.width(), basic.height());
         label->setAlignment(Qt::AlignHCenter);
 
-        //create new damaging object
-        DamagingObject *obj = new DamagingObject(randX, label->height());
-        Game::getInstance().addObject(obj);  // add to Game's vector of Object*
+        int random = rand() % 100 + 1;
+        if (random <= 100) {                  // THIS OVERRIDES THE POWERUPS CURRENTLY BECAUSE OF THE SIZE OF THE POWERUP PIXMAPS  -- should be 90
+            if (random <= 50) {                                // (1-50)  basic object
+               label->setPixmap(QPixmap(":/basic.png"));
+                DamagingObject *obj = new DamagingObject(randX, label->height());
+                Game::getInstance().addBasic(obj);
+                label->setObject(obj);
+            } else if (random >= 51 && random <= 100) {         // (51-80) small object
+                label->setPixmap(QPixmap(":/small.png"));
+                DamagingObject *obj = new DamagingObject(randX, label->height());
+                Game::getInstance().addSmall(obj);
+                label->setObject(obj);
+            } else if (random >= 81 && random <= 100) {        // (81-90) explosive object                        -- this should also be 90
+                label->setPixmap(QPixmap(":/explosive.png"));
+                DamagingObject *obj = new DamagingObject(randX, label->height());
+                Game::getInstance().addExplosive(obj);
+                label->setObject(obj);
+            }
+        } else if (random >= 91) {                             // (91-100) powerup
+            if (random >= 91 && random <= 94) {                   // (91-94) exlife
+                label->setPixmap(QPixmap(":/heart.png"));
+                ExLife *obj = new ExLife(randX, label->height());
+                label->setObject(obj);
+                Game::getInstance().addPowerup(obj);
+            } else if (random >= 95 && random <= 97) {             // (95-97) multiplier
+                label->setPixmap(QPixmap(":/multiplier.png"));
+                Multiplier *obj = new Multiplier(randX, label->height());
+                label->setObject(obj);
+                Game::getInstance().addPowerup(obj);
+            } else if (random >= 98  && random <= 99 ) {           // (98-99) slow
+                label->setPixmap(QPixmap(":/hourglass.png"));
+                Slow *obj = new Slow(randX, label->height());
+                label->setObject(obj);
+                Game::getInstance().addPowerup(obj);
+            } else if (random == 100) {                            // (100) invul
+                label->setPixmap(QPixmap(":/shield.png"));
+                Invul *obj = new Invul(randX, label->height());
+                label->setObject(obj);
+                Game::getInstance().addPowerup(obj);
+            }
 
-        label->setObject(obj);
+
+        }
+        label->setGeometry(randX, 0, label->pixmap()->width(), label->pixmap()->height());
         label->show();
     }
 
@@ -159,6 +188,10 @@ void WidgetGame::gameTimerHit() {
             WidgetGame::decrementLives();
         }
 
+        curObj->move();
+        curLabel->move(curObj->getX(), curObj->getY());
+        curLabel->show();
+
         //Test for cheat mode
         if (WidgetPause::cheatMode == true) {
             ui->lblCheatMode->setText("Cheat Mode On");
@@ -180,12 +213,24 @@ void WidgetGame::gameTimerHit() {
         if (curObj->getY() > 768)
         {
             incrementScore();
-            //destroy object here
+            if (curLabel->pixmap()->toImage().text() == "basic.png") {
+                curLabel->deleteLater();
+                delete curObj;
+                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().end() - 1);  // COULD THESE LINES BE CAUSING THE DOUBLE-FREE/CORRUPTION???
+            } else if (curLabel->pixmap()->toImage().text() == "small.png") {
+                curLabel->deleteLater();
+                delete curObj;
+                Game::getInstance().getSmalls().erase(Game::getInstance().getSmalls().end() - 1);
+            } else if (curLabel->pixmap()->toImage().text() == "explosive.png") {
+                curLabel->deleteLater();
+                delete curObj;
+                Game::getInstance().getExplosives().erase(Game::getInstance().getExplosives().end() - 1);
+            } else /*assume the pixmap is a powerup*/ {
+                curLabel->deleteLater();
+                delete curObj;
+                Game::getInstance().getPowerups().erase(Game::getInstance().getPowerups().end() - 1);
+            }
         }
-
-        curObj->move();
-        curLabel->move(curObj->getX(), curObj->getY());
-        curLabel->show();
     }
 }
 

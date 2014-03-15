@@ -114,12 +114,22 @@ Game::Game() : multiplier(1)
 
 Game::~Game()
 {
-    for (int i = 0; i < objects.size(); i++)
-    {
-        delete objects.at(i);
+    for (size_t i = 0; i < basics.size(); i++) { // basics vector
+        delete basics.at(i);
     }
-
-    objects.clear();
+    for (size_t i = 0; i < smalls.size(); i++) { // smalls vector
+        delete smalls.at(i);
+    }
+    for (size_t i = 0; i < explosives.size(); i++) { // explosives vector
+        delete explosives.at(i);
+    }
+    for (size_t i = 0; i < powerups.size(); i++) { // powerups vector
+        delete powerups.at(i);
+    }
+    basics.clear();
+    smalls.clear();
+    explosives.clear();
+    powerups.clear();
 }
 
 

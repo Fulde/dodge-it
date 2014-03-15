@@ -50,7 +50,6 @@ public:
     void destroyLabel();
     //returns the number of points the user scores for successfully dodging this object
     int getPts() { return points; }
-    
     //returns the id number of this object
     int getId() { return id; }
 };
@@ -66,6 +65,7 @@ protected:
     int duration;
 
 public:
+    Powerup(int initX, int labelHeight);
     //returns the current state of the powerup (true = active / false = not active)
     //static bool getActive() { return active; }
     static void setActive(bool newValue) { active = newValue; }
@@ -76,6 +76,8 @@ public:
 // INVULNERABLE
 //This powerup makes the user invulnerable from damage for a limited amount of time
 class Invul : public Powerup {
+public:
+    Invul(int initX, int labelHeight) : Powerup(initX, labelHeight) { }
     void stateToFile();
     void activatePow();
 };
@@ -83,13 +85,16 @@ class Invul : public Powerup {
 // EXTRA LIFE
 //This powerup gives the user an extra life
 class ExLife : public Powerup {
-    void stateToFile();
+public:
+    ExLife(int initX, int labelHeight) : Powerup(initX, labelHeight) { }
     void activatePow();
 };
 
 // SLOW
 //This powerup slows down all falling Object for the user
 class Slow : public Powerup {
+public:
+    Slow(int initX, int labelHeight) : Powerup(initX, labelHeight) { }
     void stateToFile();
     void activatePow();
 };
@@ -97,7 +102,10 @@ class Slow : public Powerup {
 // MULTIPLIER
 // This powerup changes the game's multiplier to 2
 class Multiplier : public Powerup {
+public:
+    Multiplier(int initX, int labelHeight) : Powerup(initX, labelHeight) { }
     void setMultiplier();
+    void activatePow();
 };
 
 #endif // Object_H

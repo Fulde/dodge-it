@@ -52,7 +52,7 @@ public:
     int getY() { return y; }
     void move(int newX, int newY);
     int getLives() { return lives; }
-    int setLives(int newLives) { lives = newLives; }
+    void setLives(int newLives) { lives = newLives; }
 };
 
 //========================= GAME SINGLETON =========================
@@ -67,13 +67,22 @@ private:
     Character *player;
     int multiplier;
     int timeInterval;
+    int objectInterval;
     diffSetting difficulty;
-    vector<Object*> objects;
+    vector<Object*> basics;
+    vector<Object*> smalls;
+    vector<Object*> explosives;
+    vector<Object*> powerups;
 
 public:
-    vector<Object*>& getObjects() { return objects; }
+    vector<Object*>& getBasics() { return basics; }
+    vector<Object*>& getSmalls() { return smalls; }
+    vector<Object*>& getExplosives() { return explosives; }
+    vector<Object*>& getPowerups() { return powerups; }
+
     int getMultiplier() { return multiplier; }
-    int getTimeInterval() { return timeInterval; }
+    int getTimeInt() { return timeInterval; }
+    int getObjectInt() { return objectInterval; }
     int getPlayerX() { return player->getX(); }
     int getPlayerY() { return player->getY(); }
     int getPlayerLives() { return player->getLives(); }
@@ -82,20 +91,22 @@ public:
 
     void setMultiplier(int newMult) { multiplier = newMult; }
     void setTimeInt(int newTime) { timeInterval = newTime; }
+    void setObjectInt(int newInt) { objectInterval = newInt; }
     void setDifficulty(diffSetting diff) {difficulty = diff; }
 
-    void addObject(DamagingObject *obj) { objects.push_back(obj); }
+    void addBasic(DamagingObject *obj)     { basics.push_back(obj); }
+    void addSmall(DamagingObject *obj)     { smalls.push_back(obj); }
+    void addExplosive(DamagingObject *obj) { explosives.push_back(obj); }
+    void addPowerup(Powerup *obj)          { powerups.push_back(obj); }
 
     void movePlayer(int newX, int newY);
 
     //Quits the game if the player runs out of lives
     void quit();
-    //Destructor
-    ~Game();
-    //Method to save the current state of the game
+
     bool save();
-    //Method to load a saved game
     void load();
+    ~Game();
 
 //**** singleton implementation ****//
 private:
