@@ -14,7 +14,7 @@
    <string>Help!</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(240, 240, 240)</string>
+   <string notr="true">background-color: rgb(0,0,0);</string>
   </property>
   <widget class="QLabel" name="lblHelp">
    <property name="geometry">
@@ -24,6 +24,9 @@
      <width>491</width>
      <height>181</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Game Instructions: 
@@ -57,7 +60,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>410</x>
      <y>10</y>
      <width>91</width>
      <height>91</height>
@@ -83,7 +86,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 75 36pt &quot;KacstOne&quot;;
+    <string notr="true">font: 36pt;
 color: rgb(0, 85, 255);</string>
    </property>
    <property name="text">
@@ -118,6 +121,9 @@ color: rgb(0, 85, 255);</string>
      <height>17</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(232, 25, 6);</string>
+   </property>
    <property name="text">
     <string>Increases life by 1</string>
    </property>
@@ -149,6 +155,9 @@ color: rgb(0, 85, 255);</string>
      <width>411</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(23, 217, 255);</string>
    </property>
    <property name="text">
     <string>Makes the falling objects slower over a short period of time</string>
@@ -182,6 +191,9 @@ color: rgb(0, 85, 255);</string>
      <height>17</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(235, 201, 7);</string>
+   </property>
    <property name="text">
     <string>Player is invincible over a short period of time</string>
    </property>
@@ -194,6 +206,9 @@ color: rgb(0, 85, 255);</string>
      <width>371</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(84, 236, 29);</string>
    </property>
    <property name="text">
     <string>Multiplies the score by 2 over a short period of time</string>
