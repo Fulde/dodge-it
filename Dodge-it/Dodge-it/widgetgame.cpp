@@ -119,7 +119,7 @@ void WidgetGame::gameTimerHit() {
         label->setAlignment(Qt::AlignHCenter);
 
         int random = rand() % 100 + 1;
-        if (random <= 100) {                  // THIS OVERRIDES THE POWERUPS CURRENTLY BECAUSE OF THE SIZE OF THE POWERUP PIXMAPS
+        if (random <= 100) {                  // THIS OVERRIDES THE POWERUPS CURRENTLY BECAUSE OF THE SIZE OF THE POWERUP PIXMAPS  -- should be 90
             if (random <= 50) {                                // (1-50)  basic object
                label->setPixmap(QPixmap(":/basic.png"));
                 DamagingObject *obj = new DamagingObject(randX, label->height());
@@ -130,7 +130,7 @@ void WidgetGame::gameTimerHit() {
                 DamagingObject *obj = new DamagingObject(randX, label->height());
                 Game::getInstance().addSmall(obj);
                 label->setObject(obj);
-            } else if (random >= 81 && random <= 100) {         // (81-90) explosive object
+            } else if (random >= 81 && random <= 100) {        // (81-90) explosive object                        -- this should also be 90
                 label->setPixmap(QPixmap(":/explosive.png"));
                 DamagingObject *obj = new DamagingObject(randX, label->height());
                 Game::getInstance().addExplosive(obj);
@@ -201,7 +201,7 @@ void WidgetGame::gameTimerHit() {
             if (curLabel->pixmap()->toImage().text() == "basic.png") {
                 curLabel->deleteLater();
                 delete curObj;
-                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().end() - 1);
+                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().end() - 1);  // COULD THESE LINES BE CAUSING THE DOUBLE-FREE/CORRUPTION???
             } else if (curLabel->pixmap()->toImage().text() == "small.png") {
                 curLabel->deleteLater();
                 delete curObj;
