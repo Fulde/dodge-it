@@ -23,7 +23,6 @@ QT_BEGIN_NAMESPACE
 class Ui_WidgetGame
 {
 public:
-    QLabel *lblSatyr;
     QWidget *widget;
     QLabel *lblScoreT;
     QLabel *lblScore;
@@ -33,6 +32,7 @@ public:
     QLabel *lblCheatMode;
     QLabel *label;
     QLabel *background;
+    QLabel *lblSatyr;
 
     void setupUi(QWidget *WidgetGame)
     {
@@ -41,13 +41,6 @@ public:
         WidgetGame->resize(1024, 768);
         WidgetGame->setStyleSheet(QLatin1String("font: 75 12pt \"Ubuntu\";\n"
 "color: rgb(255, 255, 255);"));
-        lblSatyr = new QLabel(WidgetGame);
-        lblSatyr->setObjectName(QStringLiteral("lblSatyr"));
-        lblSatyr->setGeometry(QRect(553, 674, 28, 94));
-        lblSatyr->setBaseSize(QSize(28, 94));
-        lblSatyr->setPixmap(QPixmap(QString::fromUtf8(":/satyr.png")));
-        lblSatyr->setScaledContents(false);
-        lblSatyr->setAlignment(Qt::AlignCenter);
         widget = new QWidget(WidgetGame);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(0, 0, 161, 781));
@@ -89,6 +82,13 @@ public:
         background = new QLabel(WidgetGame);
         background->setObjectName(QStringLiteral("background"));
         background->setGeometry(QRect(160, 0, 871, 771));
+        lblSatyr = new QLabel(WidgetGame);
+        lblSatyr->setObjectName(QStringLiteral("lblSatyr"));
+        lblSatyr->setGeometry(QRect(600, 670, 28, 94));
+        lblSatyr->setBaseSize(QSize(28, 94));
+        lblSatyr->setPixmap(QPixmap(QString::fromUtf8(":/satyr.png")));
+        lblSatyr->setScaledContents(false);
+        lblSatyr->setAlignment(Qt::AlignCenter);
 
         retranslateUi(WidgetGame);
 
@@ -98,7 +98,6 @@ public:
     void retranslateUi(QWidget *WidgetGame)
     {
         WidgetGame->setWindowTitle(QApplication::translate("WidgetGame", "Dodge-It!", 0));
-        lblSatyr->setText(QString());
         lblScoreT->setText(QApplication::translate("WidgetGame", "Score :", 0));
         lblScore->setText(QApplication::translate("WidgetGame", "0", 0));
         lblLivesT->setText(QApplication::translate("WidgetGame", "Lives :", 0));
@@ -107,6 +106,7 @@ public:
         lblCheatMode->setText(QString());
         label->setText(QString());
         background->setText(QString());
+        lblSatyr->setText(QString());
     } // retranslateUi
 
 };

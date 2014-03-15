@@ -17,34 +17,6 @@
    <string notr="true">font: 75 12pt &quot;Ubuntu&quot;;
 color: rgb(255, 255, 255);</string>
   </property>
-  <widget class="QLabel" name="lblSatyr">
-   <property name="geometry">
-    <rect>
-     <x>553</x>
-     <y>674</y>
-     <width>28</width>
-     <height>94</height>
-    </rect>
-   </property>
-   <property name="baseSize">
-    <size>
-     <width>28</width>
-     <height>94</height>
-    </size>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="images/resources.qrc">:/satyr.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>false</bool>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
@@ -193,6 +165,34 @@ color: rgb(255, 47, 11)</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblSatyr">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>670</y>
+     <width>28</width>
+     <height>94</height>
+    </rect>
+   </property>
+   <property name="baseSize">
+    <size>
+     <width>28</width>
+     <height>94</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images/resources.qrc">:/satyr.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>
