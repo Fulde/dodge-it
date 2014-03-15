@@ -133,7 +133,6 @@ Game::~Game()
 }
 
 
-
 // called when the user requests to load a saved game.  It will
 // resume the saved game at the point that it was saved.
 void Game::load() {
