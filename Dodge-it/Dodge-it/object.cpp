@@ -13,6 +13,17 @@
 
 Object::Object() { }
 
+//This method increments the score when the user successfully dodges a falling object.
+//  The score is incremented based on the point value of the object that was dodged.
+void Object::incrementScore() {
+
+}
+
+//This method moves the falling object to its new location based off the speed of the object
+void Object::move() {
+    y += speed;
+}
+
 DamagingObject::DamagingObject(int initX, int labelHeight) {
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
     if (difficulty == Game::easy){
@@ -27,13 +38,41 @@ DamagingObject::DamagingObject(int initX, int labelHeight) {
     y = -labelHeight;
 }
 
-//This method increments the score when the user successfully dodges a falling object. 
-//  The score is incremented based on the point value of the object that was dodged.
-void Object::incrementScore() {
+Powerup::Powerup(int initX, int labelHeight) {
+    Game::diffSetting difficulty = Game::getInstance().getDifficulty();
+    y = 0;
+    if (difficulty == Game::easy){
+        speed = 1;
+    } else if (difficulty == Game::medium) {
+        speed = 10;
+    } else if (difficulty == Game::hard) {
+        speed = 15;
+    }
+
+    x = initX;
+    y = -labelHeight;
+}
+
+void Invul::stateToFile() {
 
 }
 
-//This method moves the falling object to its new location based off the speed of the object
-void Object::move() {
-    y += speed;  // += speed
+void Invul::activatePow() {
+
+}
+
+void ExLife::activatePow() {
+
+}
+
+void Slow::stateToFile() {
+
+}
+
+void Slow::activatePow() {
+
+}
+
+void Multiplier::activatePow() {
+
 }

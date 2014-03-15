@@ -107,15 +107,8 @@ void WidgetGame::resumeTimer()
     gameTimer->start();
 }
 
-// Call this method for every tick of the timer
-// should create an object each time using the random 1-30 number scale
-// 1-15 is the basic object
-// 11-18 is the explosive object
-// 19-21 is the invul powerup
-// 22-24 is the exlife powerup
-// 25-27 is the slow powerup
-// 28-30 is the muliplier powerup
-// the object should have a set x coordinate to start with (basically the object should have a place at the top of the screen
+// the object should have a set x coordinate to start with
+//    (basically the object should have a place at the top of the screen)
 // between 0 to the far right corner so (x, 0)
 void WidgetGame::gameTimerHit() {
     int randX = rand() % 855 + 165;
@@ -123,16 +116,51 @@ void WidgetGame::gameTimerHit() {
     if ((randX % 5) == 0)
     {
         ObjLabel* label = new ObjLabel(this);
-        QPixmap basic(":/basic.png");
-        label->setPixmap(basic);
-        label->setGeometry(randX, 0, basic.width(), basic.height());
         label->setAlignment(Qt::AlignHCenter);
 
-        //create new damaging object
-        DamagingObject *obj = new DamagingObject(randX, label->height());
-        Game::getInstance().addObject(obj);  // add to Game's vector of Object*
-
-        label->setObject(obj);
+        int random = rand() % 30 + 1;
+        if (random <= 27) {
+            if (random <= 15) {                                // (1-15) basic object
+               label->setPixmap(QPixmap(":/basic.png"));
+                DamagingObject *obj = new DamagingObject(randX, label->height());
+                Game::getInstance().addBasic(obj);
+                label->setObject(obj);
+            } else if (random >= 16 && random <= 23) {         // (16-23) small object
+                label->setPixmap(QPixmap(":/small.png"));
+                DamagingObject *obj = new DamagingObject(randX, label->height());
+                Game::getInstance().addSmall(obj);
+                label->setObject(obj);
+            } else if (random >= 24 && random <= 27) {         // (24-27) explosive object
+                label->setPixmap(QPixmap(":/explosive.png"));
+                DamagingObject *obj = new DamagingObject(randX, label->height());
+                Game::getInstance().addExplosive(obj);
+                label->setObject(obj);
+            }
+        } else if (random >= 28) {                             // (28-30) powerup
+            int randomPow = rand() % 4 + 1;
+            if (randomPow == 1) {                                 // (1) invul
+                label->setPixmap(QPixmap(":/shield.png"));
+                Invul *obj = new Invul(randX, label->height());
+                label->setObject(obj);
+                Game::getInstance().addPowerup(obj);
+            } else if (randomPow == 2) {                          // (2) exlife
+                label->setPixmap(QPixmap(":/heart.png"));
+                ExLife *obj = new ExLife(randX, label->height());
+                label->setObject(obj);
+                Game::getInstance().addPowerup(obj);
+            } else if (randomPow == 3) {                          // (3) slow
+                label->setPixmap(QPixmap(":/hourglass.png"));
+                Slow *obj = new Slow(randX, label->height());
+                label->setObject(obj);
+                Game::getInstance().addPowerup(obj);
+            } else if (randomPow == 4) {                          // (4) multiplier
+                label->setPixmap(QPixmap(":/multiplier.png"));
+                Multiplier *obj = new Multiplier(randX, label->height());
+                label->setObject(obj);
+                Game::getInstance().addPowerup(obj);
+            }
+        }
+        label->setGeometry(randX, 0, label->pixmap()->width(), label->pixmap()->height());
         label->show();
     }
 
@@ -157,6 +185,9 @@ void WidgetGame::gameTimerHit() {
             WidgetGame::decrementLives();
         }
 
+        curObj->move();
+        curLabel->move(curObj->getX(), curObj->getY());
+        curLabel->show();
 
         // need to figure out how to destry objects; label->deleteLater() will take care of the label, but if I just
         // write "delete curObj;" that will remove it from  memory, and the vector will still hold a pointer to that
@@ -165,12 +196,24 @@ void WidgetGame::gameTimerHit() {
         if (curObj->getY() > 768)
         {
             incrementScore();
-            //destroy object here
+            if (curLabel->pixmap()->toImage().text() == "basic.png") {
+                curLabel->deleteLater();
+                delete curObj;
+                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().end() - 1);
+            } else if (curLabel->pixmap()->toImage().text() == "small.png") {
+                curLabel->deleteLater();
+                delete curObj;
+                Game::getInstance().getSmalls().erase(Game::getInstance().getSmalls().end() - 1);
+            } else if (curLabel->pixmap()->toImage().text() == "explosive.png") {
+                curLabel->deleteLater();
+                delete curObj;
+                Game::getInstance().getExplosives().erase(Game::getInstance().getExplosives().end() - 1);
+            } else /*assume the pixmap is a powerup*/ {
+                curLabel->deleteLater();
+                delete curObj;
+                Game::getInstance().getPowerups().erase(Game::getInstance().getPowerups().end() - 1);
+            }
         }
-
-        curObj->move();
-        curLabel->move(curObj->getX(), curObj->getY());
-        curLabel->show();
     }
 }
 
