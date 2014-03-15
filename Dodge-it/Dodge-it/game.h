@@ -83,6 +83,8 @@ public:
     int getTimeInterval() { return timeInterval; }
     int getPlayerX() { return player->getX(); }
     int getPlayerY() { return player->getY(); }
+    int getPlayerLives() { return player->getLives(); }
+    int setPlayerLives(int newLives) { player->setLives(newLives); }
     diffSetting getDifficulty() { return difficulty; }
 
     void setMultiplier(int newMult) { multiplier = newMult; }

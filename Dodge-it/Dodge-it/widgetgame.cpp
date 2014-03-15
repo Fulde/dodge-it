@@ -61,16 +61,18 @@ void WidgetGame::incrementScore() {
     ui->lblScore->setText(QString::number(ui->lblScore->text().toInt() + 1));
 }
 
+//updates both the player's lives and the label representation
 void WidgetGame::decrementLives() {
     if (WidgetPause::cheatMode == true) {
         //displays cheat mode on indication to screen
-        ui->lblLives->setText("Cheat Mode On" + QString::number((ui->lblLives->text().toInt() - 1)));
+        ui->lblLives->setText(QString::number((ui->lblLives->text().toInt())));
     }
     else {
         //normal execution
         ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() - 1));
+        Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() - 1);
+        qDebug() << Game::getInstance().getPlayerLives();
     }
-    // STILL NEED TO DECREMENT THE CHARACTER'S LIVES -- THIS IS ONLY THE LABEL
 }
 
 void WidgetGame::keyPressEvent(QKeyEvent *k)
@@ -190,6 +192,20 @@ void WidgetGame::gameTimerHit() {
         curObj->move();
         curLabel->move(curObj->getX(), curObj->getY());
         curLabel->show();
+
+        //Test for cheat mode
+        if (WidgetPause::cheatMode == true) {
+            ui->lblCheatMode->setText("Cheat Mode On");
+        }
+        else if (WidgetPause::cheatMode == false) {
+            ui->lblCheatMode->setText("");
+        }
+
+        //NOT FUNCTIONAL YET.
+        //Test for player losing all their lives
+        if (Game::getInstance().getPlayerLives() == 0) {
+            Game::getInstance().quit();
+        }
 
         // need to figure out how to destry objects; label->deleteLater() will take care of the label, but if I just
         // write "delete curObj;" that will remove it from  memory, and the vector will still hold a pointer to that

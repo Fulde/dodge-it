@@ -28,7 +28,7 @@ WidgetPause::WidgetPause(QWidget *parent) :
     }
 }
 
-bool WidgetPause::cheatMode = false;
+bool WidgetPause::cheatMode;
 
 void WidgetPause::on_btnResume_clicked() {
     dynamic_cast<WidgetGame*>(parentWidget())->resumeTimer();
