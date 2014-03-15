@@ -37,38 +37,48 @@ public:
         if (WidgetStart->objectName().isEmpty())
             WidgetStart->setObjectName(QStringLiteral("WidgetStart"));
         WidgetStart->resize(1024, 768);
-        WidgetStart->setStyleSheet(QStringLiteral(""));
+        WidgetStart->setAutoFillBackground(false);
+        WidgetStart->setStyleSheet(QLatin1String("background-color: rgb(0, 0, 0);\n"
+"color: rgb(255, 141, 11);"));
         btnStart = new QPushButton(WidgetStart);
         btnStart->setObjectName(QStringLiteral("btnStart"));
-        btnStart->setGeometry(QRect(30, 660, 961, 71));
-        btnStart->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
+        btnStart->setGeometry(QRect(30, 620, 961, 111));
+        btnStart->setAutoFillBackground(false);
+        btnStart->setStyleSheet(QLatin1String("font: 50pt \"Sans Serif\";\n"
+"color: rgb(0, 0, 0);\n"
+"background-color: rgb(8, 193, 23);"));
         btnStart->setAutoDefault(false);
         btnStart->setDefault(false);
         rbEasy = new QRadioButton(WidgetStart);
         rbEasy->setObjectName(QStringLiteral("rbEasy"));
-        rbEasy->setGeometry(QRect(400, 270, 171, 61));
-        rbEasy->setStyleSheet(QStringLiteral("font: 40pt"));
+        rbEasy->setGeometry(QRect(400, 240, 231, 101));
+        rbEasy->setStyleSheet(QLatin1String("font: 60pt;\n"
+"color: rgb(251, 255, 3)"));
         rbEasy->setChecked(true);
         rbMedium = new QRadioButton(WidgetStart);
         rbMedium->setObjectName(QStringLiteral("rbMedium"));
-        rbMedium->setGeometry(QRect(400, 360, 271, 61));
-        rbMedium->setStyleSheet(QStringLiteral("font: 40pt;"));
+        rbMedium->setGeometry(QRect(400, 350, 331, 71));
+        rbMedium->setStyleSheet(QStringLiteral("font: 60pt;"));
         rbHard = new QRadioButton(WidgetStart);
         rbHard->setObjectName(QStringLiteral("rbHard"));
-        rbHard->setGeometry(QRect(400, 450, 181, 61));
-        rbHard->setStyleSheet(QStringLiteral("font: 40pt;"));
+        rbHard->setGeometry(QRect(400, 450, 221, 61));
+        rbHard->setStyleSheet(QLatin1String("color: rgb(240, 8, 0);\n"
+"font: 60pt;"));
         btnLoad = new QPushButton(WidgetStart);
         btnLoad->setObjectName(QStringLiteral("btnLoad"));
-        btnLoad->setGeometry(QRect(730, 580, 261, 61));
-        btnLoad->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
+        btnLoad->setGeometry(QRect(730, 520, 261, 61));
+        btnLoad->setStyleSheet(QLatin1String("font: 20pt \"Sans Serif\";\n"
+"color: rgb(0, 0, 0);"));
         label = new QLabel(WidgetStart);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(140, 20, 721, 161));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/logo.png")));
+        label->setGeometry(QRect(80, 0, 861, 181));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/logooption1.png")));
+        label->setScaledContents(true);
         btnHelp = new QPushButton(WidgetStart);
         btnHelp->setObjectName(QStringLiteral("btnHelp"));
-        btnHelp->setGeometry(QRect(30, 580, 261, 61));
-        btnHelp->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
+        btnHelp->setGeometry(QRect(30, 530, 261, 61));
+        btnHelp->setStyleSheet(QLatin1String("font: 20pt \"Sans Serif\";\n"
+"color: rgb(0, 0, 0);"));
 
         retranslateUi(WidgetStart);
 

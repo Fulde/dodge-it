@@ -13,20 +13,28 @@
   <property name="windowTitle">
    <string>Dodge-It!</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(255, 141, 11);</string>
   </property>
   <widget class="QPushButton" name="btnStart">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>660</y>
+     <y>620</y>
      <width>961</width>
-     <height>71</height>
+     <height>111</height>
     </rect>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">font: 20pt &quot;Sans Serif&quot;;</string>
+    <string notr="true">font: 50pt &quot;Sans Serif&quot;;
+color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string>Start New Game</string>
@@ -42,13 +50,14 @@
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>270</y>
-     <width>171</width>
-     <height>61</height>
+     <y>240</y>
+     <width>231</width>
+     <height>101</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 40pt</string>
+    <string notr="true">font: 60pt;
+color: rgb(251, 255, 3)</string>
    </property>
    <property name="text">
     <string>Easy</string>
@@ -61,13 +70,13 @@
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>360</y>
-     <width>271</width>
-     <height>61</height>
+     <y>350</y>
+     <width>331</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 40pt;</string>
+    <string notr="true">font: 60pt;</string>
    </property>
    <property name="text">
     <string>Medium</string>
@@ -78,12 +87,13 @@
     <rect>
      <x>400</x>
      <y>450</y>
-     <width>181</width>
+     <width>221</width>
      <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 40pt;</string>
+    <string notr="true">color: rgb(240, 8, 0);
+font: 60pt;</string>
    </property>
    <property name="text">
     <string>Hard</string>
@@ -93,13 +103,14 @@
    <property name="geometry">
     <rect>
      <x>730</x>
-     <y>580</y>
+     <y>520</y>
      <width>261</width>
      <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 20pt &quot;Sans Serif&quot;;</string>
+    <string notr="true">font: 20pt &quot;Sans Serif&quot;;
+color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string>Load Game</string>
@@ -108,30 +119,34 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>20</y>
-     <width>721</width>
-     <height>161</height>
+     <x>80</x>
+     <y>0</y>
+     <width>861</width>
+     <height>181</height>
     </rect>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="images/resources.qrc">:/logo.png</pixmap>
+    <pixmap resource="images/resources.qrc">:/logooption1.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="btnHelp">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>580</y>
+     <y>530</y>
      <width>261</width>
      <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 20pt &quot;Sans Serif&quot;;</string>
+    <string notr="true">font: 20pt &quot;Sans Serif&quot;;
+color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string>Help</string>

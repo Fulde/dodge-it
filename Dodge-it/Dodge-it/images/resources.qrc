@@ -13,7 +13,8 @@
         <file>heart.png</file>
         <file>shield.png</file>
         <file>hourglass.png</file>
-        <file>multiplier1.png</file>
         <file>multiplier.png</file>
+        <file>logooption1.png</file>
+        <file>greenbutton.jpeg</file>
     </qresource>
 </RCC>
