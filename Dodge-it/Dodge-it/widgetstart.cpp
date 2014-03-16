@@ -16,15 +16,8 @@ WidgetStart::WidgetStart(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WidgetStart)
 {
-    //Set up the ui for the widget
     ui->setupUi(this);
     main = dynamic_cast<Widget*>(parent);
-}
-
-//Destructor for Widget
-WidgetStart::~WidgetStart()
-{
-    delete ui;
 }
 
 void WidgetStart::on_btnStart_clicked()

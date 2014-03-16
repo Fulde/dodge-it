@@ -35,55 +35,45 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="lblScores">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>90</y>
-     <width>21</width>
-     <height>41</height>
+     <x>40</x>
+     <y>110</y>
+     <width>431</width>
+     <height>211</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 31, 11);
-font: 30pt;</string>
+    <string notr="true">font: 75 14pt &quot;Ubuntu&quot;;</string>
    </property>
    <property name="text">
-    <string>1</string>
+    <string>1
+2
+3
+4
+5
+6
+7
+8
+9
+10</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QPushButton" name="btnQuit">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>130</y>
-     <width>31</width>
-     <height>41</height>
+     <x>200</x>
+     <y>340</y>
+     <width>98</width>
+     <height>27</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 170, 0);
-font: 30pt;</string>
-   </property>
    <property name="text">
-    <string>2</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>170</y>
-     <width>21</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 0);
-font: 30pt;</string>
-   </property>
-   <property name="text">
-    <string>3</string>
+    <string>Exit</string>
    </property>
   </widget>
  </widget>

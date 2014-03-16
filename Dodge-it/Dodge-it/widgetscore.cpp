@@ -13,12 +13,5 @@ WidgetScore::WidgetScore(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WidgetScore)
 {
-    //Set up the ui for the widget
     ui->setupUi(this);
-}
-
-//Destructor for Widget
-WidgetScore::~WidgetScore()
-{
-    delete ui;
 }

@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -22,8 +23,9 @@ QT_BEGIN_NAMESPACE
 class Ui_WidgetScore
 {
 public:
-    QLabel *lblTitle;
-    QLabel *lblHighScores;
+    QLabel *label;
+    QLabel *lblScores;
+    QPushButton *btnQuit;
 
     void setupUi(QWidget *WidgetScore)
     {
@@ -31,15 +33,19 @@ public:
             WidgetScore->setObjectName(QStringLiteral("WidgetScore"));
         WidgetScore->resize(512, 384);
         WidgetScore->setStyleSheet(QStringLiteral(""));
-        lblTitle = new QLabel(WidgetScore);
-        lblTitle->setObjectName(QStringLiteral("lblTitle"));
-        lblTitle->setGeometry(QRect(10, 10, 491, 41));
-        lblTitle->setStyleSheet(QStringLiteral("font: 75 22pt \"Ubuntu\";"));
-        lblTitle->setAlignment(Qt::AlignCenter);
-        lblHighScores = new QLabel(WidgetScore);
-        lblHighScores->setObjectName(QStringLiteral("lblHighScores"));
-        lblHighScores->setGeometry(QRect(70, 80, 371, 271));
-        lblHighScores->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        label = new QLabel(WidgetScore);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(70, 10, 381, 71));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/highscores2.png")));
+        label->setScaledContents(true);
+        lblScores = new QLabel(WidgetScore);
+        lblScores->setObjectName(QStringLiteral("lblScores"));
+        lblScores->setGeometry(QRect(40, 110, 431, 211));
+        lblScores->setStyleSheet(QStringLiteral("font: 75 14pt \"Ubuntu\";"));
+        lblScores->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        btnQuit = new QPushButton(WidgetScore);
+        btnQuit->setObjectName(QStringLiteral("btnQuit"));
+        btnQuit->setGeometry(QRect(200, 340, 98, 27));
 
         retranslateUi(WidgetScore);
 
@@ -49,10 +55,18 @@ public:
     void retranslateUi(QWidget *WidgetScore)
     {
         WidgetScore->setWindowTitle(QApplication::translate("WidgetScore", "High Scores", 0));
-        lblTitle->setText(QApplication::translate("WidgetScore", "HIGHSCORES", 0));
-        lblHighScores->setText(QApplication::translate("WidgetScore", "High Scores go Here\n"
-"\n"
-"You can use the normal new line", 0));
+        label->setText(QString());
+        lblScores->setText(QApplication::translate("WidgetScore", "1\n"
+"2\n"
+"3\n"
+"4\n"
+"5\n"
+"6\n"
+"7\n"
+"8\n"
+"9\n"
+"10", 0));
+        btnQuit->setText(QApplication::translate("WidgetScore", "Exit", 0));
     } // retranslateUi
 
 };

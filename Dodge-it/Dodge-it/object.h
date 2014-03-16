@@ -44,8 +44,6 @@ protected:
     int points;
     //the number of lives the user loses for running into this object
     int damage;
-    //each object is given a unique id number to identify it when updating, saving, and loading the game
-    int id;
 
 public:
     DamagingObject(int initX, int labelHeight);
@@ -53,8 +51,6 @@ public:
     void destroyLabel();
     //returns the number of points the user scores for successfully dodging this object
     int getPts() { return points; }
-    //returns the id number of this object
-    int getId() { return id; }
 };
 
 

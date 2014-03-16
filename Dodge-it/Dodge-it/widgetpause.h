@@ -24,7 +24,7 @@ public:
     //explicit Widget constructor
     explicit WidgetPause(QWidget *parent = 0);
     //Widget destructor
-    ~WidgetPause();
+    ~WidgetPause() { delete ui; }
     WidgetGame *par;
 
 private slots:

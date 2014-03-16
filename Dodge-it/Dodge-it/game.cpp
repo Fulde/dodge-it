@@ -152,8 +152,7 @@ Character::Character() { lives = 3; } // may want to supply initX and initY as p
 //creates the private instance of the game
 Game Game::instance;
 
-Game::Game() : multiplier(1)
-{
+Game::Game() : multiplier(1) {
     player = new Character();
 }
 
@@ -190,7 +189,6 @@ void Game::load() {
 bool Game::save() {
     return true;
 }
-
 
 void Game::quit() {
     // call high score window

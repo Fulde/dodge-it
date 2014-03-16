@@ -23,7 +23,7 @@ public:
     //explicit Widget constructor
     explicit WidgetStart(QWidget *parent = 0);
     //Widget destructor
-    ~WidgetStart();
+    ~WidgetStart() { delete ui; }
     
 private slots:
     void on_btnStart_clicked();

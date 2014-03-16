@@ -13,6 +13,8 @@
 #include "widgetgame.h"
 #include "game.h"
 
+bool WidgetPause::cheatMode;
+
 //Instantiates the Widget
 WidgetPause::WidgetPause(QWidget *parent) :
     QWidget(parent),
@@ -27,8 +29,6 @@ WidgetPause::WidgetPause(QWidget *parent) :
         ui->btnCheat->setChecked(false);
     }
 }
-
-bool WidgetPause::cheatMode;
 
 void WidgetPause::on_btnResume_clicked() {
     dynamic_cast<WidgetGame*>(parentWidget())->resumeTimer();
@@ -57,9 +57,4 @@ void WidgetPause::on_btnStart_clicked() {
     this->hide();
     par->hide();
     dynamic_cast<WidgetStart*>(par->main->startMenu)->show();
-}
-
-//Destructor for Widget
-WidgetPause::~WidgetPause() {
-    delete ui;
 }
