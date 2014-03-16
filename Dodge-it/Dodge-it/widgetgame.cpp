@@ -214,10 +214,6 @@ void WidgetGame::gameTimerHit() {
             Game::getInstance().quit();
         }
 
-        // need to figure out how to destry objects; label->deleteLater() will take care of the label, but if I just
-        // write "delete curObj;" that will remove it from  memory, and the vector will still hold a pointer to that
-        // memory. Bad idea. Should probably give each object an id, which might need to be cycled to prevent int
-        // overflow and segfaulting
         if (curObj->getY() > 768)
         {
             incrementScore();

@@ -24,12 +24,13 @@ QT_BEGIN_NAMESPACE
 class Ui_WidgetStart
 {
 public:
-    QPushButton *btnStart;
+    QWidget *widget;
+    QLabel *label;
     QRadioButton *rbEasy;
     QRadioButton *rbMedium;
     QRadioButton *rbHard;
     QPushButton *btnLoad;
-    QLabel *label;
+    QPushButton *btnStart;
     QPushButton *btnHelp;
 
     void setupUi(QWidget *WidgetStart)
@@ -40,7 +41,36 @@ public:
         WidgetStart->resize(1024, 768);
         WidgetStart->setAutoFillBackground(true);
         WidgetStart->setStyleSheet(QStringLiteral(""));
-        btnStart = new QPushButton(WidgetStart);
+        widget = new QWidget(WidgetStart);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(0, 0, 1024, 768));
+        widget->setStyleSheet(QStringLiteral("background:#000000;"));
+        label = new QLabel(widget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(80, 20, 861, 181));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/logooption1.png")));
+        label->setScaledContents(true);
+        rbEasy = new QRadioButton(widget);
+        rbEasy->setObjectName(QStringLiteral("rbEasy"));
+        rbEasy->setGeometry(QRect(400, 240, 231, 101));
+        rbEasy->setStyleSheet(QLatin1String("font: 60pt;\n"
+"color:rgb(229, 229, 31);"));
+        rbEasy->setChecked(true);
+        rbMedium = new QRadioButton(widget);
+        rbMedium->setObjectName(QStringLiteral("rbMedium"));
+        rbMedium->setGeometry(QRect(400, 350, 331, 71));
+        rbMedium->setStyleSheet(QLatin1String("font: 60pt;\n"
+"color: rgb(255, 142, 12);"));
+        rbHard = new QRadioButton(widget);
+        rbHard->setObjectName(QStringLiteral("rbHard"));
+        rbHard->setGeometry(QRect(400, 450, 221, 61));
+        rbHard->setStyleSheet(QLatin1String("color: rgb(240, 8, 0);\n"
+"font: 60pt;"));
+        btnLoad = new QPushButton(widget);
+        btnLoad->setObjectName(QStringLiteral("btnLoad"));
+        btnLoad->setGeometry(QRect(730, 530, 261, 61));
+        btnLoad->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
+        btnStart = new QPushButton(widget);
         btnStart->setObjectName(QStringLiteral("btnStart"));
         btnStart->setEnabled(true);
         btnStart->setGeometry(QRect(30, 620, 961, 111));
@@ -53,30 +83,14 @@ public:
         btnStart->setAutoDefault(false);
         btnStart->setDefault(false);
         btnStart->setFlat(false);
-        rbEasy = new QRadioButton(WidgetStart);
-        rbEasy->setObjectName(QStringLiteral("rbEasy"));
-        rbEasy->setGeometry(QRect(400, 240, 231, 101));
-        rbEasy->setStyleSheet(QStringLiteral("font: 60pt;"));
-        rbEasy->setChecked(true);
-        rbMedium = new QRadioButton(WidgetStart);
-        rbMedium->setObjectName(QStringLiteral("rbMedium"));
-        rbMedium->setGeometry(QRect(400, 350, 331, 71));
-        rbMedium->setStyleSheet(QLatin1String("font: 60pt;\n"
-"color: rgb(255, 142, 12);"));
-        rbHard = new QRadioButton(WidgetStart);
-        rbHard->setObjectName(QStringLiteral("rbHard"));
-        rbHard->setGeometry(QRect(400, 450, 221, 61));
-        rbHard->setStyleSheet(QLatin1String("color: rgb(240, 8, 0);\n"
-"font: 60pt;"));
-        btnLoad = new QPushButton(WidgetStart);
-        btnLoad->setObjectName(QStringLiteral("btnLoad"));
-        btnLoad->setGeometry(QRect(730, 520, 261, 61));
-        btnLoad->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
-        label = new QLabel(WidgetStart);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(80, 20, 861, 181));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/logooption1.png")));
-        label->setScaledContents(true);
+        label->raise();
+        label->raise();
+        rbEasy->raise();
+        rbMedium->raise();
+        rbHard->raise();
+        btnLoad->raise();
+        btnLoad->raise();
+        btnStart->raise();
         btnHelp = new QPushButton(WidgetStart);
         btnHelp->setObjectName(QStringLiteral("btnHelp"));
         btnHelp->setGeometry(QRect(30, 530, 261, 61));
@@ -90,12 +104,12 @@ public:
     void retranslateUi(QWidget *WidgetStart)
     {
         WidgetStart->setWindowTitle(QApplication::translate("WidgetStart", "Dodge-It!", 0));
-        btnStart->setText(QApplication::translate("WidgetStart", "Start New Game", 0));
+        label->setText(QString());
         rbEasy->setText(QApplication::translate("WidgetStart", "Easy", 0));
         rbMedium->setText(QApplication::translate("WidgetStart", "Medium", 0));
         rbHard->setText(QApplication::translate("WidgetStart", "Hard", 0));
         btnLoad->setText(QApplication::translate("WidgetStart", "Load Game", 0));
-        label->setText(QString());
+        btnStart->setText(QApplication::translate("WidgetStart", "Start New Game", 0));
         btnHelp->setText(QApplication::translate("WidgetStart", "Help", 0));
     } // retranslateUi
 

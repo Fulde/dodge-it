@@ -22,130 +22,152 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QPushButton" name="btnStart">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
+  <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>620</y>
-     <width>961</width>
-     <height>111</height>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>768</height>
     </rect>
    </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
    <property name="styleSheet">
-    <string notr="true">font: 50pt &quot;Sans Serif&quot;;
+    <string notr="true">background:#000000;</string>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>20</y>
+      <width>861</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="images/resources.qrc">:/logooption1.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rbEasy">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>240</y>
+      <width>231</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 60pt;
+color:rgb(229, 229, 31);</string>
+    </property>
+    <property name="text">
+     <string>Easy</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rbMedium">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>350</y>
+      <width>331</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 60pt;
+color: rgb(255, 142, 12);</string>
+    </property>
+    <property name="text">
+     <string>Medium</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rbHard">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>450</y>
+      <width>221</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(240, 8, 0);
+font: 60pt;</string>
+    </property>
+    <property name="text">
+     <string>Hard</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnLoad">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>530</y>
+      <width>261</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 20pt &quot;Sans Serif&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Load Game</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnStart">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>620</y>
+      <width>961</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 50pt &quot;Sans Serif&quot;;
 background-color: rgb(36, 218, 36);
 color: rgb(0, 0, 0);
 border-color: rgb(0, 0, 0);</string>
-   </property>
-   <property name="text">
-    <string>Start New Game</string>
-   </property>
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-   <property name="default">
-    <bool>false</bool>
-   </property>
-   <property name="flat">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="rbEasy">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>240</y>
-     <width>231</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 60pt;</string>
-   </property>
-   <property name="text">
-    <string>Easy</string>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="rbMedium">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>350</y>
-     <width>331</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 60pt;
-color: rgb(255, 142, 12);</string>
-   </property>
-   <property name="text">
-    <string>Medium</string>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="rbHard">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>450</y>
-     <width>221</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(240, 8, 0);
-font: 60pt;</string>
-   </property>
-   <property name="text">
-    <string>Hard</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btnLoad">
-   <property name="geometry">
-    <rect>
-     <x>730</x>
-     <y>520</y>
-     <width>261</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 20pt &quot;Sans Serif&quot;;</string>
-   </property>
-   <property name="text">
-    <string>Load Game</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>20</y>
-     <width>861</width>
-     <height>181</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="images/resources.qrc">:/logooption1.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
+    </property>
+    <property name="text">
+     <string>Start New Game</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>label</zorder>
+   <zorder>rbEasy</zorder>
+   <zorder>rbMedium</zorder>
+   <zorder>rbHard</zorder>
+   <zorder>btnLoad</zorder>
+   <zorder>btnLoad</zorder>
+   <zorder>btnStart</zorder>
   </widget>
   <widget class="QPushButton" name="btnHelp">
    <property name="geometry">
