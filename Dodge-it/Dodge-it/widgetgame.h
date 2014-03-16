@@ -14,6 +14,7 @@
 #include <QEvent>
 #include <QKeyEvent>
 #include <QLabel>
+#include <QTimer>
 
 namespace Ui {
 class WidgetGame;

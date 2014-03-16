@@ -15,9 +15,17 @@
 #include <QFile>
 #include <QTextStream>
 #include <cassert>
+#include <fstream>
+
 using namespace std;
 
 // ================================ HIGHSCORE ======================================
+
+vector<HighScore*> HighScore::highScores;
+
+HighScore::HighScore(int highscore, string usrname, string diff) :
+    score(highscore), username(usrname), difficulty(diff) { }
+
 
 void HighScore::addToFile(int newScore) {
 
@@ -34,8 +42,31 @@ void HighScore::addToFile(int newScore) {
     file.close();
 }
 
-void HighScore::displayScores() {
+string HighScore::toString()
+{
+    return score + " " + username + " " + difficulty;
+}
 
+void HighScore::loadScores(string fileName)
+{
+    string data, username, difficulty;
+    int score;
+
+    ifstream strm(fileName);
+    getline(strm, data);
+    while (strm)
+    {
+        score = stoi(data.substr(0, data.find(' ')));
+        data.erase(0, data.find(' ') + 1);
+
+        username = data.substr(0, data.find(' '));
+        difficulty = data.substr(data.find(' ') + 1);
+
+        HighScore *highscore = new HighScore(score, username, difficulty);
+        highScores.push_back(highscore);
+
+        getline(strm, data);
+    }
 }
 
 bool HighScore::scoreCompare() {
@@ -60,9 +91,6 @@ bool HighScore::scoreCompare() {
     return true;
 }
 
-void HighScore::loadScores() {
-
-}
 
 void HighScore::sortScores() {
     string file = "test.txt";
