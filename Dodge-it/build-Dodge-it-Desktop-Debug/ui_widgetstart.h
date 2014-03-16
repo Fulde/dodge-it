@@ -104,9 +104,9 @@ public:
         rbEasy->setText(QApplication::translate("WidgetStart", "Easy", 0));
         rbMedium->setText(QApplication::translate("WidgetStart", "Medium", 0));
         rbHard->setText(QApplication::translate("WidgetStart", "Hard", 0));
-        btnLoad->setText(QApplication::translate("WidgetStart", "Load Game", 0));
+        btnLoad->setText(QApplication::translate("WidgetStart", "Load", 0));
         btnStart->setText(QApplication::translate("WidgetStart", "Start New Game", 0));
-        btnQuit->setText(QApplication::translate("WidgetStart", "Ouit", 0));
+        btnQuit->setText(QApplication::translate("WidgetStart", "Quit", 0));
         btnHelp->setText(QApplication::translate("WidgetStart", "Help", 0));
     } // retranslateUi
 
