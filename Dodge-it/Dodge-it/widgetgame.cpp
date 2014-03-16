@@ -58,11 +58,6 @@ WidgetGame::WidgetGame(QWidget *parent) :
     hitTimer->setSingleShot(true);
 }
 
-//Destructor for Widget
-WidgetGame::~WidgetGame() {
-    delete ui;
-}
-
 void WidgetGame::incrementScore() {
     ui->lblScore->setText(QString::number(ui->lblScore->text().toInt() + 1));
 }
@@ -72,8 +67,7 @@ void WidgetGame::decrementLives() {
     if (WidgetPause::cheatMode == true) {
         //displays cheat mode on indication to screen
         ui->lblLives->setText(QString::number((ui->lblLives->text().toInt())));
-    }
-    else {
+    } else {
         //normal execution
         ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() - 1));
         Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() - 1);
@@ -105,19 +99,7 @@ void WidgetGame::keyPressEvent(QKeyEvent *k)
     }
 }
 
-void WidgetGame::pauseTimer()
-{
-    gameTimer->stop();
-}
-
-void WidgetGame::resumeTimer()
-{
-    gameTimer->start();
-}
-
-// the object should have a set x coordinate to start with
-//    (basically the object should have a place at the top of the screen)
-// between 0 to the far right corner so (x, 0)
+// the object should start with a random x coordinate at the top of the window
 void WidgetGame::gameTimerHit() {
     int randX = rand() % 855 + 165;
 
@@ -168,8 +150,6 @@ void WidgetGame::gameTimerHit() {
                 label->setObject(obj);
                 Game::getInstance().addPowerup(obj);
             }
-
-
         }
         label->setGeometry(randX, -label->height(), label->pixmap()->width(), label->pixmap()->height());
         label->show();
@@ -183,11 +163,6 @@ void WidgetGame::gameTimerHit() {
             continue;
 
         Object *curObj = curLabel->getObject();
-
-        // collision
-        /*if ((Game::getInstance().getPlayerX() >= curObj->getX() && Game::getInstance().getPlayerX() <= (curObj->getX() + curLabel->width())) &&     we might need this later; not sure, but I don't feel like rewriting it
-                (Game::getInstance().getPlayerY() >= curObj->getY() && Game::getInstance().getPlayerY() <= (curObj->getY() + curLabel->height())))
-        */
 
         if (!hitTimer->isActive() && ui->lblSatyr->geometry().intersects(curLabel->geometry()))
         {
@@ -235,9 +210,7 @@ void WidgetGame::gameTimerHit() {
     }
 }
 
-
-void WidgetGame::hitTimerHit()
-{
+void WidgetGame::hitTimerHit() {
     // not sure if anything really needs to be done in here; good for debugging
     qDebug() << "Able to be hit again";
 }
@@ -249,8 +222,4 @@ void WidgetGame::on_btnPause_clicked() {
     pause->show();
 }
 
-
-ObjLabel::ObjLabel(QWidget *parent) : QLabel(parent), wid(parent)
-{
-
-}
+ObjLabel::ObjLabel(QWidget *parent) : QLabel(parent), wid(parent) { }
