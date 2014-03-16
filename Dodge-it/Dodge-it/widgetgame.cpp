@@ -47,7 +47,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
 
     // used for the general game ticks; its hit method moves items and calculates collisions
     gameTimer = new QTimer(this); // this originally did not have a parent
-    gameTimer->setInterval(Game::getInstance().getInterval()); //  argument was  ... changed for faster testing
+    gameTimer->setInterval(Game::getInstance().getInterval());
     connect(gameTimer, &QTimer::timeout, this, &WidgetGame::gameTimerHit);
     gameTimer->start();
 
@@ -83,22 +83,22 @@ void WidgetGame::decrementLives() {
 
 void WidgetGame::keyPressEvent(QKeyEvent *k)
 {
-    if (k->key() == Qt::Key_Up && (ui->lblSatyr->y() > 0))
+    if ((k->key() == Qt::Key_Up || k->key() == Qt::Key_W) && (ui->lblSatyr->y() > 0))
     {
         Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
         ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
     }
-    else if (k->key() == Qt::Key_Down && ((ui->lblSatyr->y() + ui->lblSatyr->height()) < 768))
+    else if ((k->key() == Qt::Key_Down || k->key() == Qt::Key_S) && ((ui->lblSatyr->y() + ui->lblSatyr->height()) < 768))
     {
         Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
         ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
     }
-    else if (k->key() == Qt::Key_Left && (ui->lblSatyr->x() > 160))
+    else if ((k->key() == Qt::Key_Left || k->key() == Qt::Key_A) && (ui->lblSatyr->x() > 170))
     {
         Game::getInstance().movePlayer(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
         ui->lblSatyr->move(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
     }
-    else if (k->key() == Qt::Key_Right && ((ui->lblSatyr->x() + ui->lblSatyr->width() < 1044)))
+    else if ((k->key() == Qt::Key_Right || k->key() == Qt::Key_D) && ((ui->lblSatyr->x() + ui->lblSatyr->width() < 1018)))
     {
         Game::getInstance().movePlayer(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
         ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
@@ -169,7 +169,7 @@ void WidgetGame::gameTimerHit() {
 
 
         }
-        label->setGeometry(randX, 0, label->pixmap()->width(), label->pixmap()->height());
+        label->setGeometry(randX, -label->height(), label->pixmap()->width(), label->pixmap()->height());
         label->show();
     }
 
