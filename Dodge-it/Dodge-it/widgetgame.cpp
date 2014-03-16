@@ -5,9 +5,10 @@
 //==============================
 
 #include "widgetgame.h"
+#include "ui_widgetgame.h"
 #include "widgetstart.h"
 #include "widgetpause.h"
-#include "ui_widgetgame.h"
+#include "widgetscore.h"
 #include "object.h"
 #include "game.h"
 
@@ -59,6 +60,8 @@ WidgetGame::WidgetGame(QWidget *parent) :
     connect(hitTimer, &QTimer::timeout, this, &WidgetGame::hitTimerHit);
     hitTimer->setSingleShot(true);
 }
+
+WidgetGame::~WidgetGame() { delete ui; }
 
 void WidgetGame::incrementScore() {
     ui->lblScore->setText(QString::number(ui->lblScore->text().toInt() + 1));
@@ -168,9 +171,17 @@ void WidgetGame::gameTimerHit() {
 
         if (!hitTimer->isActive() && ui->lblSatyr->geometry().intersects(curLabel->geometry()))
         {
-            qDebug() << "You've been hit";
-            hitTimer->start();
-            WidgetGame::decrementLives();
+            if (Game::getInstance().getPlayerLives() == 0)
+            {
+                gameTimer->stop();
+
+                WidgetScore* score = new WidgetScore(this);
+                score->show();
+            } else {
+                qDebug() << "You've been hit";
+                hitTimer->start();
+                WidgetGame::decrementLives();
+            }
         }
 
         curObj->move();
@@ -213,7 +224,6 @@ void WidgetGame::hitTimerHit() {
 
 void WidgetGame::on_btnPause_clicked() {
     gameTimer->stop();
-
     WidgetPause* pause = new WidgetPause(this);
     pause->show();
 }

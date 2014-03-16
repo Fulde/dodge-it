@@ -30,6 +30,8 @@ WidgetPause::WidgetPause(QWidget *parent) :
     }
 }
 
+WidgetPause::~WidgetPause() { delete ui; }
+
 void WidgetPause::on_btnResume_clicked() {
     dynamic_cast<WidgetGame*>(parentWidget())->resumeTimer();
     this->hide();

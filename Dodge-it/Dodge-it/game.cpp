@@ -50,7 +50,7 @@ string HighScore::toString()
 string HighScore::scoresToString()
 {
     string scores = "";
-    for (int i = 0; i < highScores.size(); i++)
+    for (size_t i = 0; i < highScores.size(); i++)
     {
         scores += highScores.at(i)->toString() + "\n\n";
     }
@@ -134,9 +134,6 @@ void Character::handleCollision() {
   //  }
     --lives;
   //    WidgetGame::decrementLives;
-    if (lives == 0) {
-        Game::getInstance().quit();
-    }
 }
 
 void Character::move(int newX, int newY)
@@ -176,27 +173,20 @@ Game::~Game()
     powerups.clear();
 }
 
-
 // called when the user requests to load a saved game.  It will
 // resume the saved game at the point that it was saved.
-void Game::load() {
-
-}
+void Game::load() { }
 
 // called when the user requests to save their current game.
 // It will save the current state of the game including the score, number of lives,
 // and the locations of all falling objects and the character itself.
-bool Game::save() {
-    return true;
-}
+bool Game::save() { return true;}
 
 void Game::quit() {
     // call high score window
     // revent back to main screen
-
 }
 
-void Game::movePlayer(int newX, int newY)
-{
+void Game::movePlayer(int newX, int newY) {
     player->move(newX, newY);
 }

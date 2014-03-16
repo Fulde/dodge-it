@@ -14,8 +14,14 @@ WidgetScore::WidgetScore(QWidget *parent) :
     ui(new Ui::WidgetScore)
 {
     ui->setupUi(this);
+    par = dynamic_cast<WidgetGame*>(parent);
 }
 
-void WidgetScore::on_btnQuit_clicked() {
+WidgetScore::~WidgetScore() { delete ui; }
 
+void WidgetScore::on_btnExit_clicked()
+{
+//    this->hide;
+    par->hide();
+    dynamic_cast<WidgetStart*>(par->main->startMenu)->show();
 }

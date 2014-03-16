@@ -20,6 +20,8 @@ WidgetStart::WidgetStart(QWidget *parent) :
     main = dynamic_cast<Widget*>(parent);
 }
 
+WidgetStart::~WidgetStart() { delete ui; }
+
 void WidgetStart::on_btnStart_clicked()
 {
     if (ui->rbEasy->isChecked()) {

@@ -9,6 +9,8 @@
 
 #include <QWidget>
 
+#include "widgetgame.h"
+
 namespace Ui {
 class WidgetScore;
 }
@@ -21,12 +23,15 @@ public:
     //explicit Widget constructor
     explicit WidgetScore(QWidget *parent = 0);
     //Widget destructor
-    ~WidgetScore() { delete ui; }
+    ~WidgetScore();
+    WidgetGame *par;
 
 private slots:
 
     void on_btnQuit_clicked();
     
+    void on_btnExit_clicked();
+
 private:
     //Private instance for the Widget ui
     Ui::WidgetScore *ui;
