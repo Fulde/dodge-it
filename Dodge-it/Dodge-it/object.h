@@ -28,9 +28,12 @@ public:
     //This method moves the falling object to its new location based off the speed of the object
     void move();
     Object();
+    ~Object();
     int getSpeed() { return speed; }
     int getX() { return x; }
     int getY() { return y; }
+    string getPixmap() { return pixmap; }
+    void setPixmap(string newPix) { pixmap = newPix; }
 };
 
 //========================= DAMAGING Objects =========================

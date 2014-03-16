@@ -62,6 +62,14 @@ bool HighScore::scoreCompare() {
     return true;
 }
 
+void HighScore::loadScores() {
+
+}
+
+void HighScore::sortScores() {
+    string file = "test.txt";
+}
+
 void HighScore::unitTest() {
 
     highScores.push_back(200);
@@ -71,11 +79,11 @@ void HighScore::unitTest() {
     sortScores();
     assert(highScores.at(0) == 300);
 
-    loadScores("test.txt");
+    loadScores();
     assert(highScores.at(0) == 1000);
 
     score = 1500;
-    loadScores("test.txt");
+    loadScores();
     scoreCompare();
     assert(highScores.at(0) == 1500);
 }
@@ -121,7 +129,7 @@ Game::~Game()
         delete smalls.at(i);
     }
     for (size_t i = 0; i < explosives.size(); i++) { // explosives vector
-        delete explosives.at(i);
+       delete explosives.at(i);
     }
     for (size_t i = 0; i < powerups.size(); i++) { // powerups vector
         delete powerups.at(i);

@@ -29,8 +29,8 @@ public:
     static void setScore(int num) { score = num; }
     bool scoreCompare();
     void displayScores();
-    void sortScores() {}
-    void loadScores(string file) { }
+    void sortScores();
+    void loadScores();
     void addToFile(int newScore);
     void unitTest();
 };
@@ -87,7 +87,7 @@ public:
     int getPlayerX() { return player->getX(); }
     int getPlayerY() { return player->getY(); }
     int getPlayerLives() { return player->getLives(); }
-    int setPlayerLives(int newLives) { player->setLives(newLives); }
+    void setPlayerLives(int newLives) { player->setLives(newLives); }
     diffSetting getDifficulty() { return difficulty; }
 
     void setMultiplier(int newMult) { multiplier = newMult; }

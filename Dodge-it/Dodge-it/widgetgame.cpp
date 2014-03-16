@@ -129,15 +129,17 @@ void WidgetGame::gameTimerHit() {
         int random = rand() % 100 + 1;
         if (random <= 100) {                  // THIS OVERRIDES THE POWERUPS CURRENTLY BECAUSE OF THE SIZE OF THE POWERUP PIXMAPS  -- should be 90
             if (random <= 50) {                                // (1-50)  basic object
-               label->setPixmap(QPixmap(":/basic.png"));
+                label->setPixmap(QPixmap(":/basic.png"));
                 DamagingObject *obj = new DamagingObject(randX, label->height());
                 Game::getInstance().addBasic(obj);
                 label->setObject(obj);
+                label->getObject()->setPixmap(":/basic.png");
             } else if (random >= 51 && random <= 100) {         // (51-80) small object
                 label->setPixmap(QPixmap(":/small.png"));
                 DamagingObject *obj = new DamagingObject(randX, label->height());
                 Game::getInstance().addSmall(obj);
                 label->setObject(obj);
+                label->getObject()->setPixmap(":/small.png");
             } else if (random >= 81 && random <= 100) {        // (81-90) explosive object                        -- this should also be 90
                 label->setPixmap(QPixmap(":/explosive.png"));
                 DamagingObject *obj = new DamagingObject(randX, label->height());
@@ -218,24 +220,23 @@ void WidgetGame::gameTimerHit() {
         // overflow and segfaulting
         if (curObj->getY() > 768)
         {
+            Object *newObject = curLabel->getObject();
+
             incrementScore();
-            if (curLabel->pixmap()->toImage().text() == "basic.png") {
-                curLabel->deleteLater();
+            if (newObject->getPixmap() == ":/basic.png") {
+                delete newObject;
+                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().begin());  // COULD THESE LINES BE CAUSING THE DOUBLE-FREE/CORRUPTION???
+            } else if (newObject->getPixmap() == ":/small.png") {
+                delete newObject;
+                Game::getInstance().getSmalls().erase(Game::getInstance().getSmalls().begin());
+            } else if (curLabel->pixmap()->toImage().text() == ":/explosive.png") {
                 delete curObj;
-                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().end() - 1);  // COULD THESE LINES BE CAUSING THE DOUBLE-FREE/CORRUPTION???
-            } else if (curLabel->pixmap()->toImage().text() == "small.png") {
-                curLabel->deleteLater();
-                delete curObj;
-                Game::getInstance().getSmalls().erase(Game::getInstance().getSmalls().end() - 1);
-            } else if (curLabel->pixmap()->toImage().text() == "explosive.png") {
-                curLabel->deleteLater();
-                delete curObj;
-                Game::getInstance().getExplosives().erase(Game::getInstance().getExplosives().end() - 1);
+                Game::getInstance().getExplosives().erase(Game::getInstance().getExplosives().begin());
             } else /*assume the pixmap is a powerup*/ {
-                curLabel->deleteLater();
                 delete curObj;
-                Game::getInstance().getPowerups().erase(Game::getInstance().getPowerups().end() - 1);
+                Game::getInstance().getPowerups().erase(Game::getInstance().getPowerups().begin());
             }
+            curLabel->deleteLater();
         }
     }
 }

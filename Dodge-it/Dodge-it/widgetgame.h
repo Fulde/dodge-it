@@ -55,7 +55,6 @@ public:
 
     Object *getObject() { return object; }
     void setObject(Object *obj) { object = obj; }
-
 };
 
 #endif // WIDGETGAME_H
