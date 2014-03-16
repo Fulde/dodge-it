@@ -21,7 +21,7 @@ WidgetScore::~WidgetScore() { delete ui; }
 
 void WidgetScore::on_btnExit_clicked()
 {
-    this->hide;
+//    this->hide;
     par->hide();
     dynamic_cast<WidgetStart*>(par->main->startMenu)->show();
 }

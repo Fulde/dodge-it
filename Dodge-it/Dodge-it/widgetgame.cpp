@@ -5,9 +5,10 @@
 //==============================
 
 #include "widgetgame.h"
+#include "ui_widgetgame.h"
 #include "widgetstart.h"
 #include "widgetpause.h"
-#include "ui_widgetgame.h"
+#include "widgetscore.h"
 #include "object.h"
 #include "game.h"
 
@@ -170,9 +171,17 @@ void WidgetGame::gameTimerHit() {
 
         if (!hitTimer->isActive() && ui->lblSatyr->geometry().intersects(curLabel->geometry()))
         {
-            qDebug() << "You've been hit";
-            hitTimer->start();
-            WidgetGame::decrementLives();
+            if (Game::getInstance().getPlayerLives() == 0)
+            {
+                gameTimer->stop();
+
+                WidgetScore* score = new WidgetScore(this);
+                score->show();
+            } else {
+                qDebug() << "You've been hit";
+                hitTimer->start();
+                WidgetGame::decrementLives();
+            }
         }
 
         curObj->move();

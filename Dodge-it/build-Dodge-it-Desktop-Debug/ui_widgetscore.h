@@ -23,29 +23,34 @@ QT_BEGIN_NAMESPACE
 class Ui_WidgetScore
 {
 public:
-    QLabel *label;
-    QLabel *lblScores;
+    QWidget *widget;
+    QLabel *lblTitle;
     QPushButton *btnExit;
+    QLabel *lblScores;
 
     void setupUi(QWidget *WidgetScore)
     {
         if (WidgetScore->objectName().isEmpty())
             WidgetScore->setObjectName(QStringLiteral("WidgetScore"));
-        WidgetScore->resize(512, 384);
+        WidgetScore->resize(1024, 768);
         WidgetScore->setStyleSheet(QStringLiteral(""));
-        label = new QLabel(WidgetScore);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(70, 10, 381, 71));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/highscores2.png")));
-        label->setScaledContents(true);
-        lblScores = new QLabel(WidgetScore);
+        widget = new QWidget(WidgetScore);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(256, 192, 512, 384));
+        widget->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
+        lblTitle = new QLabel(widget);
+        lblTitle->setObjectName(QStringLiteral("lblTitle"));
+        lblTitle->setGeometry(QRect(70, 20, 381, 71));
+        lblTitle->setPixmap(QPixmap(QString::fromUtf8(":/highscores2.png")));
+        lblTitle->setScaledContents(true);
+        btnExit = new QPushButton(widget);
+        btnExit->setObjectName(QStringLiteral("btnExit"));
+        btnExit->setGeometry(QRect(210, 350, 91, 27));
+        lblScores = new QLabel(widget);
         lblScores->setObjectName(QStringLiteral("lblScores"));
-        lblScores->setGeometry(QRect(40, 110, 431, 211));
+        lblScores->setGeometry(QRect(40, 120, 431, 211));
         lblScores->setStyleSheet(QStringLiteral("font: 75 14pt \"Ubuntu\";"));
         lblScores->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
-        btnExit = new QPushButton(WidgetScore);
-        btnExit->setObjectName(QStringLiteral("btnExit"));
-        btnExit->setGeometry(QRect(200, 340, 98, 27));
 
         retranslateUi(WidgetScore);
 
@@ -55,7 +60,8 @@ public:
     void retranslateUi(QWidget *WidgetScore)
     {
         WidgetScore->setWindowTitle(QApplication::translate("WidgetScore", "High Scores", 0));
-        label->setText(QString());
+        lblTitle->setText(QString());
+        btnExit->setText(QApplication::translate("WidgetScore", "Exit", 0));
         lblScores->setText(QApplication::translate("WidgetScore", "1\n"
 "2\n"
 "3\n"
@@ -66,7 +72,6 @@ public:
 "8\n"
 "9\n"
 "10", 0));
-        btnExit->setText(QApplication::translate("WidgetScore", "Exit", 0));
     } // retranslateUi
 
 };
