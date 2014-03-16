@@ -21,7 +21,7 @@ public:
     //explicit Widget constructor
     explicit WidgetScore(QWidget *parent = 0);
     //Widget destructor
-    ~WidgetScore();
+    ~WidgetScore() { delete ui; }
 
 private slots:
 

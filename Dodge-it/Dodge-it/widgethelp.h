@@ -19,7 +19,7 @@ class WidgetHelp : public QWidget
 
 public:
     explicit WidgetHelp(QWidget *parent = 0);
-    ~WidgetHelp();
+    ~WidgetHelp() { }
 private:
     //Private instance for the Widget ui
     Ui::WidgetHelp *ui;

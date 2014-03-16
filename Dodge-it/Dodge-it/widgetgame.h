@@ -28,8 +28,8 @@ public:
     ~WidgetGame() { delete ui; }
     void incrementScore();
     void decrementLives();
-    void pauseTimer() { gameTimer->stop(); }
-    void resumeTimer() { gameTimer->start(); }
+    void pauseTimer();
+    void resumeTimer();
 
     Widget *main;
 

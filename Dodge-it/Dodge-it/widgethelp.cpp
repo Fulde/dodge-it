@@ -15,11 +15,5 @@ WidgetHelp::WidgetHelp(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WidgetHelp)
 {
-    //Set up the ui for the widget
     ui->setupUi(this);
 }
-
-WidgetHelp::~WidgetHelp() {
-
-}
-

@@ -19,12 +19,14 @@
 #include <QDebug>
 #include <QRect>
 
+void WidgetGame::pauseTimer() { gameTimer->stop(); }
+void WidgetGame::resumeTimer() { gameTimer->start(); }
+
 //Instantiates the Widget
 WidgetGame::WidgetGame(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WidgetGame)
 {
-    //Set up the ui for the widget
     ui->setupUi(this);
     main = dynamic_cast<Widget*>(parent);
 
@@ -46,13 +48,13 @@ WidgetGame::WidgetGame(QWidget *parent) :
     }
 
     // used for the general game ticks; its hit method moves items and calculates collisions
-    gameTimer = new QTimer(this); // this originally did not have a parent
+    gameTimer = new QTimer(this);
     gameTimer->setInterval(Game::getInstance().getInterval());
     connect(gameTimer, &QTimer::timeout, this, &WidgetGame::gameTimerHit);
     gameTimer->start();
 
     // starts when the character is hit; the character cannot be hit again until timeout
-    hitTimer = new QTimer(this); // this originally did not have a parent
+    hitTimer = new QTimer(this);
     hitTimer->setInterval(3000); // 3 seconds
     connect(hitTimer, &QTimer::timeout, this, &WidgetGame::hitTimerHit);
     hitTimer->setSingleShot(true);
