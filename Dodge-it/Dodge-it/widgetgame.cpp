@@ -185,12 +185,6 @@ void WidgetGame::gameTimerHit() {
             ui->lblCheatMode->setText("");
         }
 
-        //NOT FUNCTIONAL YET.
-        //Test for player losing all their lives
-        if (Game::getInstance().getPlayerLives() == 0) {
-            Game::getInstance().quit();
-        }
-
         if (curObj->getY() > 768)
         {
             incrementScore();

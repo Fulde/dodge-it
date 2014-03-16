@@ -30,6 +30,8 @@ private slots:
 
     void on_btnHelp_clicked();
 
+    void on_btnQuit_clicked();
+
 private:
     //Private instance for the Widget ui
     Ui::WidgetStart *ui;

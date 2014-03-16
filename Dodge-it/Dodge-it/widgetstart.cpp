@@ -44,3 +44,9 @@ void WidgetStart::on_btnHelp_clicked()
     WidgetHelp* help = new WidgetHelp;
     help->show();
 }
+
+void WidgetStart::on_btnQuit_clicked()
+{
+    //quit the application
+    QCoreApplication::exit();
+}
