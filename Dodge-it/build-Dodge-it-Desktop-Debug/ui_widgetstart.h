@@ -31,6 +31,7 @@ public:
     QRadioButton *rbHard;
     QPushButton *btnLoad;
     QPushButton *btnStart;
+    QPushButton *btnQuit;
     QPushButton *btnHelp;
 
     void setupUi(QWidget *WidgetStart)
@@ -52,17 +53,17 @@ public:
         label->setScaledContents(true);
         rbEasy = new QRadioButton(widget);
         rbEasy->setObjectName(QStringLiteral("rbEasy"));
-        rbEasy->setGeometry(QRect(400, 240, 231, 101));
+        rbEasy->setGeometry(QRect(400, 200, 231, 91));
         rbEasy->setStyleSheet(QStringLiteral("font: 60pt;"));
         rbEasy->setChecked(true);
         rbMedium = new QRadioButton(widget);
         rbMedium->setObjectName(QStringLiteral("rbMedium"));
-        rbMedium->setGeometry(QRect(400, 350, 331, 71));
+        rbMedium->setGeometry(QRect(400, 310, 331, 71));
         rbMedium->setStyleSheet(QLatin1String("font: 60pt;\n"
 "color: rgb(255, 142, 12);"));
         rbHard = new QRadioButton(widget);
         rbHard->setObjectName(QStringLiteral("rbHard"));
-        rbHard->setGeometry(QRect(400, 450, 221, 61));
+        rbHard->setGeometry(QRect(400, 410, 221, 61));
         rbHard->setStyleSheet(QLatin1String("color: rgb(240, 8, 0);\n"
 "font: 60pt;"));
         btnLoad = new QPushButton(widget);
@@ -82,15 +83,11 @@ public:
         btnStart->setAutoDefault(false);
         btnStart->setDefault(false);
         btnStart->setFlat(false);
-        label->raise();
-        label->raise();
-        rbEasy->raise();
-        rbMedium->raise();
-        rbHard->raise();
-        btnLoad->raise();
-        btnLoad->raise();
-        btnStart->raise();
-        btnHelp = new QPushButton(WidgetStart);
+        btnQuit = new QPushButton(widget);
+        btnQuit->setObjectName(QStringLiteral("btnQuit"));
+        btnQuit->setGeometry(QRect(380, 530, 261, 61));
+        btnQuit->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
+        btnHelp = new QPushButton(widget);
         btnHelp->setObjectName(QStringLiteral("btnHelp"));
         btnHelp->setGeometry(QRect(30, 530, 261, 61));
         btnHelp->setStyleSheet(QStringLiteral("font: 20pt \"Sans Serif\";"));
@@ -109,6 +106,7 @@ public:
         rbHard->setText(QApplication::translate("WidgetStart", "Hard", 0));
         btnLoad->setText(QApplication::translate("WidgetStart", "Load Game", 0));
         btnStart->setText(QApplication::translate("WidgetStart", "Start New Game", 0));
+        btnQuit->setText(QApplication::translate("WidgetStart", "Ouit", 0));
         btnHelp->setText(QApplication::translate("WidgetStart", "Help", 0));
     } // retranslateUi
 

@@ -25,7 +25,7 @@ class Ui_WidgetScore
 public:
     QLabel *label;
     QLabel *lblScores;
-    QPushButton *btnQuit;
+    QPushButton *btnExit;
 
     void setupUi(QWidget *WidgetScore)
     {
@@ -43,9 +43,9 @@ public:
         lblScores->setGeometry(QRect(40, 110, 431, 211));
         lblScores->setStyleSheet(QStringLiteral("font: 75 14pt \"Ubuntu\";"));
         lblScores->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
-        btnQuit = new QPushButton(WidgetScore);
-        btnQuit->setObjectName(QStringLiteral("btnQuit"));
-        btnQuit->setGeometry(QRect(200, 340, 98, 27));
+        btnExit = new QPushButton(WidgetScore);
+        btnExit->setObjectName(QStringLiteral("btnExit"));
+        btnExit->setGeometry(QRect(200, 340, 98, 27));
 
         retranslateUi(WidgetScore);
 
@@ -66,7 +66,7 @@ public:
 "8\n"
 "9\n"
 "10", 0));
-        btnQuit->setText(QApplication::translate("WidgetScore", "Exit", 0));
+        btnExit->setText(QApplication::translate("WidgetScore", "Exit", 0));
     } // retranslateUi
 
 };
