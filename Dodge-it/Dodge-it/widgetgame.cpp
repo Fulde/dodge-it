@@ -220,14 +220,12 @@ void WidgetGame::gameTimerHit() {
         // overflow and segfaulting
         if (curObj->getY() > 768)
         {
-            Object *newObject = curLabel->getObject();
-
             incrementScore();
-            if (newObject->getPixmap() == ":/basic.png") {
-                delete newObject;
+            if (curObj->getPixmap() == ":/basic.png") {
+                delete curObj;
                 Game::getInstance().getBasics().erase(Game::getInstance().getBasics().begin());  // COULD THESE LINES BE CAUSING THE DOUBLE-FREE/CORRUPTION???
-            } else if (newObject->getPixmap() == ":/small.png") {
-                delete newObject;
+            } else if (curObj->getPixmap() == ":/small.png") {
+                delete curObj;
                 Game::getInstance().getSmalls().erase(Game::getInstance().getSmalls().begin());
             } else if (curLabel->pixmap()->toImage().text() == ":/explosive.png") {
                 delete curObj;
