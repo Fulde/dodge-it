@@ -15,6 +15,9 @@
         <file>hourglass.png</file>
         <file>multiplier.png</file>
         <file>logooption1.png</file>
-        <file>greenbutton.jpeg</file>
+        <file>helpscreen.png</file>
+        <file>highscores.png</file>
+        <file>helpscreen2.png</file>
+        <file>highscores2.png</file>
     </qresource>
 </RCC>

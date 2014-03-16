@@ -170,7 +170,7 @@ color: rgb(255, 47, 11)</string>
   <widget class="QLabel" name="lblSatyr">
    <property name="geometry">
     <rect>
-     <x>600</x>
+     <x>590</x>
      <y>670</y>
      <width>28</width>
      <height>94</height>
@@ -198,13 +198,6 @@ color: rgb(255, 47, 11)</string>
   <zorder>background</zorder>
   <zorder>widget</zorder>
   <zorder>lblSatyr</zorder>
-  <zorder>label</zorder>
-  <zorder>lblCheatMode</zorder>
-  <zorder>lblLivesT</zorder>
-  <zorder>lblLives</zorder>
-  <zorder>lblScore</zorder>
-  <zorder>lblScoreT</zorder>
-  <zorder>btnPause</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

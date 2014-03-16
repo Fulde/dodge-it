@@ -19,8 +19,6 @@ using namespace std;
 
 // ================================ HIGHSCORE ======================================
 
-int HighScore::score = 0;
-
 void HighScore::addToFile(int newScore) {
 
     QFile file("highscores.txt");
@@ -70,9 +68,9 @@ void HighScore::sortScores() {
     string file = "test.txt";
 }
 
-void HighScore::unitTest() {
+void HighScore::unitTest() { // these should only be called when specified through a command-line arg according to the assignment spec
 
-    highScores.push_back(200);
+    /*highScores.push_back(200);
     highScores.push_back(100);
     highScores.push_back(300);
 
@@ -85,7 +83,7 @@ void HighScore::unitTest() {
     score = 1500;
     loadScores();
     scoreCompare();
-    assert(highScores.at(0) == 1500);
+    assert(highScores.at(0) == 1500);*/
 }
 
 // ================================ CHARACTER ======================================

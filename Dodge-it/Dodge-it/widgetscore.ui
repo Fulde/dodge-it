@@ -16,45 +16,80 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QLabel" name="lblTitle">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>491</width>
+     <x>70</x>
+     <y>10</y>
+     <width>381</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images/resources.qrc">:/highscores2.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>90</y>
+     <width>21</width>
      <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 75 22pt &quot;Ubuntu&quot;;</string>
+    <string notr="true">color: rgb(255, 31, 11);
+font: 30pt;</string>
    </property>
    <property name="text">
-    <string>HIGHSCORES</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
+    <string>1</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblHighScores">
+  <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>80</y>
-     <width>371</width>
-     <height>271</height>
+     <x>30</x>
+     <y>130</y>
+     <width>31</width>
+     <height>41</height>
     </rect>
    </property>
-   <property name="text">
-    <string>High Scores go Here
-
-You can use the normal new line</string>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 170, 0);
+font: 30pt;</string>
    </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   <property name="text">
+    <string>2</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>170</y>
+     <width>21</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 0);
+font: 30pt;</string>
+   </property>
+   <property name="text">
+    <string>3</string>
    </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="images/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

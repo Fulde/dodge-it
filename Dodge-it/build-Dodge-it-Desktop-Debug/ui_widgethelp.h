@@ -25,7 +25,6 @@ public:
     QLabel *lblHelp;
     QLabel *lblPic;
     QLabel *label;
-    QLabel *label_2;
     QLabel *label_3;
     QLabel *label_4;
     QLabel *label_5;
@@ -34,30 +33,27 @@ public:
     QLabel *label_8;
     QLabel *label_10;
     QLabel *label_9;
+    QLabel *label_2;
 
     void setupUi(QWidget *WidgetHelp)
     {
         if (WidgetHelp->objectName().isEmpty())
             WidgetHelp->setObjectName(QStringLiteral("WidgetHelp"));
         WidgetHelp->resize(512, 487);
-        WidgetHelp->setStyleSheet(QStringLiteral("background-color: rgb(240, 240, 240)"));
+        WidgetHelp->setStyleSheet(QStringLiteral("background-color: rgb(0,0,0);"));
         lblHelp = new QLabel(WidgetHelp);
         lblHelp->setObjectName(QStringLiteral("lblHelp"));
-        lblHelp->setGeometry(QRect(10, 70, 491, 181));
+        lblHelp->setGeometry(QRect(10, 80, 491, 181));
+        lblHelp->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
         lblHelp->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         lblPic = new QLabel(WidgetHelp);
         lblPic->setObjectName(QStringLiteral("lblPic"));
         lblPic->setGeometry(QRect(450, 10, 50, 50));
         label = new QLabel(WidgetHelp);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(340, 10, 91, 91));
+        label->setGeometry(QRect(410, 10, 91, 91));
         label->setPixmap(QPixmap(QString::fromUtf8(":/help.png")));
         label->setScaledContents(true);
-        label_2 = new QLabel(WidgetHelp);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(10, 10, 331, 51));
-        label_2->setStyleSheet(QLatin1String("font: 75 36pt \"KacstOne\";\n"
-"color: rgb(0, 85, 255);"));
         label_3 = new QLabel(WidgetHelp);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(20, 250, 51, 41));
@@ -66,6 +62,7 @@ public:
         label_4 = new QLabel(WidgetHelp);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(70, 260, 341, 17));
+        label_4->setStyleSheet(QStringLiteral("color: rgb(232, 25, 6);"));
         label_5 = new QLabel(WidgetHelp);
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setGeometry(QRect(20, 340, 51, 51));
@@ -74,6 +71,7 @@ public:
         label_6 = new QLabel(WidgetHelp);
         label_6->setObjectName(QStringLiteral("label_6"));
         label_6->setGeometry(QRect(70, 360, 411, 17));
+        label_6->setStyleSheet(QStringLiteral("color: rgb(23, 217, 255);"));
         label_7 = new QLabel(WidgetHelp);
         label_7->setObjectName(QStringLiteral("label_7"));
         label_7->setGeometry(QRect(20, 300, 41, 41));
@@ -82,14 +80,21 @@ public:
         label_8 = new QLabel(WidgetHelp);
         label_8->setObjectName(QStringLiteral("label_8"));
         label_8->setGeometry(QRect(70, 310, 371, 17));
+        label_8->setStyleSheet(QStringLiteral("color: rgb(235, 201, 7);"));
         label_10 = new QLabel(WidgetHelp);
         label_10->setObjectName(QStringLiteral("label_10"));
         label_10->setGeometry(QRect(70, 410, 371, 17));
+        label_10->setStyleSheet(QStringLiteral("color: rgb(84, 236, 29);"));
         label_9 = new QLabel(WidgetHelp);
         label_9->setObjectName(QStringLiteral("label_9"));
         label_9->setGeometry(QRect(20, 400, 41, 41));
         label_9->setPixmap(QPixmap(QString::fromUtf8(":/multiplier.png")));
         label_9->setScaledContents(true);
+        label_2 = new QLabel(WidgetHelp);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(10, 10, 391, 61));
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/helpscreen2.png")));
+        label_2->setScaledContents(true);
 
         retranslateUi(WidgetHelp);
 
@@ -111,7 +116,6 @@ public:
 " Powerups available:", 0));
         lblPic->setText(QString());
         label->setText(QString());
-        label_2->setText(QApplication::translate("WidgetHelp", "HELP SCREEN", 0));
         label_3->setText(QString());
         label_4->setText(QApplication::translate("WidgetHelp", "Increases life by 1", 0));
         label_5->setText(QString());
@@ -120,6 +124,7 @@ public:
         label_8->setText(QApplication::translate("WidgetHelp", "Player is invincible over a short period of time", 0));
         label_10->setText(QApplication::translate("WidgetHelp", "Multiplies the score by 2 over a short period of time", 0));
         label_9->setText(QString());
+        label_2->setText(QString());
     } // retranslateUi
 
 };

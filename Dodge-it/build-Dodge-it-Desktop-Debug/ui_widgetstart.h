@@ -36,23 +36,27 @@ public:
     {
         if (WidgetStart->objectName().isEmpty())
             WidgetStart->setObjectName(QStringLiteral("WidgetStart"));
+        WidgetStart->setEnabled(true);
         WidgetStart->resize(1024, 768);
-        WidgetStart->setAutoFillBackground(false);
-        WidgetStart->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
+        WidgetStart->setAutoFillBackground(true);
+        WidgetStart->setStyleSheet(QStringLiteral(""));
         btnStart = new QPushButton(WidgetStart);
         btnStart->setObjectName(QStringLiteral("btnStart"));
+        btnStart->setEnabled(true);
         btnStart->setGeometry(QRect(30, 620, 961, 111));
         btnStart->setAutoFillBackground(false);
         btnStart->setStyleSheet(QLatin1String("font: 50pt \"Sans Serif\";\n"
 "background-color: rgb(36, 218, 36);\n"
-"color: rgb(0, 0, 0);"));
+"color: rgb(0, 0, 0);\n"
+"border-color: rgb(0, 0, 0);"));
+        btnStart->setCheckable(true);
         btnStart->setAutoDefault(false);
         btnStart->setDefault(false);
+        btnStart->setFlat(false);
         rbEasy = new QRadioButton(WidgetStart);
         rbEasy->setObjectName(QStringLiteral("rbEasy"));
         rbEasy->setGeometry(QRect(400, 240, 231, 101));
-        rbEasy->setStyleSheet(QLatin1String("font: 60pt;\n"
-"color: rgb(251, 255, 3)"));
+        rbEasy->setStyleSheet(QStringLiteral("font: 60pt;"));
         rbEasy->setChecked(true);
         rbMedium = new QRadioButton(WidgetStart);
         rbMedium->setObjectName(QStringLiteral("rbMedium"));

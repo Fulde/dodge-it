@@ -19,14 +19,15 @@ using namespace std;
 //This class contains code to compile a high score list.
 
 class HighScore {
+    static vector<HighScore*> highScores;   // stores highscores from file at runtime
+
     string difficulty; // written to when the game ends
-    static int score;         // written to when the game ends
-    vector<int> highScores;   // stores highscores from file at runtime
+    int score;         // written to when the game ends
     string name;
 
 public:
-    static int getScore() { return score; }
-    static void setScore(int num) { score = num; }
+    int getScore() { return score; }
+    void setScore(int num) { score = num; }
     bool scoreCompare();
     void displayScores();
     void sortScores();
