@@ -15,6 +15,8 @@ WidgetScore::WidgetScore(QWidget *parent) :
 {
     ui->setupUi(this);
     par = dynamic_cast<WidgetGame*>(parent);
+    QString scores = QString::fromStdString(HighScore::scoresToString());
+    ui->lblScores->setText(scores);
 }
 
 WidgetScore::~WidgetScore() { delete ui; }
