@@ -57,9 +57,9 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>240</y>
+      <y>200</y>
       <width>231</width>
-      <height>101</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -76,7 +76,7 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>350</y>
+      <y>310</y>
       <width>331</width>
       <height>71</height>
      </rect>
@@ -93,7 +93,7 @@ color: rgb(255, 142, 12);</string>
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>450</y>
+      <y>410</y>
       <width>221</width>
       <height>61</height>
      </rect>
@@ -159,14 +159,22 @@ border-color: rgb(0, 0, 0);</string>
      <bool>false</bool>
     </property>
    </widget>
-   <zorder>label</zorder>
-   <zorder>label</zorder>
-   <zorder>rbEasy</zorder>
-   <zorder>rbMedium</zorder>
-   <zorder>rbHard</zorder>
-   <zorder>btnLoad</zorder>
-   <zorder>btnLoad</zorder>
-   <zorder>btnStart</zorder>
+   <widget class="QPushButton" name="btnQuit">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>530</y>
+      <width>261</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 20pt &quot;Sans Serif&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Ouit</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QPushButton" name="btnHelp">
    <property name="geometry">
