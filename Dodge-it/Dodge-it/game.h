@@ -23,17 +23,19 @@ class HighScore {
 
     string difficulty; // written to when the game ends
     int score;         // written to when the game ends
-    string name;
+    string username;
 
 public:
+    HighScore(int highscore, string usrname, string diff);
     int getScore() { return score; }
     void setScore(int num) { score = num; }
     bool scoreCompare();
     void displayScores();
     void sortScores();
-    void loadScores();
+    static void loadScores(string fileName);
     void addToFile(int newScore);
     void unitTest();
+    string toString();
 };
 
 //========================= CHARACTER =========================
