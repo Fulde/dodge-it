@@ -44,7 +44,18 @@ void HighScore::addToFile(int newScore) {
 
 string HighScore::toString()
 {
-    return score + " " + username + " " + difficulty;
+    return score + " " + username + " (" + difficulty + ")";
+}
+
+string HighScore::scoresToString()
+{
+    string scores = "";
+    for (int i = 0; i < highScores.size(); i++)
+    {
+        scores += highScores.at(i)->toString() + "\n\n";
+    }
+
+    return scores;
 }
 
 void HighScore::loadScores(string fileName)
