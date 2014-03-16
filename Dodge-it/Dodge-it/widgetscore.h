@@ -25,6 +25,8 @@ public:
 
 private slots:
 
+    void on_btnQuit_clicked();
+    
 private:
     //Private instance for the Widget ui
     Ui::WidgetScore *ui;

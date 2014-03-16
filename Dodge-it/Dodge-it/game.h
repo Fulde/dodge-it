@@ -32,10 +32,11 @@ public:
     bool scoreCompare();
     void displayScores();
     void sortScores();
-    static void loadScores(string fileName);
     void addToFile(int newScore);
     void unitTest();
     string toString();
+    static void loadScores(string fileName);
+    static string scoresToString();
 };
 
 //========================= CHARACTER =========================
