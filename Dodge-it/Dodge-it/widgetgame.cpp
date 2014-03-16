@@ -171,8 +171,9 @@ void WidgetGame::gameTimerHit() {
 
         if (!hitTimer->isActive() && ui->lblSatyr->geometry().intersects(curLabel->geometry()))
         {
-            if (Game::getInstance().getPlayerLives() == 0)
+            if (Game::getInstance().getPlayerLives() == 1)
             {
+                WidgetGame::decrementLives();
                 gameTimer->stop();
 
                 WidgetScore* score = new WidgetScore(this);
