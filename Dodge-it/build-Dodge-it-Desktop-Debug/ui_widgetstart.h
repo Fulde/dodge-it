@@ -53,8 +53,7 @@ public:
         rbEasy = new QRadioButton(widget);
         rbEasy->setObjectName(QStringLiteral("rbEasy"));
         rbEasy->setGeometry(QRect(400, 240, 231, 101));
-        rbEasy->setStyleSheet(QLatin1String("font: 60pt;\n"
-"color:rgb(229, 229, 31);"));
+        rbEasy->setStyleSheet(QStringLiteral("font: 60pt;"));
         rbEasy->setChecked(true);
         rbMedium = new QRadioButton(widget);
         rbMedium->setObjectName(QStringLiteral("rbMedium"));
@@ -79,7 +78,7 @@ public:
 "background-color: rgb(36, 218, 36);\n"
 "color: rgb(0, 0, 0);\n"
 "border-color: rgb(0, 0, 0);"));
-        btnStart->setCheckable(true);
+        btnStart->setCheckable(false);
         btnStart->setAutoDefault(false);
         btnStart->setDefault(false);
         btnStart->setFlat(false);
