@@ -26,7 +26,7 @@ class WidgetGame : public QWidget
 
 public:
     explicit WidgetGame(QWidget *parent = 0);
-    ~WidgetGame() { delete ui; }
+    ~WidgetGame();
     void incrementScore();
     void decrementLives();
     void pauseTimer();

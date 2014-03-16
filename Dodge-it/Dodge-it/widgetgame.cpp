@@ -60,6 +60,8 @@ WidgetGame::WidgetGame(QWidget *parent) :
     hitTimer->setSingleShot(true);
 }
 
+WidgetGame::~WidgetGame() { delete ui; }
+
 void WidgetGame::incrementScore() {
     ui->lblScore->setText(QString::number(ui->lblScore->text().toInt() + 1));
 }
@@ -219,7 +221,6 @@ void WidgetGame::hitTimerHit() {
 
 void WidgetGame::on_btnPause_clicked() {
     gameTimer->stop();
-
     WidgetPause* pause = new WidgetPause(this);
     pause->show();
 }
