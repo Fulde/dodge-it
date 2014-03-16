@@ -15,3 +15,7 @@ WidgetScore::WidgetScore(QWidget *parent) :
 {
     ui->setupUi(this);
 }
+
+void WidgetScore::on_btnQuit_clicked() {
+
+}
