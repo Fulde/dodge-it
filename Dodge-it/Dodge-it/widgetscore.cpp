@@ -27,3 +27,4 @@ void WidgetScore::on_btnExit_clicked()
     par->hide();
     dynamic_cast<WidgetStart*>(par->main->startMenu)->show();
 }
+
