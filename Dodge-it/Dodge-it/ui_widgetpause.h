@@ -33,7 +33,7 @@ public:
         if (WidgetPause->objectName().isEmpty())
             WidgetPause->setObjectName(QStringLiteral("WidgetPause"));
         WidgetPause->resize(1024, 768);
-        WidgetPause->setWindowOpacity(0.5);
+        WidgetPause->setWindowOpacity(1);
         WidgetPause->setAutoFillBackground(false);
         WidgetPause->setStyleSheet(QStringLiteral(""));
         widget = new QWidget(WidgetPause);

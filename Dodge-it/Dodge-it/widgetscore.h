@@ -20,13 +20,11 @@ class WidgetScore : public QWidget
     Q_OBJECT
 
 public:
-    //explicit Widget constructor
     explicit WidgetScore(QWidget *parent = 0);
-    //Widget destructor
     ~WidgetScore();
-    WidgetGame *par;
+    WidgetGame *main;
 
-private slots:    
+private slots:
 
     void on_btnExit_clicked();
 

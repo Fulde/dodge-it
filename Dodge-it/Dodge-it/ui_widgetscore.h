@@ -23,7 +23,6 @@ QT_BEGIN_NAMESPACE
 class Ui_WidgetScore
 {
 public:
-    QWidget *widget;
     QLabel *lblTitle;
     QPushButton *btnExit;
     QLabel *lblScores;
@@ -32,23 +31,19 @@ public:
     {
         if (WidgetScore->objectName().isEmpty())
             WidgetScore->setObjectName(QStringLiteral("WidgetScore"));
-        WidgetScore->resize(1024, 768);
+        WidgetScore->resize(512, 384);
         WidgetScore->setStyleSheet(QStringLiteral(""));
-        widget = new QWidget(WidgetScore);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(256, 192, 512, 384));
-        widget->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
-        lblTitle = new QLabel(widget);
+        lblTitle = new QLabel(WidgetScore);
         lblTitle->setObjectName(QStringLiteral("lblTitle"));
-        lblTitle->setGeometry(QRect(70, 20, 381, 71));
+        lblTitle->setGeometry(QRect(60, 20, 391, 71));
         lblTitle->setPixmap(QPixmap(QString::fromUtf8(":/highscores2.png")));
         lblTitle->setScaledContents(true);
-        btnExit = new QPushButton(widget);
+        btnExit = new QPushButton(WidgetScore);
         btnExit->setObjectName(QStringLiteral("btnExit"));
-        btnExit->setGeometry(QRect(210, 350, 91, 27));
-        lblScores = new QLabel(widget);
+        btnExit->setGeometry(QRect(210, 340, 91, 27));
+        lblScores = new QLabel(WidgetScore);
         lblScores->setObjectName(QStringLiteral("lblScores"));
-        lblScores->setGeometry(QRect(40, 120, 431, 211));
+        lblScores->setGeometry(QRect(40, 110, 431, 221));
         lblScores->setStyleSheet(QStringLiteral("font: 75 14pt \"Ubuntu\";"));
         lblScores->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
