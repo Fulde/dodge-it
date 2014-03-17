@@ -17,10 +17,10 @@ SOURCES += main.cpp\
     object.cpp \
     widgetgame.cpp \
     widgetpause.cpp \
-    widgetscore.cpp \
     widgethelp.cpp \
     widgetstart.cpp \
-    widget.cpp
+    widget.cpp \
+    widgetscore.cpp
 
 HEADERS  += \
     game.h \

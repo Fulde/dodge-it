@@ -27,6 +27,7 @@ void Object::move() {
 }
 
 DamagingObject::DamagingObject(int initX, int labelHeight) {
+    //sets speed of falling object based on the selected difficulty level
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
     if (difficulty == Game::easy){
         speed = 1;

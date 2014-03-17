@@ -175,6 +175,7 @@ void WidgetGame::gameTimerHit() {
             {
                 WidgetGame::decrementLives();
                 gameTimer->stop();
+                Game::getInstance().setPlayerLives(3);
 
                 WidgetScore* score = new WidgetScore(this);
                 score->show();

@@ -38,7 +38,7 @@ public:
         WidgetPause->setStyleSheet(QStringLiteral(""));
         widget = new QWidget(WidgetPause);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(256, 192, 512, 384));
+        widget->setGeometry(QRect(260, 200, 512, 384));
         widget->setStyleSheet(QStringLiteral("background-image: url(:/pauseBackground.png);"));
         btnResume = new QPushButton(widget);
         btnResume->setObjectName(QStringLiteral("btnResume"));

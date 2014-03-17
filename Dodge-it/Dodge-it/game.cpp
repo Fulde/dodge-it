@@ -47,6 +47,7 @@ string HighScore::toString()
     return score + " " + username + " (" + difficulty + ")";
 }
 
+//convert highscores to custom string fornmat and returns custom string
 string HighScore::scoresToString()
 {
     string scores = "";
@@ -80,6 +81,7 @@ void HighScore::loadScores(string fileName)
     }
 }
 
+//tests how a score compares to the highscore list
 bool HighScore::scoreCompare() {
     string newDiff = difficulty;
     int newScore = HighScore::getScore();
@@ -187,6 +189,7 @@ void Game::quit() {
     // revent back to main screen
 }
 
+//moves player to new location
 void Game::movePlayer(int newX, int newY) {
     player->move(newX, newY);
 }
