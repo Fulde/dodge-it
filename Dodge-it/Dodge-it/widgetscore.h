@@ -24,7 +24,7 @@ public:
     ~WidgetScore();
     WidgetGame *main;
 
-private slots:    
+private slots:
     void on_btnExit_clicked();
 
 private:

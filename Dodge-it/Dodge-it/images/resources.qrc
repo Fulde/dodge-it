@@ -19,5 +19,8 @@
         <file>highscores.png</file>
         <file>helpscreen2.png</file>
         <file>highscores2.png</file>
+        <file>screenshot1.png</file>
+        <file>screenshot2.png</file>
+        <file>screenshot3.png</file>
     </qresource>
 </RCC>
