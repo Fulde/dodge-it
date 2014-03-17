@@ -36,7 +36,6 @@ public:
 
 private slots:
     void gameTimerHit();
-    void hitTimerHit();
     void on_btnPause_clicked();
     void keyPressEvent(QKeyEvent *k);
 

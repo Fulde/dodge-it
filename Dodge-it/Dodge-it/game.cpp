@@ -127,15 +127,6 @@ void HighScore::unitTest() { // these should only be called when specified throu
 
 // ================================ CHARACTER ======================================
 
-void Character::handleCollision() {
-  //  if (Invul::getActive()) {
-  //      ++lives;
-  //      lblLives = "--";
-  //  }
-    --lives;
-  //    WidgetGame::decrementLives;
-}
-
 void Character::move(int newX, int newY)
 {
      x = newX;

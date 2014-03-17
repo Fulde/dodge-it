@@ -57,7 +57,6 @@ WidgetGame::WidgetGame(QWidget *parent) :
     // starts when the character is hit; the character cannot be hit again until timeout
     hitTimer = new QTimer(this);
     hitTimer->setInterval(3000); // 3 seconds
-    connect(hitTimer, &QTimer::timeout, this, &WidgetGame::hitTimerHit);
     hitTimer->setSingleShot(true);
 }
 
@@ -176,10 +175,10 @@ void WidgetGame::gameTimerHit() {
                 WidgetGame::decrementLives();
                 gameTimer->stop();
 
-                WidgetScore* score = new WidgetScore(this);
+                WidgetScore* score = new WidgetScore();
+                score->main = this;
                 score->show();
             } else {
-                qDebug() << "You've been hit";
                 hitTimer->start();
                 WidgetGame::decrementLives();
             }
@@ -216,11 +215,6 @@ void WidgetGame::gameTimerHit() {
             curLabel->deleteLater();
         }
     }
-}
-
-void WidgetGame::hitTimerHit() {
-    // not sure if anything really needs to be done in here; good for debugging
-    qDebug() << "Able to be hit again";
 }
 
 void WidgetGame::on_btnPause_clicked() {
