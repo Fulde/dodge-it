@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>512</width>
-    <height>487</height>
+    <width>820</width>
+    <height>818</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,25 +20,25 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
+     <y>160</y>
      <width>491</width>
-     <height>181</height>
+     <height>211</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
+    <string notr="true">font: 14pt;
+color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Game Instructions: 
- -- pick a difficulty level to begin with. The 
- harder the difficulty level, the faster the objects will fall and 
- the more points you will earn 
+    <string>-- pick a difficulty level to begin with. The 
+ harder the difficulty level, the faster the objects will fall 
+ and the more points you will earn 
+ -- use your arrow keys to move the satyr left, right, up, 
+ or down 
  -- you can press pause in the middle of the game to save, 
  enter cheat mode, or return to the start menu 
  -- cheat mode: allows the user to play without losing lives 
-(aka dying). 
- 
- Powerups available:</string>
+ (aka dying).</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -80,9 +80,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>250</y>
-     <width>51</width>
-     <height>41</height>
+     <y>480</y>
+     <width>61</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -98,14 +98,15 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>260</y>
+     <x>90</x>
+     <y>490</y>
      <width>341</width>
      <height>17</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(232, 25, 6);</string>
+    <string notr="true">color: rgb(232, 25, 6);
+font: 14pt;</string>
    </property>
    <property name="text">
     <string>Increases life by 1</string>
@@ -115,9 +116,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>340</y>
-     <width>51</width>
-     <height>51</height>
+     <y>640</y>
+     <width>61</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="text">
@@ -133,26 +134,28 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>360</y>
+     <x>90</x>
+     <y>650</y>
      <width>411</width>
-     <height>17</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(23, 217, 255);</string>
+    <string notr="true">color: rgb(23, 217, 255);
+font: 14pt;</string>
    </property>
    <property name="text">
-    <string>Makes the falling objects slower over a short period of time</string>
+    <string>Makes the falling objects slower over a short 
+ period of time</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>300</y>
-     <width>41</width>
-     <height>41</height>
+     <y>560</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -168,14 +171,15 @@
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>310</y>
+     <x>90</x>
+     <y>570</y>
      <width>371</width>
      <height>17</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(235, 201, 7);</string>
+    <string notr="true">color: rgb(235, 201, 7);
+font: 14pt;</string>
    </property>
    <property name="text">
     <string>Player is invincible over a short period of time</string>
@@ -184,14 +188,15 @@
   <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>410</y>
+     <x>90</x>
+     <y>740</y>
      <width>371</width>
      <height>17</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(84, 236, 29);</string>
+    <string notr="true">color: rgb(84, 236, 29);
+font: 14pt;</string>
    </property>
    <property name="text">
     <string>Multiplies the score by 2 over a short period of time</string>
@@ -201,9 +206,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>400</y>
-     <width>41</width>
-     <height>41</height>
+     <y>730</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -233,6 +238,145 @@
    </property>
    <property name="scaledContents">
     <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>50</y>
+     <width>261</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images/resources.qrc">:/screenshot1.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>20</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 127);</string>
+   </property>
+   <property name="text">
+    <string>EASY LEVEL</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>270</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 170, 0);</string>
+   </property>
+   <property name="text">
+    <string>MEDIUM LEVEL</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>300</y>
+     <width>271</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images/resources.qrc">:/screenshot2.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_15">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>530</y>
+     <width>111</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(236, 40, 5);</string>
+   </property>
+   <property name="text">
+    <string>HARD LEVEL</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_16">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>560</y>
+     <width>271</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images/resources.qrc">:/screenshot3.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_17">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>430</y>
+     <width>281</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 18pt;
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>POWERUPS AVAILABLE</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_18">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>120</y>
+     <width>281</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 18pt;
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>GAME INSTRUCTIONS</string>
    </property>
   </widget>
  </widget>
