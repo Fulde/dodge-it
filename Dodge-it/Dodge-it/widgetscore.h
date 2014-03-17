@@ -27,8 +27,6 @@ public:
     WidgetGame *par;
 
 private slots:
-
-    void on_btnQuit_clicked();
     
     void on_btnExit_clicked();
 
