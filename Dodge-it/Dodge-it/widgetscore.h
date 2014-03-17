@@ -25,6 +25,7 @@ public:
     WidgetGame *main;
 
 private slots:
+
     void on_btnExit_clicked();
 
 private:
