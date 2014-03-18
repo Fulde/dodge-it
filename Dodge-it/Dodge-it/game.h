@@ -30,8 +30,8 @@ public:
     int getScore() { return score; }
     void setScore(int num) { score = num; }
     void displayScores();
-    void unitTest();
     string toString();
+    static void unitTest();
     static void loadScores(string fileName);
     static void compareScore(); // need to rename; name no longer applies
     static string scoresToString();

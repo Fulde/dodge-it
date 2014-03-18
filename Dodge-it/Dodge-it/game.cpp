@@ -80,7 +80,7 @@ void HighScore::compareScore() {
     else if (Game::getInstance().getDifficulty() == Game::hard)
         difficulty = "hard";
 
-    HighScore *testScore = new HighScore(Game::getInstance().getScore(), "user", difficulty);
+    HighScore *testScore = new HighScore(Game::getInstance().getScore(), "user", difficulty); // "user" because save/load not yet implemented
 
     for (size_t i = 0; i < HighScore::highScores.size(); i++)
     {
@@ -99,9 +99,8 @@ void HighScore::compareScore() {
 void HighScore::scoresToFile(string fileName)
 {
     ofstream strm(fileName);
-
     if (strm)
-    {
+    {        
         for (size_t i = 0;  i < HighScore::highScores.size(); i++)
         {
             HighScore *curScore = HighScore::highScores.at(i);
@@ -113,20 +112,51 @@ void HighScore::scoresToFile(string fileName)
 
 void HighScore::unitTest() { // these should only be called when specified through a command-line arg according to the assignment spec
 
-    /*highScores.push_back(200);
-    highScores.push_back(100);
-    highScores.push_back(300);
+    HighScore::loadScores("testScores.txt");
 
-    sortScores();
-    assert(highScores.at(0) == 300);
+    assert(HighScore::highScores.at(0)->score == 1000);
+    assert(HighScore::highScores.at(5)->username == "test5");
+    assert(HighScore::highScores.at(6)->difficulty == "easy");
 
-    loadScores();
-    assert(highScores.at(0) == 1000);
 
-    score = 1500;
-    loadScores();
-    scoreCompare();
-    assert(highScores.at(0) == 1500);*/
+    assert(HighScore::highScores.at(8)->score == 200);
+    assert(HighScore::highScores.at(8)->username == "test2");
+    assert(HighScore::highScores.at(8)->difficulty == "hard");
+
+    Game::getInstance().setDifficulty(Game::medium);
+    Game::getInstance().setScore(233);
+    HighScore::compareScore();
+
+    assert(HighScore::highScores.at(8)->score == 233);
+    assert(HighScore::highScores.at(8)->username == "user");
+    assert(HighScore::highScores.at(8)->difficulty == "medium");
+
+    HighScore::scoresToFile("testScores.txt");
+
+    HighScore::loadScores("testScores.txt");
+
+    assert(HighScore::highScores.at(0)->score == 1000);
+    assert(HighScore::highScores.at(5)->username == "test5");
+    assert(HighScore::highScores.at(6)->difficulty == "easy");
+    assert(HighScore::highScores.at(8)->score == 233);
+    assert(HighScore::highScores.at(8)->username == "user");
+    assert(HighScore::highScores.at(8)->difficulty == "medium");
+
+    HighScore::highScores.clear();
+
+    // reset unit test file
+    ofstream stream("testScores.txt");
+    stream << 1000 << " test10 " << "easy" << endl;
+    stream << 900 << " test9 " << "medium" << endl;
+    stream << 800 << " test8 " << "hard" << endl;
+    stream << 700 << " test7 " << "easy" << endl;
+    stream << 600 << " test6 " << "medium" << endl;
+    stream << 500 << " test5 " << "hard" << endl;
+    stream << 400 << " test4 " << "easy" << endl;
+    stream << 300 << " test3 " << "medium" << endl;
+    stream << 200 << " test2 " << "hard" << endl;
+    stream << 100 << " test1 " << "easy" << endl;
+    stream.close();
 }
 
 // ================================ CHARACTER ======================================
