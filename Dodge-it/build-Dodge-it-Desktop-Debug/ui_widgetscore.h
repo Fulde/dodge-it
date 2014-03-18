@@ -43,7 +43,7 @@ public:
         btnExit->setGeometry(QRect(210, 340, 91, 27));
         lblScores = new QLabel(WidgetScore);
         lblScores->setObjectName(QStringLiteral("lblScores"));
-        lblScores->setGeometry(QRect(40, 110, 431, 221));
+        lblScores->setGeometry(QRect(140, 100, 431, 221));
         lblScores->setStyleSheet(QStringLiteral("font: 75 14pt \"Ubuntu\";"));
         lblScores->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 

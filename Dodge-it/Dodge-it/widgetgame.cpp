@@ -33,6 +33,8 @@ WidgetGame::WidgetGame(QWidget *parent) :
 
     setFocusPolicy(Qt::StrongFocus);
 
+    Game::getInstance().setScore(0);
+
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
     if (difficulty == Game::easy){
         QPixmap background_image(":/easyBackground.png");
@@ -75,7 +77,6 @@ void WidgetGame::decrementLives() {
         //normal execution
         ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() - 1));
         Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() - 1);
-        qDebug() << Game::getInstance().getPlayerLives();
     }
 }
 
@@ -176,6 +177,7 @@ void WidgetGame::gameTimerHit() {
                 gameTimer->stop();
                 Game::getInstance().setPlayerLives(3);
 
+                HighScore::compareScore();
                 WidgetScore* score = new WidgetScore();
                 score->main = this;
                 score->show();
@@ -200,6 +202,7 @@ void WidgetGame::gameTimerHit() {
         if (curObj->getY() > 768)
         {
             incrementScore();
+            Game::getInstance().incScore(1);
             if (curObj->getPixmap() == ":/basic.png") {
                 delete curObj;
                 Game::getInstance().getBasics().erase(Game::getInstance().getBasics().begin());  // COULD THESE LINES BE CAUSING THE DOUBLE-FREE/CORRUPTION???

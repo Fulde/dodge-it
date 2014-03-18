@@ -29,14 +29,13 @@ public:
     HighScore(int highscore, string usrname, string diff);
     int getScore() { return score; }
     void setScore(int num) { score = num; }
-    bool scoreCompare();
     void displayScores();
-    void sortScores();
-    void addToFile(int newScore);
     void unitTest();
     string toString();
     static void loadScores(string fileName);
+    static void compareScore(); // need to rename; name no longer applies
     static string scoresToString();
+    static void scoresToFile(string fileName);
 };
 
 //========================= CHARACTER =========================
@@ -72,6 +71,7 @@ private:
     int multiplier;
     int timeInterval;
     int objectInterval;
+    int score;
     diffSetting difficulty;
     vector<Object*> basics;
     vector<Object*> smalls;
@@ -91,12 +91,15 @@ public:
     int getPlayerY() { return player->getY(); }
     int getPlayerLives() { return player->getLives(); }
     void setPlayerLives(int newLives) { player->setLives(newLives); }
+    int getScore() { return score; }
     diffSetting getDifficulty() { return difficulty; }
 
     void setMultiplier(int newMult) { multiplier = newMult; }
     void setTimeInt(int newTime) { timeInterval = newTime; }
     void setObjectInt(int newInt) { objectInterval = newInt; }
     void setDifficulty(diffSetting diff) {difficulty = diff; }
+    void setScore(int newScore) { score = newScore; }
+    void incScore(int incAmt) { score += incAmt; }
 
     void addBasic(DamagingObject *obj)     { basics.push_back(obj); }
     void addSmall(DamagingObject *obj)     { smalls.push_back(obj); }

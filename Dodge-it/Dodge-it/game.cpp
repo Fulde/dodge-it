@@ -16,6 +16,7 @@
 #include <QTextStream>
 #include <cassert>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -27,36 +28,23 @@ HighScore::HighScore(int highscore, string usrname, string diff) :
     score(highscore), username(usrname), difficulty(diff) { }
 
 
-void HighScore::addToFile(int newScore) {
-
-    QFile file("highscores.txt");
-    QTextStream in(&file);
-    while(!in.atEnd()) {
-
-    }
-
-    QTextStream out(&file);
-//    out << newDiff;
-//    out << newScore;
-
-    file.close();
-}
-
 string HighScore::toString()
 {
-    return score + " " + username + " (" + difficulty + ")";
+    stringstream stream;
+    stream << score << "  -  " << username << " (" << difficulty << ")";
+    return stream.str();
 }
 
 //convert highscores to custom string fornmat and returns custom string
 string HighScore::scoresToString()
 {
-    string scores = "";
-    for (size_t i = 0; i < highScores.size(); i++)
+    stringstream stream;
+    for (size_t i = 0; i < HighScore::highScores.size(); i++)
     {
-        scores += highScores.at(i)->toString() + "\n\n";
+        stream << (i + 1) << ". " << HighScore::highScores.at(i)->toString() << "\n";
     }
 
-    return scores;
+    return stream.str();
 }
 
 void HighScore::loadScores(string fileName)
@@ -82,31 +70,45 @@ void HighScore::loadScores(string fileName)
 }
 
 //tests how a score compares to the highscore list
-bool HighScore::scoreCompare() {
-    string newDiff = difficulty;
-    int newScore = HighScore::getScore();
-    int i = 0;
+void HighScore::compareScore() {
 
-    QFile file("highscores.txt");
-    QTextStream in(&file);
-    QString diff = in.readLine();
-    int sc = in.readLine().toInt();
+    string difficulty;
+    if (Game::getInstance().getDifficulty() == Game::easy)
+        difficulty = "easy";
+    else if (Game::getInstance().getDifficulty() == Game::medium)
+        difficulty = "medium";
+    else if (Game::getInstance().getDifficulty() == Game::hard)
+        difficulty = "hard";
 
-    while(i <= 10 && (!in.atEnd() || newScore < sc)) {
-        ++i;
-        diff = in.readLine();
-        sc = in.readLine().toInt();
+    HighScore *testScore = new HighScore(Game::getInstance().getScore(), "user", difficulty);
+
+    for (size_t i = 0; i < HighScore::highScores.size(); i++)
+    {
+        if (testScore->score > HighScore::highScores.at(i)->score)
+        {
+            HighScore::highScores.insert(HighScore::highScores.begin() + i, testScore);
+            HighScore::highScores.pop_back();
+            break;
+        }
+        else
+            continue;
     }
-    if (newScore < sc) {  // if the score is not in the top ten
-        return false;
-    }
-
-    return true;
 }
 
 
-void HighScore::sortScores() {
-    string file = "test.txt";
+void HighScore::scoresToFile(string fileName)
+{
+    ofstream strm(fileName);
+
+    if (strm)
+    {
+        for (size_t i = 0;  i < HighScore::highScores.size(); i++)
+        {
+            HighScore *curScore = HighScore::highScores.at(i);
+            strm << curScore->score << " " << curScore->username << " " << curScore->difficulty << endl;
+        }
+    }
+    strm.close();
 }
 
 void HighScore::unitTest() { // these should only be called when specified through a command-line arg according to the assignment spec
