@@ -265,7 +265,9 @@ bool Game::save(string fileName) {
         } else if (difficulty == Game::hard) {
             strm << "hard" << endl;
         }
-        strm << score << endl << Game::getInstance().getPlayerLives() << endl << Game::getInstance().getPlayerX() << " " << Game::getInstance().getPlayerY() << endl;
+        strm << score << endl
+                      << Game::getInstance().getPlayerLives() << endl
+                      << Game::getInstance().getPlayerX() << " " << Game::getInstance().getPlayerY() << endl;
         for (size_t i = 0;  i < powerups.size(); i++) {                     // save powerups
             Powerup *obj = dynamic_cast<Powerup*>(powerups.at(i));
             string data;
@@ -282,15 +284,15 @@ bool Game::save(string fileName) {
         }
         for (size_t i = 0;  i < basics.size(); i++) {                       // save basic objects
             Object *obj = basics.at(i);
-            strm << "basic" << obj->getX() << " " << obj->getY() << endl;
+            strm << "basic " << obj->getX() << " " << obj->getY() << endl;
         }
         for (size_t i = 0;  i < smalls.size(); i++) {                       // save small objects
             Object *obj = smalls.at(i);
-            strm << "small" << obj->getX() << " " << obj->getY() << endl;
+            strm << "small " << obj->getX() << " " << obj->getY() << endl;
         }
         for (size_t i = 0;  i < explosives.size(); i++) {                   // save explosive objects
             Object *obj = explosives.at(i);
-            strm << "expl" << obj->getX() << " " << obj->getY() << endl;
+            strm << "expl " << obj->getX() << " " << obj->getY() << endl;
         }
     }
     strm.close();
