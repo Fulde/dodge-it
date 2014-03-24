@@ -5,6 +5,10 @@
 600 player6 medium
 500 player5 hard
 400 player4 easy
+336 user medium
 300 player3 medium
 200 player2 hard
-100 player1 easy
+<<<<<<< HEAD
+=======
+134 user hard
+>>>>>>> d8b1ef4a5f49dc18af4551436299145ed3b12fa2

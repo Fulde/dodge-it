@@ -229,8 +229,39 @@ void Game::load(string fileName) {
     getline(strm,data);                         // start getting objects
     while (strm)
     {
+        string type = data.substr((0, data.find(' ')));
+        data.erase(0, data.find(' ') + 1);
+        int objX = stoi(data.substr(0, data.find(' ')));
+        int objY = stoi(data.substr(data.find(' ') + 1));
 
-
+        if (type == "basic")
+        {
+           instance.addBasic(new DamagingObject(objX, objY));
+        }
+        else if (type == "small")
+        {
+            instance.addSmall(new DamagingObject(objX, objY));
+        }
+        else if (type == "expl")
+        {
+            instance.addExplosive(new DamagingObject(objX, objY));
+        }
+        else if (type == "exlife")
+        {
+            instance.addPowerup(new ExLife(objX, objY));
+        }
+        else if (type == "mult")
+        {
+            instance.addPowerup(new Multiplier(objX, objY));
+        }
+        else if (type == "slow")
+        {
+            instance.addPowerup(new Slow(objX, objY));
+        }
+        else if (type == "invul")
+        {
+            instance.addPowerup(new Invul(objX, objY));
+        }
 
         getline(strm, data);
     }
