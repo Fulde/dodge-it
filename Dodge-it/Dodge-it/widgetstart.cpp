@@ -55,3 +55,12 @@ void WidgetStart::on_btnQuit_clicked()
     //quit the application
     QCoreApplication::exit();
 }
+
+void WidgetStart::on_btnLoad_clicked()
+{
+    WidgetGame* game = new WidgetGame(main);
+    game->show();
+    this->hide();
+
+    game->WidgetGame::loadGame("savedGame.txt");
+}

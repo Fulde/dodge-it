@@ -31,6 +31,7 @@ public:
     void decrementLives();
     void pauseTimer();
     void resumeTimer();
+    void loadGame(string filename);
 
     Widget *main;
 

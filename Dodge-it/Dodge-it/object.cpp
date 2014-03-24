@@ -26,6 +26,8 @@ void Object::move() {
     y += speed;
 }
 
+string Object::stateToFile() { }
+
 DamagingObject::DamagingObject(int initX, int labelHeight) {
     //sets speed of falling object based on the selected difficulty level
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
@@ -56,8 +58,14 @@ Powerup::Powerup(int initX, int labelHeight) {
     y = -labelHeight;
 }
 
-void Invul::stateToFile() {
-
+string Powerup::stateToFile(Powerup* obj, string type) {
+    string data = type + " ";\
+    if (obj->getActive()) {
+        data = data + to_string(obj->getDuration()) + "\n";
+    } else {
+        data = data + to_string(obj->getX()) + " " + to_string(obj->getY()) + "\n";
+    }
+    return data;
 }
 
 void Invul::activatePow() {
@@ -65,10 +73,6 @@ void Invul::activatePow() {
 }
 
 void ExLife::activatePow() {
-
-}
-
-void Slow::stateToFile() {
 
 }
 
