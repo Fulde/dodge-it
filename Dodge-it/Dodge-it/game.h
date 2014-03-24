@@ -26,7 +26,7 @@ class HighScore {
     string username;
 
 public:
-    HighScore(int highscore, string usrname, string diff);
+    HighScore(int highscore, string username, string diff);
     int getScore() { return score; }
     void setScore(int num) { score = num; }
     void displayScores();
@@ -111,8 +111,8 @@ public:
     //Quits the game if the player runs out of lives
     void quit();
 
-    bool save();
-    void load();
+    bool save(string fileName);
+    void load(string fileName);
     ~Game();
 
 //**** singleton implementation ****//

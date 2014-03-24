@@ -24,8 +24,8 @@ using namespace std;
 
 vector<HighScore*> HighScore::highScores;
 
-HighScore::HighScore(int highscore, string usrname, string diff) :
-    score(highscore), username(usrname), difficulty(diff) { }
+HighScore::HighScore(int highscore, string username, string diff) :
+    score(highscore), username(username), difficulty(diff) { }
 
 
 string HighScore::toString()
@@ -200,12 +200,74 @@ Game::~Game()
 
 // called when the user requests to load a saved game.  It will
 // resume the saved game at the point that it was saved.
-void Game::load() { }
+void Game::load(string fileName) {
+
+}
 
 // called when the user requests to save their current game.
 // It will save the current state of the game including the score, number of lives,
 // and the locations of all falling objects and the character itself.
-bool Game::save() { return true;}
+bool Game::save(string fileName) {
+    ofstream strm(fileName);
+    if (strm) {
+        if (difficulty == Game::easy) {
+            strm << "easy" << endl;
+        } else if (difficulty == Game::medium) {
+            strm << "medium" << endl;
+        } else if (difficulty == Game::hard) {
+            strm << "hard" << endl;
+        }
+        strm << score << endl
+             << Game::getInstance().getPlayerLives() << endl
+             << Game::getInstance().getPlayerX() << " " << Game::getInstance().getPlayerY() << endl;
+        for (size_t i = 0;  i < powerups.size(); i++) {                     // save powerups
+            Powerup *obj = dynamic_cast<Powerup*>(powerups.at(i));
+            if (dynamic_cast<Invul*>(obj)) {
+                strm << "invul";
+                if (dynamic_cast<Invul*>(obj)) {
+                    strm << " " << obj->getDuration() << endl;
+                } else {
+                    strm << obj->getX() << " " << obj->getY() << endl;
+                }
+            } else if (dynamic_cast<ExLife*>(obj)) {
+                strm << "exlife";
+                if (obj->getActive()) {
+                    strm << " " << obj->getDuration() << endl;
+                } else {
+                    strm << endl;
+                }
+            } else if (dynamic_cast<Slow*>(obj)) {
+                strm << "slow";
+                if (obj->getActive()) {
+                    strm << " " << obj->getDuration() << endl;
+                } else {
+                    strm << endl;
+                }
+            } else if (dynamic_cast<Multiplier*>(obj)) {
+                strm << "mult";
+                if (obj->getActive()) {
+                    strm << " " << obj->getDuration() << endl;
+                } else {
+                    strm << endl;
+                }
+            }
+        }
+        for (size_t i = 0;  i < basics.size(); i++) {                       // save basic objects
+            Object *obj = basics.at(i);
+            strm << "basic" << obj->getX() << " " << obj->getY() << endl;
+        }
+        for (size_t i = 0;  i < smalls.size(); i++) {                       // save small objects
+            Object *obj = smalls.at(i);
+            strm << "small" << obj->getX() << " " << obj->getY() << endl;
+        }
+        for (size_t i = 0;  i < explosives.size(); i++) {                   // save explosive objects
+            Object *obj = explosives.at(i);
+            strm << "expl" << obj->getX() << " " << obj->getY() << endl;
+        }
+    }
+    strm.close();
+    return true;
+}
 
 void Game::quit() {
     // call high score window

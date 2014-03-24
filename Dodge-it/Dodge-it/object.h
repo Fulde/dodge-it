@@ -59,15 +59,17 @@ class Powerup : public Object {
 protected:
     virtual void stateToFile() { }
     //boolean to test if the powerup is currently active
-    static bool active;
+    bool active;
     //integer representing how long the powerup will remain active
     int duration;
 
 public:
     Powerup(int initX, int labelHeight);
-    //returns the current state of the powerup (true = active / false = not active)
-    //static bool getActive() { return active; }
-    static void setActive(bool newValue) { active = newValue; }
+
+    void setActive(bool newValue) { active = newValue; }
+
+    bool getActive() { return active; }
+    int  getDuration() { return duration; }
 
     virtual void activatePow() = 0;
 };
