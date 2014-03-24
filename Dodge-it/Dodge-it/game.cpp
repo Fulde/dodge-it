@@ -165,6 +165,7 @@ void Character::move(int newX, int newY)
 {
      x = newX;
      y = newY;
+     moving = false;
 }
 
 Character::Character() { lives = 3; } // may want to supply initX and initY as parameters in future

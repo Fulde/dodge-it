@@ -26,7 +26,7 @@ class HighScore {
     string username;
 
 public:
-    HighScore(int highscore, string username, string diff);
+    HighScore(int highscore, string usrname, string diff);
     int getScore() { return score; }
     void setScore(int num) { score = num; }
     void displayScores();
@@ -48,6 +48,8 @@ private:
     int x, y;
     //keeps record of the number of lives the character has left
     int lives;
+    //tracks whether the character is currently moving or not
+    bool moving;
 
 public:
     Character();
@@ -89,17 +91,17 @@ public:
     int getObjectInt() { return objectInterval; }
     int getPlayerX() { return player->getX(); }
     int getPlayerY() { return player->getY(); }
+    int getPlayerLives() { return player->getLives(); }
+    void setPlayerLives(int newLives) { player->setLives(newLives); }
     int getScore() { return score; }
     diffSetting getDifficulty() { return difficulty; }
-    int getPlayerLives() { return player->getLives(); }
 
-    void setPlayerLives(int newLives) { player->setLives(newLives); }
     void setMultiplier(int newMult) { multiplier = newMult; }
     void setTimeInt(int newTime) { timeInterval = newTime; }
     void setObjectInt(int newInt) { objectInterval = newInt; }
     void setDifficulty(diffSetting diff) {difficulty = diff; }
     void setScore(int newScore) { score = newScore; }
-
+    void incScore(int incAmt) { score += incAmt; }
 
     void addBasic(DamagingObject *obj)     { basics.push_back(obj); }
     void addSmall(DamagingObject *obj)     { smalls.push_back(obj); }
@@ -107,9 +109,12 @@ public:
     void addPowerup(Powerup *obj)          { powerups.push_back(obj); }
 
     void movePlayer(int newX, int newY);
-    void incScore(int incAmt) { score += incAmt; }
-    bool save(string fileName);
-    void load(string fileName);
+
+    //Quits the game if the player runs out of lives
+    void quit();
+
+    bool save();
+    void load();
     ~Game();
 
 //**** singleton implementation ****//
