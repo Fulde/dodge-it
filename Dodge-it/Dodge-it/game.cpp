@@ -201,7 +201,36 @@ Game::~Game()
 // called when the user requests to load a saved game.  It will
 // resume the saved game at the point that it was saved.
 void Game::load(string fileName) {
+    ifstream strm(fileName);
+    string data;
+    getline(strm, data);                // get game difficulty
+    if (data == "easy") {
+        Game::getInstance().setDifficulty(Game::easy);
+        Game::getInstance().setObjectInt(30);
+    } else if (data == "medium") {
+        Game::getInstance().setDifficulty(Game::medium);
+        Game::getInstance().setObjectInt(20);
+    } else if (data == "hard") {
+        Game::getInstance().setDifficulty(Game::hard);
+        Game::getInstance().setObjectInt(10);
+    }
+    Game::getInstance().setTimeInt(9);
 
+    getline(strm, data);                // get score
+
+    getline(strm, data);                // get lives
+
+    getline(strm, data);                // get character position
+
+
+    getline(strm,data);
+    while (strm)
+    {
+
+
+
+        getline(strm, data);
+    }
 }
 
 // called when the user requests to save their current game.

@@ -80,6 +80,15 @@ void WidgetGame::decrementLives() {
     }
 }
 
+void WidgetGame::loadGame(string filename) {
+    Game::getInstance().load(filename);
+
+
+
+
+
+}
+
 void WidgetGame::keyPressEvent(QKeyEvent *k)
 {
     if ((k->key() == Qt::Key_Up || k->key() == Qt::Key_W) && (ui->lblSatyr->y() > 0))
