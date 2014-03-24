@@ -82,11 +82,42 @@ void WidgetGame::decrementLives() {
 
 void WidgetGame::loadGame(string filename) {
     Game::getInstance().load(filename);
-
-
-
-
-
+    for (size_t i = 0; i < Game::getInstance().getBasics().size(); i++) {
+        ObjLabel* label = new ObjLabel(this);
+        label->setObject(Game::getInstance().getBasics().at(i));
+        label->setPixmap(QPixmap(":/basic.png"));
+        label->getObject()->setPixmap(":/basic.png");
+        label->show();
+    }
+    for (size_t i = 0; i < Game::getInstance().getSmalls().size(); i++) {
+        ObjLabel* label = new ObjLabel(this);
+        label->setObject(Game::getInstance().getBasics().at(i));
+        label->setPixmap(QPixmap(":/small.png"));
+        label->getObject()->setPixmap(":/small.png");
+        label->show();
+    }
+    for (size_t i = 0; i < Game::getInstance().getExplosives().size(); i++) {
+        ObjLabel* label = new ObjLabel(this);
+        label->setObject(Game::getInstance().getBasics().at(i));
+        label->setPixmap(QPixmap(":/explosive.png"));
+        label->getObject()->setPixmap(":/explosive.png");
+        label->show();
+    }
+    for (size_t i = 0; i < Game::getInstance().getPowerups().size(); i++) {
+        ObjLabel* label = new ObjLabel(this);
+        label->setObject(Game::getInstance().getBasics().at(i));
+        if (dynamic_cast<Invul*>(Game::getInstance().getPowerups().at(i))) {
+            label->setPixmap(QPixmap(":/shield.png"));
+        } else if (dynamic_cast<ExLife*>(Game::getInstance().getPowerups().at(i))) {
+            label->setPixmap(QPixmap(":/heart.png"));
+        } else if (dynamic_cast<Slow*>(Game::getInstance().getPowerups().at(i))) {
+            label->setPixmap(QPixmap(":/hourglass.png"));
+        } else if (dynamic_cast<Multiplier*>(Game::getInstance().getPowerups().at(i))) {
+            label->setPixmap(QPixmap(":/multiplier.png"));
+        }
+        label->getObject()->setPixmap(label->pixmap());
+        label->show();
+    }
 }
 
 void WidgetGame::keyPressEvent(QKeyEvent *k)
