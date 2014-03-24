@@ -216,14 +216,16 @@ void Game::load(string fileName) {
     }
     Game::getInstance().setTimeInt(9);
 
-    getline(strm, data);                // get score
+    getline(strm, data);                        // get score
+    Game::getInstance().setScore(stoi(data));
+    getline(strm, data);                        // get lives
+    Game::getInstance().setPlayerLives(stoi(data));
+    getline(strm, data);                        // get character position
+    int x = stoi(data.substr(0, data.find(" ")));
+    int y = stoi(data.substr(data.find(" ")));
+    Game::getInstance().movePlayer(x,y);
 
-    getline(strm, data);                // get lives
-
-    getline(strm, data);                // get character position
-
-
-    getline(strm,data);
+    getline(strm,data);                         // start getting objects
     while (strm)
     {
 

@@ -89,17 +89,17 @@ public:
     int getObjectInt() { return objectInterval; }
     int getPlayerX() { return player->getX(); }
     int getPlayerY() { return player->getY(); }
-    int getPlayerLives() { return player->getLives(); }
-    void setPlayerLives(int newLives) { player->setLives(newLives); }
     int getScore() { return score; }
     diffSetting getDifficulty() { return difficulty; }
+    int getPlayerLives() { return player->getLives(); }
 
+    void setPlayerLives(int newLives) { player->setLives(newLives); }
     void setMultiplier(int newMult) { multiplier = newMult; }
     void setTimeInt(int newTime) { timeInterval = newTime; }
     void setObjectInt(int newInt) { objectInterval = newInt; }
     void setDifficulty(diffSetting diff) {difficulty = diff; }
     void setScore(int newScore) { score = newScore; }
-    void incScore(int incAmt) { score += incAmt; }
+
 
     void addBasic(DamagingObject *obj)     { basics.push_back(obj); }
     void addSmall(DamagingObject *obj)     { smalls.push_back(obj); }
@@ -107,7 +107,7 @@ public:
     void addPowerup(Powerup *obj)          { powerups.push_back(obj); }
 
     void movePlayer(int newX, int newY);
-
+    void incScore(int incAmt) { score += incAmt; }
     bool save(string fileName);
     void load(string fileName);
     ~Game();
