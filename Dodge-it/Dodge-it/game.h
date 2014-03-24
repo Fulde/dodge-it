@@ -113,8 +113,8 @@ public:
     //Quits the game if the player runs out of lives
     void quit();
 
-    bool save();
-    void load();
+    bool save(string);
+    void load(string);
     ~Game();
 
 //**** singleton implementation ****//
