@@ -230,20 +230,20 @@ void Game::load(string fileName) {
     {
         string type = data.substr((0, data.find(' ')));
         data.erase(0, data.find(' ') + 1);
-        int objX = data.substr(0, data.find(' '));
-        int objY = data.substr(data.find(' ') + 1);
+        int objX = stoi(data.substr(0, data.find(' ')));
+        int objY = stoi(data.substr(data.find(' ') + 1));
 
         if (type == "basic")
         {
-           instance.addBasic(new DamagingObject(objX, objY);
+           instance.addBasic(new DamagingObject(objX, objY));
         }
         else if (type == "small")
         {
-            instance.addSmall(new DamagingObject(objX, objY);
+            instance.addSmall(new DamagingObject(objX, objY));
         }
         else if (type == "expl")
         {
-            instance.addExplosive(new DamagingObject(objX, objY);
+            instance.addExplosive(new DamagingObject(objX, objY));
         }
         else if (type == "exlife")
         {
