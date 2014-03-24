@@ -108,9 +108,6 @@ public:
 
     void movePlayer(int newX, int newY);
 
-    //Quits the game if the player runs out of lives
-    void quit();
-
     bool save(string fileName);
     void load(string fileName);
     ~Game();

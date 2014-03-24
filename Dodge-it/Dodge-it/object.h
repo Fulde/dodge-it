@@ -22,7 +22,7 @@ protected:
     //This method increments the score if the user successfully avoids the object
     virtual void incrementScore();
     //This method saves the current state of the object (location, etc.) to a file when the user saves the game
-    virtual void stateToFile() = 0;
+    virtual string stateToFile();
 
 public:
     //This method moves the falling object to its new location based off the speed of the object
@@ -39,7 +39,6 @@ public:
 //========================= DAMAGING Objects =========================
 class DamagingObject : public Object {
 protected:
-    void stateToFile() { }
     //the number of points the user scores for successfully avoiding this object
     int points;
     //the number of lives the user loses for running into this object
@@ -57,7 +56,6 @@ public:
 //========================= POWERUPS =========================
 class Powerup : public Object {
 protected:
-    virtual void stateToFile() { }
     //boolean to test if the powerup is currently active
     bool active;
     //integer representing how long the powerup will remain active
@@ -65,6 +63,7 @@ protected:
 
 public:
     Powerup(int initX, int labelHeight);
+    string stateToFile(Powerup* obj, string type);
 
     void setActive(bool newValue) { active = newValue; }
 
@@ -79,7 +78,6 @@ public:
 class Invul : public Powerup {
 public:
     Invul(int initX, int labelHeight) : Powerup(initX, labelHeight) { }
-    void stateToFile();
     void activatePow();
 };
 
@@ -96,7 +94,6 @@ public:
 class Slow : public Powerup {
 public:
     Slow(int initX, int labelHeight) : Powerup(initX, labelHeight) { }
-    void stateToFile();
     void activatePow();
 };
 

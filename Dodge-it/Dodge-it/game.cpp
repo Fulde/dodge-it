@@ -217,40 +217,20 @@ bool Game::save(string fileName) {
         } else if (difficulty == Game::hard) {
             strm << "hard" << endl;
         }
-        strm << score << endl
-             << Game::getInstance().getPlayerLives() << endl
-             << Game::getInstance().getPlayerX() << " " << Game::getInstance().getPlayerY() << endl;
+        strm << score << endl << Game::getInstance().getPlayerLives() << endl << Game::getInstance().getPlayerX() << " " << Game::getInstance().getPlayerY() << endl;
         for (size_t i = 0;  i < powerups.size(); i++) {                     // save powerups
             Powerup *obj = dynamic_cast<Powerup*>(powerups.at(i));
+            string data;
             if (dynamic_cast<Invul*>(obj)) {
-                strm << "invul";
-                if (dynamic_cast<Invul*>(obj)) {
-                    strm << " " << obj->getDuration() << endl;
-                } else {
-                    strm << obj->getX() << " " << obj->getY() << endl;
-                }
+                data = obj->stateToFile(obj, "invul");
             } else if (dynamic_cast<ExLife*>(obj)) {
-                strm << "exlife";
-                if (obj->getActive()) {
-                    strm << " " << obj->getDuration() << endl;
-                } else {
-                    strm << endl;
-                }
+                data = obj->stateToFile(obj, "exlife");
             } else if (dynamic_cast<Slow*>(obj)) {
-                strm << "slow";
-                if (obj->getActive()) {
-                    strm << " " << obj->getDuration() << endl;
-                } else {
-                    strm << endl;
-                }
+                data = obj->stateToFile(obj, "slow");
             } else if (dynamic_cast<Multiplier*>(obj)) {
-                strm << "mult";
-                if (obj->getActive()) {
-                    strm << " " << obj->getDuration() << endl;
-                } else {
-                    strm << endl;
-                }
+                data = obj->stateToFile(obj, "mult");
             }
+            strm << data;
         }
         for (size_t i = 0;  i < basics.size(); i++) {                       // save basic objects
             Object *obj = basics.at(i);
@@ -267,11 +247,6 @@ bool Game::save(string fileName) {
     }
     strm.close();
     return true;
-}
-
-void Game::quit() {
-    // call high score window
-    // revent back to main screen
 }
 
 //moves player to new location
