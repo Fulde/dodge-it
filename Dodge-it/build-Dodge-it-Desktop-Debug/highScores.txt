@@ -7,4 +7,4 @@
 400 player4 easy
 300 player3 medium
 200 player2 hard
-100 player1 easy
+134 user hard

@@ -27,10 +27,9 @@ public:
     
 private slots:
     void on_btnStart_clicked();
-
     void on_btnHelp_clicked();
-
     void on_btnQuit_clicked();
+    void on_btnLoad_clicked();
 
 private:
     //Private instance for the Widget ui

@@ -1,0 +1,19 @@
+hard
+28
+2
+560 520
+basic630 655
+basic670 630
+basic1010 590
+basic430 445
+basic540 430
+basic460 375
+basic540 185
+basic790 175
+basic410 155
+basic840 85
+small460 700
+small190 370
+small470 120
+small950 100
+small200 50
