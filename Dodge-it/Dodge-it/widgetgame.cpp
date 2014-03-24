@@ -108,14 +108,17 @@ void WidgetGame::loadGame(string filename) {
         label->setObject(Game::getInstance().getBasics().at(i));
         if (dynamic_cast<Invul*>(Game::getInstance().getPowerups().at(i))) {
             label->setPixmap(QPixmap(":/shield.png"));
+            label->getObject()->setPixmap(":/shield.png");
         } else if (dynamic_cast<ExLife*>(Game::getInstance().getPowerups().at(i))) {
             label->setPixmap(QPixmap(":/heart.png"));
+            label->getObject()->setPixmap(":/heart.png");
         } else if (dynamic_cast<Slow*>(Game::getInstance().getPowerups().at(i))) {
             label->setPixmap(QPixmap(":/hourglass.png"));
+            label->getObject()->setPixmap(":/hourglass.png");
         } else if (dynamic_cast<Multiplier*>(Game::getInstance().getPowerups().at(i))) {
             label->setPixmap(QPixmap(":/multiplier.png"));
+            label->getObject()->setPixmap(":/multiplier.png");
         }
-        label->getObject()->setPixmap(label->pixmap());
         label->show();
     }
 }
@@ -154,7 +157,7 @@ void WidgetGame::gameTimerHit() {
         label->setAlignment(Qt::AlignHCenter);
 
         int random = rand() % 100 + 1;
-        if (random <= 100) {                  // THIS OVERRIDES THE POWERUPS CURRENTLY BECAUSE OF THE SIZE OF THE POWERUP PIXMAPS  -- should be 90
+        if (random <= 90) {
             if (random <= 50) {                                // (1-50)  basic object
                 label->setPixmap(QPixmap(":/basic.png"));
                 DamagingObject *obj = new DamagingObject(randX, label->height());
@@ -167,7 +170,7 @@ void WidgetGame::gameTimerHit() {
                 Game::getInstance().addSmall(obj);
                 label->setObject(obj);
                 label->getObject()->setPixmap(":/small.png");
-            } else if (random >= 81 && random <= 100) {        // (81-90) explosive object                        -- this should also be 90
+            } else if (random >= 81 && random <= 90) {        // (81-90) explosive object
                 label->setPixmap(QPixmap(":/explosive.png"));
                 DamagingObject *obj = new DamagingObject(randX, label->height());
                 Game::getInstance().addExplosive(obj);
