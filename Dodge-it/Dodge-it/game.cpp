@@ -227,7 +227,7 @@ void Game::load(string fileName) {
     getline(strm,data);                         // start getting objects
     while (strm)
     {
-        string type = data.substr((0, data.find(' ')));
+        string type = data.substr(0, data.find(' '));
         data.erase(0, data.find(' ') + 1);
         int objX = stoi(data.substr(0, data.find(' ')));
         int objY = stoi(data.substr(data.find(' ') + 1));
@@ -300,4 +300,25 @@ bool Game::save(string fileName) {
 //moves player to new location
 void Game::movePlayer(int newX, int newY) {
     player->move(newX, newY);
+}
+
+
+void Game::clearObjVectors()
+{
+    for (size_t i = 0; i < basics.size(); i++) { // basics vector
+        delete basics.at(i);
+    }
+    for (size_t i = 0; i < smalls.size(); i++) { // smalls vector
+        delete smalls.at(i);
+    }
+    for (size_t i = 0; i < explosives.size(); i++) { // explosives vector
+       delete explosives.at(i);
+    }
+    for (size_t i = 0; i < powerups.size(); i++) { // powerups vector
+        delete powerups.at(i);
+    }
+    basics.clear();
+    smalls.clear();
+    explosives.clear();
+    powerups.clear();
 }

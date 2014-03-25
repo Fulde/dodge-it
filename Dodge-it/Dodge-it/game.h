@@ -107,6 +107,7 @@ public:
     void addPowerup(Powerup *obj)          { powerups.push_back(obj); }
 
     void movePlayer(int newX, int newY);
+    void clearObjVectors();
     void incScore(int incAmt) { score += incAmt; }
     bool save(string fileName);
     void load(string fileName);
