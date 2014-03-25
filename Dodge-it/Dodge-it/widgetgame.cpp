@@ -19,6 +19,8 @@
 #include <QEvent>
 #include <QDebug>
 #include <QRect>
+#include <iostream>
+using namespace std;
 
 void WidgetGame::pauseTimer() { gameTimer->stop(); }
 void WidgetGame::resumeTimer() { gameTimer->start(); }
@@ -246,9 +248,10 @@ void WidgetGame::gameTimerHit() {
         {
             incrementScore();
             Game::getInstance().incScore(1);
+            cout << curObj->getPixmap();
             if (curObj->getPixmap() == ":/basic.png") {
                 delete curObj;
-                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().begin());  // COULD THESE LINES BE CAUSING THE DOUBLE-FREE/CORRUPTION???
+                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().begin());
             } else if (curObj->getPixmap() == ":/small.png") {
                 delete curObj;
                 Game::getInstance().getSmalls().erase(Game::getInstance().getSmalls().begin());

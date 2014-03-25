@@ -1,6 +1,18 @@
-easy
+hard
 0
 3
--1234271120 -1234271120
-mult 360 -28
-small 360 65
+-1225206672 -1225206672
+slow 720 560
+basic 320 475
+basic 180 195
+basic 750 160
+basic 380 120
+small 620 565
+small 430 535
+small 180 460
+small 690 430
+small 550 325
+small 400 290
+small 170 235
+small 170 225
+small 650 15
