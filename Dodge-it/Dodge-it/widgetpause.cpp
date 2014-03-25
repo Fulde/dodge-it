@@ -58,5 +58,6 @@ void WidgetPause::on_btnStart_clicked() {
     dynamic_cast<WidgetGame*>(parentWidget())->pauseTimer();
     this->hide();
     par->hide();
+    Game::getInstance().clearObjVectors();
     dynamic_cast<WidgetStart*>(par->main->startMenu)->show();
 }

@@ -28,7 +28,7 @@ void Object::move() {
 
 string Object::stateToFile() { }
 
-DamagingObject::DamagingObject(int initX, int labelHeight) {
+DamagingObject::DamagingObject(int initX, int initY) {
     //sets speed of falling object based on the selected difficulty level
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
     if (difficulty == Game::easy){
@@ -40,7 +40,7 @@ DamagingObject::DamagingObject(int initX, int labelHeight) {
     }
 
     x = initX;
-    y = -labelHeight;
+    y = initY;
 }
 
 Powerup::Powerup(int initX, int labelHeight) {

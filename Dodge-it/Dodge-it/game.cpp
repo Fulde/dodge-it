@@ -228,14 +228,14 @@ void Game::load(string fileName) {
     getline(strm,data);                         // start getting objects
     while (strm)
     {
-        string type = data.substr((0, data.find(' ')));
+        string type = data.substr(0, data.find(' '));
         data.erase(0, data.find(' ') + 1);
         int objX = stoi(data.substr(0, data.find(' ')));
         int objY = stoi(data.substr(data.find(' ') + 1));
 
         if (type == "basic")
         {
-           instance.addBasic(new DamagingObject(objX, objY));
+            instance.addBasic(new DamagingObject(objX, objY));
         }
         else if (type == "small")
         {
@@ -296,15 +296,15 @@ bool Game::save(string fileName) {
         }
         for (size_t i = 0;  i < basics.size(); i++) {                       // save basic objects
             Object *obj = basics.at(i);
-            strm << "basic" << obj->getX() << " " << obj->getY() << endl;
+            strm << "basic " << obj->getX() << " " << obj->getY() << endl;
         }
         for (size_t i = 0;  i < smalls.size(); i++) {                       // save small objects
             Object *obj = smalls.at(i);
-            strm << "small" << obj->getX() << " " << obj->getY() << endl;
+            strm << "small " << obj->getX() << " " << obj->getY() << endl;
         }
         for (size_t i = 0;  i < explosives.size(); i++) {                   // save explosive objects
             Object *obj = explosives.at(i);
-            strm << "expl" << obj->getX() << " " << obj->getY() << endl;
+            strm << "expl " << obj->getX() << " " << obj->getY() << endl;
         }
     }
     strm.close();
@@ -314,4 +314,25 @@ bool Game::save(string fileName) {
 //moves player to new location
 void Game::movePlayer(int newX, int newY) {
     player->move(newX, newY);
+}
+
+
+void Game::clearObjVectors()
+{
+    for (size_t i = 0; i < basics.size(); i++) { // basics vector
+        delete basics.at(i);
+    }
+    for (size_t i = 0; i < smalls.size(); i++) { // smalls vector
+        delete smalls.at(i);
+    }
+    for (size_t i = 0; i < explosives.size(); i++) { // explosives vector
+       delete explosives.at(i);
+    }
+    for (size_t i = 0; i < powerups.size(); i++) { // powerups vector
+        delete powerups.at(i);
+    }
+    basics.clear();
+    smalls.clear();
+    explosives.clear();
+    powerups.clear();
 }
