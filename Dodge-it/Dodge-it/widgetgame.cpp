@@ -248,7 +248,7 @@ void WidgetGame::gameTimerHit() {
             Game::getInstance().incScore(1);
             if (curObj->getPixmap() == ":/basic.png") {
                 delete curObj;
-                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().begin());  // COULD THESE LINES BE CAUSING THE DOUBLE-FREE/CORRUPTION???
+                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().begin());
             } else if (curObj->getPixmap() == ":/small.png") {
                 delete curObj;
                 Game::getInstance().getSmalls().erase(Game::getInstance().getSmalls().begin());

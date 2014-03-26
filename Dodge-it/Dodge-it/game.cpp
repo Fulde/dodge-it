@@ -171,7 +171,7 @@ Character::Character() { lives = 3; } // may want to supply initX and initY as p
 
 // ================================ GAME ======================================
 
-//creates the private instance of the game
+// creates the private instance of the game
 Game Game::instance;
 
 Game::Game() : multiplier(1) {
@@ -198,8 +198,7 @@ Game::~Game()
     powerups.clear();
 }
 
-// called when the user requests to load a saved game.  It will
-// resume the saved game at the point that it was saved.
+// resumes the saved game at the point that it was saved.
 void Game::load(string fileName) {
     ifstream strm(fileName);
     string data;
@@ -221,8 +220,8 @@ void Game::load(string fileName) {
     getline(strm, data);                        // get lives
     Game::getInstance().setPlayerLives(stoi(data));
     getline(strm, data);                        // get character position
-    int x = stoi(data.substr(0, data.find(" ")));
-    int y = stoi(data.substr(data.find(" ")));
+    int x = stoi(data.substr(0, data.find(' ')));
+    int y = stoi(data.substr(data.find(' ')));
     Game::getInstance().movePlayer(x,y);
 
     getline(strm,data);                         // start getting objects
@@ -252,9 +251,8 @@ void Game::load(string fileName) {
     }
 }
 
-// called when the user requests to save their current game.
-// It will save the current state of the game including the score, number of lives,
-// and the locations of all falling objects and the character itself.
+// saves the current state of the game including score, number of lives,
+// and locations of all falling objects and the character itself.
 bool Game::save(string fileName) {
     ofstream strm(fileName);
     if (strm) {
