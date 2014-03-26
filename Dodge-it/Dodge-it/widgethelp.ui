@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(0,0,0);</string>
   </property>
-  <widget class="QLabel" name="lblHelp">
+  <widget class="QLabel" name="lblText">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -47,19 +47,6 @@ color: rgb(255, 255, 255);</string>
   <widget class="QLabel" name="lblPic">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>10</y>
-     <width>50</width>
-     <height>50</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
      <x>410</x>
      <y>10</y>
      <width>91</width>
@@ -76,7 +63,7 @@ color: rgb(255, 255, 255);</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="lblPow1">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -95,12 +82,12 @@ color: rgb(255, 255, 255);</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="lblPow1Text">
    <property name="geometry">
     <rect>
      <x>90</x>
      <y>490</y>
-     <width>341</width>
+     <width>151</width>
      <height>17</height>
     </rect>
    </property>
@@ -112,7 +99,7 @@ font: 14pt;</string>
     <string>Increases life by 1</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QLabel" name="lblPow3">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -131,12 +118,12 @@ font: 14pt;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLabel" name="lblPow3Text">
    <property name="geometry">
     <rect>
      <x>90</x>
      <y>650</y>
-     <width>411</width>
+     <width>391</width>
      <height>41</height>
     </rect>
    </property>
@@ -149,7 +136,7 @@ font: 14pt;</string>
  period of time</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLabel" name="lblPow2">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -168,12 +155,12 @@ font: 14pt;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_8">
+  <widget class="QLabel" name="lblPow2Text">
    <property name="geometry">
     <rect>
      <x>90</x>
      <y>570</y>
-     <width>371</width>
+     <width>391</width>
      <height>17</height>
     </rect>
    </property>
@@ -185,7 +172,7 @@ font: 14pt;</string>
     <string>Player is invincible over a short period of time</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
+  <widget class="QLabel" name="lblPow4Text">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -202,7 +189,7 @@ font: 14pt;</string>
     <string>Multiplies the score by 2 over a short period of time</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
+  <widget class="QLabel" name="lblPow4">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -221,7 +208,7 @@ font: 14pt;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="lblTitle">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -240,7 +227,7 @@ font: 14pt;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_11">
+  <widget class="QLabel" name="lblScreen">
    <property name="geometry">
     <rect>
      <x>520</x>
@@ -259,7 +246,7 @@ font: 14pt;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_12">
+  <widget class="QLabel" name="lblEasy">
    <property name="geometry">
     <rect>
      <x>520</x>
@@ -275,7 +262,7 @@ font: 14pt;</string>
     <string>EASY LEVEL</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_13">
+  <widget class="QLabel" name="lblMed">
    <property name="geometry">
     <rect>
      <x>520</x>
@@ -291,7 +278,7 @@ font: 14pt;</string>
     <string>MEDIUM LEVEL</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_14">
+  <widget class="QLabel" name="lblScreen2">
    <property name="geometry">
     <rect>
      <x>510</x>
@@ -310,7 +297,7 @@ font: 14pt;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_15">
+  <widget class="QLabel" name="lblHard">
    <property name="geometry">
     <rect>
      <x>510</x>
@@ -326,7 +313,7 @@ font: 14pt;</string>
     <string>HARD LEVEL</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_16">
+  <widget class="QLabel" name="lblScreen3">
    <property name="geometry">
     <rect>
      <x>510</x>
@@ -345,7 +332,7 @@ font: 14pt;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_17">
+  <widget class="QLabel" name="lblSubTitle2">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -362,7 +349,7 @@ color: rgb(255, 255, 255);</string>
     <string>POWERUPS AVAILABLE</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_18">
+  <widget class="QLabel" name="lblSubTitle">
    <property name="geometry">
     <rect>
      <x>10</x>

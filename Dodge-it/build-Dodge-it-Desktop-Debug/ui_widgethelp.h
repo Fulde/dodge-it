@@ -22,26 +22,25 @@ QT_BEGIN_NAMESPACE
 class Ui_WidgetHelp
 {
 public:
-    QLabel *lblHelp;
+    QLabel *lblText;
     QLabel *lblPic;
-    QLabel *label;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_5;
-    QLabel *label_6;
-    QLabel *label_7;
-    QLabel *label_8;
-    QLabel *label_10;
-    QLabel *label_9;
-    QLabel *label_2;
-    QLabel *label_11;
-    QLabel *label_12;
-    QLabel *label_13;
-    QLabel *label_14;
-    QLabel *label_15;
-    QLabel *label_16;
-    QLabel *label_17;
-    QLabel *label_18;
+    QLabel *lblPow1;
+    QLabel *lblPow1Text;
+    QLabel *lblPow3;
+    QLabel *lblPow3Text;
+    QLabel *lblPow2;
+    QLabel *lblPow2Text;
+    QLabel *lblPow4Text;
+    QLabel *lblPow4;
+    QLabel *lblTitle;
+    QLabel *lblScreen;
+    QLabel *lblEasy;
+    QLabel *lblMed;
+    QLabel *lblScreen2;
+    QLabel *lblHard;
+    QLabel *lblScreen3;
+    QLabel *lblSubTitle2;
+    QLabel *lblSubTitle;
 
     void setupUi(QWidget *WidgetHelp)
     {
@@ -49,101 +48,98 @@ public:
             WidgetHelp->setObjectName(QStringLiteral("WidgetHelp"));
         WidgetHelp->resize(820, 818);
         WidgetHelp->setStyleSheet(QStringLiteral("background-color: rgb(0,0,0);"));
-        lblHelp = new QLabel(WidgetHelp);
-        lblHelp->setObjectName(QStringLiteral("lblHelp"));
-        lblHelp->setGeometry(QRect(10, 160, 491, 211));
-        lblHelp->setStyleSheet(QLatin1String("font: 14pt;\n"
+        lblText = new QLabel(WidgetHelp);
+        lblText->setObjectName(QStringLiteral("lblText"));
+        lblText->setGeometry(QRect(10, 160, 491, 211));
+        lblText->setStyleSheet(QLatin1String("font: 14pt;\n"
 "color: rgb(255, 255, 255);"));
-        lblHelp->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        lblText->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         lblPic = new QLabel(WidgetHelp);
         lblPic->setObjectName(QStringLiteral("lblPic"));
-        lblPic->setGeometry(QRect(450, 10, 50, 50));
-        label = new QLabel(WidgetHelp);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(410, 10, 91, 91));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/help.png")));
-        label->setScaledContents(true);
-        label_3 = new QLabel(WidgetHelp);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(20, 480, 61, 51));
-        label_3->setPixmap(QPixmap(QString::fromUtf8(":/heart.png")));
-        label_3->setScaledContents(true);
-        label_4 = new QLabel(WidgetHelp);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(90, 490, 341, 17));
-        label_4->setStyleSheet(QLatin1String("color: rgb(232, 25, 6);\n"
+        lblPic->setGeometry(QRect(410, 10, 91, 91));
+        lblPic->setPixmap(QPixmap(QString::fromUtf8(":/help.png")));
+        lblPic->setScaledContents(true);
+        lblPow1 = new QLabel(WidgetHelp);
+        lblPow1->setObjectName(QStringLiteral("lblPow1"));
+        lblPow1->setGeometry(QRect(20, 480, 61, 51));
+        lblPow1->setPixmap(QPixmap(QString::fromUtf8(":/heart.png")));
+        lblPow1->setScaledContents(true);
+        lblPow1Text = new QLabel(WidgetHelp);
+        lblPow1Text->setObjectName(QStringLiteral("lblPow1Text"));
+        lblPow1Text->setGeometry(QRect(90, 490, 151, 17));
+        lblPow1Text->setStyleSheet(QLatin1String("color: rgb(232, 25, 6);\n"
 "font: 14pt;"));
-        label_5 = new QLabel(WidgetHelp);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(20, 640, 61, 61));
-        label_5->setPixmap(QPixmap(QString::fromUtf8(":/hourglass.png")));
-        label_5->setScaledContents(true);
-        label_6 = new QLabel(WidgetHelp);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(90, 650, 411, 41));
-        label_6->setStyleSheet(QLatin1String("color: rgb(23, 217, 255);\n"
+        lblPow3 = new QLabel(WidgetHelp);
+        lblPow3->setObjectName(QStringLiteral("lblPow3"));
+        lblPow3->setGeometry(QRect(20, 640, 61, 61));
+        lblPow3->setPixmap(QPixmap(QString::fromUtf8(":/hourglass.png")));
+        lblPow3->setScaledContents(true);
+        lblPow3Text = new QLabel(WidgetHelp);
+        lblPow3Text->setObjectName(QStringLiteral("lblPow3Text"));
+        lblPow3Text->setGeometry(QRect(90, 650, 391, 41));
+        lblPow3Text->setStyleSheet(QLatin1String("color: rgb(23, 217, 255);\n"
 "font: 14pt;"));
-        label_7 = new QLabel(WidgetHelp);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(20, 560, 51, 51));
-        label_7->setPixmap(QPixmap(QString::fromUtf8(":/shield.png")));
-        label_7->setScaledContents(true);
-        label_8 = new QLabel(WidgetHelp);
-        label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setGeometry(QRect(90, 570, 371, 17));
-        label_8->setStyleSheet(QLatin1String("color: rgb(235, 201, 7);\n"
+        lblPow2 = new QLabel(WidgetHelp);
+        lblPow2->setObjectName(QStringLiteral("lblPow2"));
+        lblPow2->setGeometry(QRect(20, 560, 51, 51));
+        lblPow2->setPixmap(QPixmap(QString::fromUtf8(":/shield.png")));
+        lblPow2->setScaledContents(true);
+        lblPow2Text = new QLabel(WidgetHelp);
+        lblPow2Text->setObjectName(QStringLiteral("lblPow2Text"));
+        lblPow2Text->setGeometry(QRect(90, 570, 391, 17));
+        lblPow2Text->setStyleSheet(QLatin1String("color: rgb(235, 201, 7);\n"
 "font: 14pt;"));
-        label_10 = new QLabel(WidgetHelp);
-        label_10->setObjectName(QStringLiteral("label_10"));
-        label_10->setGeometry(QRect(90, 740, 371, 17));
-        label_10->setStyleSheet(QLatin1String("color: rgb(84, 236, 29);\n"
+        lblPow4Text = new QLabel(WidgetHelp);
+        lblPow4Text->setObjectName(QStringLiteral("lblPow4Text"));
+        lblPow4Text->setGeometry(QRect(90, 740, 371, 17));
+        lblPow4Text->setStyleSheet(QLatin1String("color: rgb(84, 236, 29);\n"
 "font: 14pt;"));
-        label_9 = new QLabel(WidgetHelp);
-        label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setGeometry(QRect(20, 730, 51, 51));
-        label_9->setPixmap(QPixmap(QString::fromUtf8(":/multiplier.png")));
-        label_9->setScaledContents(true);
-        label_2 = new QLabel(WidgetHelp);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(10, 10, 391, 61));
-        label_2->setPixmap(QPixmap(QString::fromUtf8(":/helpscreen2.png")));
-        label_2->setScaledContents(true);
-        label_11 = new QLabel(WidgetHelp);
-        label_11->setObjectName(QStringLiteral("label_11"));
-        label_11->setGeometry(QRect(520, 50, 261, 211));
-        label_11->setPixmap(QPixmap(QString::fromUtf8(":/screenshot1.png")));
-        label_11->setScaledContents(true);
-        label_12 = new QLabel(WidgetHelp);
-        label_12->setObjectName(QStringLiteral("label_12"));
-        label_12->setGeometry(QRect(520, 20, 101, 21));
-        label_12->setStyleSheet(QStringLiteral("color: rgb(255, 255, 127);"));
-        label_13 = new QLabel(WidgetHelp);
-        label_13->setObjectName(QStringLiteral("label_13"));
-        label_13->setGeometry(QRect(520, 270, 111, 21));
-        label_13->setStyleSheet(QStringLiteral("color: rgb(255, 170, 0);"));
-        label_14 = new QLabel(WidgetHelp);
-        label_14->setObjectName(QStringLiteral("label_14"));
-        label_14->setGeometry(QRect(510, 300, 271, 221));
-        label_14->setPixmap(QPixmap(QString::fromUtf8(":/screenshot2.png")));
-        label_14->setScaledContents(true);
-        label_15 = new QLabel(WidgetHelp);
-        label_15->setObjectName(QStringLiteral("label_15"));
-        label_15->setGeometry(QRect(510, 530, 111, 21));
-        label_15->setStyleSheet(QStringLiteral("color: rgb(236, 40, 5);"));
-        label_16 = new QLabel(WidgetHelp);
-        label_16->setObjectName(QStringLiteral("label_16"));
-        label_16->setGeometry(QRect(510, 560, 271, 221));
-        label_16->setPixmap(QPixmap(QString::fromUtf8(":/screenshot3.png")));
-        label_16->setScaledContents(true);
-        label_17 = new QLabel(WidgetHelp);
-        label_17->setObjectName(QStringLiteral("label_17"));
-        label_17->setGeometry(QRect(10, 430, 281, 17));
-        label_17->setStyleSheet(QLatin1String("font: 18pt;\n"
+        lblPow4 = new QLabel(WidgetHelp);
+        lblPow4->setObjectName(QStringLiteral("lblPow4"));
+        lblPow4->setGeometry(QRect(20, 730, 51, 51));
+        lblPow4->setPixmap(QPixmap(QString::fromUtf8(":/multiplier.png")));
+        lblPow4->setScaledContents(true);
+        lblTitle = new QLabel(WidgetHelp);
+        lblTitle->setObjectName(QStringLiteral("lblTitle"));
+        lblTitle->setGeometry(QRect(10, 10, 391, 61));
+        lblTitle->setPixmap(QPixmap(QString::fromUtf8(":/helpscreen2.png")));
+        lblTitle->setScaledContents(true);
+        lblScreen = new QLabel(WidgetHelp);
+        lblScreen->setObjectName(QStringLiteral("lblScreen"));
+        lblScreen->setGeometry(QRect(520, 50, 261, 211));
+        lblScreen->setPixmap(QPixmap(QString::fromUtf8(":/screenshot1.png")));
+        lblScreen->setScaledContents(true);
+        lblEasy = new QLabel(WidgetHelp);
+        lblEasy->setObjectName(QStringLiteral("lblEasy"));
+        lblEasy->setGeometry(QRect(520, 20, 101, 21));
+        lblEasy->setStyleSheet(QStringLiteral("color: rgb(255, 255, 127);"));
+        lblMed = new QLabel(WidgetHelp);
+        lblMed->setObjectName(QStringLiteral("lblMed"));
+        lblMed->setGeometry(QRect(520, 270, 111, 21));
+        lblMed->setStyleSheet(QStringLiteral("color: rgb(255, 170, 0);"));
+        lblScreen2 = new QLabel(WidgetHelp);
+        lblScreen2->setObjectName(QStringLiteral("lblScreen2"));
+        lblScreen2->setGeometry(QRect(510, 300, 271, 221));
+        lblScreen2->setPixmap(QPixmap(QString::fromUtf8(":/screenshot2.png")));
+        lblScreen2->setScaledContents(true);
+        lblHard = new QLabel(WidgetHelp);
+        lblHard->setObjectName(QStringLiteral("lblHard"));
+        lblHard->setGeometry(QRect(510, 530, 111, 21));
+        lblHard->setStyleSheet(QStringLiteral("color: rgb(236, 40, 5);"));
+        lblScreen3 = new QLabel(WidgetHelp);
+        lblScreen3->setObjectName(QStringLiteral("lblScreen3"));
+        lblScreen3->setGeometry(QRect(510, 560, 271, 221));
+        lblScreen3->setPixmap(QPixmap(QString::fromUtf8(":/screenshot3.png")));
+        lblScreen3->setScaledContents(true);
+        lblSubTitle2 = new QLabel(WidgetHelp);
+        lblSubTitle2->setObjectName(QStringLiteral("lblSubTitle2"));
+        lblSubTitle2->setGeometry(QRect(10, 430, 281, 17));
+        lblSubTitle2->setStyleSheet(QLatin1String("font: 18pt;\n"
 "color: rgb(255, 255, 255);"));
-        label_18 = new QLabel(WidgetHelp);
-        label_18->setObjectName(QStringLiteral("label_18"));
-        label_18->setGeometry(QRect(10, 120, 281, 17));
-        label_18->setStyleSheet(QLatin1String("font: 18pt;\n"
+        lblSubTitle = new QLabel(WidgetHelp);
+        lblSubTitle->setObjectName(QStringLiteral("lblSubTitle"));
+        lblSubTitle->setGeometry(QRect(10, 120, 281, 17));
+        lblSubTitle->setStyleSheet(QLatin1String("font: 18pt;\n"
 "color: rgb(255, 255, 255);"));
 
         retranslateUi(WidgetHelp);
@@ -154,7 +150,7 @@ public:
     void retranslateUi(QWidget *WidgetHelp)
     {
         WidgetHelp->setWindowTitle(QApplication::translate("WidgetHelp", "Help!", 0));
-        lblHelp->setText(QApplication::translate("WidgetHelp", "-- pick a difficulty level to begin with. The \n"
+        lblText->setText(QApplication::translate("WidgetHelp", "-- pick a difficulty level to begin with. The \n"
 " harder the difficulty level, the faster the objects will fall \n"
 " and the more points you will earn \n"
 " -- use your arrow keys to move the satyr left, right, up, \n"
@@ -164,25 +160,24 @@ public:
 " -- cheat mode: allows the user to play without losing lives \n"
 " (aka dying).", 0));
         lblPic->setText(QString());
-        label->setText(QString());
-        label_3->setText(QString());
-        label_4->setText(QApplication::translate("WidgetHelp", "Increases life by 1", 0));
-        label_5->setText(QString());
-        label_6->setText(QApplication::translate("WidgetHelp", "Makes the falling objects slower over a short \n"
+        lblPow1->setText(QString());
+        lblPow1Text->setText(QApplication::translate("WidgetHelp", "Increases life by 1", 0));
+        lblPow3->setText(QString());
+        lblPow3Text->setText(QApplication::translate("WidgetHelp", "Makes the falling objects slower over a short \n"
 " period of time", 0));
-        label_7->setText(QString());
-        label_8->setText(QApplication::translate("WidgetHelp", "Player is invincible over a short period of time", 0));
-        label_10->setText(QApplication::translate("WidgetHelp", "Multiplies the score by 2 over a short period of time", 0));
-        label_9->setText(QString());
-        label_2->setText(QString());
-        label_11->setText(QString());
-        label_12->setText(QApplication::translate("WidgetHelp", "EASY LEVEL", 0));
-        label_13->setText(QApplication::translate("WidgetHelp", "MEDIUM LEVEL", 0));
-        label_14->setText(QString());
-        label_15->setText(QApplication::translate("WidgetHelp", "HARD LEVEL", 0));
-        label_16->setText(QString());
-        label_17->setText(QApplication::translate("WidgetHelp", "POWERUPS AVAILABLE", 0));
-        label_18->setText(QApplication::translate("WidgetHelp", "GAME INSTRUCTIONS", 0));
+        lblPow2->setText(QString());
+        lblPow2Text->setText(QApplication::translate("WidgetHelp", "Player is invincible over a short period of time", 0));
+        lblPow4Text->setText(QApplication::translate("WidgetHelp", "Multiplies the score by 2 over a short period of time", 0));
+        lblPow4->setText(QString());
+        lblTitle->setText(QString());
+        lblScreen->setText(QString());
+        lblEasy->setText(QApplication::translate("WidgetHelp", "EASY LEVEL", 0));
+        lblMed->setText(QApplication::translate("WidgetHelp", "MEDIUM LEVEL", 0));
+        lblScreen2->setText(QString());
+        lblHard->setText(QApplication::translate("WidgetHelp", "HARD LEVEL", 0));
+        lblScreen3->setText(QString());
+        lblSubTitle2->setText(QApplication::translate("WidgetHelp", "POWERUPS AVAILABLE", 0));
+        lblSubTitle->setText(QApplication::translate("WidgetHelp", "GAME INSTRUCTIONS", 0));
     } // retranslateUi
 
 };

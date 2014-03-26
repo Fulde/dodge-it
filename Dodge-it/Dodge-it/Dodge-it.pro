@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     widgethelp.cpp \
     widgetstart.cpp \
     widget.cpp \
-    widgetscore.cpp
+    widgetscore.cpp \
+    widgetuser.cpp
 
 HEADERS  += \
     game.h \
@@ -30,7 +31,8 @@ HEADERS  += \
     widgetgame.h \
     widgethelp.h \
     widgetstart.h \
-    widget.h
+    widget.h \
+    widgetuser.h
 
 FORMS    += \
     widgetscore.ui \
@@ -38,7 +40,8 @@ FORMS    += \
     widgetpause.ui \
     widgethelp.ui \
     widget.ui \
-    widgetstart.ui
+    widgetstart.ui \
+    widgetuser.ui
 
 RESOURCES += \
     images/resources.qrc
