@@ -20,7 +20,7 @@
 #include <QDebug>
 #include <QRect>
 
-void WidgetGame::pauseTimer() { gameTimer->stop(); }
+void WidgetGame::pauseTimer()  { gameTimer->stop(); }
 void WidgetGame::resumeTimer() { gameTimer->start(); }
 
 //Instantiates the Widget

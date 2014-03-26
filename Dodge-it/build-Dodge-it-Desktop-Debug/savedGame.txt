@@ -1,23 +1,15 @@
-hard
+easy
 0
 3
-<<<<<<< HEAD
--1225206672 -1225206672
-slow 720 560
-basic 320 475
-basic 180 195
-basic 750 160
-basic 380 120
-small 620 565
-small 430 535
-small 180 460
-small 690 430
-small 550 325
-small 400 290
-small 170 235
-small 170 225
-small 650 15
-=======
-530 630
-small 510 36
->>>>>>> 3a357ddda86d93b5d4f73099094085d6ee179b5c
+640 670
+slow 180 159
+exlife 990 -7
+basic 510 187
+basic 870 172
+basic 270 165
+basic 180 104
+basic 510 71
+basic 480 57
+small 330 186
+small 870 161
+small 390 -18
