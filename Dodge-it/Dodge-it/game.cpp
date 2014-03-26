@@ -233,7 +233,7 @@ void Game::load(string fileName) {
         int objY = stoi(data.substr(data.find(' ') + 1));
 
         if (type == "basic") {
-           instance.addBasic(new DamagingObject(objX, objY));
+            instance.addBasic(new DamagingObject(objX, objY));
         } else if (type == "small") {
             instance.addSmall(new DamagingObject(objX, objY));
         } else if (type == "expl") {

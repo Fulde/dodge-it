@@ -2,10 +2,20 @@ easy
 0
 3
 <<<<<<< HEAD
-530 630
-small 510 36
+640 670
+slow 180 159
+exlife 990 -7
+basic 510 187
+basic 870 172
+basic 270 165
+basic 180 104
+basic 510 71
+basic 480 57
+small 330 186
+small 870 161
+small 390 -18
 =======
--1234271120 -1234271120
-mult 360 -28
-small 360 65
->>>>>>> 860bf0600556cb03fcc16707da55d44450ccf95f
+590 550
+small 330 19
+small 390 3
+>>>>>>> 0268a4fe6ff6f2601753b572d28de2609aa0fcc9

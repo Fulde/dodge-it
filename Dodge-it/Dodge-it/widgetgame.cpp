@@ -80,8 +80,9 @@ void WidgetGame::decrementLives() {
     }
 }
 
-void WidgetGame::loadGame(string filename) {
-    Game::getInstance().load(filename);
+void WidgetGame::loadGame() {
+    ui->lblSatyr->move(Game::getInstance().getPlayerX(), Game::getInstance().getPlayerY());
+
     for (size_t i = 0; i < Game::getInstance().getBasics().size(); i++) {
         ObjLabel* label = new ObjLabel(this);
         label->setObject(Game::getInstance().getBasics().at(i));
@@ -218,7 +219,6 @@ void WidgetGame::gameTimerHit() {
             {
                 WidgetGame::decrementLives();
                 gameTimer->stop();
-                Game::getInstance().setPlayerLives(3);
 
                 HighScore::compareScore();
                 WidgetScore* score = new WidgetScore();
