@@ -18,6 +18,8 @@ class WidgetUser : public QWidget
     Q_OBJECT
 
 public:
+    WidgetUser(QWidget *parent = 0);
+    ~WidgetUser();
 
 private:
     Ui::WidgetUser *ui;
