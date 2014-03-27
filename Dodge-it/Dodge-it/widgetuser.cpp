@@ -5,6 +5,7 @@
 //==============================
 
 #include "widgetuser.h"
+#include "ui_widgetuser.h"
 
 //Instantiates the Widget
 WidgetUser::WidgetUser(QWidget *parent) :
