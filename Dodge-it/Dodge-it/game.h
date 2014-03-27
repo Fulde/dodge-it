@@ -132,10 +132,7 @@ public:
     //Quits the game if the player runs out of lives
     void quit();
 
-    bool save(string);
-    void load(string);
     void clearObjVectors();
-    void incScore(int incAmt) { score += incAmt; }
     bool save(string fileName);
     void load(string fileName);
     ~Game();
