@@ -125,31 +125,73 @@ void WidgetGame::loadGame(string filename) {
 
 void WidgetGame::keyPressEvent(QKeyEvent *k)
 {
-    if ((k->key() == Qt::Key_Up || k->key() == Qt::Key_W) && (ui->lblSatyr->y() > 0))
+    if ((k->key() == Qt::Key_Up || k->key() == Qt::Key_W))
     {
-        Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
-        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 10);
+        Game::getInstance().setPlayerMovingUp(true);
     }
-    else if ((k->key() == Qt::Key_Down || k->key() == Qt::Key_S) && ((ui->lblSatyr->y() + ui->lblSatyr->height()) < 768))
+    else if ((k->key() == Qt::Key_Down || k->key() == Qt::Key_S))
     {
-        Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
-        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 10);
+        Game::getInstance().setPlayerMovingDown(true);
     }
-    else if ((k->key() == Qt::Key_Left || k->key() == Qt::Key_A) && (ui->lblSatyr->x() > 170))
+    else if ((k->key() == Qt::Key_Left || k->key() == Qt::Key_A))
     {
-        Game::getInstance().movePlayer(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
-        ui->lblSatyr->move(ui->lblSatyr->x() - 10, ui->lblSatyr->y());
+        Game::getInstance().setPlayerMovingLeft(true);
     }
-    else if ((k->key() == Qt::Key_Right || k->key() == Qt::Key_D) && ((ui->lblSatyr->x() + ui->lblSatyr->width() < 1018)))
+    else if ((k->key() == Qt::Key_Right || k->key() == Qt::Key_D))
     {
-        Game::getInstance().movePlayer(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
-        ui->lblSatyr->move(ui->lblSatyr->x() + 10, ui->lblSatyr->y());
+        Game::getInstance().setPlayerMovingRight(true);
+    }
+}
+
+void WidgetGame::keyReleaseEvent(QKeyEvent *k)
+{
+    if ((k->key() == Qt::Key_Up || k->key() == Qt::Key_W))
+    {
+        Game::getInstance().setPlayerMovingUp(false);
+    }
+    else if ((k->key() == Qt::Key_Down || k->key() == Qt::Key_S))
+    {
+        Game::getInstance().setPlayerMovingDown(false);
+    }
+    else if ((k->key() == Qt::Key_Left || k->key() == Qt::Key_A))
+    {;
+        Game::getInstance().setPlayerMovingLeft(false);
+    }
+    else if ((k->key() == Qt::Key_Right || k->key() == Qt::Key_D))
+    {
+        Game::getInstance().setPlayerMovingRight(false);
     }
 }
 
 // the object should start with a random x coordinate at the top of the window
 void WidgetGame::gameTimerHit() {
     int randX = rand() % 855 + 165;
+
+    //move satyr
+    if (Game::getInstance().getPlayerMovingUp() == true && (ui->lblSatyr->y() > 0))
+    {
+        Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() - 3);
+        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 3);
+    }
+    if (Game::getInstance().getPlayerMovingDown() == true && ((ui->lblSatyr->y() + ui->lblSatyr->height()) < 768))
+    {
+        Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() + 3);
+        ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 3);
+    }
+    if (Game::getInstance().getPlayerMovingLeft() == true && (ui->lblSatyr->x() > 170))
+    {
+        Game::getInstance().movePlayer(ui->lblSatyr->x() - 3, ui->lblSatyr->y());
+        ui->lblSatyr->move(ui->lblSatyr->x() - 3, ui->lblSatyr->y());
+    }
+    if (Game::getInstance().getPlayerMovingRight() == true && ((ui->lblSatyr->x() + ui->lblSatyr->width() < 1018)))
+    {
+        Game::getInstance().movePlayer(ui->lblSatyr->x() + 3, ui->lblSatyr->y());
+        ui->lblSatyr->move(ui->lblSatyr->x() + 3, ui->lblSatyr->y());
+    }
+    //dont move satyr
+    if (Game::getInstance().getPlayerMovingUp(), Game::getInstance().getPlayerMovingDown(),
+            Game::getInstance().getPlayerMovingLeft(), Game::getInstance().getPlayerMovingRight() == false) {
+    }
 
     if ((randX % Game::getInstance().getObjectInt()) == 0)
     {

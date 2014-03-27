@@ -165,10 +165,16 @@ void Character::move(int newX, int newY)
 {
      x = newX;
      y = newY;
-     moving = false;
 }
 
-Character::Character() { lives = 3; } // may want to supply initX and initY as parameters in future
+Character::Character()
+{
+    lives = 3;
+    movingUp = false;
+    movingDown = false;
+    movingLeft = false;
+    movingRight = false;
+} // may want to supply initX and initY as parameters in future
 
 // ================================ GAME ======================================
 

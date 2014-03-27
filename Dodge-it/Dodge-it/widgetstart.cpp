@@ -39,6 +39,11 @@ void WidgetStart::on_btnStart_clicked()
     WidgetGame* game = new WidgetGame(main);
     game->show();
     this->hide();
+
+    Game::getInstance().setPlayerMovingUp(false);
+    Game::getInstance().setPlayerMovingDown(false);
+    Game::getInstance().setPlayerMovingLeft(false);
+    Game::getInstance().setPlayerMovingRight(false);
 }
 
 void WidgetStart::on_btnHelp_clicked()

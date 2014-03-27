@@ -39,6 +39,7 @@ private slots:
     void gameTimerHit();
     void on_btnPause_clicked();
     void keyPressEvent(QKeyEvent *k);
+    void keyReleaseEvent(QKeyEvent *k);
 
 private:
     //Private instance for the Widget ui

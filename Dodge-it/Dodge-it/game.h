@@ -48,8 +48,11 @@ private:
     int x, y;
     //keeps record of the number of lives the character has left
     int lives;
-    //tracks whether the character is currently moving or not
-    bool moving;
+    //tracks whether the character is currently moving in a given direction or not
+    bool movingUp;
+    bool movingDown;
+    bool movingLeft;
+    bool movingRight;
 
 public:
     Character();
@@ -58,6 +61,14 @@ public:
     void move(int newX, int newY);
     int getLives() { return lives; }
     void setLives(int newLives) { lives = newLives; }
+    bool getMovingUp() { return movingUp; }
+    void setMovingUp(bool value) { movingUp = value; }
+    bool getMovingDown() { return movingDown; }
+    void setMovingDown(bool value) { movingDown = value; }
+    bool getMovingLeft() { return movingLeft; }
+    void setMovingLeft(bool value) { movingLeft = value; }
+    bool getMovingRight() { return movingRight; }
+    void setMovingRight(bool value) { movingRight = value; }
 };
 
 //========================= GAME SINGLETON =========================
@@ -93,6 +104,14 @@ public:
     int getPlayerY() { return player->getY(); }
     int getPlayerLives() { return player->getLives(); }
     void setPlayerLives(int newLives) { player->setLives(newLives); }
+    bool getPlayerMovingUp() { return player->getMovingUp(); }
+    void setPlayerMovingUp(bool value) { player->setMovingUp(value); }
+    bool getPlayerMovingDown() { return player->getMovingDown(); }
+    void setPlayerMovingDown(bool value) { player->setMovingDown(value); }
+    bool getPlayerMovingLeft() { return player->getMovingLeft(); }
+    void setPlayerMovingLeft(bool value) { player->setMovingLeft(value); }
+    bool getPlayerMovingRight() { return player->getMovingRight(); }
+    void setPlayerMovingRight(bool value) { player->setMovingRight(value); }
     int getScore() { return score; }
     diffSetting getDifficulty() { return difficulty; }
 
