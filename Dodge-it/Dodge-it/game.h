@@ -134,6 +134,10 @@ public:
 
     bool save(string);
     void load(string);
+    void clearObjVectors();
+    void incScore(int incAmt) { score += incAmt; }
+    bool save(string fileName);
+    void load(string fileName);
     ~Game();
 
 //**** singleton implementation ****//

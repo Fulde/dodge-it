@@ -20,7 +20,7 @@
 #include <QDebug>
 #include <QRect>
 
-void WidgetGame::pauseTimer() { gameTimer->stop(); }
+void WidgetGame::pauseTimer()  { gameTimer->stop(); }
 void WidgetGame::resumeTimer() { gameTimer->start(); }
 
 //Instantiates the Widget
@@ -80,8 +80,9 @@ void WidgetGame::decrementLives() {
     }
 }
 
-void WidgetGame::loadGame(string filename) {
-    Game::getInstance().load(filename);
+void WidgetGame::loadGame() {
+    ui->lblSatyr->move(Game::getInstance().getPlayerX(), Game::getInstance().getPlayerY());
+
     for (size_t i = 0; i < Game::getInstance().getBasics().size(); i++) {
         ObjLabel* label = new ObjLabel(this);
         label->setObject(Game::getInstance().getBasics().at(i));
@@ -91,21 +92,21 @@ void WidgetGame::loadGame(string filename) {
     }
     for (size_t i = 0; i < Game::getInstance().getSmalls().size(); i++) {
         ObjLabel* label = new ObjLabel(this);
-        label->setObject(Game::getInstance().getBasics().at(i));
+        label->setObject(Game::getInstance().getSmalls().at(i));
         label->setPixmap(QPixmap(":/small.png"));
         label->getObject()->setPixmap(":/small.png");
         label->show();
     }
     for (size_t i = 0; i < Game::getInstance().getExplosives().size(); i++) {
         ObjLabel* label = new ObjLabel(this);
-        label->setObject(Game::getInstance().getBasics().at(i));
+        label->setObject(Game::getInstance().getExplosives().at(i));
         label->setPixmap(QPixmap(":/explosive.png"));
         label->getObject()->setPixmap(":/explosive.png");
         label->show();
     }
     for (size_t i = 0; i < Game::getInstance().getPowerups().size(); i++) {
         ObjLabel* label = new ObjLabel(this);
-        label->setObject(Game::getInstance().getBasics().at(i));
+        label->setObject(Game::getInstance().getPowerups().at(i));
         if (dynamic_cast<Invul*>(Game::getInstance().getPowerups().at(i))) {
             label->setPixmap(QPixmap(":/shield.png"));
             label->getObject()->setPixmap(":/shield.png");
@@ -202,19 +203,19 @@ void WidgetGame::gameTimerHit() {
         if (random <= 90) {
             if (random <= 50) {                                // (1-50)  basic object
                 label->setPixmap(QPixmap(":/basic.png"));
-                DamagingObject *obj = new DamagingObject(randX, label->height());
+                DamagingObject *obj = new DamagingObject(randX, -label->height());
                 Game::getInstance().addBasic(obj);
                 label->setObject(obj);
                 label->getObject()->setPixmap(":/basic.png");
             } else if (random >= 51 && random <= 100) {         // (51-80) small object
                 label->setPixmap(QPixmap(":/small.png"));
-                DamagingObject *obj = new DamagingObject(randX, label->height());
+                DamagingObject *obj = new DamagingObject(randX, -label->height());
                 Game::getInstance().addSmall(obj);
                 label->setObject(obj);
                 label->getObject()->setPixmap(":/small.png");
             } else if (random >= 81 && random <= 90) {        // (81-90) explosive object
                 label->setPixmap(QPixmap(":/explosive.png"));
-                DamagingObject *obj = new DamagingObject(randX, label->height());
+                DamagingObject *obj = new DamagingObject(randX, -label->height());
                 Game::getInstance().addExplosive(obj);
                 label->setObject(obj);
             }
@@ -260,7 +261,6 @@ void WidgetGame::gameTimerHit() {
             {
                 WidgetGame::decrementLives();
                 gameTimer->stop();
-                Game::getInstance().setPlayerLives(3);
 
                 HighScore::compareScore();
                 WidgetScore* score = new WidgetScore();
@@ -290,7 +290,7 @@ void WidgetGame::gameTimerHit() {
             Game::getInstance().incScore(1);
             if (curObj->getPixmap() == ":/basic.png") {
                 delete curObj;
-                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().begin());  // COULD THESE LINES BE CAUSING THE DOUBLE-FREE/CORRUPTION???
+                Game::getInstance().getBasics().erase(Game::getInstance().getBasics().begin());
             } else if (curObj->getPixmap() == ":/small.png") {
                 delete curObj;
                 Game::getInstance().getSmalls().erase(Game::getInstance().getSmalls().begin());
