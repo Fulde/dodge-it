@@ -15,4 +15,3 @@ WidgetUser::WidgetUser(QWidget *parent) :
 }
 
 WidgetUser::~WidgetUser() { delete ui; }
-
