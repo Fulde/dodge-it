@@ -22,5 +22,6 @@
         <file>screenshot1.png</file>
         <file>screenshot2.png</file>
         <file>screenshot3.png</file>
+        <file>username.png</file>
     </qresource>
 </RCC>

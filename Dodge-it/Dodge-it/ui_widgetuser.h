@@ -40,11 +40,13 @@ public:
 "color:#FFFFFF;"));
         label = new QLabel(widget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(210, 30, 91, 17));
+        label->setGeometry(QRect(140, 20, 241, 71));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/username.png")));
+        label->setScaledContents(true);
         label->setAlignment(Qt::AlignCenter);
         lnEditUN = new QLineEdit(widget);
         lnEditUN->setObjectName(QStringLiteral("lnEditUN"));
-        lnEditUN->setGeometry(QRect(170, 70, 171, 27));
+        lnEditUN->setGeometry(QRect(170, 100, 171, 27));
         lblText = new QLabel(widget);
         lblText->setObjectName(QStringLiteral("lblText"));
         lblText->setGeometry(QRect(40, 130, 431, 231));
@@ -58,7 +60,7 @@ public:
     void retranslateUi(QWidget *WidgetUser)
     {
         WidgetUser->setWindowTitle(QApplication::translate("WidgetUser", "Form", 0));
-        label->setText(QApplication::translate("WidgetUser", "Username", 0));
+        label->setText(QString());
         lnEditUN->setInputMask(QString());
         lblText->setText(QApplication::translate("WidgetUser", "blah... blah.. blah.. \n"
 "\n"
