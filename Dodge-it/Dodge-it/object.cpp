@@ -69,17 +69,19 @@ string Powerup::stateToFile(Powerup* obj, string type) {
 }
 
 void Invul::activatePow() {
-
+    active = true;
 }
 
 void ExLife::activatePow() {
-
+    Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() + 1);
+    active = true;
 }
 
 void Slow::activatePow() {
-
+    active = true;
 }
 
 void Multiplier::activatePow() {
+    active = true;
 
 }

@@ -255,9 +255,24 @@ void WidgetGame::gameTimerHit() {
 
         Object *curObj = curLabel->getObject();
 
+        Slow* slowObject = dynamic_cast<Slow *>(labels.at(i));
+        ExLife* heartObject = dynamic_cast<ExLife *>(labels.at(i));
+        Invul* invulObject = dynamic_cast<Invul *>(labels.at(i));
+        Multiplier* multiObject = dynamic_cast<Multiplier *>(labels.at(i));
+
         if (!hitTimer->isActive() && ui->lblSatyr->geometry().intersects(curLabel->geometry()))
         {
-            if (Game::getInstance().getPlayerLives() == 1)
+            if(slowObject != NULL) {
+                slowObject->activatePow();
+            } else if(heartObject != NULL) {
+                heartObject->activatePow();
+                // display new lives amount on screen
+                ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() + 1));
+            } else if(invulObject != NULL) {
+                invulObject->activatePow();
+            } else if(multiObject != NULL) {
+                multiObject->activatePow();
+            } else if (Game::getInstance().getPlayerLives() == 1)
             {
                 WidgetGame::decrementLives();
                 gameTimer->stop();
@@ -269,6 +284,36 @@ void WidgetGame::gameTimerHit() {
             } else {
                 hitTimer->start();
                 WidgetGame::decrementLives();
+            }
+        }
+
+        int timerCount;
+        if(slowObject != NULL && slowObject->getActive() == true) {
+            gameTimer->setInterval(Game::getInstance().getInterval() + 5);
+            timerCount++;
+            if (timerCount == 100) {
+                gameTimer->setInterval(Game::getInstance().getInterval());
+                slowObject->setActive(false);
+                timerCount = 0;
+            }
+        }
+
+        if(invulObject != NULL && invulObject->getActive() == true) {
+            WidgetPause::cheatMode = true;
+            timerCount++;
+            if(timerCount == 100) {
+                WidgetPause::cheatMode = false;
+                invulObject->setActive(false);
+                timerCount = 0;
+            }
+        }
+
+        if(multiObject != NULL && multiObject->getActive() == true) {
+            ui->lblScore->setText(QString::number(ui->lblScore->text().toInt() + 1));
+            timerCount++;
+            if(timerCount == 100) {
+                multiObject->setActive(false);
+                timerCount = 0;
             }
         }
 
