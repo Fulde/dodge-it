@@ -46,7 +46,7 @@ void WidgetPause::on_btnCheat_clicked() {
 }
 
 void WidgetPause::on_btnSave_clicked() {
-    bool saved = Game::getInstance().save("savedGame.txt");
+    bool saved = Game::getInstance().save(Game::getInstance().getUsername() + ".txt");
     if (saved) {
         QMessageBox::information(this, "Save Successful", "Your game was saved.");
     } else {

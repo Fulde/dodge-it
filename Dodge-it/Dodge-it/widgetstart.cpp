@@ -13,6 +13,8 @@
 #include "widget.h"
 #include "game.h"
 
+#include <QMessageBox>
+
 //Instantiates the Widget
 WidgetStart::WidgetStart(QWidget *parent) :
     QWidget(parent),
@@ -70,7 +72,13 @@ void WidgetStart::on_btnQuit_clicked()
 
 void WidgetStart::on_btnLoad_clicked()
 {
-    Game::getInstance().load("savedGame.txt");  //Game::getInstance().getUsername() + "
+    bool loadSuccess = Game::getInstance().load(Game::getInstance().getUsername() + ".txt");
+
+    if (!loadSuccess)
+    {
+        QMessageBox::warning(this, "Dodge-it", "Saved game could not be loaded.\nIf this is your first time playing, please save a game before loading.");
+        return;
+    }
 
     WidgetGame* game = new WidgetGame(main);
     game->WidgetGame::loadGame();
