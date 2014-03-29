@@ -6,6 +6,13 @@
 
 #include "widgetuser.h"
 #include "ui_widgetuser.h"
+#include "game.h"
+#include <QString>
+#include <string>
+#include <fstream>
+#include <QMessageBox>
+
+using namespace std;
 
 //Instantiates the Widget
 WidgetUser::WidgetUser(QWidget *parent) :
