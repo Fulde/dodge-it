@@ -21,6 +21,9 @@ public:
     WidgetUser(QWidget *parent = 0);
     ~WidgetUser();
 
+private slots:
+    void on_btnEnter_clicked();
+
 private:
     Ui::WidgetUser *ui;
 };

@@ -23,8 +23,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:#000000;
-color:#FFFFFF;</string>
+    <string notr="true">background-color:#000000;</string>
    </property>
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -65,9 +64,9 @@ color:#FFFFFF;</string>
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>130</y>
+      <y>240</y>
       <width>431</width>
-      <height>231</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="contextMenuPolicy">
@@ -77,6 +76,22 @@ color:#FFFFFF;</string>
      <string>blah... blah.. blah.. 
 
  Put the user names here...</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnEnter">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>150</y>
+      <width>98</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 11pt &quot;Ubuntu&quot; black;</string>
+    </property>
+    <property name="text">
+     <string>Enter</string>
     </property>
    </widget>
   </widget>
