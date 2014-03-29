@@ -29,25 +29,20 @@ void WidgetUser::on_btnEnter_clicked()
     QString name = ui->lnEditUN->text();
     string stdName = name.toUtf8().constData();
 
-    if (name.length() == 0)
-    {
+    if (name.length() == 0) {
         QMessageBox::critical(this, "Dodge-it", "Please enter a name.");
         return;
-    }
-    else if (name.length() > 15)
-    {
+    } else if (name.length() > 15) {
         QMessageBox::critical(this, "Dodge-it", "Your namme is too long.\nPlease enter a name with fewer than 15 chararcters.");
         return;
     }
 
     ifstream strm(stdName + ".txt");
-    if (strm)
-    {
+    if (strm) {
         QMessageBox::information(this, "Dodge-it", "Welcome back, " + name + "!");
-    }
-    else
-    {
+    } else {
         QMessageBox::information(this, "Dodge-it", "Welcome to Dodge-it, " + name + ".\nDodge well!");
     }
     Game::getInstance().setUsername(stdName);
+    this->hide();
 }

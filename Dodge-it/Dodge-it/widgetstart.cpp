@@ -8,6 +8,8 @@
 #include "ui_widgetstart.h"
 #include "widgetgame.h"
 #include "widgethelp.h"
+#include "widgetuser.h"
+#include "ui_widgetuser.h"
 #include "widget.h"
 #include "game.h"
 
@@ -18,6 +20,9 @@ WidgetStart::WidgetStart(QWidget *parent) :
 {
     ui->setupUi(this);
     main = dynamic_cast<Widget*>(parent);
+
+    WidgetUser *userWin = new WidgetUser(this);
+    userWin->show();
 }
 
 WidgetStart::~WidgetStart() { delete ui; }

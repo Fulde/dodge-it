@@ -16,22 +16,22 @@
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>200</y>
-     <width>512</width>
-     <height>384</height>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>768</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color:#000000;</string>
    </property>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="lblTitle">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>20</y>
-      <width>241</width>
-      <height>71</height>
+      <x>130</x>
+      <y>70</y>
+      <width>761</width>
+      <height>171</height>
      </rect>
     </property>
     <property name="text">
@@ -50,9 +50,9 @@
    <widget class="QLineEdit" name="lnEditUN">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>100</y>
-      <width>171</width>
+      <x>420</x>
+      <y>350</y>
+      <width>181</width>
       <height>27</height>
      </rect>
     </property>
@@ -60,29 +60,11 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lblText">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>240</y>
-      <width>431</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <property name="contextMenuPolicy">
-     <enum>Qt::DefaultContextMenu</enum>
-    </property>
-    <property name="text">
-     <string>blah... blah.. blah.. 
-
- Put the user names here...</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnEnter">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>150</y>
+      <x>460</x>
+      <y>440</y>
       <width>98</width>
       <height>27</height>
      </rect>
