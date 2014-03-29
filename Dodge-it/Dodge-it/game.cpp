@@ -80,7 +80,7 @@ void HighScore::compareScore() {
     else if (Game::getInstance().getDifficulty() == Game::hard)
         difficulty = "hard";
 
-    HighScore *testScore = new HighScore(Game::getInstance().getScore(), "user", difficulty); // "user" because save/load not yet implemented
+    HighScore *testScore = new HighScore(Game::getInstance().getScore(), Game::getInstance().getUsername(), difficulty);
 
     for (size_t i = 0; i < HighScore::highScores.size(); i++)
     {
@@ -110,7 +110,7 @@ void HighScore::scoresToFile(string fileName)
     strm.close();
 }
 
-void HighScore::unitTest() { // these should only be called when specified through a command-line arg according to the assignment spec
+void HighScore::unitTest() { // need to fix these to reflect the new non-standard username system
 
     HighScore::loadScores("testScores.txt");
 
@@ -181,7 +181,7 @@ Character::Character()
 // creates the private instance of the game
 Game Game::instance;
 
-Game::Game() : multiplier(1) {
+Game::Game() : multiplier(1), username("default") {
     player = new Character();
 }
 
@@ -206,56 +206,64 @@ Game::~Game()
 }
 
 // resumes the saved game at the point that it was saved.
-void Game::load(string fileName) {
+bool Game::load(string fileName) {
     ifstream strm(fileName);
     string data;
-    getline(strm, data);                // get game difficulty
-    if (data == "easy") {
-        Game::getInstance().setDifficulty(Game::easy);
-        Game::getInstance().setObjectInt(30);
-    } else if (data == "medium") {
-        Game::getInstance().setDifficulty(Game::medium);
-        Game::getInstance().setObjectInt(20);
-    } else if (data == "hard") {
-        Game::getInstance().setDifficulty(Game::hard);
-        Game::getInstance().setObjectInt(10);
-    }
-    Game::getInstance().setTimeInt(9);
 
-    getline(strm, data);                        // get score
-    Game::getInstance().setScore(stoi(data));
-    getline(strm, data);                        // get lives
-    Game::getInstance().setPlayerLives(stoi(data));
-    getline(strm, data);                        // get character position
-    int x = stoi(data.substr(0, data.find(' ')));
-    int y = stoi(data.substr(data.find(' ')));
-    Game::getInstance().movePlayer(x,y);
-
-    getline(strm,data);                         // start getting objects
-    while (strm)
+    if (strm)
     {
-        string type = data.substr(0, data.find(' '));
-        data.erase(0, data.find(' ') + 1);
-        int objX = stoi(data.substr(0, data.find(' ')));
-        int objY = stoi(data.substr(data.find(' ') + 1));
-
-        if (type == "basic") {
-            instance.addBasic(new DamagingObject(objX, objY));
-        } else if (type == "small") {
-            instance.addSmall(new DamagingObject(objX, objY));
-        } else if (type == "expl") {
-            instance.addExplosive(new DamagingObject(objX, objY));
-        } else if (type == "exlife") {
-            instance.addPowerup(new ExLife(objX, objY));
-        } else if (type == "mult") {
-            instance.addPowerup(new Multiplier(objX, objY));
-        } else if (type == "slow") {
-            instance.addPowerup(new Slow(objX, objY));
-        } else if (type == "invul") {
-            instance.addPowerup(new Invul(objX, objY));
+        getline(strm, data);                // get game difficulty
+        if (data == "easy") {
+            Game::getInstance().setDifficulty(Game::easy);
+            Game::getInstance().setObjectInt(30);
+        } else if (data == "medium") {
+            Game::getInstance().setDifficulty(Game::medium);
+            Game::getInstance().setObjectInt(20);
+        } else if (data == "hard") {
+            Game::getInstance().setDifficulty(Game::hard);
+            Game::getInstance().setObjectInt(10);
         }
-        getline(strm, data);
+        Game::getInstance().setTimeInt(9);
+
+        getline(strm, data);                        // get score
+        Game::getInstance().setScore(stoi(data));
+        getline(strm, data);                        // get lives
+        Game::getInstance().setPlayerLives(stoi(data));
+        getline(strm, data);                        // get character position
+        int x = stoi(data.substr(0, data.find(' ')));
+        int y = stoi(data.substr(data.find(' ')));
+        Game::getInstance().movePlayer(x,y);
+
+        getline(strm,data);                         // start getting objects
+        while (strm)
+        {
+            string type = data.substr(0, data.find(' '));
+            data.erase(0, data.find(' ') + 1);
+            int objX = stoi(data.substr(0, data.find(' ')));
+            int objY = stoi(data.substr(data.find(' ') + 1));
+
+            if (type == "basic") {
+                instance.addBasic(new DamagingObject(objX, objY));
+            } else if (type == "small") {
+                instance.addSmall(new DamagingObject(objX, objY));
+            } else if (type == "expl") {
+                instance.addExplosive(new DamagingObject(objX, objY));
+            } else if (type == "exlife") {
+                instance.addPowerup(new ExLife(objX, objY));
+            } else if (type == "mult") {
+                instance.addPowerup(new Multiplier(objX, objY));
+            } else if (type == "slow") {
+                instance.addPowerup(new Slow(objX, objY));
+            } else if (type == "invul") {
+                instance.addPowerup(new Invul(objX, objY));
+            }
+            getline(strm, data);
+        }
     }
+    else
+        return false;
+
+    return true;
 }
 
 // saves the current state of the game including score, number of lives,

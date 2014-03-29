@@ -36,6 +36,7 @@ void WidgetStart::on_btnStart_clicked()
     }
     Game::getInstance().setTimeInt(9);
     Game::getInstance().setPlayerLives(3);
+    Game::getInstance().setScore(0);
 
     WidgetGame* game = new WidgetGame(main);
     game->show();
@@ -64,11 +65,10 @@ void WidgetStart::on_btnQuit_clicked()
 
 void WidgetStart::on_btnLoad_clicked()
 {
-    Game::getInstance().load("savedGame.txt");
+    Game::getInstance().load("savedGame.txt");  //Game::getInstance().getUsername() + "
 
     WidgetGame* game = new WidgetGame(main);
+    game->WidgetGame::loadGame();
     game->show();
     this->hide();
-
-    game->WidgetGame::loadGame();
 }

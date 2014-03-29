@@ -85,6 +85,7 @@ private:
     int timeInterval;
     int objectInterval;
     int score;
+    string username;
     diffSetting difficulty;
     vector<Object*> basics;
     vector<Object*> smalls;
@@ -103,6 +104,8 @@ public:
     int getPlayerX() { return player->getX(); }
     int getPlayerY() { return player->getY(); }
     int getPlayerLives() { return player->getLives(); }
+    string getUsername() { return username; }
+    diffSetting getDifficulty() { return difficulty; }
     void setPlayerLives(int newLives) { player->setLives(newLives); }
     bool getPlayerMovingUp() { return player->getMovingUp(); }
     void setPlayerMovingUp(bool value) { player->setMovingUp(value); }
@@ -113,7 +116,7 @@ public:
     bool getPlayerMovingRight() { return player->getMovingRight(); }
     void setPlayerMovingRight(bool value) { player->setMovingRight(value); }
     int getScore() { return score; }
-    diffSetting getDifficulty() { return difficulty; }
+
 
     void setMultiplier(int newMult) { multiplier = newMult; }
     void setTimeInt(int newTime) { timeInterval = newTime; }
@@ -121,6 +124,7 @@ public:
     void setDifficulty(diffSetting diff) {difficulty = diff; }
     void setScore(int newScore) { score = newScore; }
     void incScore(int incAmt) { score += incAmt; }
+    void setUsername(string newUsername) { username = newUsername; }
 
     void addBasic(DamagingObject *obj)     { basics.push_back(obj); }
     void addSmall(DamagingObject *obj)     { smalls.push_back(obj); }
@@ -134,7 +138,7 @@ public:
 
     void clearObjVectors();
     bool save(string fileName);
-    void load(string fileName);
+    bool load(string fileName);
     ~Game();
 
 //**** singleton implementation ****//
