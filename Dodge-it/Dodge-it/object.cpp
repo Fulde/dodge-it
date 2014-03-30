@@ -17,7 +17,7 @@ Object::~Object() { }
 
 //This method increments the score when the user successfully dodges a falling object.
 //  The score is incremented based on the point value of the object that was dodged.
-void Object::incrementScore() {
+void Object::incrementScore(int score) {
 
 }
 

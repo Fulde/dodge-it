@@ -20,7 +20,7 @@ protected:
     string pixmap;
 
     //This method increments the score if the user successfully avoids the object
-    virtual void incrementScore();
+    virtual void incrementScore(int score);
     //This method saves the current state of the object (location, etc.) to a file when the user saves the game
     virtual string stateToFile();
 
@@ -58,6 +58,8 @@ class Powerup : public Object {
 protected:
     //boolean to test if the powerup is currently active
     bool active;
+    // boolean to test if the powerup has already been used
+    bool used;
     //integer representing how long the powerup will remain active
     int duration;
 
@@ -66,8 +68,10 @@ public:
     string stateToFile(Powerup* obj, string type);
 
     void setActive(bool newValue) { active = newValue; }
+    void setUsed(bool newUsed) { used = newUsed; }
 
     bool getActive() { return active; }
+    bool getUsed() { return used; }
     int  getDuration() { return duration; }
 
     virtual void activatePow() = 0;
