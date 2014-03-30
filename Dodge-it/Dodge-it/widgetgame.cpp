@@ -402,7 +402,6 @@ void WidgetGame::gameTimerHit() {
     }
 }
 
-/*
 void WidgetGame::tick() {
     if(slowObject->getActive() == true) {
         slowTimer++;
@@ -414,7 +413,7 @@ void WidgetGame::tick() {
         multiTimer++;
     }
 
-}*/
+}
 
 void WidgetGame::on_btnPause_clicked() {
     gameTimer->stop();
