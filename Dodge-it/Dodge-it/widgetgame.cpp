@@ -350,7 +350,7 @@ void WidgetGame::gameTimerHit() {
 
             if(invulObject != NULL && invulObject->getActive() == true) {
                 WidgetPause::cheatMode = true;
-                if(shieldTimer == 10) {
+                if(!powerupTimer->isActive()) {
                     WidgetPause::cheatMode = false;
                     invulObject->setActive(false);
                     powerupTimer->stop();
@@ -358,7 +358,7 @@ void WidgetGame::gameTimerHit() {
             }
 
             if(multiObject != NULL && multiObject->getActive() == true) {
-                if(shieldTimer == 10) {
+                if(!powerupTimer->isActive()) {
                     multiObject->setActive(false);
                     powerupTimer->stop();
                 }
