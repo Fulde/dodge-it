@@ -64,6 +64,13 @@ WidgetGame::WidgetGame(QWidget *parent) :
     hitTimer = new QTimer(this);
     hitTimer->setInterval(3000); // 3 seconds
     hitTimer->setSingleShot(true);
+
+    // starts when a powerup is used
+    powerupTimer = new QTimer(this);
+    powerupTimer->setInterval(10000); // "10" seconds
+    powerupTimer->setSingleShot(true);
+
+    //connect(powerupTimer, &QTimer::timeout, this, &WidgetGame::tick);
 }
 
 WidgetGame::~WidgetGame() { delete ui; }
@@ -258,9 +265,6 @@ void WidgetGame::gameTimerHit() {
         label->show();
     }
 
-    int timerCount1;
-    int timerCount2;
-    int timerCount3;
     QObjectList labels = this->children();
         for (int i = 0; i < labels.length(); i++)
         {
@@ -270,10 +274,10 @@ void WidgetGame::gameTimerHit() {
 
             Object *curObj = curLabel->getObject();
 
-            Slow* slowObject = dynamic_cast<Slow *>(curObj);
-            ExLife* heartObject = dynamic_cast<ExLife *>(curObj);
-            Invul* invulObject = dynamic_cast<Invul *>(curObj);
-            Multiplier* multiObject = dynamic_cast<Multiplier *>(curObj);
+            slowObject = dynamic_cast<Slow *>(curObj);
+            heartObject = dynamic_cast<ExLife *>(curObj);
+            invulObject = dynamic_cast<Invul *>(curObj);
+            multiObject = dynamic_cast<Multiplier *>(curObj);
 
             if (!hitTimer->isActive() && ui->lblSatyr->geometry().intersects(curLabel->geometry()))
             {
@@ -281,6 +285,8 @@ void WidgetGame::gameTimerHit() {
                     if(slowObject->getUsed() == false) {
                         slowObject->setActive(true);
                         slowObject->setUsed(true);
+                        slowTimer = 0;
+                        powerupTimer->start();
                     }
                 } else if(heartObject != NULL) {
                     if(heartObject->getUsed() == false) {
@@ -291,11 +297,15 @@ void WidgetGame::gameTimerHit() {
                     if(invulObject->getUsed() == false) {
                         invulObject->setActive(true);
                         invulObject->setUsed(true);
+                        shieldTimer = 0;
+                        powerupTimer->start();
                     }
                 } else if(multiObject != NULL) {
                     if(multiObject->getUsed() == false) {
                         multiObject->setActive(true);
                         multiObject->setUsed(true);
+                        multiTimer = 0;
+                        powerupTimer->start();
                     }
                 } else if (Game::getInstance().getPlayerLives() == 1)
                 {
@@ -314,19 +324,20 @@ void WidgetGame::gameTimerHit() {
 
 
             if(slowObject != NULL && slowObject->getActive() == true) {
+                slowTimer++;
                 gameTimer->setInterval(Game::getInstance().getInterval() + 5);
-                timerCount1++;
                 ui->SlowPixmap->setPixmap(QPixmap(":/hourglass.png"));
                 ui->TimerLabel1->setText("Timer: ");
-                QString conversion = QString(100 - timerCount1);
+                QString conversion = QString::number(400 - slowTimer);
                 ui->TimerValue1->setText(conversion);
-                if (timerCount1 == 100) {
+                if (!powerupTimer->isActive()) {
+                    slowTimer = 0;
                     gameTimer->setInterval(Game::getInstance().getInterval() - 5);
                     slowObject->setActive(false);
                     ui->SlowPixmap->setVisible(false);
                     ui->TimerLabel1->setText("");
                     ui->TimerValue1->setText("");
-                    timerCount1 = 0;
+                    powerupTimer->stop();
                 }
             }
 
@@ -339,20 +350,17 @@ void WidgetGame::gameTimerHit() {
 
             if(invulObject != NULL && invulObject->getActive() == true) {
                 WidgetPause::cheatMode = true;
-                WidgetGame::decrementLives();
-                timerCount2++;
-                if(timerCount2 == 40) {
+                if(shieldTimer == 10) {
                     WidgetPause::cheatMode = false;
                     invulObject->setActive(false);
-                    timerCount2 = 0;
+                    powerupTimer->stop();
                 }
             }
 
             if(multiObject != NULL && multiObject->getActive() == true) {
-                timerCount3++;
-                if(timerCount3 == 100) {
+                if(shieldTimer == 10) {
                     multiObject->setActive(false);
-                    timerCount3 = 0;
+                    powerupTimer->stop();
                 }
             }
 
@@ -393,6 +401,20 @@ void WidgetGame::gameTimerHit() {
         }
     }
 }
+
+/*
+void WidgetGame::tick() {
+    if(slowObject->getActive() == true) {
+        slowTimer++;
+    }
+    if(invulObject->getActive() == true) {
+        shieldTimer++;
+    }
+    if(multiObject->getActive() == true) {
+        multiTimer++;
+    }
+
+}*/
 
 void WidgetGame::on_btnPause_clicked() {
     gameTimer->stop();

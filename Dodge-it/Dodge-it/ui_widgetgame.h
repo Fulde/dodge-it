@@ -84,7 +84,7 @@ public:
         label->setScaledContents(true);
         SlowPixmap = new QLabel(widget);
         SlowPixmap->setObjectName(QStringLiteral("SlowPixmap"));
-        SlowPixmap->setGeometry(QRect(10, 290, 31, 31));
+        SlowPixmap->setGeometry(QRect(20, 290, 21, 31));
         SlowPixmap->setScaledContents(true);
         TimerLabel1 = new QLabel(widget);
         TimerLabel1->setObjectName(QStringLiteral("TimerLabel1"));
