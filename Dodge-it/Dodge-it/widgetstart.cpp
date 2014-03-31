@@ -14,6 +14,7 @@
 #include "game.h"
 
 #include <QMessageBox>
+#include <QSound>
 
 //Instantiates the Widget
 WidgetStart::WidgetStart(QWidget *parent) :
@@ -31,6 +32,7 @@ WidgetStart::~WidgetStart() { delete ui; }
 
 void WidgetStart::on_btnStart_clicked()
 {
+    QSound::play("://198784__cman634__jump-sound-or-power-up-sound.wav");
     if (ui->rbEasy->isChecked()) {
         Game::getInstance().setDifficulty(Game::easy);
         Game::getInstance().setObjectInt(30);
@@ -57,12 +59,15 @@ void WidgetStart::on_btnStart_clicked()
 
 void WidgetStart::on_btnHelp_clicked()
 {
+    QSound::play("://219069__annabloom__click1.wav");
     WidgetHelp* help = new WidgetHelp;
     help->show();
 }
 
 void WidgetStart::on_btnQuit_clicked()
 {
+    QSound::play("://219069__annabloom__click1.wav");
+
     // write current highscore vector to file
     HighScore::scoresToFile("highScores.txt");
 
@@ -72,6 +77,8 @@ void WidgetStart::on_btnQuit_clicked()
 
 void WidgetStart::on_btnLoad_clicked()
 {
+    QSound::play("://219069__annabloom__click1.wav");
+
     bool loadSuccess = Game::getInstance().load(Game::getInstance().getUsername() + ".txt");
 
     if (!loadSuccess)

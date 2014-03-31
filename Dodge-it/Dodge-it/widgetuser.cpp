@@ -11,6 +11,7 @@
 #include <string>
 #include <fstream>
 #include <QMessageBox>
+#include <QSound>
 
 using namespace std;
 
@@ -26,6 +27,7 @@ WidgetUser::~WidgetUser() { delete ui; }
 
 void WidgetUser::on_btnEnter_clicked()
 {
+    QSound::play("://219069__annabloom__click1.wav");
     QString name = ui->lnEditUN->text();
     string stdName = name.toUtf8().constData();
 

@@ -13,6 +13,8 @@
 #include "widgetgame.h"
 #include "game.h"
 
+#include <QSound>
+
 bool WidgetPause::cheatMode;
 
 //Instantiates the Widget
@@ -38,6 +40,8 @@ void WidgetPause::on_btnResume_clicked() {
 }
 
 void WidgetPause::on_btnCheat_clicked() {
+    QSound::play("://219069__annabloom__click1.wav");
+
     if (ui->btnCheat->isChecked()) {
         cheatMode = true;
     } else {
@@ -46,6 +50,8 @@ void WidgetPause::on_btnCheat_clicked() {
 }
 
 void WidgetPause::on_btnSave_clicked() {
+    QSound::play("://219069__annabloom__click1.wav");
+
     bool saved = Game::getInstance().save(Game::getInstance().getUsername() + ".txt");
     if (saved) {
         QMessageBox::information(this, "Save Successful", "Your game was saved.");
@@ -55,6 +61,7 @@ void WidgetPause::on_btnSave_clicked() {
 }
 
 void WidgetPause::on_btnStart_clicked() {
+    QSound::play("://219069__annabloom__click1.wav");
     dynamic_cast<WidgetGame*>(parentWidget())->pauseTimer();
     this->hide();
     par->hide();

@@ -21,6 +21,7 @@
 #include <QRect>
 #include <QString>
 #include <string>
+#include <QSound>
 
 void WidgetGame::pauseTimer()  { gameTimer->stop(); }
 void WidgetGame::resumeTimer() { gameTimer->start(); }
@@ -309,6 +310,8 @@ void WidgetGame::gameTimerHit() {
                     }
                 } else if (Game::getInstance().getPlayerLives() == 1)
                 {
+                    QSound::play("://95951__tmokonen__lazer.wav");
+
                     WidgetGame::decrementLives();
                     gameTimer->stop();
 
@@ -317,6 +320,7 @@ void WidgetGame::gameTimerHit() {
                     score->main = this;
                     score->show();
                 } else {
+                    QSound::play("://33940__scarbelly25__rocks-hit.wav");
                     hitTimer->start();
                     WidgetGame::decrementLives();
                 }
