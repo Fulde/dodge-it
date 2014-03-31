@@ -25,9 +25,8 @@ class Ui_WidgetUser
 {
 public:
     QWidget *widget;
-    QLabel *label;
+    QLabel *lblTitle;
     QLineEdit *lnEditUN;
-    QLabel *lblText;
     QPushButton *btnEnter;
 
     void setupUi(QWidget *WidgetUser)
@@ -37,24 +36,20 @@ public:
         WidgetUser->resize(1024, 768);
         widget = new QWidget(WidgetUser);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(260, 200, 512, 384));
+        widget->setGeometry(QRect(0, 0, 1024, 768));
         widget->setStyleSheet(QStringLiteral("background-color:#000000;"));
-        label = new QLabel(widget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(140, 20, 241, 71));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/username.png")));
-        label->setScaledContents(true);
-        label->setAlignment(Qt::AlignCenter);
+        lblTitle = new QLabel(widget);
+        lblTitle->setObjectName(QStringLiteral("lblTitle"));
+        lblTitle->setGeometry(QRect(130, 70, 761, 171));
+        lblTitle->setPixmap(QPixmap(QString::fromUtf8(":/username.png")));
+        lblTitle->setScaledContents(true);
+        lblTitle->setAlignment(Qt::AlignCenter);
         lnEditUN = new QLineEdit(widget);
         lnEditUN->setObjectName(QStringLiteral("lnEditUN"));
-        lnEditUN->setGeometry(QRect(170, 100, 171, 27));
-        lblText = new QLabel(widget);
-        lblText->setObjectName(QStringLiteral("lblText"));
-        lblText->setGeometry(QRect(40, 240, 431, 121));
-        lblText->setContextMenuPolicy(Qt::DefaultContextMenu);
+        lnEditUN->setGeometry(QRect(420, 350, 181, 27));
         btnEnter = new QPushButton(widget);
         btnEnter->setObjectName(QStringLiteral("btnEnter"));
-        btnEnter->setGeometry(QRect(210, 150, 98, 27));
+        btnEnter->setGeometry(QRect(460, 440, 98, 27));
         btnEnter->setStyleSheet(QStringLiteral("font: 11pt \"Ubuntu\" black;"));
 
         retranslateUi(WidgetUser);
@@ -65,11 +60,8 @@ public:
     void retranslateUi(QWidget *WidgetUser)
     {
         WidgetUser->setWindowTitle(QApplication::translate("WidgetUser", "Form", 0));
-        label->setText(QString());
+        lblTitle->setText(QString());
         lnEditUN->setInputMask(QString());
-        lblText->setText(QApplication::translate("WidgetUser", "blah... blah.. blah.. \n"
-"\n"
-" Put the user names here...", 0));
         btnEnter->setText(QApplication::translate("WidgetUser", "Enter", 0));
     } // retranslateUi
 

@@ -68,7 +68,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
 
     // starts when a powerup is used
     powerupTimer = new QTimer(this);
-    powerupTimer->setInterval(10000); // "10" seconds
+    powerupTimer->setInterval(5000); // "5" seconds
     powerupTimer->setSingleShot(true);
 
     //connect(powerupTimer, &QTimer::timeout, this, &WidgetGame::tick);
@@ -328,31 +328,32 @@ void WidgetGame::gameTimerHit() {
             if(slowObject != NULL && slowObject->getActive() == true) {
                 slowTimer++;
                 gameTimer->setInterval(Game::getInstance().getInterval() + 5);
-                ui->SlowPixmap->setPixmap(QPixmap(":/hourglass.png"));
-                ui->TimerLabel1->setText("Timer: ");
-                QString conversion = QString::number(400 - slowTimer);
-                ui->TimerValue1->setText(conversion);
+                ui->slowPixmap->setPixmap(QPixmap(":/hourglass.png"));
                 if (!powerupTimer->isActive()) {
                     slowTimer = 0;
-                    gameTimer->setInterval(Game::getInstance().getInterval() - 5);
+                    gameTimer->setInterval(Game::getInstance().getInterval() - 2);
                     slowObject->setActive(false);
-                    ui->SlowPixmap->setVisible(false);
-                    ui->TimerLabel1->setText("");
-                    ui->TimerValue1->setText("");
+                    ui->slowPixmap->setVisible(false);
+                    //ui->TimerValue1->setText("");
                     powerupTimer->stop();
                 }
             }
 
             if(heartObject != NULL && heartObject->getActive() == true){
-                Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() + 1);
-                // display new lives amount on screen
-                ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() + 1));
-                heartObject->setActive(false);
+                if (Game::getInstance().getPlayerLives() != 3) {
+                    Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() + 1);
+                    // display new lives amount on screen
+                    ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() + 1));
+                    heartObject->setActive(false);
+                }
             }
 
             if(invulObject != NULL && invulObject->getActive() == true) {
+                ui->shieldPixmap->setPixmap(QPixmap(":/shield.png"));
                 WidgetPause::cheatMode = true;
+                ui->lblCheatMode->setText("");
                 if(!powerupTimer->isActive()) {
+                    ui->shieldPixmap->setVisible(false);
                     WidgetPause::cheatMode = false;
                     invulObject->setActive(false);
                     powerupTimer->stop();
@@ -360,25 +361,28 @@ void WidgetGame::gameTimerHit() {
             }
 
             if(multiObject != NULL && multiObject->getActive() == true) {
+                ui->multiPixmap->setPixmap(QPixmap(":/multiplier.png"));
                 if(!powerupTimer->isActive()) {
+                    ui->multiPixmap->setVisible(false);
                     multiObject->setActive(false);
                     powerupTimer->stop();
                 }
+            }
+
+            //Test for cheat mode
+            if (WidgetPause::cheatMode == false) {
+                ui->lblCheatMode->setText("");
+            } else if (WidgetPause::cheatMode == true) {
+                ui->lblCheatMode->setText("Cheat Mode On");
             }
 
             curObj->move();
             curLabel->move(curObj->getX(), curObj->getY());
             curLabel->show();
 
-            //Test for cheat mode
-            if (WidgetPause::cheatMode == false || invulObject != NULL) {
-                ui->lblCheatMode->setText("");
-            } else if (WidgetPause::cheatMode == true) {
-                ui->lblCheatMode->setText("Cheat Mode On");
-            }
-
-        if (curObj->getY() > 768) {
-            if(multiObject != NULL && multiObject->getActive() == true){
+        if (curObj->getY() > 768)
+        {
+            if(multiObject != NULL && multiObject != NULL){
                 incrementScore(2);
             }
             else {
@@ -413,7 +417,6 @@ void WidgetGame::tick() {
     if(multiObject->getActive() == true) {
         multiTimer++;
     }
-
 }
 
 void WidgetGame::on_btnPause_clicked() {
