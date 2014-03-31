@@ -30,6 +30,6 @@
         <file>198784__cman634__jump-sound-or-power-up-sound.wav</file>
         <file>219069__annabloom__click1.wav</file>
         <file>explosion.gif</file>
-        <file>bomb.png</file>
+        <file>bomb.gif</file>
     </qresource>
 </RCC>
