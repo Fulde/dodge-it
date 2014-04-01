@@ -68,7 +68,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
 
     // starts when a powerup is used
     powerupTimer = new QTimer(this);
-    powerupTimer->setInterval(10000); // "10" seconds
+    powerupTimer->setInterval(5000); // "5" seconds
     powerupTimer->setSingleShot(true);
 
     //connect(powerupTimer, &QTimer::timeout, this, &WidgetGame::tick);
@@ -182,25 +182,22 @@ void WidgetGame::keyReleaseEvent(QKeyEvent *k)
 // the object should start with a random x coordinate at the top of the window
 void WidgetGame::gameTimerHit() {
     int randX = rand() % 855 + 165;
+    int random;
 
     //move satyr
-    if (Game::getInstance().getPlayerMovingUp() == true && (ui->lblSatyr->y() > 0))
-    {
+    if (Game::getInstance().getPlayerMovingUp() == true && (ui->lblSatyr->y() > 0)) {
         Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() - 3);
         ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() - 3);
     }
-    if (Game::getInstance().getPlayerMovingDown() == true && ((ui->lblSatyr->y() + ui->lblSatyr->height()) < 768))
-    {
+    if (Game::getInstance().getPlayerMovingDown() == true && ((ui->lblSatyr->y() + ui->lblSatyr->height()) < 768)) {
         Game::getInstance().movePlayer(ui->lblSatyr->x(), ui->lblSatyr->y() + 3);
         ui->lblSatyr->move(ui->lblSatyr->x(), ui->lblSatyr->y() + 3);
     }
-    if (Game::getInstance().getPlayerMovingLeft() == true && (ui->lblSatyr->x() > 170))
-    {
+    if (Game::getInstance().getPlayerMovingLeft() == true && (ui->lblSatyr->x() > 170)) {
         Game::getInstance().movePlayer(ui->lblSatyr->x() - 3, ui->lblSatyr->y());
         ui->lblSatyr->move(ui->lblSatyr->x() - 3, ui->lblSatyr->y());
     }
-    if (Game::getInstance().getPlayerMovingRight() == true && ((ui->lblSatyr->x() + ui->lblSatyr->width() < 1018)))
-    {
+    if (Game::getInstance().getPlayerMovingRight() == true && ((ui->lblSatyr->x() + ui->lblSatyr->width() < 1018))) {
         Game::getInstance().movePlayer(ui->lblSatyr->x() + 3, ui->lblSatyr->y());
         ui->lblSatyr->move(ui->lblSatyr->x() + 3, ui->lblSatyr->y());
     }
@@ -214,7 +211,7 @@ void WidgetGame::gameTimerHit() {
         ObjLabel* label = new ObjLabel(this);
         label->setAlignment(Qt::AlignHCenter);
 
-        int random = rand() % 100 + 1;
+        random = rand() % 100 + 1;
         if (random <= 90) {
             if (random <= 50) {                                // (1-50)  basic object
                 label->setPixmap(QPixmap(":/basic.png"));
@@ -222,20 +219,20 @@ void WidgetGame::gameTimerHit() {
                 obj->setPixmap(":/basic.png");
                 Game::getInstance().addBasic(obj);
                 label->setObject(obj);
-            } else if (random >= 51 && random <= 100) {         // (51-80) small object
+            } else if (random >= 51 && random <= 80) {         // (51-80) small object
                 label->setPixmap(QPixmap(":/small.png"));
                 DamagingObject *obj = new DamagingObject(randX, -label->height());
                 obj->setPixmap(":/small.png");
                 Game::getInstance().addSmall(obj);
                 label->setObject(obj);
             } else if (random >= 81 && random <= 90) {        // (81-90) explosive object
-                label->setPixmap(QPixmap(":/explosive.png"));
+                label->setPixmap(QPixmap(":/bomb.gif"));
                 DamagingObject *obj = new DamagingObject(randX, -label->height());
-                obj->setPixmap(":/explosive.png");
+                obj->setPixmap(":/bomb.gif");
                 Game::getInstance().addExplosive(obj);
                 label->setObject(obj);
             }
-        } else if (random >= 91) {                             // (91-100) powerup
+        } else if (random >= 91) {                            // (91-100) powerup
             if (random >= 91 && random <= 94) {                   // (91-94) exlife
                 label->setPixmap(QPixmap(":/heart.png"));
                 ExLife *obj = new ExLife(randX, label->height());
@@ -267,8 +264,7 @@ void WidgetGame::gameTimerHit() {
     }
 
     QObjectList labels = this->children();
-        for (int i = 0; i < labels.length(); i++)
-        {
+        for (int i = 0; i < labels.length(); i++) {
             ObjLabel *curLabel = dynamic_cast<ObjLabel*>(labels.at(i));
             if (curLabel == NULL)
                 continue;
@@ -280,8 +276,7 @@ void WidgetGame::gameTimerHit() {
             invulObject = dynamic_cast<Invul *>(curObj);
             multiObject = dynamic_cast<Multiplier *>(curObj);
 
-            if (!hitTimer->isActive() && ui->lblSatyr->geometry().intersects(curLabel->geometry()))
-            {
+            if (!hitTimer->isActive() && ui->lblSatyr->geometry().intersects(curLabel->geometry())) {
                 if(slowObject != NULL) {
                     if(slowObject->getUsed() == false) {
                         slowObject->setActive(true);
@@ -308,8 +303,7 @@ void WidgetGame::gameTimerHit() {
                         multiTimer = 0;
                         powerupTimer->start();
                     }
-                } else if (Game::getInstance().getPlayerLives() == 1)
-                {
+                } else if (Game::getInstance().getPlayerLives() == 1) {
                     QSound::play("://95951__tmokonen__lazer.wav");
 
                     WidgetGame::decrementLives();
@@ -320,6 +314,10 @@ void WidgetGame::gameTimerHit() {
                     score->main = this;
                     score->show();
                 } else {
+                    if (random >= 81 && random <= 90) {
+                        curLabel->setPixmap(QPixmap(":/explosion.gif"));
+                        curObj->setPixmap(":/explosion.gif");
+                    }
                     QSound::play("://33940__scarbelly25__rocks-hit.wav");
                     hitTimer->start();
                     WidgetGame::decrementLives();
@@ -330,31 +328,32 @@ void WidgetGame::gameTimerHit() {
             if(slowObject != NULL && slowObject->getActive() == true) {
                 slowTimer++;
                 gameTimer->setInterval(Game::getInstance().getInterval() + 5);
-                ui->SlowPixmap->setPixmap(QPixmap(":/hourglass.png"));
-                ui->TimerLabel1->setText("Timer: ");
-                QString conversion = QString::number(400 - slowTimer);
-                ui->TimerValue1->setText(conversion);
+                ui->slowPixmap->setPixmap(QPixmap(":/hourglass.png"));
                 if (!powerupTimer->isActive()) {
                     slowTimer = 0;
-                    gameTimer->setInterval(Game::getInstance().getInterval() - 5);
+                    gameTimer->setInterval(Game::getInstance().getInterval() - 2);
                     slowObject->setActive(false);
-                    ui->SlowPixmap->setVisible(false);
-                    ui->TimerLabel1->setText("");
-                    ui->TimerValue1->setText("");
+                    ui->slowPixmap->setVisible(false);
+                    //ui->TimerValue1->setText("");
                     powerupTimer->stop();
                 }
             }
 
             if(heartObject != NULL && heartObject->getActive() == true){
-                Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() + 1);
-                // display new lives amount on screen
-                ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() + 1));
-                heartObject->setActive(false);
+                if (Game::getInstance().getPlayerLives() != 3) {
+                    Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() + 1);
+                    // display new lives amount on screen
+                    ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() + 1));
+                    heartObject->setActive(false);
+                }
             }
 
             if(invulObject != NULL && invulObject->getActive() == true) {
+                ui->shieldPixmap->setPixmap(QPixmap(":/shield.png"));
                 WidgetPause::cheatMode = true;
+                ui->lblCheatMode->setText("");
                 if(!powerupTimer->isActive()) {
+                    ui->shieldPixmap->setVisible(false);
                     WidgetPause::cheatMode = false;
                     invulObject->setActive(false);
                     powerupTimer->stop();
@@ -362,26 +361,28 @@ void WidgetGame::gameTimerHit() {
             }
 
             if(multiObject != NULL && multiObject->getActive() == true) {
+                ui->multiPixmap->setPixmap(QPixmap(":/multiplier.png"));
                 if(!powerupTimer->isActive()) {
+                    ui->multiPixmap->setVisible(false);
                     multiObject->setActive(false);
                     powerupTimer->stop();
                 }
+            }
+
+            //Test for cheat mode
+            if (WidgetPause::cheatMode == false) {
+                ui->lblCheatMode->setText("");
+            } else if (WidgetPause::cheatMode == true) {
+                ui->lblCheatMode->setText("Cheat Mode On");
             }
 
             curObj->move();
             curLabel->move(curObj->getX(), curObj->getY());
             curLabel->show();
 
-            //Test for cheat mode
-            if (WidgetPause::cheatMode == false || invulObject != NULL) {
-                ui->lblCheatMode->setText("");
-            } else if (WidgetPause::cheatMode == true) {
-                ui->lblCheatMode->setText("Cheat Mode On");
-            }
-
         if (curObj->getY() > 768)
         {
-            if(multiObject != NULL && multiObject->getActive() == true){
+            if(multiObject != NULL && multiObject != NULL){
                 incrementScore(2);
             }
             else {
@@ -394,7 +395,7 @@ void WidgetGame::gameTimerHit() {
             } else if (curObj->getPixmap() == ":/small.png") {
                 delete curObj;
                 Game::getInstance().getSmalls().erase(Game::getInstance().getSmalls().begin());
-            } else if (curLabel->pixmap()->toImage().text() == ":/explosive.png") {
+            } else if (curObj->getPixmap() == ":/bomb.gif") {
                 delete curObj;
                 Game::getInstance().getExplosives().erase(Game::getInstance().getExplosives().begin());
             } else /*assume the pixmap is a powerup*/ {
@@ -416,7 +417,6 @@ void WidgetGame::tick() {
     if(multiObject->getActive() == true) {
         multiTimer++;
     }
-
 }
 
 void WidgetGame::on_btnPause_clicked() {

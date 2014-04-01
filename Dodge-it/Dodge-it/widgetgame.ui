@@ -153,13 +153,13 @@ color: rgb(255, 47, 11)</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="SlowPixmap">
+   <widget class="QLabel" name="slowPixmap">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>290</y>
-      <width>21</width>
-      <height>31</height>
+      <width>31</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -169,33 +169,36 @@ color: rgb(255, 47, 11)</string>
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="TimerLabel1">
+   <widget class="QLabel" name="shieldPixmap">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>300</y>
-      <width>66</width>
-      <height>17</height>
+      <x>20</x>
+      <y>350</y>
+      <width>41</width>
+      <height>41</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 12pt;</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="TimerValue1">
+   <widget class="QLabel" name="multiPixmap">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>300</y>
+      <x>20</x>
+      <y>410</y>
       <width>41</width>
-      <height>21</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
