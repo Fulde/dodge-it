@@ -31,9 +31,9 @@ public:
     QPushButton *btnPause;
     QLabel *lblCheatMode;
     QLabel *label;
-    QLabel *SlowPixmap;
-    QLabel *TimerLabel1;
-    QLabel *TimerValue1;
+    QLabel *slowPixmap;
+    QLabel *shieldPixmap;
+    QLabel *multiPixmap;
     QLabel *background;
     QLabel *lblSatyr;
 
@@ -82,17 +82,18 @@ public:
         label->setGeometry(QRect(0, 0, 161, 41));
         label->setPixmap(QPixmap(QString::fromUtf8(":/logooption1.png")));
         label->setScaledContents(true);
-        SlowPixmap = new QLabel(widget);
-        SlowPixmap->setObjectName(QStringLiteral("SlowPixmap"));
-        SlowPixmap->setGeometry(QRect(20, 290, 21, 31));
-        SlowPixmap->setScaledContents(true);
-        TimerLabel1 = new QLabel(widget);
-        TimerLabel1->setObjectName(QStringLiteral("TimerLabel1"));
-        TimerLabel1->setGeometry(QRect(60, 300, 66, 17));
-        TimerLabel1->setStyleSheet(QStringLiteral("font: 12pt;"));
-        TimerValue1 = new QLabel(widget);
-        TimerValue1->setObjectName(QStringLiteral("TimerValue1"));
-        TimerValue1->setGeometry(QRect(120, 300, 41, 21));
+        slowPixmap = new QLabel(widget);
+        slowPixmap->setObjectName(QStringLiteral("slowPixmap"));
+        slowPixmap->setGeometry(QRect(20, 290, 31, 41));
+        slowPixmap->setScaledContents(true);
+        shieldPixmap = new QLabel(widget);
+        shieldPixmap->setObjectName(QStringLiteral("shieldPixmap"));
+        shieldPixmap->setGeometry(QRect(20, 350, 41, 41));
+        shieldPixmap->setScaledContents(true);
+        multiPixmap = new QLabel(widget);
+        multiPixmap->setObjectName(QStringLiteral("multiPixmap"));
+        multiPixmap->setGeometry(QRect(20, 410, 41, 41));
+        multiPixmap->setScaledContents(true);
         background = new QLabel(WidgetGame);
         background->setObjectName(QStringLiteral("background"));
         background->setGeometry(QRect(0, 0, 1031, 771));
@@ -122,9 +123,9 @@ public:
         btnPause->setText(QString());
         lblCheatMode->setText(QString());
         label->setText(QString());
-        SlowPixmap->setText(QString());
-        TimerLabel1->setText(QString());
-        TimerValue1->setText(QString());
+        slowPixmap->setText(QString());
+        shieldPixmap->setText(QString());
+        multiPixmap->setText(QString());
         background->setText(QString());
         lblSatyr->setText(QString());
     } // retranslateUi
