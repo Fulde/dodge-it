@@ -39,6 +39,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
     ui->lblLives->setText(QString::number(Game::getInstance().getPlayerLives()));
 
     Game::getInstance().setScore(0);
+    Game::getInstance().movePlayer(590, 670);
 
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
     if (difficulty == Game::easy){
@@ -65,6 +66,10 @@ WidgetGame::WidgetGame(QWidget *parent) :
     hitTimer = new QTimer(this);
     hitTimer->setInterval(3000); // 3 seconds
     hitTimer->setSingleShot(true);
+
+    Game::getInstance().setSlowTimer(0);
+    Game::getInstance().setMultiTimer(0);
+    Game::getInstance().setInvulTimer(0);
 }
 
 WidgetGame::~WidgetGame() { delete ui; }
@@ -76,9 +81,8 @@ void WidgetGame::incrementScore(int score) {
 
 //updates both the player's lives and the label representation
 void WidgetGame::decrementLives() {
-    if (WidgetPause::cheatMode == true) {
-        //displays cheat mode on indication to screen
-        ui->lblLives->setText(QString::number((ui->lblLives->text().toInt())));
+    if (WidgetPause::cheatMode == true || Game::getInstance().getInvulTimer() > 0) {
+        return;
     } else {
         //normal execution
         Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() - 1);
@@ -228,25 +232,25 @@ void WidgetGame::gameTimerHit() {
         } else if (random >= 91) {                            // (91-100) powerup
             if (random >= 91 && random <= 94) {                   // (91-94) exlife
                 label->setPixmap(QPixmap(":/heart.png"));
-                ExLife *obj = new ExLife(randX, label->height());
-               obj->setPixmap(":/heart.png");
+                ExLife *obj = new ExLife(randX, label->height(), false, false);
+                obj->setPixmap(":/heart.png");
                 label->setObject(obj);
                 Game::getInstance().addPowerup(obj);
             } else if (random >= 95 && random <= 97) {             // (95-97) multiplier
                 label->setPixmap(QPixmap(":/multiplier.png"));
-                Multiplier *obj = new Multiplier(randX, label->height());
+                Multiplier *obj = new Multiplier(randX, label->height(), false, false);
                 obj->setPixmap(":/multiplier.png");
                 label->setObject(obj);
                 Game::getInstance().addPowerup(obj);
             } else if (random >= 98  && random <= 99 ) {           // (98-99) slow
                 label->setPixmap(QPixmap(":/hourglass.png"));
-                Slow *obj = new Slow(randX, label->height());
+                Slow *obj = new Slow(randX, label->height(), false, false);
                 obj->setPixmap(":/hourglass.png");
                 label->setObject(obj);
                 Game::getInstance().addPowerup(obj);
             } else if (random == 100) {                            // (100) invul
                 label->setPixmap(QPixmap(":/shield.png"));
-                Invul *obj = new Invul(randX, label->height());
+                Invul *obj = new Invul(randX, label->height(), false, false);
                 obj->setPixmap(":/shield.png");
                 label->setObject(obj);
                 Game::getInstance().addPowerup(obj);
@@ -269,31 +273,28 @@ void WidgetGame::gameTimerHit() {
             invulObject = dynamic_cast<Invul *>(curObj);
             multiObject = dynamic_cast<Multiplier *>(curObj);
 
-            if (!hitTimer->isActive() && ui->lblSatyr->geometry().intersects(curLabel->geometry())) {
-                if(slowObject != NULL) {
-                    if(slowObject->getUsed() == false) {
-                        slowObject->setActive(true);
-                        slowObject->setUsed(true);
-                        slowTimer = 0;
-                    }
-                } else if(heartObject != NULL) {
-                    if(heartObject->getUsed() == false) {
-                        heartObject->setActive(true);
-                        heartObject->setUsed(true);
-                    }
-                } else if(invulObject != NULL) {
-                    if(invulObject->getUsed() == false) {
-                        invulObject->setActive(true);
-                        invulObject->setUsed(true);
-                        shieldTimer = 0;
-                    }
-                } else if(multiObject != NULL) {
-                    if(multiObject->getUsed() == false) {
-                        multiObject->setActive(true);
-                        multiObject->setUsed(true);
-                        multiTimer = 0;
-                    }
-                } else if (Game::getInstance().getPlayerLives() == 1) {
+            if (ui->lblSatyr->geometry().intersects(curLabel->geometry()) && !curObj->getTouched()) {
+                curObj->setTouched(true);
+                if(slowObject != NULL && slowObject->getUsed() == false) {
+                    slowObject->setActive(true);
+                    slowObject->setUsed(true);
+                    Game::getInstance().setSlowTimer(0);
+                    curLabel->hide();
+                } else if(heartObject != NULL && heartObject->getUsed() == false) {
+                    heartObject->setActive(true);
+                    heartObject->setUsed(true);
+                    curLabel->hide();
+                } else if(invulObject != NULL && invulObject->getUsed() == false) {
+                    invulObject->setActive(true);
+                    invulObject->setUsed(true);
+                    Game::getInstance().setInvulTimer(0);
+                    curLabel->hide();
+                } else if(multiObject != NULL && multiObject->getUsed() == false) {
+                    multiObject->setActive(true);
+                    multiObject->setUsed(true);
+                    Game::getInstance().setMultiTimer(0);
+                    curLabel->hide();
+                } else if (Game::getInstance().getPlayerLives() == 1 && !hitTimer->isActive()) {
                     QSound::play("://95951__tmokonen__lazer.wav");
 
                     WidgetGame::decrementLives();
@@ -303,60 +304,58 @@ void WidgetGame::gameTimerHit() {
                     WidgetScore* score = new WidgetScore();
                     score->main = this;
                     score->show();
-                } else {
+                } else if (!hitTimer->isActive()) {
                     if (random >= 81 && random <= 90) {
                         curLabel->setPixmap(QPixmap(":/explosion.gif"));
                         curObj->setPixmap(":/explosion.gif");
                     }
                     QSound::play("://33940__scarbelly25__rocks-hit.wav");
                     hitTimer->start();
+                    curLabel->hide();
                     WidgetGame::decrementLives();
                 }
             }
 
             if(slowObject != NULL && slowObject->getActive() == true) {
-                ui->slowPixmap->setVisible(true);
-                slowTimer++;
+                ui->slowPixmap->show();
+                Game::getInstance().setSlowTimer(Game::getInstance().getSlowTimer() + 1);
+                slowObject->setDuration(Game::getInstance().getSlowTimer());
                 gameTimer->setInterval(Game::getInstance().getInterval() + 5);
                 ui->slowPixmap->setPixmap(QPixmap(":/hourglass.png"));
-                if (slowTimer == 500) {
+                if (Game::getInstance().getSlowTimer() == 500) {
                     gameTimer->setInterval(Game::getInstance().getInterval() - 1);
                     slowObject->setActive(false);
-                    ui->slowPixmap->setVisible(false);
-                    slowTimer = 0;
+                    ui->slowPixmap->hide();
+                    Game::getInstance().setSlowTimer(0);
                 }
-            }
-
-            if(heartObject != NULL && heartObject->getActive() == true){
-                if (Game::getInstance().getPlayerLives() != 3) {
+            } else if(heartObject != NULL && heartObject->getActive() == true) {
+                if (Game::getInstance().getPlayerLives() < 3) {
                     Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() + 1);
                     // display new lives amount on screen
-                    ui->lblLives->setText(QString::number(ui->lblLives->text().toInt() + 1));
+                    ui->lblLives->setText(QString::number(Game::getInstance().getPlayerLives()));
                     heartObject->setActive(false);
                 }
-            }
-
-            if(invulObject != NULL && invulObject->getActive() == true) {
-                 ui->shieldPixmap->setVisible(true);
-                shieldTimer++;
+                else
+                    heartObject->setActive(false);
+            } else if(invulObject != NULL && invulObject->getActive() == true) {
+                ui->shieldPixmap->setVisible(true);
+                Game::getInstance().setInvulTimer(Game::getInstance().getInvulTimer() + 1);
+                invulObject->setDuration(Game::getInstance().getInvulTimer());
                 ui->shieldPixmap->setPixmap(QPixmap(":/shield.png"));
-                WidgetPause::cheatMode = true;
-                if(shieldTimer == 500) {
-                    ui->shieldPixmap->setVisible(false);
-                    WidgetPause::cheatMode = false;
+                if(Game::getInstance().getInvulTimer() == 500) {
+                    ui->shieldPixmap->hide();
                     invulObject->setActive(false);
-                    shieldTimer = 0;
+                    Game::getInstance().setInvulTimer(0);
                 }
-            }
-
-            if(multiObject != NULL && multiObject->getActive() == true) {
+            } else if(multiObject != NULL && multiObject->getActive() == true) {
                 ui->multiPixmap->setVisible(true);
-                multiTimer++;
+                Game::getInstance().setMultiTimer(Game::getInstance().getMultiTimer() + 1);
+                multiObject->setDuration(Game::getInstance().getMultiTimer());
                 ui->multiPixmap->setPixmap(QPixmap(":/multiplier.png"));
-                if(multiTimer == 500) {
-                    ui->multiPixmap->setVisible(false);
+                if(Game::getInstance().getMultiTimer() == 500) {
+                    ui->multiPixmap->hide();
                     multiObject->setActive(false);
-                    multiTimer = 0;
+                    Game::getInstance().setMultiTimer(0);
                 }
             }
 
@@ -369,17 +368,28 @@ void WidgetGame::gameTimerHit() {
 
             curObj->move();
             curLabel->move(curObj->getX(), curObj->getY());
-            curLabel->show();
+
+            vector<Object*>& pups = Game::getInstance().getPowerups();
+            for (int i = 0; i < pups.size(); i++)
+            {
+                Powerup *pup = dynamic_cast<Powerup*>(pups.at(i));
+                if ((pup->getUsed() && !pup->getActive()) || (!pup->getUsed() && pup->getY() > 768))
+                    pups.erase(pups.begin() + i);
+                else
+                    continue;
+            }
 
         if (curObj->getY() > 768)
         {
-            if(multiObject != NULL && multiObject != NULL){
-                incrementScore(2);
+            if(multiObject == NULL && slowObject == NULL && invulObject == NULL && heartObject == NULL){
+                if (Game::getInstance().getMultiTimer() > 0)
+                    incrementScore(2);
+                else
+                    incrementScore(1);
             }
-            else {
-                incrementScore(1);
-            }
-            Game::getInstance().incScore(1);
+            else
+                continue; // object must have been a powerup because one of the powerup casts succeeded
+
             if (curObj->getPixmap() == ":/basic.png") {
                 delete curObj;
                 Game::getInstance().getBasics().erase(Game::getInstance().getBasics().begin());
@@ -389,9 +399,6 @@ void WidgetGame::gameTimerHit() {
             } else if (curObj->getPixmap() == ":/bomb.gif") {
                 delete curObj;
                 Game::getInstance().getExplosives().erase(Game::getInstance().getExplosives().begin());
-            } else /*assume the pixmap is a powerup*/ {
-                delete curObj;
-                Game::getInstance().getPowerups().erase(Game::getInstance().getPowerups().begin());
             }
             curLabel->deleteLater();
         }

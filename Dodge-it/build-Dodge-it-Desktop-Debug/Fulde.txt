@@ -1,0 +1,12 @@
+medium
+0
+3
+575 478
+basic 400 531
+basic 800 291
+basic 320 18
+small 860 507
+small 500 150
+small 180 57
+small 700 15
+expl 700 402

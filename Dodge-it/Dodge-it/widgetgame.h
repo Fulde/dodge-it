@@ -57,6 +57,7 @@ private:
     int slowTimer;
     int multiTimer;
     int shieldTimer;
+    bool safeToDeletePowerups;
 };
 
 class ObjLabel : public QLabel {

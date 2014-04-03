@@ -26,7 +26,7 @@ void Object::move() {
     y += speed;
 }
 
-string Object::stateToFile() { }
+string Object::stateToFile() { return NULL; }
 
 DamagingObject::DamagingObject(int initX, int initY) {
     //sets speed of falling object based on the selected difficulty level
@@ -38,14 +38,14 @@ DamagingObject::DamagingObject(int initX, int initY) {
     } else if (difficulty == Game::hard) {
         speed = 5;
     }
+    touched = false;
 
     x = initX;
     y = initY;
 }
 
-Powerup::Powerup(int initX, int labelHeight) {
+Powerup::Powerup(int initX, int labelHeight, bool isActive, bool haveUsed) {
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
-    y = 0;
     if (difficulty == Game::easy){
         speed = 1;
     } else if (difficulty == Game::medium) {
@@ -53,6 +53,9 @@ Powerup::Powerup(int initX, int labelHeight) {
     } else if (difficulty == Game::hard) {
         speed = 5;
     }
+    touched = false;
+    used = haveUsed;
+    active = isActive;
 
     x = initX;
     y = -labelHeight;
