@@ -20,6 +20,8 @@ namespace Ui {
 class WidgetGame;
 }
 
+class PowerupTimer;
+
 class WidgetGame : public QWidget
 {
     Q_OBJECT
@@ -40,14 +42,12 @@ private slots:
     void on_btnPause_clicked();
     void keyPressEvent(QKeyEvent *k);
     void keyReleaseEvent(QKeyEvent *k);
-    void tick();
 
 private:
     //Private instance for the Widget ui
     Ui::WidgetGame *ui;
     QTimer *gameTimer;
     QTimer *hitTimer;
-    QTimer *powerupTimer;
 
     Slow* slowObject;
     ExLife* heartObject;
