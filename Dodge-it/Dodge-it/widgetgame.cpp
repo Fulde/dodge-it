@@ -314,7 +314,6 @@ void WidgetGame::gameTimerHit() {
                 }
             }
 
-
             if(slowObject != NULL && slowObject->getActive() == true) {
                 ui->slowPixmap->setVisible(true);
                 slowTimer++;
@@ -362,7 +361,7 @@ void WidgetGame::gameTimerHit() {
             }
 
             //Test for cheat mode
-            if (WidgetPause::cheatMode == false) {
+            if (WidgetPause::cheatMode == false || (invulObject != NULL && invulObject->getActive() == true)) {
                 ui->lblCheatMode->setText("");
             } else if (WidgetPause::cheatMode == true) {
                 ui->lblCheatMode->setText("Cheat Mode On");
