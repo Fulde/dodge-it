@@ -229,7 +229,7 @@ void WidgetGame::gameTimerHit() {
             if (random >= 91 && random <= 94) {                   // (91-94) exlife
                 label->setPixmap(QPixmap(":/heart.png"));
                 ExLife *obj = new ExLife(randX, label->height());
-                obj->setPixmap(":/heart.png");
+               obj->setPixmap(":/heart.png");
                 label->setObject(obj);
                 Game::getInstance().addPowerup(obj);
             } else if (random >= 95 && random <= 97) {             // (95-97) multiplier
@@ -316,10 +316,11 @@ void WidgetGame::gameTimerHit() {
 
 
             if(slowObject != NULL && slowObject->getActive() == true) {
+                ui->slowPixmap->setVisible(true);
                 slowTimer++;
                 gameTimer->setInterval(Game::getInstance().getInterval() + 5);
                 ui->slowPixmap->setPixmap(QPixmap(":/hourglass.png"));
-                if (slowTimer == 300) {
+                if (slowTimer == 500) {
                     gameTimer->setInterval(Game::getInstance().getInterval() - 1);
                     slowObject->setActive(false);
                     ui->slowPixmap->setVisible(false);
@@ -337,10 +338,11 @@ void WidgetGame::gameTimerHit() {
             }
 
             if(invulObject != NULL && invulObject->getActive() == true) {
+                 ui->shieldPixmap->setVisible(true);
                 shieldTimer++;
                 ui->shieldPixmap->setPixmap(QPixmap(":/shield.png"));
                 WidgetPause::cheatMode = true;
-                if(shieldTimer ==300) {
+                if(shieldTimer == 500) {
                     ui->shieldPixmap->setVisible(false);
                     WidgetPause::cheatMode = false;
                     invulObject->setActive(false);
@@ -349,9 +351,10 @@ void WidgetGame::gameTimerHit() {
             }
 
             if(multiObject != NULL && multiObject->getActive() == true) {
+                ui->multiPixmap->setVisible(true);
                 multiTimer++;
                 ui->multiPixmap->setPixmap(QPixmap(":/multiplier.png"));
-                if(multiTimer == 300) {
+                if(multiTimer == 500) {
                     ui->multiPixmap->setVisible(false);
                     multiObject->setActive(false);
                     multiTimer = 0;
