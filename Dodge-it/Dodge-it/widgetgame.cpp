@@ -71,7 +71,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
     powerupTimer->setInterval(5000); // "5" seconds
     powerupTimer->setSingleShot(true);
 
-    //connect(powerupTimer, &QTimer::timeout, this, &WidgetGame::tick);
+    connect(powerupTimer, &QTimer::timeout, this, &WidgetGame::tick);
 }
 
 WidgetGame::~WidgetGame() { delete ui; }
