@@ -1,0 +1,36 @@
+easy
+100
+4
+698 478
+slow 0
+exlife 480 114
+basic 330 768
+basic 270 755
+basic 870 741
+basic 720 702
+basic 540 689
+basic 660 687
+basic 390 680
+basic 210 636
+basic 360 573
+basic 570 519
+basic 330 498
+basic 240 385
+basic 540 129
+basic 180 127
+basic 570 103
+basic 630 101
+basic 720 94
+basic 480 90
+basic 300 65
+small 330 759
+small 930 713
+small 570 587
+small 750 446
+small 930 354
+small 900 323
+small 480 317
+small 990 63
+small 810 51
+expl 360 471
+expl 930 28
