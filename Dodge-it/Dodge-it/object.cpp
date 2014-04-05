@@ -26,7 +26,7 @@ void Object::move() {
     y += speed;
 }
 
-string Object::stateToFile() { }
+string Object::stateToFile() { return NULL; }
 
 DamagingObject::DamagingObject(int initX, int initY) {
     //sets speed of falling object based on the selected difficulty level
