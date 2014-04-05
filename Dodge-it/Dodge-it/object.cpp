@@ -38,6 +38,7 @@ DamagingObject::DamagingObject(int initX, int initY) {
     } else if (difficulty == Game::hard) {
         speed = 5;
     }
+    touched = false;
 
     x = initX;
     y = initY;
@@ -53,6 +54,7 @@ Powerup::Powerup(int initX, int labelHeight) {
     } else if (difficulty == Game::hard) {
         speed = 5;
     }
+    touched = false;
 
     x = initX;
     y = -labelHeight;

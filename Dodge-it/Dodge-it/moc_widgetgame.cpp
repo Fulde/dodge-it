@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_WidgetGame_t {
-    QByteArrayData data[9];
-    char stringdata[94];
+    QByteArrayData data[8];
+    char stringdata[89];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,12 +36,10 @@ QT_MOC_LITERAL(3, 25, 19),
 QT_MOC_LITERAL(4, 45, 13),
 QT_MOC_LITERAL(5, 59, 10),
 QT_MOC_LITERAL(6, 70, 1),
-QT_MOC_LITERAL(7, 72, 15),
-QT_MOC_LITERAL(8, 88, 4)
+QT_MOC_LITERAL(7, 72, 15)
     },
     "WidgetGame\0gameTimerHit\0\0on_btnPause_clicked\0"
     "keyPressEvent\0QKeyEvent*\0k\0keyReleaseEvent\0"
-    "tick\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -51,7 +49,7 @@ static const uint qt_meta_data_WidgetGame[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -59,18 +57,16 @@ static const uint qt_meta_data_WidgetGame[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x08,
-       3,    0,   40,    2, 0x08,
-       4,    1,   41,    2, 0x08,
-       7,    1,   44,    2, 0x08,
-       8,    0,   47,    2, 0x08,
+       1,    0,   34,    2, 0x08,
+       3,    0,   35,    2, 0x08,
+       4,    1,   36,    2, 0x08,
+       7,    1,   39,    2, 0x08,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 5,    6,
     QMetaType::Void, 0x80000000 | 5,    6,
-    QMetaType::Void,
 
        0        // eod
 };
@@ -84,7 +80,6 @@ void WidgetGame::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->on_btnPause_clicked(); break;
         case 2: _t->keyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
         case 3: _t->keyReleaseEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
-        case 4: _t->tick(); break;
         default: ;
         }
     }
@@ -115,13 +110,13 @@ int WidgetGame::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 4;
     }
     return _id;
 }

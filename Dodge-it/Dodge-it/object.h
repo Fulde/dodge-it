@@ -18,6 +18,7 @@ protected:
     int x;
     int y;
     string pixmap;
+    bool touched;
 
     //This method increments the score if the user successfully avoids the object
     virtual void incrementScore(int score);
@@ -34,6 +35,8 @@ public:
     int getY() { return y; }
     string getPixmap() { return pixmap; }
     void setPixmap(string newPix) { pixmap = newPix; }
+    bool getTouched() { return touched; }
+    void setTouched(bool t) { touched = t; }
 };
 
 //========================= DAMAGING Objects =========================
