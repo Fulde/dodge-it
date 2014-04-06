@@ -135,10 +135,10 @@ public:
     void setMultiTimer(int newVal) { multiTimer = newVal; }
     void setUsername(string newUsername) { username = newUsername; }
 
-    void addBasic(DamagingObject *obj)     { basics.push_back(obj); }
-    void addSmall(DamagingObject *obj)     { smalls.push_back(obj); }
-    void addExplosive(DamagingObject *obj) { explosives.push_back(obj); }
-    void addPowerup(Powerup *obj)          { powerups.push_back(obj); }
+    void addBasic(Object *obj)     { basics.push_back(obj); }
+    void addSmall(Object *obj)     { smalls.push_back(obj); }
+    void addExplosive(Object *obj) { explosives.push_back(obj); }
+    void addPowerup(Object *obj)          { powerups.push_back(obj); }
 
     void movePlayer(int newX, int newY);
 

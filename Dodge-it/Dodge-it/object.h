@@ -65,22 +65,23 @@ protected:
     bool used;
     //integer representing how long the powerup will remain active
     int duration;
-    unsigned int id;
+    bool timeout;
 
 public:
     Powerup(int initX, int labelHeight, bool isActive, bool haveUsed);
     string stateToFile(Powerup* obj, string type);
+    virtual void tick() = 0;
 
     void setActive(bool newValue) { active = newValue; }
     void setUsed(bool newUsed) { used = newUsed; }
 
-    bool getActive() { return active; }
+    bool isActive() { return active; }
     bool getUsed() { return used; }
     int  getDuration() { return duration; }
-    int getId() { return id; }
     void setDuration(int newDur) { duration = newDur; }
+    bool getTimeout() { return timeout; }
 
-    virtual void activatePow() = 0;
+    virtual void activatePow();
 };
 
 // INVULNERABLE
@@ -89,6 +90,7 @@ class Invul : public Powerup {
 public:
     Invul(int initX, int labelHeight, bool isActive, bool haveUsed) : Powerup(initX, labelHeight, isActive, haveUsed) { }
     void activatePow();
+    void tick();
 };
 
 // EXTRA LIFE
@@ -97,6 +99,7 @@ class ExLife : public Powerup {
 public:
     ExLife(int initX, int labelHeight, bool isActive, bool haveUsed) : Powerup(initX, labelHeight, isActive, haveUsed) { }
     void activatePow();
+    void tick();
 };
 
 // SLOW
@@ -105,6 +108,7 @@ class Slow : public Powerup {
 public:
     Slow(int initX, int labelHeight, bool isActive, bool haveUsed) : Powerup(initX, labelHeight, isActive, haveUsed) { }
     void activatePow();
+    void tick();
 };
 
 // MULTIPLIER
@@ -114,6 +118,7 @@ public:
     Multiplier(int initX, int labelHeight, bool isActive, bool haveUsed) : Powerup(initX, labelHeight, isActive, haveUsed) { }
     void setMultiplier();
     void activatePow();
+    void tick();
 };
 
 #endif // Object_H

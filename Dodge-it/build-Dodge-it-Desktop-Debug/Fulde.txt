@@ -1,12 +1,62 @@
-medium
-0
-3
-575 478
-basic 400 531
-basic 800 291
-basic 320 18
-small 860 507
-small 500 150
-small 180 57
-small 700 15
-expl 700 402
+hard
+716
+2
+362 670
+mult 230
+invul 320 501
+exlife 680 333
+exlife 300 720
+invul 365
+basic 72 57
+basic 150418344 150418344
+basic 144675840 0
+basic -15332343 -15266550
+basic 2 16
+basic 144675840 0
+basic 0 0
+basic 0 0
+basic 500 860
+basic 250 -10
+basic 2 16
+basic 0 25
+basic 1 9
+basic -1220170240 -1220170084
+basic 540 -5
+basic 500 860
+basic 146969656 146960560
+basic 0 0
+basic 32768 -2013204480
+basic 1 9
+basic 0 1
+basic 148640680 0
+basic 147815072 150981784
+basic 150489576 150489576
+basic -1220169984 268438544
+basic 300 680
+basic 690 480
+basic 630 465
+basic 890 445
+basic 480 355
+basic 540 -5
+basic 250 -10
+small 146961792 250173
+small 0 0
+small 0 0
+small 1000 770
+small 1 1
+small 0 150521632
+small 0 150521632
+small -1 -1
+small 1 0
+small 0 1
+small 150951520 150498336
+small 0 1
+small 1 0
+small 910 560
+small 170 185
+expl -1220170240 -1220170084
+expl 1 9
+expl 2 16
+expl 88 89
+expl 0 0
+expl 150418344 150418344

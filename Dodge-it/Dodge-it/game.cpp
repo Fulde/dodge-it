@@ -349,10 +349,10 @@ void Game::clearObjVectors()
         if (smalls.at(i) != NULL)
             delete smalls.at(i);
     }
-    /*for (size_t i = 0; i < explosives.size(); i++) { // explosives vector
+    for (size_t i = 0; i < explosives.size(); i++) { // explosives vector
         if (explosives.at(i) != NULL)
             delete explosives.at(i);
-    } */
+    }
     for (size_t i = 0; i < powerups.size(); i++) { // powerups vector
         if (powerups.at(i) != NULL)
             delete powerups.at(i);
