@@ -158,38 +158,44 @@ color: rgb(255, 47, 11)</string>
      <rect>
       <x>20</x>
       <y>290</y>
-      <width>31</width>
-      <height>41</height>
+      <width>41</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap resource="images/resources.qrc">:/hourglass.png</pixmap>
+    </property>
     <property name="scaledContents">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="shieldPixmap">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>350</y>
+      <y>380</y>
       <width>41</width>
-      <height>41</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap resource="images/resources.qrc">:/shield.png</pixmap>
+    </property>
     <property name="scaledContents">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="multiPixmap">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>410</y>
+      <y>450</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -197,8 +203,11 @@ color: rgb(255, 47, 11)</string>
     <property name="text">
      <string/>
     </property>
+    <property name="pixmap">
+     <pixmap resource="images/resources.qrc">:/multiplier.png</pixmap>
+    </property>
     <property name="scaledContents">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
    </widget>
   </widget>

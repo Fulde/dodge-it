@@ -44,9 +44,8 @@ DamagingObject::DamagingObject(int initX, int initY) {
     y = initY;
 }
 
-Powerup::Powerup(int initX, int labelHeight) {
+Powerup::Powerup(int initX, int initY, bool isActive, bool haveUsed) {
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
-    y = 0;
     if (difficulty == Game::easy){
         speed = 1;
     } else if (difficulty == Game::medium) {
@@ -55,14 +54,16 @@ Powerup::Powerup(int initX, int labelHeight) {
         speed = 5;
     }
     touched = false;
+    used = haveUsed;
+    active = isActive;
 
     x = initX;
-    y = -labelHeight;
+    y = initY;
 }
 
 string Powerup::stateToFile(Powerup* obj, string type) {
     string data = type + " ";\
-    if (obj->getActive()) {
+    if (obj->isActive()) {
         data = data + to_string(obj->getDuration()) + "\n";
     } else {
         data = data + to_string(obj->getX()) + " " + to_string(obj->getY()) + "\n";
@@ -70,20 +71,78 @@ string Powerup::stateToFile(Powerup* obj, string type) {
     return data;
 }
 
-void Invul::activatePow() {
+void Powerup::activatePow() {
     active = true;
+    used = true;
+}
+
+void Invul::activatePow() {
+    Powerup::activatePow();
+
+    Game::getInstance().setInvulTimer(0);
 }
 
 void ExLife::activatePow() {
-    Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() + 1);
-    active = true;
+    Powerup::activatePow();
+
+    if (Game::getInstance().getPlayerLives() < 3)
+        Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() + 1);
+
+    active = false;
 }
 
 void Slow::activatePow() {
-    active = true;
+    Powerup::activatePow();
+
+    Game::getInstance().setSlowTimer(0);
 }
 
 void Multiplier::activatePow() {
-    active = true;
+    Powerup::activatePow();
 
+    Game::getInstance().setMultiTimer(0);
+}
+
+
+
+
+void Invul::tick()
+{
+    Game::getInstance().setInvulTimer(Game::getInstance().getInvulTimer() + 1);
+    duration = Game::getInstance().getInvulTimer();
+    if(Game::getInstance().getInvulTimer() == 500)
+    {
+        active = false;
+        timeout = true;
+        Game::getInstance().setInvulTimer(0);
+    }
+}
+
+void ExLife::tick()
+{
+
+}
+
+void Slow::tick()
+{
+    Game::getInstance().setSlowTimer(Game::getInstance().getSlowTimer() + 1);
+    duration = Game::getInstance().getSlowTimer();
+    if (Game::getInstance().getSlowTimer() == 500)
+    {
+        active = false;
+        timeout = true;
+        Game::getInstance().setSlowTimer(0);
+    }
+}
+
+void Multiplier::tick()
+{
+    Game::getInstance().setMultiTimer(Game::getInstance().getMultiTimer() + 1);
+    duration = Game::getInstance().getMultiTimer();
+    if(Game::getInstance().getMultiTimer() == 500)
+    {
+        active = false;
+        timeout = true;
+        Game::getInstance().setMultiTimer(0);
+    }
 }

@@ -65,52 +65,60 @@ protected:
     bool used;
     //integer representing how long the powerup will remain active
     int duration;
+    bool timeout;
 
 public:
-    Powerup(int initX, int labelHeight);
+    Powerup(int initX, int labelHeight, bool isActive, bool haveUsed);
     string stateToFile(Powerup* obj, string type);
+    virtual void tick() = 0;
 
     void setActive(bool newValue) { active = newValue; }
     void setUsed(bool newUsed) { used = newUsed; }
 
-    bool getActive() { return active; }
+    bool isActive() { return active; }
     bool getUsed() { return used; }
     int  getDuration() { return duration; }
+    void setDuration(int newDur) { duration = newDur; }
+    bool getTimeout() { return timeout; }
 
-    virtual void activatePow() = 0;
+    virtual void activatePow();
 };
 
 // INVULNERABLE
 //This powerup makes the user invulnerable from damage for a limited amount of time
 class Invul : public Powerup {
 public:
-    Invul(int initX, int labelHeight) : Powerup(initX, labelHeight) { }
+    Invul(int initX, int labelHeight, bool isActive, bool haveUsed) : Powerup(initX, labelHeight, isActive, haveUsed) { }
     void activatePow();
+    void tick();
 };
 
 // EXTRA LIFE
 //This powerup gives the user an extra life
 class ExLife : public Powerup {
 public:
-    ExLife(int initX, int labelHeight) : Powerup(initX, labelHeight) { }
+    ExLife(int initX, int labelHeight, bool isActive, bool haveUsed) : Powerup(initX, labelHeight, isActive, haveUsed) { }
     void activatePow();
+    void tick();
 };
 
 // SLOW
 //This powerup slows down all falling Object for the user
 class Slow : public Powerup {
 public:
-    Slow(int initX, int labelHeight) : Powerup(initX, labelHeight) { }
+    Slow(int initX, int labelHeight, bool isActive, bool haveUsed) : Powerup(initX, labelHeight, isActive, haveUsed) { }
     void activatePow();
+    void tick();
 };
 
 // MULTIPLIER
 // This powerup changes the game's multiplier to 2
 class Multiplier : public Powerup {
 public:
-    Multiplier(int initX, int labelHeight) : Powerup(initX, labelHeight) { }
+    Multiplier(int initX, int labelHeight, bool isActive, bool haveUsed) : Powerup(initX, labelHeight, isActive, haveUsed) { }
     void setMultiplier();
     void activatePow();
+    void tick();
 };
 
 #endif // Object_H

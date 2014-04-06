@@ -86,6 +86,9 @@ private:
     int objectInterval;
     int score;
     string username;
+    int slowTimer;
+    int invulTimer;
+    int multiTimer;
     diffSetting difficulty;
     vector<Object*> basics;
     vector<Object*> smalls;
@@ -104,6 +107,9 @@ public:
     int getPlayerX() { return player->getX(); }
     int getPlayerY() { return player->getY(); }
     int getPlayerLives() { return player->getLives(); }
+    int getSlowTimer() { return slowTimer; }
+    int getInvulTimer() { return  invulTimer; }
+    int getMultiTimer() { return multiTimer; }
     string getUsername() { return username; }
     diffSetting getDifficulty() { return difficulty; }
     void setPlayerLives(int newLives) { player->setLives(newLives); }
@@ -124,12 +130,15 @@ public:
     void setDifficulty(diffSetting diff) {difficulty = diff; }
     void setScore(int newScore) { score = newScore; }
     void incScore(int incAmt) { score += incAmt; }
+    void setSlowTimer(int newVal) { slowTimer = newVal; }
+    void setInvulTimer(int newVal) { invulTimer = newVal; }
+    void setMultiTimer(int newVal) { multiTimer = newVal; }
     void setUsername(string newUsername) { username = newUsername; }
 
-    void addBasic(DamagingObject *obj)     { basics.push_back(obj); }
-    void addSmall(DamagingObject *obj)     { smalls.push_back(obj); }
-    void addExplosive(DamagingObject *obj) { explosives.push_back(obj); }
-    void addPowerup(Powerup *obj)          { powerups.push_back(obj); }
+    void addBasic(Object *obj)     { basics.push_back(obj); }
+    void addSmall(Object *obj)     { smalls.push_back(obj); }
+    void addExplosive(Object *obj) { explosives.push_back(obj); }
+    void addPowerup(Object *obj)          { powerups.push_back(obj); }
 
     void movePlayer(int newX, int newY);
 
