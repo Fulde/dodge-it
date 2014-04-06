@@ -311,13 +311,15 @@ void WidgetGame::gameTimerHit() {
                 }
                 else if (!hitTimer->isActive())
                 {
-                    if (random >= 81 && random <= 90) {
+                    if (pixmap == "bomb.gif") {
                         curLabel->setPixmap(QPixmap(":/explosion.gif"));
                         curObj->setPixmap(":/explosion.gif");
+                        curLabel->show();
                     }
                     QSound::play("://33940__scarbelly25__rocks-hit.wav");
-                    hitTimer->start();
                     WidgetGame::decrementLives();
+                    if (Game::getInstance().getInvulTimer() == 0)
+                        hitTimer->start();
                 }
                 else if (hitTimer->isActive())
                     curLabel->show();
