@@ -237,10 +237,31 @@ bool Game::load(string fileName) {
         getline(strm,data);                         // start getting objects
         while (strm)
         {
+            int objX, objY;
+            bool active = false, used = false;
             string type = data.substr(0, data.find(' '));
             data.erase(0, data.find(' ') + 1);
-            int objX = stoi(data.substr(0, data.find(' ')));
-            int objY = stoi(data.substr(data.find(' ') + 1));
+
+            if (data.find(' ') != string::npos)
+            {
+                objX = stoi(data.substr(0, data.find(' ')));
+                objY = stoi(data.substr(data.find(' ') + 1));
+            }
+            else if (type == "mult" || type == "slow" || type == "invul")
+            {
+                active = true;
+                used = true;
+                objX = 0;
+                objY = -800;
+
+                if (type == "mult")
+                    multiTimer = stoi(data);
+                else if (type == "slow")
+                    slowTimer = stoi(data);
+                else if (type == "invul")
+                    invulTimer = stoi(data);
+            }
+
 
             if (type == "basic") {
                 instance.addBasic(new DamagingObject(objX, objY));
@@ -249,13 +270,13 @@ bool Game::load(string fileName) {
             } else if (type == "expl") {
                 instance.addExplosive(new DamagingObject(objX, objY));
             } else if (type == "exlife") {
-                instance.addPowerup(new ExLife(objX, objY));
+                instance.addPowerup(new ExLife(objX, objY, active, used));
             } else if (type == "mult") {
-                instance.addPowerup(new Multiplier(objX, objY));
+                instance.addPowerup(new Multiplier(objX, objY, active, used));
             } else if (type == "slow") {
-                instance.addPowerup(new Slow(objX, objY));
+                instance.addPowerup(new Slow(objX, objY, active, used));
             } else if (type == "invul") {
-                instance.addPowerup(new Invul(objX, objY));
+                instance.addPowerup(new Invul(objX, objY, active, used));
             }
             getline(strm, data);
         }
@@ -321,16 +342,20 @@ void Game::movePlayer(int newX, int newY) {
 void Game::clearObjVectors()
 {
     for (size_t i = 0; i < basics.size(); i++) { // basics vector
-        delete basics.at(i);
+        if (basics.at(i) != NULL)
+            delete basics.at(i);
     }
     for (size_t i = 0; i < smalls.size(); i++) { // smalls vector
-        delete smalls.at(i);
+        if (smalls.at(i) != NULL)
+            delete smalls.at(i);
     }
-    for (size_t i = 0; i < explosives.size(); i++) { // explosives vector
-       delete explosives.at(i);
-    }
+    /*for (size_t i = 0; i < explosives.size(); i++) { // explosives vector
+        if (explosives.at(i) != NULL)
+            delete explosives.at(i);
+    } */
     for (size_t i = 0; i < powerups.size(); i++) { // powerups vector
-        delete powerups.at(i);
+        if (powerups.at(i) != NULL)
+            delete powerups.at(i);
     }
     basics.clear();
     smalls.clear();

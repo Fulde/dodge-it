@@ -44,9 +44,8 @@ DamagingObject::DamagingObject(int initX, int initY) {
     y = initY;
 }
 
-Powerup::Powerup(int initX, int labelHeight) {
+Powerup::Powerup(int initX, int labelHeight, bool isActive, bool haveUsed) {
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
-    y = 0;
     if (difficulty == Game::easy){
         speed = 1;
     } else if (difficulty == Game::medium) {
@@ -55,6 +54,8 @@ Powerup::Powerup(int initX, int labelHeight) {
         speed = 5;
     }
     touched = false;
+    used = haveUsed;
+    active = isActive;
 
     x = initX;
     y = -labelHeight;
