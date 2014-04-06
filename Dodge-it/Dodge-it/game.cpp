@@ -217,7 +217,7 @@ bool Game::load(string fileName) {
         getline(strm, data);                // get game difficulty
         if (data == "easy") {
             Game::getInstance().setDifficulty(Game::easy);
-            Game::getInstance().setObjectInt(30);
+            Game::getInstance().setObjectInt(40);
         } else if (data == "medium") {
             Game::getInstance().setDifficulty(Game::medium);
             Game::getInstance().setObjectInt(20);
@@ -266,11 +266,11 @@ bool Game::load(string fileName) {
 
 
             if (type == "basic") {
-                instance.addBasic(new DamagingObject(objX, objY));
+                instance.addBasic(new DamagingObject(objX, objY, ":/basic.png"));
             } else if (type == "small") {
-                instance.addSmall(new DamagingObject(objX, objY));
+                instance.addSmall(new DamagingObject(objX, objY, ":/small.png"));
             } else if (type == "expl") {
-                instance.addExplosive(new DamagingObject(objX, objY));
+                instance.addExplosive(new DamagingObject(objX, objY, ":/bomb.gif"));
             } else if (type == "exlife") {
                 instance.addPowerup(new ExLife(objX, objY, active, used));
             } else if (type == "mult") {

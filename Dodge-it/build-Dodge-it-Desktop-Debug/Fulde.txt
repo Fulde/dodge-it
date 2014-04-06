@@ -1,9 +1,15 @@
 medium
-0
+22
 3
-605 670
-invul 980 170
-basic 720 236
-basic 720 185
-small 860 266
-small 900 113
+467 670
+mult 260
+exlife 380 206
+slow 580 -28
+basic 340 596
+basic 840 299
+basic 700 212
+basic 480 11
+basic 660 -16
+small 320 767
+small 340 491
+small 300 35

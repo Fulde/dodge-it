@@ -35,7 +35,7 @@ void WidgetStart::on_btnStart_clicked()
     QSound::play("://198784__cman634__jump-sound-or-power-up-sound.wav");
     if (ui->rbEasy->isChecked()) {
         Game::getInstance().setDifficulty(Game::easy);
-        Game::getInstance().setObjectInt(30);
+        Game::getInstance().setObjectInt(40);
     } else if (ui->rbMedium->isChecked()) {
         Game::getInstance().setDifficulty(Game::medium);
         Game::getInstance().setObjectInt(20);
