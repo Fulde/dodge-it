@@ -48,7 +48,7 @@ protected:
     int damage;
 
 public:
-    DamagingObject(int initX, int initY);
+    DamagingObject(int initX, int initY, string pic);
     //destroys the Object's label once it passes off the screen
     void destroyLabel();
     //returns the number of points the user scores for successfully dodging this object

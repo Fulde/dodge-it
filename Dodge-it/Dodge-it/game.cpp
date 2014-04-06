@@ -170,6 +170,8 @@ void Character::move(int newX, int newY)
 Character::Character()
 {
     lives = 3;
+    x = 590;
+    y = 670;
     movingUp = false;
     movingDown = false;
     movingLeft = false;
@@ -181,7 +183,7 @@ Character::Character()
 // creates the private instance of the game
 Game Game::instance;
 
-Game::Game() : multiplier(1), username("default") {
+Game::Game() : multiplier(1), multiTimer(0), invulTimer(0), slowTimer(0) {
     player = new Character();
 }
 
@@ -215,7 +217,7 @@ bool Game::load(string fileName) {
         getline(strm, data);                // get game difficulty
         if (data == "easy") {
             Game::getInstance().setDifficulty(Game::easy);
-            Game::getInstance().setObjectInt(30);
+            Game::getInstance().setObjectInt(40);
         } else if (data == "medium") {
             Game::getInstance().setDifficulty(Game::medium);
             Game::getInstance().setObjectInt(20);
@@ -264,11 +266,11 @@ bool Game::load(string fileName) {
 
 
             if (type == "basic") {
-                instance.addBasic(new DamagingObject(objX, objY));
+                instance.addBasic(new DamagingObject(objX, objY, ":/basic.png"));
             } else if (type == "small") {
-                instance.addSmall(new DamagingObject(objX, objY));
+                instance.addSmall(new DamagingObject(objX, objY, ":/small.png"));
             } else if (type == "expl") {
-                instance.addExplosive(new DamagingObject(objX, objY));
+                instance.addExplosive(new DamagingObject(objX, objY, ":/bomb.gif"));
             } else if (type == "exlife") {
                 instance.addPowerup(new ExLife(objX, objY, active, used));
             } else if (type == "mult") {

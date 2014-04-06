@@ -89,6 +89,7 @@ private:
     int slowTimer;
     int invulTimer;
     int multiTimer;
+    bool cheatMode;
     diffSetting difficulty;
     vector<Object*> basics;
     vector<Object*> smalls;
@@ -112,6 +113,8 @@ public:
     int getMultiTimer() { return multiTimer; }
     string getUsername() { return username; }
     diffSetting getDifficulty() { return difficulty; }
+    int getScore() { return score; }
+    bool getCheatMode() { return cheatMode; }
     void setPlayerLives(int newLives) { player->setLives(newLives); }
     bool getPlayerMovingUp() { return player->getMovingUp(); }
     void setPlayerMovingUp(bool value) { player->setMovingUp(value); }
@@ -121,7 +124,6 @@ public:
     void setPlayerMovingLeft(bool value) { player->setMovingLeft(value); }
     bool getPlayerMovingRight() { return player->getMovingRight(); }
     void setPlayerMovingRight(bool value) { player->setMovingRight(value); }
-    int getScore() { return score; }
 
 
     void setMultiplier(int newMult) { multiplier = newMult; }
@@ -134,6 +136,7 @@ public:
     void setInvulTimer(int newVal) { invulTimer = newVal; }
     void setMultiTimer(int newVal) { multiTimer = newVal; }
     void setUsername(string newUsername) { username = newUsername; }
+    void setCheatMode(bool cheat) { cheatMode = cheat; }
 
     void addBasic(Object *obj)     { basics.push_back(obj); }
     void addSmall(Object *obj)     { smalls.push_back(obj); }

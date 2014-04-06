@@ -1,62 +1,15 @@
-hard
-716
-2
-362 670
-mult 230
-invul 320 501
-exlife 680 333
-exlife 300 720
-invul 365
-basic 72 57
-basic 150418344 150418344
-basic 144675840 0
-basic -15332343 -15266550
-basic 2 16
-basic 144675840 0
-basic 0 0
-basic 0 0
-basic 500 860
-basic 250 -10
-basic 2 16
-basic 0 25
-basic 1 9
-basic -1220170240 -1220170084
-basic 540 -5
-basic 500 860
-basic 146969656 146960560
-basic 0 0
-basic 32768 -2013204480
-basic 1 9
-basic 0 1
-basic 148640680 0
-basic 147815072 150981784
-basic 150489576 150489576
-basic -1220169984 268438544
-basic 300 680
-basic 690 480
-basic 630 465
-basic 890 445
-basic 480 355
-basic 540 -5
-basic 250 -10
-small 146961792 250173
-small 0 0
-small 0 0
-small 1000 770
-small 1 1
-small 0 150521632
-small 0 150521632
-small -1 -1
-small 1 0
-small 0 1
-small 150951520 150498336
-small 0 1
-small 1 0
-small 910 560
-small 170 185
-expl -1220170240 -1220170084
-expl 1 9
-expl 2 16
-expl 88 89
-expl 0 0
-expl 150418344 150418344
+medium
+22
+3
+467 670
+mult 260
+exlife 380 206
+slow 580 -28
+basic 340 596
+basic 840 299
+basic 700 212
+basic 480 11
+basic 660 -16
+small 320 767
+small 340 491
+small 300 35

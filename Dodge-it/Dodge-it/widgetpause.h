@@ -20,7 +20,6 @@ class WidgetPause : public QWidget
     Q_OBJECT
 
 public:
-    static bool cheatMode;
     //explicit Widget constructor
     explicit WidgetPause(QWidget *parent = 0);
     //Widget destructor
