@@ -115,8 +115,8 @@ void WidgetGame::loadGame() {
     for (size_t i = 0; i < Game::getInstance().getExplosives().size(); i++) {
         ObjLabel* label = new ObjLabel(this);
         label->setObject(Game::getInstance().getExplosives().at(i));
-        label->setPixmap(QPixmap(":/explosive.png"));
-        label->getObject()->setPixmap(":/explosive.png");
+        label->setPixmap(QPixmap(":/bomb.gif"));
+        label->getObject()->setPixmap(":/bomb.gif");
         label->show();
     }
     for (size_t i = 0; i < Game::getInstance().getPowerups().size(); i++) {
@@ -311,11 +311,11 @@ void WidgetGame::gameTimerHit() {
                 }
                 else if (!hitTimer->isActive())
                 {
-                    if (pixmap == "bomb.gif") {
+                    /*if (pixmap == "bomb.gif") {
                         curLabel->setPixmap(QPixmap(":/explosion.gif"));
                         curObj->setPixmap(":/explosion.gif");
                         curLabel->show();
-                    }
+                    }*/
                     QSound::play("://33940__scarbelly25__rocks-hit.wav");
                     WidgetGame::decrementLives();
                     if (Game::getInstance().getInvulTimer() == 0)
