@@ -75,10 +75,10 @@ Powerup::Powerup(int initX, int initY, bool isActive, bool haveUsed) {
 }
 
 string Powerup::stateToFile(Powerup* obj, string type) {
-    string data = type + " ";\
+    string data = type + " ";
     if (obj->isActive()) {
         data = data + to_string(obj->getDuration()) + "\n";
-    } else {
+    } else if (!obj->isActive() && !obj->getTouched()) {
         data = data + to_string(obj->getX()) + " " + to_string(obj->getY()) + "\n";
     }
     return data;
