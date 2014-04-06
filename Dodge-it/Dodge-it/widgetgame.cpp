@@ -38,9 +38,6 @@ WidgetGame::WidgetGame(QWidget *parent) :
     ui->lblScore->setText(QString::number(Game::getInstance().getScore()));
     ui->lblLives->setText(QString::number(Game::getInstance().getPlayerLives()));
 
-    Game::getInstance().setScore(0);
-    Game::getInstance().movePlayer(590, 670);
-
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
     if (difficulty == Game::easy){
         QPixmap background_image(":/easyBackground.png");
@@ -67,11 +64,8 @@ WidgetGame::WidgetGame(QWidget *parent) :
     hitTimer->setInterval(3000); // 3 seconds
     hitTimer->setSingleShot(true);
 
-    Game::getInstance().setSlowTimer(0);
     ui->slowPixmap->hide();
-    Game::getInstance().setMultiTimer(0);
     ui->multiPixmap->hide();
-    Game::getInstance().setInvulTimer(0);
     ui->shieldPixmap->hide();
 }
 
@@ -84,7 +78,7 @@ void WidgetGame::incrementScore(int score) {
 
 //updates both the player's lives and the label representation
 void WidgetGame::decrementLives() {
-    if (WidgetPause::cheatMode == true || Game::getInstance().getInvulTimer() > 0) {
+    if (Game::getInstance().getCheatMode() || Game::getInstance().getInvulTimer() > 0) {
         return;
     } else {
         //normal execution
@@ -348,9 +342,9 @@ void WidgetGame::gameTimerHit() {
 
 
             //Test for cheat mode
-            if (WidgetPause::cheatMode == false) {
+            if (!Game::getInstance().getCheatMode()) {
                 ui->lblCheatMode->setText("");
-            } else if (WidgetPause::cheatMode == true) {
+            } else {
                 ui->lblCheatMode->setText("Cheat Mode On");
             }
 

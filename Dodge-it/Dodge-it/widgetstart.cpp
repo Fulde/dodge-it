@@ -47,6 +47,10 @@ void WidgetStart::on_btnStart_clicked()
     Game::getInstance().setPlayerLives(3);
     Game::getInstance().setScore(0);
 
+    Game::getInstance().setSlowTimer(0);
+    Game::getInstance().setMultiTimer(0);
+    Game::getInstance().setInvulTimer(0);
+
     WidgetGame* game = new WidgetGame(main);
     game->show();
     this->hide();

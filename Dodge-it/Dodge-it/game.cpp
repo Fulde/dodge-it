@@ -170,6 +170,8 @@ void Character::move(int newX, int newY)
 Character::Character()
 {
     lives = 3;
+    x = 590;
+    y = 670;
     movingUp = false;
     movingDown = false;
     movingLeft = false;
@@ -181,7 +183,7 @@ Character::Character()
 // creates the private instance of the game
 Game Game::instance;
 
-Game::Game() : multiplier(1), username("default") {
+Game::Game() : multiplier(1), multiTimer(0), invulTimer(0), slowTimer(0) {
     player = new Character();
 }
 
