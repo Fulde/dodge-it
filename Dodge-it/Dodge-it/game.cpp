@@ -252,7 +252,7 @@ bool Game::load(string fileName) {
                 active = true;
                 used = true;
                 objX = 0;
-                objY = -800;
+                objY = 800;
 
                 if (type == "mult")
                     multiTimer = stoi(data);

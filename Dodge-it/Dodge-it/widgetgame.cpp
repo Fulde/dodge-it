@@ -68,8 +68,11 @@ WidgetGame::WidgetGame(QWidget *parent) :
     hitTimer->setSingleShot(true);
 
     Game::getInstance().setSlowTimer(0);
+    ui->slowPixmap->hide();
     Game::getInstance().setMultiTimer(0);
+    ui->multiPixmap->hide();
     Game::getInstance().setInvulTimer(0);
+    ui->shieldPixmap->hide();
 }
 
 WidgetGame::~WidgetGame() { delete ui; }
@@ -316,6 +319,8 @@ void WidgetGame::gameTimerHit() {
                     hitTimer->start();
                     WidgetGame::decrementLives();
                 }
+                else if (hitTimer->isActive())
+                    curLabel->show();
             }
 
             if (powerup != NULL && powerup->isActive())
