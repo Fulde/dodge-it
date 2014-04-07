@@ -110,6 +110,15 @@ void HighScore::scoresToFile(string fileName)
     strm.close();
 }
 
+
+void HighScore::clearScores()
+{
+    for (size_t i = 0; i < highScores.size(); i++)
+        delete highScores.at(i);
+
+    highScores.clear();
+}
+
 void HighScore::unitTest() { // need to fix these to reflect the new non-standard username system
 
     HighScore::loadScores("testScores.txt");
@@ -205,6 +214,8 @@ Game::~Game()
     smalls.clear();
     explosives.clear();
     powerups.clear();
+
+    HighScore::clearScores();
 }
 
 // resumes the saved game at the point that it was saved.
