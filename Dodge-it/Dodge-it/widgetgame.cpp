@@ -324,48 +324,7 @@ void WidgetGame::gameTimerHit() {
                 else if (hitTimer->isActive())
                     curLabel->show();
             }
-/*
-            if(slowObject != NULL && slowObject->getActive() == true) {
-                ui->slowPixmap->show();
-                Game::getInstance().setSlowTimer(Game::getInstance().getSlowTimer() + 1);
-                slowObject->setDuration(Game::getInstance().getSlowTimer());
-                gameTimer->setInterval(Game::getInstance().getInterval() + 5);
-                ui->slowPixmap->setPixmap(QPixmap(":/hourglass.png"));
-                if (Game::getInstance().getSlowTimer() == 500) {
-                    gameTimer->setInterval(Game::getInstance().getInterval() - 1);
-                    slowObject->setActive(false);
-                    ui->slowPixmap->hide();
-                    Game::getInstance().setSlowTimer(0);
-                }
-            } else if(heartObject != NULL && heartObject->getActive() == true) {
-                if (Game::getInstance().getPlayerLives() < 3) {
-                    Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() + 1);
-                    // display new lives amount on screen
-                    ui->lblLives->setText(QString::number(Game::getInstance().getPlayerLives()));
-                    heartObject->setActive(false);
-                }
-                else
-                    heartObject->setActive(false);
-            } else if(invulObject != NULL && invulObject->getActive() == true) {
-                ui->shieldPixmap->setVisible(true);
-                Game::getInstance().setInvulTimer(Game::getInstance().getInvulTimer() + 1);
-                invulObject->setDuration(Game::getInstance().getInvulTimer());
-                ui->shieldPixmap->setPixmap(QPixmap(":/shield.png"));
-                if(Game::getInstance().getInvulTimer() == 500) {
-                    ui->shieldPixmap->hide();
-                    invulObject->setActive(false);
-                    Game::getInstance().setInvulTimer(0);
-                }
-            } else if(multiObject != NULL && multiObject->getActive() == true) {
-                ui->multiPixmap->setVisible(true);
-                Game::getInstance().setMultiTimer(Game::getInstance().getMultiTimer() + 1);
-                multiObject->setDuration(Game::getInstance().getMultiTimer());
-                ui->multiPixmap->setPixmap(QPixmap(":/multiplier.png"));
-                if(Game::getInstance().getMultiTimer() == 500) {
-                    ui->multiPixmap->hide();
-                    multiObject->setActive(false);
-                    Game::getInstance().setMultiTimer(0);
-*/
+
             if (powerup != NULL && powerup->isActive())
             {
                 powerup->tick();
@@ -396,9 +355,7 @@ void WidgetGame::gameTimerHit() {
 
 
             //Test for cheat mode
-/*
-            if (WidgetPause::cheatMode == false || (invulObject != NULL && invulObject->getActive() == true)) {
-*/
+
             if (!Game::getInstance().getCheatMode()) {
                 ui->lblCheatMode->setText("");
             } else {
