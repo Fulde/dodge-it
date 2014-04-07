@@ -286,7 +286,10 @@ void WidgetGame::gameTimerHit() {
                         if (pixmap == ":/hourglass.png")
                             gameTimer->setInterval(Game::getInstance().getInterval() + 5);
                         else if(pixmap == ":/heart.png")
+                        {
+                            powerup->setActive(false);
                             ui->lblLives->setText(QString::number(Game::getInstance().getPlayerLives()));
+                        }
                     }
                     else
                     {
