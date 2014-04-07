@@ -355,6 +355,7 @@ void WidgetGame::gameTimerHit() {
 
 
             //Test for cheat mode
+
             if (!Game::getInstance().getCheatMode()) {
                 ui->lblCheatMode->setText("");
             } else {
