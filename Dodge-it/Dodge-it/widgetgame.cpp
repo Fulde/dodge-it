@@ -284,16 +284,9 @@ void WidgetGame::gameTimerHit() {
                     if (powerup->isActive())
                     {
                         if (pixmap == ":/hourglass.png")
-                        {
                             gameTimer->setInterval(Game::getInstance().getInterval() + 5);
-                            ui->slowPixmap->show();
-                        }
                         else if(pixmap == ":/heart.png")
                             ui->lblLives->setText(QString::number(Game::getInstance().getPlayerLives()));
-                        else if (pixmap == ":/shield.png")
-                            ui->shieldPixmap->show();
-                        else if (pixmap == ":/multiplier.png")
-                            ui->multiPixmap->show();
                     }
                     else
                     {
@@ -349,6 +342,13 @@ void WidgetGame::gameTimerHit() {
                     }
                 }
             }
+
+            if (Game::getInstance().getSlowTimer() > 0 && !ui->slowPixmap->isVisible())
+                ui->slowPixmap->show();
+            else if (Game::getInstance().getInvulTimer() > 0 && !ui->shieldPixmap->isVisible())
+                ui->shieldPixmap->show();
+            else if (Game::getInstance().getMultiTimer() > 0 && !ui->multiPixmap->isVisible())
+                ui->multiPixmap->show();
 
 
             //Test for cheat mode

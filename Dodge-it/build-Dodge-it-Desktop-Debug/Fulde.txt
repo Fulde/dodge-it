@@ -1,26 +1,27 @@
 easy
+142
 2
-3
-584 292
-mult 172
-mult 920 269
-mult 840 180
-basic 360 570
-basic 440 567
-basic 920 556
-basic 680 496
-basic 1000 456
-basic 800 441
-basic 480 400
-basic 720 283
-basic 920 206
-basic 520 196
-basic 400 119
-basic 600 -7
-basic 960 -9
-basic 400 -30
-small 1000 513
-small 440 35
-small 280 -21
-expl 360 586
-expl 200 406
+950 268
+slow 347
+mult 261
+invul 200 131
+basic 480 692
+basic 240 659
+basic 440 613
+basic 840 603
+basic 640 576
+basic 440 573
+basic 320 524
+basic 760 481
+basic 800 398
+basic 240 355
+basic 280 84
+basic 240 52
+basic 640 -27
+small 200 427
+small 600 387
+small 760 193
+small 680 167
+small 720 75
+expl 880 552
+expl 320 323

@@ -59,11 +59,14 @@ void WidgetPause::on_btnSave_clicked() {
     }
 }
 
+// actually the quit button
 void WidgetPause::on_btnStart_clicked() {
     QSound::play("://219069__annabloom__click1.wav");
     dynamic_cast<WidgetGame*>(parentWidget())->pauseTimer();
     this->hide();
     par->hide();
-    Game::getInstance().clearObjVectors();
+
+    Game::getInstance().reset();
+
     dynamic_cast<WidgetStart*>(par->main->startMenu)->show();
 }

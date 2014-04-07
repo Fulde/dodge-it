@@ -367,3 +367,22 @@ void Game::clearObjVectors()
     explosives.clear();
     powerups.clear();
 }
+
+
+void Game::reset()
+{
+    instance.setSlowTimer(0);
+    instance.setMultiTimer(0);
+    instance.setInvulTimer(0);
+
+    instance.setScore(0);
+    instance.movePlayer(590, 670);
+    instance.setPlayerLives(3);
+
+    instance.setPlayerMovingUp(false);
+    instance.setPlayerMovingDown(false);
+    instance.setPlayerMovingLeft(false);
+    instance.setPlayerMovingRight(false);
+
+    instance.clearObjVectors();
+}
