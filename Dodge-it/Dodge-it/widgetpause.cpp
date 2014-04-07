@@ -15,7 +15,6 @@
 
 #include <QSound>
 
-bool WidgetPause::cheatMode;
 
 //Instantiates the Widget
 WidgetPause::WidgetPause(QWidget *parent) :
@@ -25,7 +24,7 @@ WidgetPause::WidgetPause(QWidget *parent) :
     ui->setupUi(this);
     par = dynamic_cast<WidgetGame*>(parent);
 
-    if (cheatMode) {
+    if (Game::getInstance().getCheatMode()) {
         ui->btnCheat->setChecked(true);
     } else {
         ui->btnCheat->setChecked(false);
@@ -43,9 +42,9 @@ void WidgetPause::on_btnCheat_clicked() {
     QSound::play("://219069__annabloom__click1.wav");
 
     if (ui->btnCheat->isChecked()) {
-        cheatMode = true;
+        Game::getInstance().setCheatMode(true);
     } else {
-        cheatMode = false;
+        Game::getInstance().setCheatMode(false);
     }
 }
 

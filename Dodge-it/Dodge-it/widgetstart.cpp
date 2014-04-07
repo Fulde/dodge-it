@@ -35,7 +35,7 @@ void WidgetStart::on_btnStart_clicked()
     QSound::play("://198784__cman634__jump-sound-or-power-up-sound.wav");
     if (ui->rbEasy->isChecked()) {
         Game::getInstance().setDifficulty(Game::easy);
-        Game::getInstance().setObjectInt(30);
+        Game::getInstance().setObjectInt(40);
     } else if (ui->rbMedium->isChecked()) {
         Game::getInstance().setDifficulty(Game::medium);
         Game::getInstance().setObjectInt(20);
@@ -46,6 +46,10 @@ void WidgetStart::on_btnStart_clicked()
     Game::getInstance().setTimeInt(9);
     Game::getInstance().setPlayerLives(3);
     Game::getInstance().setScore(0);
+
+    Game::getInstance().setSlowTimer(0);
+    Game::getInstance().setMultiTimer(0);
+    Game::getInstance().setInvulTimer(0);
 
     WidgetGame* game = new WidgetGame(main);
     game->show();

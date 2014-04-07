@@ -28,23 +28,36 @@ void Object::move() {
 
 string Object::stateToFile() { return NULL; }
 
-DamagingObject::DamagingObject(int initX, int initY) {
+DamagingObject::DamagingObject(int initX, int initY, string pic) {
     //sets speed of falling object based on the selected difficulty level
-    Game::diffSetting difficulty = Game::getInstance().getDifficulty();
+    Game::diffSetting difficulty = Game::getInstance().getDifficulty();   // 1,3,5
     if (difficulty == Game::easy){
         speed = 1;
+        if (pic == ":/small.png")
+            speed = 2;
+        else if (pic == ":/bomb.gif")
+            speed = 1;
     } else if (difficulty == Game::medium) {
         speed = 3;
+        if (pic == ":/small.png")
+            speed = 4;
+        else if (pic == ":/bomb.gif")
+            speed = 2;
     } else if (difficulty == Game::hard) {
         speed = 5;
+        if (pic == ":/small.png")
+            speed = 6;
+        else if (pic == ":/bomb.gif")
+            speed = 4;
     }
     touched = false;
 
+    pixmap = pic;
     x = initX;
     y = initY;
 }
 
-Powerup::Powerup(int initX, int labelHeight, bool isActive, bool haveUsed) {
+Powerup::Powerup(int initX, int initY, bool isActive, bool haveUsed) {
     Game::diffSetting difficulty = Game::getInstance().getDifficulty();
     if (difficulty == Game::easy){
         speed = 1;
@@ -58,12 +71,12 @@ Powerup::Powerup(int initX, int labelHeight, bool isActive, bool haveUsed) {
     active = isActive;
 
     x = initX;
-    y = -labelHeight;
+    y = initY;
 }
 
 string Powerup::stateToFile(Powerup* obj, string type) {
     string data = type + " ";\
-    if (obj->getActive()) {
+    if (obj->isActive()) {
         data = data + to_string(obj->getDuration()) + "\n";
     } else {
         data = data + to_string(obj->getX()) + " " + to_string(obj->getY()) + "\n";
@@ -71,20 +84,87 @@ string Powerup::stateToFile(Powerup* obj, string type) {
     return data;
 }
 
-void Invul::activatePow() {
+void Powerup::activatePow() {
     active = true;
+    used = true;
+}
+
+void Invul::activatePow() {
+    if (Game::getInstance().getInvulTimer() > 0)
+        return;
+    else
+        Powerup::activatePow();
+        Game::getInstance().setInvulTimer(0);
 }
 
 void ExLife::activatePow() {
-    Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() + 1);
-    active = true;
+    Powerup::activatePow();
+
+    if (Game::getInstance().getPlayerLives() < 3)
+    {
+        Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() + 1);
+        active = true;
+    }
+    else
+        active = false;
 }
 
 void Slow::activatePow() {
-    active = true;
+    if (Game::getInstance().getSlowTimer() > 0)
+        return;
+    else
+        Powerup::activatePow();
+        Game::getInstance().setSlowTimer(0);
 }
 
 void Multiplier::activatePow() {
-    active = true;
+    if (Game::getInstance().getMultiTimer() > 0)
+        return;
+    else
+        Powerup::activatePow();
+        Game::getInstance().setMultiTimer(0);
+}
 
+
+
+
+void Invul::tick()
+{
+    Game::getInstance().setInvulTimer(Game::getInstance().getInvulTimer() + 1);
+    duration = Game::getInstance().getInvulTimer();
+    if(Game::getInstance().getInvulTimer() == 500)
+    {
+        active = false;
+        timeout = true;
+        Game::getInstance().setInvulTimer(0);
+    }
+}
+
+void ExLife::tick()
+{
+
+}
+
+void Slow::tick()
+{
+    Game::getInstance().setSlowTimer(Game::getInstance().getSlowTimer() + 1);
+    duration = Game::getInstance().getSlowTimer();
+    if (Game::getInstance().getSlowTimer() == 500)
+    {
+        active = false;
+        timeout = true;
+        Game::getInstance().setSlowTimer(0);
+    }
+}
+
+void Multiplier::tick()
+{
+    Game::getInstance().setMultiTimer(Game::getInstance().getMultiTimer() + 1);
+    duration = Game::getInstance().getMultiTimer();
+    if(Game::getInstance().getMultiTimer() == 500)
+    {
+        active = false;
+        timeout = true;
+        Game::getInstance().setMultiTimer(0);
+    }
 }

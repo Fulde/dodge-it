@@ -1,12 +1,15 @@
 medium
-0
+22
 3
-575 478
-basic 400 531
-basic 800 291
-basic 320 18
-small 860 507
-small 500 150
-small 180 57
-small 700 15
-expl 700 402
+467 670
+mult 260
+exlife 380 206
+slow 580 -28
+basic 340 596
+basic 840 299
+basic 700 212
+basic 480 11
+basic 660 -16
+small 320 767
+small 340 491
+small 300 35

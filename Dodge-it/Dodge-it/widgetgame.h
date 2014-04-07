@@ -48,16 +48,6 @@ private:
     Ui::WidgetGame *ui;
     QTimer *gameTimer;
     QTimer *hitTimer;
-
-    Slow* slowObject;
-    ExLife* heartObject;
-    Invul* invulObject;
-    Multiplier* multiObject;
-
-    int slowTimer;
-    int multiTimer;
-    int shieldTimer;
-    bool safeToDeletePowerups;
 };
 
 class ObjLabel : public QLabel {
