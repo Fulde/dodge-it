@@ -111,7 +111,7 @@ void HighScore::scoresToFile(string fileName)
 }
 
 
-static void HighScore::clearScores()
+void HighScore::clearScores()
 {
     for (size_t i = 0; i < highScores.size(); i++)
         delete highScores.at(i);
@@ -377,8 +377,6 @@ void Game::clearObjVectors()
     smalls.clear();
     explosives.clear();
     powerups.clear();
-
-    HighScore::
 }
 
 

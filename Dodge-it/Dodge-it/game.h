@@ -36,6 +36,7 @@ public:
     static void compareScore(); // need to rename; name no longer applies
     static string scoresToString();
     static void scoresToFile(string fileName);
+    static void clearScores();
 };
 
 //========================= CHARACTER =========================

@@ -47,6 +47,7 @@ public:
         lnEditUN = new QLineEdit(widget);
         lnEditUN->setObjectName(QStringLiteral("lnEditUN"));
         lnEditUN->setGeometry(QRect(420, 350, 181, 27));
+        lnEditUN->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
         btnEnter = new QPushButton(widget);
         btnEnter->setObjectName(QStringLiteral("btnEnter"));
         btnEnter->setGeometry(QRect(460, 440, 98, 27));
