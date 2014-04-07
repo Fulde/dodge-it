@@ -22,13 +22,7 @@ WidgetScore::~WidgetScore() { delete ui; }
 
 void WidgetScore::on_btnExit_clicked()
 {
-    Game::getInstance().setSlowTimer(0);
-    Game::getInstance().setMultiTimer(0);
-    Game::getInstance().setInvulTimer(0);
-
-    Game::getInstance().setScore(0);
-    Game::getInstance().movePlayer(590, 670);
-    Game::getInstance().setPlayerLives(3);
+    Game::getInstance().reset();
 
     this->hide();
     main->hide();

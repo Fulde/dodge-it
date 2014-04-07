@@ -320,15 +320,18 @@ bool Game::save(string fileName) {
         }
         for (size_t i = 0;  i < basics.size(); i++) {                       // save basic objects
             Object *obj = basics.at(i);
-            strm << "basic " << obj->getX() << " " << obj->getY() << endl;
+            if (!obj->getTouched())
+                strm << "basic " << obj->getX() << " " << obj->getY() << endl;
         }
         for (size_t i = 0;  i < smalls.size(); i++) {                       // save small objects
             Object *obj = smalls.at(i);
-            strm << "small " << obj->getX() << " " << obj->getY() << endl;
+            if (!obj->getTouched())
+              strm << "small " << obj->getX() << " " << obj->getY() << endl;
         }
         for (size_t i = 0;  i < explosives.size(); i++) {                   // save explosive objects
             Object *obj = explosives.at(i);
-            strm << "expl " << obj->getX() << " " << obj->getY() << endl;
+            if (!obj->getTouched())
+                strm << "expl " << obj->getX() << " " << obj->getY() << endl;
         }
     }
     strm.close();
@@ -363,4 +366,23 @@ void Game::clearObjVectors()
     smalls.clear();
     explosives.clear();
     powerups.clear();
+}
+
+
+void Game::reset()
+{
+    instance.setSlowTimer(0);
+    instance.setMultiTimer(0);
+    instance.setInvulTimer(0);
+
+    instance.setScore(0);
+    instance.movePlayer(590, 670);
+    instance.setPlayerLives(3);
+
+    instance.setPlayerMovingUp(false);
+    instance.setPlayerMovingDown(false);
+    instance.setPlayerMovingLeft(false);
+    instance.setPlayerMovingRight(false);
+
+    instance.clearObjVectors();
 }
