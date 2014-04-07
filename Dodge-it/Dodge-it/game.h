@@ -148,6 +148,7 @@ public:
     //Quits the game if the player runs out of lives
     void quit();
 
+    void reset();
     void clearObjVectors();
     bool save(string fileName);
     bool load(string fileName);

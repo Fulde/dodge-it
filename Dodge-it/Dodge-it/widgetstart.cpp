@@ -44,21 +44,12 @@ void WidgetStart::on_btnStart_clicked()
         Game::getInstance().setObjectInt(10);
     }
     Game::getInstance().setTimeInt(9);
-    Game::getInstance().setPlayerLives(3);
-    Game::getInstance().setScore(0);
 
-    Game::getInstance().setSlowTimer(0);
-    Game::getInstance().setMultiTimer(0);
-    Game::getInstance().setInvulTimer(0);
+    Game::getInstance().reset();
 
     WidgetGame* game = new WidgetGame(main);
     game->show();
     this->hide();
-
-    Game::getInstance().setPlayerMovingUp(false);
-    Game::getInstance().setPlayerMovingDown(false);
-    Game::getInstance().setPlayerMovingLeft(false);
-    Game::getInstance().setPlayerMovingRight(false);
 }
 
 void WidgetStart::on_btnHelp_clicked()
