@@ -1,6 +1,17 @@
-medium
-0
-3
-590 670
-invul 180 41
-small 240 129
+easy 
+35 
+2 
+527 442 
+exlife 150427208 
+slow 415 
+exlife 760 -29 
+basic 400 468 
+basic 840 381 
+basic 800 309 
+basic 280 161 
+basic 800 154 
+basic 280 52 
+basic 200 34 
+small 240 69 
+small 520 -43 
+expl 1000 608
