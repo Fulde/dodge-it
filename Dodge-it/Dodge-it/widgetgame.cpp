@@ -23,10 +23,6 @@
 #include <string>
 #include <QSound>
 
-void WidgetGame::pauseTimer()  { gameTimer->stop(); }
-void WidgetGame::resumeTimer() { gameTimer->start(); }
-
-//Instantiates the Widget
 WidgetGame::WidgetGame(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WidgetGame)
@@ -90,12 +86,10 @@ void WidgetGame::incrementScore(int score) {
     ui->lblScore->setText(QString::number(Game::getInstance().getScore()));
 }
 
-//updates both the player's lives and the label representation
 void WidgetGame::decrementLives() {
     if (Game::getInstance().getCheatMode() || Game::getInstance().getInvulTimer() > 0) {
         return;
-    } else {
-        //normal execution
+    } else {     //normal execution
         Game::getInstance().setPlayerLives(Game::getInstance().getPlayerLives() - 1);
         ui->lblLives->setText(QString::number(Game::getInstance().getPlayerLives()));
     }
@@ -146,45 +140,36 @@ void WidgetGame::loadGame() {
 
 void WidgetGame::keyPressEvent(QKeyEvent *k)
 {
-    if ((k->key() == Qt::Key_Up || k->key() == Qt::Key_W))
-    {
+    if ((k->key() == Qt::Key_Up || k->key() == Qt::Key_W)) {
         Game::getInstance().setPlayerMovingUp(true);
     }
-    else if ((k->key() == Qt::Key_Down || k->key() == Qt::Key_S))
-    {
+    else if ((k->key() == Qt::Key_Down || k->key() == Qt::Key_S)) {
         Game::getInstance().setPlayerMovingDown(true);
     }
-    else if ((k->key() == Qt::Key_Left || k->key() == Qt::Key_A))
-    {
+    else if ((k->key() == Qt::Key_Left || k->key() == Qt::Key_A)) {
         Game::getInstance().setPlayerMovingLeft(true);
     }
-    else if ((k->key() == Qt::Key_Right || k->key() == Qt::Key_D))
-    {
+    else if ((k->key() == Qt::Key_Right || k->key() == Qt::Key_D)) {
         Game::getInstance().setPlayerMovingRight(true);
     }
 }
 
 void WidgetGame::keyReleaseEvent(QKeyEvent *k)
 {
-    if ((k->key() == Qt::Key_Up || k->key() == Qt::Key_W))
-    {
+    if ((k->key() == Qt::Key_Up || k->key() == Qt::Key_W)) {
         Game::getInstance().setPlayerMovingUp(false);
     }
-    else if ((k->key() == Qt::Key_Down || k->key() == Qt::Key_S))
-    {
+    else if ((k->key() == Qt::Key_Down || k->key() == Qt::Key_S)) {
         Game::getInstance().setPlayerMovingDown(false);
     }
-    else if ((k->key() == Qt::Key_Left || k->key() == Qt::Key_A))
-    {;
+    else if ((k->key() == Qt::Key_Left || k->key() == Qt::Key_A)) {
         Game::getInstance().setPlayerMovingLeft(false);
     }
-    else if ((k->key() == Qt::Key_Right || k->key() == Qt::Key_D))
-    {
+    else if ((k->key() == Qt::Key_Right || k->key() == Qt::Key_D)) {
         Game::getInstance().setPlayerMovingRight(false);
     }
 }
 
-// the object should start with a random x coordinate at the top of the window
 void WidgetGame::gameTimerHit() {
     int randX = rand() % 855 + 165;
     int random;
@@ -353,9 +338,7 @@ void WidgetGame::gameTimerHit() {
             else if (Game::getInstance().getMultiTimer() > 0 && !ui->multiPixmap->isVisible())
                 ui->multiPixmap->show();
 
-
             //Test for cheat mode
-
             if (!Game::getInstance().getCheatMode()) {
                 ui->lblCheatMode->setText("");
             } else {
@@ -401,7 +384,6 @@ void WidgetGame::gameTimerHit() {
         }
     }
 }
-
 
 void WidgetGame::on_btnPause_clicked() {
     gameTimer->stop();
