@@ -21,21 +21,17 @@
 using namespace std;
 
 // ================================ HIGHSCORE ======================================
-
 vector<HighScore*> HighScore::highScores;
 
 HighScore::HighScore(int highscore, string username, string diff) :
     score(highscore), username(username), difficulty(diff) { }
 
-
-string HighScore::toString()
-{
+string HighScore::toString() {
     stringstream stream;
     stream << score << "  -  " << username << " (" << difficulty << ")";
     return stream.str();
 }
 
-//convert highscores to custom string fornmat and returns custom string
 string HighScore::scoresToString()
 {
     stringstream stream;
@@ -69,7 +65,6 @@ void HighScore::loadScores(string fileName)
     }
 }
 
-//tests how a score compares to the highscore list
 void HighScore::compareScore() {
 
     string difficulty;
@@ -95,7 +90,6 @@ void HighScore::compareScore() {
     }
 }
 
-
 void HighScore::scoresToFile(string fileName)
 {
     ofstream strm(fileName);
@@ -109,7 +103,6 @@ void HighScore::scoresToFile(string fileName)
     }
     strm.close();
 }
-
 
 void HighScore::clearScores()
 {
@@ -185,7 +178,7 @@ Character::Character()
     movingDown = false;
     movingLeft = false;
     movingRight = false;
-} // may want to supply initX and initY as parameters in future
+}
 
 // ================================ GAME ======================================
 
@@ -218,7 +211,6 @@ Game::~Game()
     HighScore::clearScores();
 }
 
-// resumes the saved game at the point that it was saved.
 bool Game::load(string fileName) {
     ifstream strm(fileName);
     string data;
@@ -300,8 +292,6 @@ bool Game::load(string fileName) {
     return true;
 }
 
-// saves the current state of the game including score, number of lives,
-// and locations of all falling objects and the character itself.
 bool Game::save(string fileName) {
     ofstream strm(fileName);
     if (strm) {
@@ -348,12 +338,6 @@ bool Game::save(string fileName) {
     strm.close();
     return true;
 }
-
-//moves player to new location
-void Game::movePlayer(int newX, int newY) {
-    player->move(newX, newY);
-}
-
 
 void Game::clearObjVectors()
 {

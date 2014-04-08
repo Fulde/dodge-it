@@ -11,22 +11,9 @@
 #include "object.h"
 #include "game.h"
 
-Object::Object() { }
-
-Object::~Object() { }
-
-//This method increments the score when the user successfully dodges a falling object.
-//  The score is incremented based on the point value of the object that was dodged.
-void Object::incrementScore(int score) {
-
-}
-
-//This method moves the falling object to its new location based off the speed of the object
 void Object::move() {
     y += speed;
 }
-
-string Object::stateToFile() { return NULL; }
 
 DamagingObject::DamagingObject(int initX, int initY, string pic) {
     //sets speed of falling object based on the selected difficulty level
@@ -125,9 +112,6 @@ void Multiplier::activatePow() {
         Game::getInstance().setMultiTimer(0);
 }
 
-
-
-
 void Invul::tick()
 {
     Game::getInstance().setInvulTimer(Game::getInstance().getInvulTimer() + 1);
@@ -138,11 +122,6 @@ void Invul::tick()
         timeout = true;
         Game::getInstance().setInvulTimer(0);
     }
-}
-
-void ExLife::tick()
-{
-
 }
 
 void Slow::tick()
