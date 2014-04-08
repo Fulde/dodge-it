@@ -1,4 +1,5 @@
 2303 Stephen medium
+1547 Stephen hard
 1435 Stephen medium
 1000 player10 easy
 900 player9 medium
@@ -7,4 +8,3 @@
 600 player6 medium
 500 player5 hard
 472 Stephen hard
-400 player4 easy

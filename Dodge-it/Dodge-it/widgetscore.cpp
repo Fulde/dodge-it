@@ -8,7 +8,7 @@
 #include "ui_widgetscore.h"
 #include "game.h"
 
-//Instantiates the Widget
+
 WidgetScore::WidgetScore(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WidgetScore)
@@ -22,8 +22,10 @@ WidgetScore::~WidgetScore() { delete ui; }
 
 void WidgetScore::on_btnExit_clicked()
 {
+    //resets the game to a blank state upon exiting in preparation for a new game
     Game::getInstance().reset();
 
+    //hides the game screen and opens the start menu screen
     this->hide();
     main->hide();
     dynamic_cast<WidgetStart*>(main->main->startMenu)->show();
