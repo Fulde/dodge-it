@@ -60,6 +60,7 @@ WidgetGame::WidgetGame(QWidget *parent) :
     hitTimer->setInterval(3000); // 3 seconds
     hitTimer->setSingleShot(true);
 
+    // display the powerup indicators if the loaded game indicates that they're active when the game starts
     ui->slowPixmap->setPixmap(QPixmap(":/hourglass.png"));
     if (Game::getInstance().getSlowTimer() > 0)
         ui->slowPixmap->show();
@@ -196,12 +197,14 @@ void WidgetGame::gameTimerHit() {
             Game::getInstance().getPlayerMovingLeft(), Game::getInstance().getPlayerMovingRight() == false) {
     }
 
+    // decide whether or not to create object
     if ((randX % Game::getInstance().getObjectInt()) == 0)
     {
         ObjLabel* label = new ObjLabel(this);
         label->setAlignment(Qt::AlignHCenter);
         Object * obj;
 
+        // decide which one to create
         random = rand() % 100 + 1;
         if (random <= 90) {
             if (random <= 50) {                                // (1-50)  basic object
@@ -248,6 +251,7 @@ void WidgetGame::gameTimerHit() {
         label->show();
     }
 
+    // move and test all powerups for hits, points, or effects on character
     QObjectList labels = this->children();
         for (int i = 0; i < labels.length(); i++) {
             ObjLabel *curLabel = dynamic_cast<ObjLabel*>(labels.at(i));
@@ -310,6 +314,7 @@ void WidgetGame::gameTimerHit() {
                     curLabel->show();
             }
 
+            // handle an active powerup
             if (powerup != NULL && powerup->isActive())
             {
                 powerup->tick();
@@ -348,6 +353,8 @@ void WidgetGame::gameTimerHit() {
             curObj->move();
             curLabel->move(curObj->getX(), curObj->getY());
 
+            // decide whether or not to delete a powerup; creates memory leaks, but couldn't find implementation
+            // for deleting actual memory that didn't break the game
             vector<Object*>& pups = Game::getInstance().getPowerups();
             for (int i = 0; i < pups.size(); i++)
             {

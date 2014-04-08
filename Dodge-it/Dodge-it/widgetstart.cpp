@@ -66,6 +66,8 @@ void WidgetStart::on_btnQuit_clicked()
     // write current highscore vector to file
     HighScore::scoresToFile("highScores.txt");
 
+    HighScore::clearScores();
+
     //quit the application
     QCoreApplication::exit();
 }
