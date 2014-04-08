@@ -25,11 +25,9 @@ public:
     WidgetGame *main;
 
 private slots:
-
     void on_btnExit_clicked();
 
 private:
-    //Private instance for the Widget ui
     Ui::WidgetScore *ui;
 };
 

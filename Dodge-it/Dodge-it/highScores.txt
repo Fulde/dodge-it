@@ -5,6 +5,6 @@
 700 player7 easy
 600 player6 medium
 500 player5 hard
+494 AshleytheBeast hard
 462 Lindsay easy
 400 player4 easy
-300 player3 medium
