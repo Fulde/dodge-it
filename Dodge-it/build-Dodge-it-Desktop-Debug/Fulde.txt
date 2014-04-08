@@ -1,16 +1,16 @@
 medium
-135
-3
-626 517
-mult 1000 761
-mult 500 458
-basic 360 740
-basic 960 719
-basic 780 557
-basic 180 323
-basic 660 260
-basic 560 8
-small 180 597
-small 960 233
-small 340 101
-expl 580 79
+89
+2
+734 589
+slow 72
+basic 780 371
+basic 640 251
+basic 760 236
+basic 620 224
+basic 900 164
+small 220 417
+small 320 137
+small 860 73
+expl 320 283
+expl 480 133
+expl 660 -35

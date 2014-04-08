@@ -46,11 +46,11 @@ public:
     {
         if (WidgetHelp->objectName().isEmpty())
             WidgetHelp->setObjectName(QStringLiteral("WidgetHelp"));
-        WidgetHelp->resize(820, 818);
+        WidgetHelp->resize(742, 660);
         WidgetHelp->setStyleSheet(QStringLiteral("background-color: rgb(0,0,0);"));
         lblText = new QLabel(WidgetHelp);
         lblText->setObjectName(QStringLiteral("lblText"));
-        lblText->setGeometry(QRect(10, 160, 491, 211));
+        lblText->setGeometry(QRect(10, 160, 501, 211));
         lblText->setStyleSheet(QLatin1String("font: 14pt;\n"
 "color: rgb(255, 255, 255);"));
         lblText->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
@@ -61,42 +61,42 @@ public:
         lblPic->setScaledContents(true);
         lblPow1 = new QLabel(WidgetHelp);
         lblPow1->setObjectName(QStringLiteral("lblPow1"));
-        lblPow1->setGeometry(QRect(20, 480, 61, 51));
+        lblPow1->setGeometry(QRect(40, 400, 41, 31));
         lblPow1->setPixmap(QPixmap(QString::fromUtf8(":/heart.png")));
         lblPow1->setScaledContents(true);
         lblPow1Text = new QLabel(WidgetHelp);
         lblPow1Text->setObjectName(QStringLiteral("lblPow1Text"));
-        lblPow1Text->setGeometry(QRect(90, 490, 151, 17));
+        lblPow1Text->setGeometry(QRect(90, 410, 151, 17));
         lblPow1Text->setStyleSheet(QLatin1String("color: rgb(232, 25, 6);\n"
 "font: 14pt;"));
         lblPow3 = new QLabel(WidgetHelp);
         lblPow3->setObjectName(QStringLiteral("lblPow3"));
-        lblPow3->setGeometry(QRect(20, 640, 61, 61));
+        lblPow3->setGeometry(QRect(50, 510, 31, 51));
         lblPow3->setPixmap(QPixmap(QString::fromUtf8(":/hourglass.png")));
         lblPow3->setScaledContents(true);
         lblPow3Text = new QLabel(WidgetHelp);
         lblPow3Text->setObjectName(QStringLiteral("lblPow3Text"));
-        lblPow3Text->setGeometry(QRect(90, 650, 391, 41));
+        lblPow3Text->setGeometry(QRect(90, 510, 401, 41));
         lblPow3Text->setStyleSheet(QLatin1String("color: rgb(23, 217, 255);\n"
 "font: 14pt;"));
         lblPow2 = new QLabel(WidgetHelp);
         lblPow2->setObjectName(QStringLiteral("lblPow2"));
-        lblPow2->setGeometry(QRect(20, 560, 51, 51));
+        lblPow2->setGeometry(QRect(40, 450, 41, 41));
         lblPow2->setPixmap(QPixmap(QString::fromUtf8(":/shield.png")));
         lblPow2->setScaledContents(true);
         lblPow2Text = new QLabel(WidgetHelp);
         lblPow2Text->setObjectName(QStringLiteral("lblPow2Text"));
-        lblPow2Text->setGeometry(QRect(90, 570, 391, 17));
+        lblPow2Text->setGeometry(QRect(90, 460, 401, 17));
         lblPow2Text->setStyleSheet(QLatin1String("color: rgb(235, 201, 7);\n"
 "font: 14pt;"));
         lblPow4Text = new QLabel(WidgetHelp);
         lblPow4Text->setObjectName(QStringLiteral("lblPow4Text"));
-        lblPow4Text->setGeometry(QRect(90, 740, 371, 17));
+        lblPow4Text->setGeometry(QRect(90, 580, 401, 41));
         lblPow4Text->setStyleSheet(QLatin1String("color: rgb(84, 236, 29);\n"
 "font: 14pt;"));
         lblPow4 = new QLabel(WidgetHelp);
         lblPow4->setObjectName(QStringLiteral("lblPow4"));
-        lblPow4->setGeometry(QRect(20, 730, 51, 51));
+        lblPow4->setGeometry(QRect(40, 580, 41, 41));
         lblPow4->setPixmap(QPixmap(QString::fromUtf8(":/multiplier.png")));
         lblPow4->setScaledContents(true);
         lblTitle = new QLabel(WidgetHelp);
@@ -106,34 +106,34 @@ public:
         lblTitle->setScaledContents(true);
         lblScreen = new QLabel(WidgetHelp);
         lblScreen->setObjectName(QStringLiteral("lblScreen"));
-        lblScreen->setGeometry(QRect(520, 50, 261, 211));
+        lblScreen->setGeometry(QRect(520, 50, 201, 161));
         lblScreen->setPixmap(QPixmap(QString::fromUtf8(":/screenshot1.png")));
         lblScreen->setScaledContents(true);
         lblEasy = new QLabel(WidgetHelp);
         lblEasy->setObjectName(QStringLiteral("lblEasy"));
         lblEasy->setGeometry(QRect(520, 20, 101, 21));
-        lblEasy->setStyleSheet(QStringLiteral("color: rgb(255, 255, 127);"));
+        lblEasy->setStyleSheet(QStringLiteral("color: rgb(21, 208, 33)"));
         lblMed = new QLabel(WidgetHelp);
         lblMed->setObjectName(QStringLiteral("lblMed"));
-        lblMed->setGeometry(QRect(520, 270, 111, 21));
+        lblMed->setGeometry(QRect(520, 230, 111, 21));
         lblMed->setStyleSheet(QStringLiteral("color: rgb(255, 170, 0);"));
         lblScreen2 = new QLabel(WidgetHelp);
         lblScreen2->setObjectName(QStringLiteral("lblScreen2"));
-        lblScreen2->setGeometry(QRect(510, 300, 271, 221));
+        lblScreen2->setGeometry(QRect(510, 260, 211, 171));
         lblScreen2->setPixmap(QPixmap(QString::fromUtf8(":/screenshot2.png")));
         lblScreen2->setScaledContents(true);
         lblHard = new QLabel(WidgetHelp);
         lblHard->setObjectName(QStringLiteral("lblHard"));
-        lblHard->setGeometry(QRect(510, 530, 111, 21));
+        lblHard->setGeometry(QRect(500, 450, 111, 21));
         lblHard->setStyleSheet(QStringLiteral("color: rgb(236, 40, 5);"));
         lblScreen3 = new QLabel(WidgetHelp);
         lblScreen3->setObjectName(QStringLiteral("lblScreen3"));
-        lblScreen3->setGeometry(QRect(510, 560, 271, 221));
+        lblScreen3->setGeometry(QRect(500, 480, 221, 161));
         lblScreen3->setPixmap(QPixmap(QString::fromUtf8(":/screenshot3.png")));
         lblScreen3->setScaledContents(true);
         lblSubTitle2 = new QLabel(WidgetHelp);
         lblSubTitle2->setObjectName(QStringLiteral("lblSubTitle2"));
-        lblSubTitle2->setGeometry(QRect(10, 430, 281, 17));
+        lblSubTitle2->setGeometry(QRect(10, 370, 281, 17));
         lblSubTitle2->setStyleSheet(QLatin1String("font: 18pt;\n"
 "color: rgb(255, 255, 255);"));
         lblSubTitle = new QLabel(WidgetHelp);
@@ -167,7 +167,8 @@ public:
 " period of time", 0));
         lblPow2->setText(QString());
         lblPow2Text->setText(QApplication::translate("WidgetHelp", "Player is invincible over a short period of time", 0));
-        lblPow4Text->setText(QApplication::translate("WidgetHelp", "Multiplies the score by 2 over a short period of time", 0));
+        lblPow4Text->setText(QApplication::translate("WidgetHelp", "Multiplies the score by 2 over a short \n"
+" period of time", 0));
         lblPow4->setText(QString());
         lblTitle->setText(QString());
         lblScreen->setText(QString());

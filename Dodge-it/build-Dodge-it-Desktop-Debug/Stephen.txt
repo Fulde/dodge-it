@@ -1,0 +1,11 @@
+medium
+5
+3
+404 670
+exlife 260 380
+basic 980 491
+basic 480 395
+basic 680 326
+basic 480 173
+small 200 661
+small 240 245
