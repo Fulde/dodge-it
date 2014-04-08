@@ -34,8 +34,8 @@ public:
     // decrements both the player's lives and the label representation
     void decrementLives();
     // pauses and resumes the timer when pause is toggled
-    void WidgetGame::pauseTimer()  { gameTimer->stop(); }
-    void WidgetGame::resumeTimer() { gameTimer->start(); }
+    void pauseTimer()  { gameTimer->stop(); }
+    void resumeTimer() { gameTimer->start(); }
     // takes the loaded information from the model into and
     void loadGame();
 
